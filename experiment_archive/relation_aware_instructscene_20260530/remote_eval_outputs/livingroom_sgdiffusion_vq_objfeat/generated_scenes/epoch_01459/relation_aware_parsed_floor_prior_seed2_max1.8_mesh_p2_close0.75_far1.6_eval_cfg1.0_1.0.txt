@@ -1,0 +1,28 @@
+Repair strategy: floor_prior
+Max repair move: 1.8000
+Repair overlap weight: 1.0000
+Graph relation acc: [ 155/ 294] = 0.5272
+Graph relation acc (easy): [ 168/ 294] = 0.5714
+Baseline relation acc: [ 159/ 294] = 0.5408
+Baseline relation acc (easy): [ 170/ 294] = 0.5782
+Relation-aware repaired acc: [ 192/ 294] = 0.6531
+Relation-aware repaired acc (easy): [ 197/ 294] = 0.6701
+Repair edits: 40
+Repair skipped: 135
+Average repair movement: 1.0028
+Relation source: parsed
+Parsed relations: 229
+Parser exact recall: [ 127/ 294] = 0.4320
+Parser easy recall: [ 127/ 294] = 0.4320
+Parser precision: 0.5546
+Baseline footprint overlap ratio: 0.133101
+Repaired footprint overlap ratio: 0.131192
+Baseline overlap pairs/scene: 7.6302
+Repaired overlap pairs/scene: 7.6302
+Baseline out-of-bounds center rate: 0.000000
+Repaired out-of-bounds center rate: 0.000000
+Mesh collision scenes evaluated: 192
+Baseline mesh collision pair rate: 0.027844
+Repaired mesh collision pair rate: 0.028816
+Baseline mesh collision scene rate: 0.812500
+Repaired mesh collision scene rate: 0.833333

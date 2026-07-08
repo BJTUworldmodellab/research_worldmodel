@@ -1,0 +1,9 @@
+Graph relation acc: [ 181/ 245] = 0.7388
+Graph relation acc (easy): [ 184/ 245] = 0.7510
+Baseline relation acc: [ 181/ 245] = 0.7388
+Baseline relation acc (easy): [ 184/ 245] = 0.7510
+Relation-aware repaired acc: [ 217/ 245] = 0.8857
+Relation-aware repaired acc (easy): [ 217/ 245] = 0.8857
+Repair edits: 59
+Repair skipped: 38
+Average repair movement: 2.5865

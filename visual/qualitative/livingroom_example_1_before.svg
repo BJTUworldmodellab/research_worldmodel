@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360">
+<rect width="100%" height="100%" fill="#fbfbf8"/>
+<rect x="10" y="10" width="500" height="340" fill="none" stroke="#d8ddd6" stroke-width="1"/>
+<text x="18" y="30" font-family="Arial" font-size="15" font-weight="700" fill="#202421">livingroom before: 0/2 relations</text>
+<g transform="translate(151.56,218.33) rotate(179.78)">
+<rect x="-30.91" y="-11.18" width="61.82" height="22.37" rx="3" fill="#dbe7f3" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="151.56" y="222.33" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">multi seat sofa</text>
+<g transform="translate(146.23,171.18) rotate(179.75)">
+<rect x="-17.46" y="-8.58" width="34.93" height="17.16" rx="3" fill="#d9eadf" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="146.23" y="175.18" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">coffee table</text>
+<g transform="translate(484.56,196.41) rotate(89.73)">
+<rect x="-7.44" y="-8.24" width="14.88" height="16.49" rx="3" fill="#f5dfc4" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="484.56" y="200.41" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">dining chair</text>
+<g transform="translate(419.51,187.22) rotate(-179.95)">
+<rect x="-29.26" y="-12.27" width="58.51" height="24.55" rx="3" fill="#eadcf4" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="419.51" y="191.22" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">dining table</text>
+<g transform="translate(38.62,129.75) rotate(-179.85)">
+<rect x="-10.62" y="-3.40" width="21.23" height="6.80" rx="3" fill="#f5d2cf" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="38.62" y="133.75" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">console table</text>
+<g transform="translate(418.04,159.78) rotate(0.19)">
+<rect x="-7.44" y="-8.24" width="14.88" height="16.49" rx="3" fill="#d8eceb" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="418.04" y="163.78" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">dining chair</text>
+<g transform="translate(421.67,185.62) rotate(179.79)">
+<rect x="-5.24" y="-5.24" width="10.49" height="10.48" rx="3" fill="#f0e8be" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="421.67" y="189.62" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">pendant lamp</text>
+<g transform="translate(291.21,280.15) rotate(179.96)">
+<rect x="-10.24" y="-10.24" width="20.49" height="20.48" rx="3" fill="#d7d7ef" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="291.21" y="284.15" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">ceiling lamp</text>
+<g transform="translate(151.16,85.44) rotate(0.01)">
+<rect x="-29.53" y="-6.75" width="59.05" height="13.49" rx="3" fill="#dbe7f3" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="151.16" y="89.44" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">tv stand</text>
+<g transform="translate(393.20,85.52) rotate(0.05)">
+<rect x="-29.53" y="-6.75" width="59.05" height="13.49" rx="3" fill="#d9eadf" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="393.20" y="89.52" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">tv stand</text>
+<g transform="translate(159.08,156.41) rotate(179.95)">
+<rect x="-9.41" y="-9.35" width="18.83" height="18.70" rx="3" fill="#f5dfc4" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="159.08" y="160.41" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">ceiling lamp</text>
+</svg>

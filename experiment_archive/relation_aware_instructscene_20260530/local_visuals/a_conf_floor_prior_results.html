@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Floor-Prior Relation-Aware InstructScene Results</title>
+  <style>
+    body { margin:0; font-family:Inter,ui-sans-serif,system-ui; background:#f6f7f4; color:#202421; }
+    header { padding:36px 5vw; background:#e9eee9; border-bottom:1px solid #d5ddd4; }
+    main { padding:28px 5vw 60px; }
+    h1 { margin:0; font-size:42px; letter-spacing:0; }
+    p { color:#596861; line-height:1.45; max-width:980px; }
+    table { width:100%; border-collapse:collapse; background:white; border:1px solid #d8ddd6; }
+    th,td { padding:11px 10px; border-bottom:1px solid #e3e8e1; text-align:left; font-size:14px; }
+    th { background:#f0f4ef; }
+    .note { margin-top:18px; padding:16px; border-left:4px solid #2c7a62; background:#fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Floor-Prior Relation-Aware InstructScene</h1>
+    <p>Parallel experiment summary for the height-fixed and scene-prior-constrained repair variants. The paper-facing claim should prefer floor_prior when it preserves relation gains with better mesh and movement behavior.</p>
+  </header>
+  <main>
+    <table>
+      <thead>
+        <tr>
+          <th>Room</th><th>Variant</th><th>Base Rel</th><th>Repair Rel</th><th>Gain</th><th>Move</th><th>Base Mesh</th><th>Repair Mesh</th><th>Mesh Delta</th><th>Overlap</th>
+        </tr>
+      </thead>
+      <tbody><tr><td>bedroom</td><td>floor_direct_yfix_mesh_p2_close0.75_far1.6</td><td>0.7388</td><td>0.8735</td><td>0.1347</td><td>2.2101</td><td>0.0702</td><td>0.0737</td><td>0.0034</td><td>0.0841</td></tr>
+<tr><td>bedroom</td><td>floor_prior_max0.8_mesh_p2_close0.75_far1.6</td><td>0.7388</td><td>0.7959</td><td>0.0571</td><td>0.4233</td><td>0.0702</td><td>0.0712</td><td>0.0010</td><td>0.0866</td></tr>
+<tr><td>bedroom</td><td>floor_prior_max1.2_mesh_p2_close0.75_far1.6</td><td>0.7388</td><td>0.8245</td><td>0.0857</td><td>0.6493</td><td>0.0702</td><td>0.0717</td><td>0.0015</td><td>0.0860</td></tr>
+<tr><td>bedroom</td><td>floor_prior_max1.8_mesh_p1_close0.75_far1.6</td><td>0.7388</td><td>0.8327</td><td>0.0939</td><td>0.7614</td><td>0.0702</td><td>0.0722</td><td>0.0020</td><td>0.0845</td></tr>
+<tr><td>bedroom</td><td>floor_prior_max1.8_mesh_p2_close0.75_far1.6</td><td>0.7388</td><td>0.8408</td><td>0.1020</td><td>0.7837</td><td>0.0702</td><td>0.0732</td><td>0.0029</td><td>0.0872</td></tr>
+<tr><td>bedroom</td><td>floor_prior_max1.8_mesh_p3_close0.75_far1.6</td><td>0.7388</td><td>0.8408</td><td>0.1020</td><td>0.7837</td><td>0.0702</td><td>0.0732</td><td>0.0029</td><td>0.0872</td></tr>
+<tr><td>bedroom</td><td>floor_prior_ow05_max1.8_mesh_p2_close0.75_far1.6</td><td>0.7388</td><td>0.8408</td><td>0.1020</td><td>0.7207</td><td>0.0702</td><td>0.0737</td><td>0.0034</td><td>0.0889</td></tr>
+<tr><td>bedroom</td><td>floor_prior_ow0_max1.8_mesh_p2_close0.75_far1.6</td><td>0.7388</td><td>0.8408</td><td>0.1020</td><td>0.7207</td><td>0.0702</td><td>0.0737</td><td>0.0034</td><td>0.0889</td></tr>
+<tr><td>bedroom</td><td>floor_prior_ow2_max1.8_mesh_p2_close0.75_far1.6</td><td>0.7388</td><td>0.8408</td><td>0.1020</td><td>0.7972</td><td>0.0702</td><td>0.0737</td><td>0.0034</td><td>0.0869</td></tr>
+<tr><td>bedroom</td><td>floor_prior_seed1_max1.8_mesh_p2_close0.75_far1.6</td><td>0.7796</td><td>0.8816</td><td>0.1020</td><td>0.8803</td><td>0.0774</td><td>0.0805</td><td>0.0031</td><td>0.0995</td></tr>
+<tr><td>bedroom</td><td>floor_prior_seed2_max1.8_mesh_p2_close0.75_far1.6</td><td>0.7510</td><td>0.8653</td><td>0.1143</td><td>0.6636</td><td>0.0619</td><td>0.0624</td><td>0.0005</td><td>0.0988</td></tr>
+<tr><td>diningroom</td><td>floor_direct_yfix_mesh_p2_close0.75_far1.6</td><td>0.5948</td><td>0.7844</td><td>0.1896</td><td>1.9694</td><td>0.0342</td><td>0.0361</td><td>0.0019</td><td>0.1542</td></tr>
+<tr><td>diningroom</td><td>floor_prior_max0.8_mesh_p2_close0.75_far1.6</td><td>0.5948</td><td>0.6729</td><td>0.0781</td><td>0.3881</td><td>0.0342</td><td>0.0345</td><td>0.0002</td><td>0.1545</td></tr>
+<tr><td>diningroom</td><td>floor_prior_max1.2_mesh_p2_close0.75_far1.6</td><td>0.5948</td><td>0.7100</td><td>0.1152</td><td>0.5974</td><td>0.0342</td><td>0.0350</td><td>0.0008</td><td>0.1533</td></tr>
+<tr><td>diningroom</td><td>floor_prior_max1.8_mesh_p1_close0.75_far1.6</td><td>0.5948</td><td>0.7286</td><td>0.1338</td><td>0.7281</td><td>0.0342</td><td>0.0352</td><td>0.0010</td><td>0.1527</td></tr>
+<tr><td>diningroom</td><td>floor_prior_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5948</td><td>0.7286</td><td>0.1338</td><td>0.7315</td><td>0.0342</td><td>0.0351</td><td>0.0008</td><td>0.1526</td></tr>
+<tr><td>diningroom</td><td>floor_prior_max1.8_mesh_p3_close0.75_far1.6</td><td>0.5948</td><td>0.7323</td><td>0.1375</td><td>0.7349</td><td>0.0342</td><td>0.0351</td><td>0.0008</td><td>0.1522</td></tr>
+<tr><td>diningroom</td><td>floor_prior_ow05_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5948</td><td>0.7323</td><td>0.1375</td><td>0.6997</td><td>0.0342</td><td>0.0354</td><td>0.0012</td><td>0.1537</td></tr>
+<tr><td>diningroom</td><td>floor_prior_ow0_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5948</td><td>0.7323</td><td>0.1375</td><td>0.6997</td><td>0.0342</td><td>0.0354</td><td>0.0012</td><td>0.1537</td></tr>
+<tr><td>diningroom</td><td>floor_prior_ow2_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5948</td><td>0.7323</td><td>0.1375</td><td>0.8335</td><td>0.0342</td><td>0.0348</td><td>0.0005</td><td>0.1505</td></tr>
+<tr><td>diningroom</td><td>floor_prior_seed1_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5911</td><td>0.7472</td><td>0.1561</td><td>0.8007</td><td>0.0343</td><td>0.0353</td><td>0.0010</td><td>0.1555</td></tr>
+<tr><td>diningroom</td><td>floor_prior_seed2_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5911</td><td>0.7398</td><td>0.1487</td><td>0.9205</td><td>0.0333</td><td>0.0339</td><td>0.0006</td><td>0.1427</td></tr>
+<tr><td>livingroom</td><td>floor_direct_yfix_mesh_p2_close0.75_far1.6</td><td>0.5510</td><td>0.7483</td><td>0.1973</td><td>2.2834</td><td>0.0313</td><td>0.0316</td><td>0.0004</td><td>0.1344</td></tr>
+<tr><td>livingroom</td><td>floor_prior_max0.8_mesh_p2_close0.75_far1.6</td><td>0.5510</td><td>0.6156</td><td>0.0646</td><td>0.3797</td><td>0.0313</td><td>0.0314</td><td>0.0002</td><td>0.1394</td></tr>
+<tr><td>livingroom</td><td>floor_prior_max1.2_mesh_p2_close0.75_far1.6</td><td>0.5510</td><td>0.6565</td><td>0.1054</td><td>0.6662</td><td>0.0313</td><td>0.0320</td><td>0.0007</td><td>0.1390</td></tr>
+<tr><td>livingroom</td><td>floor_prior_max1.8_mesh_p1_close0.75_far1.6</td><td>0.5510</td><td>0.6871</td><td>0.1361</td><td>0.8848</td><td>0.0313</td><td>0.0320</td><td>0.0008</td><td>0.1384</td></tr>
+<tr><td>livingroom</td><td>floor_prior_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5510</td><td>0.6939</td><td>0.1429</td><td>0.8808</td><td>0.0313</td><td>0.0321</td><td>0.0008</td><td>0.1384</td></tr>
+<tr><td>livingroom</td><td>floor_prior_max1.8_mesh_p3_close0.75_far1.6</td><td>0.5510</td><td>0.6939</td><td>0.1429</td><td>0.8808</td><td>0.0313</td><td>0.0321</td><td>0.0008</td><td>0.1384</td></tr>
+<tr><td>livingroom</td><td>floor_prior_ow05_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5510</td><td>0.6939</td><td>0.1429</td><td>0.8477</td><td>0.0313</td><td>0.0322</td><td>0.0010</td><td>0.1393</td></tr>
+<tr><td>livingroom</td><td>floor_prior_ow0_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5510</td><td>0.6939</td><td>0.1429</td><td>0.8477</td><td>0.0313</td><td>0.0322</td><td>0.0010</td><td>0.1393</td></tr>
+<tr><td>livingroom</td><td>floor_prior_ow2_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5510</td><td>0.6939</td><td>0.1429</td><td>0.9872</td><td>0.0313</td><td>0.0317</td><td>0.0004</td><td>0.1368</td></tr>
+<tr><td>livingroom</td><td>floor_prior_seed1_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5340</td><td>0.6599</td><td>0.1259</td><td>0.7875</td><td>0.0307</td><td>0.0319</td><td>0.0012</td><td>0.1375</td></tr>
+<tr><td>livingroom</td><td>floor_prior_seed2_max1.8_mesh_p2_close0.75_far1.6</td><td>0.5408</td><td>0.6531</td><td>0.1122</td><td>1.0028</td><td>0.0278</td><td>0.0288</td><td>0.0010</td><td>0.1312</td></tr></tbody>
+    </table>
+    <div class="note">Use this page together with <a href="real_mesh_showcase.html">real_mesh_showcase.html</a>. Relation improvement alone is not enough; prefer results where mesh collision does not increase and movement stays bounded.</div>
+  </main>
+</body>
+</html>

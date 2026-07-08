@@ -1,0 +1,20 @@
+Graph relation acc: [ 187/ 245] = 0.7633
+Graph relation acc (easy): [ 191/ 245] = 0.7796
+Baseline relation acc: [ 184/ 245] = 0.7510
+Baseline relation acc (easy): [ 188/ 245] = 0.7673
+Relation-aware repaired acc: [ 221/ 245] = 0.9020
+Relation-aware repaired acc (easy): [ 221/ 245] = 0.9020
+Repair edits: 51
+Repair skipped: 47
+Average repair movement: 2.5163
+Relation source: parsed
+Parsed relations: 243
+Parser exact recall: [ 129/ 245] = 0.5265
+Parser easy recall: [ 129/ 245] = 0.5265
+Parser precision: 0.5309
+Baseline footprint overlap ratio: 0.096934
+Repaired footprint overlap ratio: 0.095255
+Baseline overlap pairs/scene: 2.7037
+Repaired overlap pairs/scene: 2.5926
+Baseline out-of-bounds center rate: 0.000000
+Repaired out-of-bounds center rate: 0.003488

@@ -1,0 +1,28 @@
+Repair strategy: direct
+Max repair move: 0.0000
+Repair overlap weight: 1.0000
+Graph relation acc: [ 158/ 269] = 0.5874
+Graph relation acc (easy): [ 172/ 269] = 0.6394
+Baseline relation acc: [ 160/ 269] = 0.5948
+Baseline relation acc (easy): [ 170/ 269] = 0.6320
+Relation-aware repaired acc: [ 211/ 269] = 0.7844
+Relation-aware repaired acc (easy): [ 213/ 269] = 0.7918
+Repair edits: 64
+Repair skipped: 72
+Average repair movement: 1.9694
+Relation source: parsed
+Parsed relations: 236
+Parser exact recall: [ 130/ 269] = 0.4833
+Parser easy recall: [ 130/ 269] = 0.4833
+Parser precision: 0.5508
+Baseline footprint overlap ratio: 0.155403
+Repaired footprint overlap ratio: 0.154162
+Baseline overlap pairs/scene: 8.1073
+Repaired overlap pairs/scene: 7.9322
+Baseline out-of-bounds center rate: 0.000000
+Repaired out-of-bounds center rate: 0.000000
+Mesh collision scenes evaluated: 177
+Baseline mesh collision pair rate: 0.034229
+Repaired mesh collision pair rate: 0.036147
+Baseline mesh collision scene rate: 0.745763
+Repaired mesh collision scene rate: 0.762712

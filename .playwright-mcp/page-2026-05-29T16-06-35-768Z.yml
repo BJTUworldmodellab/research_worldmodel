@@ -1,0 +1,23 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e3]:
+    - paragraph [ref=e4]: Cinematic 3D Layout Showcase
+    - heading "Relation-Aware InstructScene" [level=1] [ref=e5]
+    - paragraph
+    - generic [ref=e6]:
+      - button "Before" [ref=e7] [cursor=pointer]
+      - button "After" [ref=e8] [cursor=pointer]
+      - button "Bedroom" [ref=e9] [cursor=pointer]
+      - button "Living" [ref=e10] [cursor=pointer]
+      - button "Dining" [ref=e11] [cursor=pointer]
+      - button "Auto Camera" [ref=e12] [cursor=pointer]
+    - generic [ref=e13]:
+      - generic [ref=e14]:
+        - generic [ref=e15]: Relation Score
+        - strong
+      - generic [ref=e16]:
+        - generic [ref=e17]: Mesh Pairs
+        - strong
+      - generic [ref=e18]:
+        - generic [ref=e19]: Scene
+        - strong
+  - complementary [ref=e20]: Drag to orbit, scroll to zoom. Cyan arrows mark repaired relation targets. This is a stylized 3D layout view using generated boxes and retrieved-object sizes; raw mesh diagnostics remain available separately.

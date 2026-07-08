@@ -1,0 +1,4 @@
+Graph relation acc: [ 181/ 245] = 0.7388
+Graph relation acc (easy): [ 184/ 245] = 0.7510
+Relation acc: [ 181/ 245] = 0.7388
+Relation acc (easy): [ 184/ 245] = 0.7510

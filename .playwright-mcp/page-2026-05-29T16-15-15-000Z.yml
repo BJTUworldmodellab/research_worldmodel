@@ -1,0 +1,43 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - paragraph [ref=e3]: Relation-Aware InstructScene / Real Mesh Rendering
+    - heading "Real 3D-FUTURE Furniture Showcase" [level=1] [ref=e4]
+    - paragraph [ref=e5]: Before/after comparisons rendered from actual retrieved 3D-FUTURE OBJ furniture assets with textures, perspective camera, lights, shadows, floor plane, and relation arrows.
+  - main [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - paragraph [ref=e9]: "bedroom #78 / real 3D-FUTURE mesh"
+        - heading "Relation 0/2 -> 2/2" [level=2] [ref=e10]
+        - paragraph [ref=e11]: Arrange a black tv stand with a bottle of wine right of a nightstand. Add a double bed in front of a gray nightstand with a handle.
+        - generic [ref=e12]:
+          - generic [ref=e13]: Before mesh pairs 0
+          - generic [ref=e14]: After mesh pairs 0
+      - img "bedroom real mesh before after comparison" [ref=e15]
+      - generic [ref=e16]:
+        - img "before" [ref=e17]
+        - img "after" [ref=e18]
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: "livingroom #29 / real 3D-FUTURE mesh"
+        - heading "Relation 0/2 -> 2/2" [level=2] [ref=e22]
+        - paragraph [ref=e23]: Put a black and white circular pendant lamp to the right of a multi seat sofa. Then, put an armchair right of a black leather dining chair with wooden seat.
+        - generic [ref=e24]:
+          - generic [ref=e25]: Before mesh pairs 2
+          - generic [ref=e26]: After mesh pairs 2
+      - img "livingroom real mesh before after comparison" [ref=e27]
+      - generic [ref=e28]:
+        - img "before" [ref=e29]
+        - img "after" [ref=e30]
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: "diningroom #39 / real 3D-FUTURE mesh"
+        - heading "Relation 0/2 -> 2/2" [level=2] [ref=e34]
+        - paragraph [ref=e35]: Arrange a corner side table to the right of a lazy sofa. And put a black corner side table with holes right of a black lazy sofa with a cover.
+        - generic [ref=e36]:
+          - generic [ref=e37]: Before mesh pairs 0
+          - generic [ref=e38]: After mesh pairs 0
+      - img "diningroom real mesh before after comparison" [ref=e39]
+      - generic [ref=e40]:
+        - img "before" [ref=e41]
+        - img "after" [ref=e42]
+  - contentinfo [ref=e43]: Generated from the validated mesh-collision run. These are real mesh renders for qualitative display, not a human-study visual-quality metric.

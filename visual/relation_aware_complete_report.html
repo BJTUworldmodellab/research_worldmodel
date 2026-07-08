@@ -1,0 +1,460 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relation-Aware InstructScene 完整实验总结</title>
+  <style>
+    :root {
+      --bg: #0b0f10;
+      --panel: #111819;
+      --panel-2: #17201f;
+      --text: #eef7f3;
+      --muted: #aebfba;
+      --line: #2b3835;
+      --accent: #72f2cf;
+      --accent-2: #f7c873;
+      --danger: #ff9b8e;
+      --ok: #83e69f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.58;
+    }
+    header {
+      min-height: 82vh;
+      display: grid;
+      align-items: end;
+      padding: 44px min(6vw, 72px);
+      background:
+        linear-gradient(180deg, rgba(11, 15, 16, 0.08), rgba(11, 15, 16, 0.96)),
+        url("floor_prior_showcase/bedroom_0155_comparison.png") center / cover;
+      border-bottom: 1px solid var(--line);
+    }
+    h1 {
+      max-width: 1120px;
+      margin: 0 0 16px;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 1.02;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      max-width: 980px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 19px;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 12px min(6vw, 72px);
+      background: rgba(11, 15, 16, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav a {
+      flex: 0 0 auto;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 11px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #101617;
+    }
+    main { padding: 34px min(6vw, 72px) 80px; }
+    section {
+      max-width: 1180px;
+      margin: 0 auto 52px;
+      padding-top: 8px;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 3vw, 42px);
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 24px 0 8px;
+      font-size: 22px;
+    }
+    p { color: var(--muted); }
+    strong { color: var(--text); }
+    a { color: var(--accent); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin: 18px 0;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .card .k {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .card .v {
+      display: block;
+      color: var(--accent);
+      font-size: 30px;
+      font-weight: 750;
+      line-height: 1.1;
+    }
+    .note {
+      margin: 18px 0;
+      padding: 16px 18px;
+      border-left: 4px solid var(--accent);
+      background: var(--panel);
+      color: var(--muted);
+    }
+    .warn { border-left-color: var(--danger); }
+    .ok { border-left-color: var(--ok); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 26px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th {
+      color: var(--text);
+      background: #1b2624;
+      font-weight: 700;
+    }
+    td { color: var(--muted); }
+    tr:last-child td { border-bottom: 0; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .good { color: var(--ok); }
+    .bad { color: var(--danger); }
+    .pill {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--accent);
+      background: #0f1717;
+      font-size: 12px;
+      margin: 2px 4px 2px 0;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin: 18px 0;
+    }
+    .step {
+      position: relative;
+      padding: 14px;
+      min-height: 92px;
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+    .step b { display: block; color: var(--accent); margin-bottom: 6px; }
+    .showcase {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin: 20px 0;
+    }
+    figure {
+      margin: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    figure img {
+      display: block;
+      width: 100%;
+      background: #070909;
+    }
+    figcaption {
+      padding: 10px 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    ul { color: var(--muted); }
+    li { margin: 6px 0; }
+    .two {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .footer {
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--line);
+      padding-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <h1>Relation-Aware InstructScene 完整实验总结</h1>
+      <p class="subtitle">从论文创新点、相关工作、方法设计、所有关键实验结果，到最终可投稿 claim 与风险边界的一份中文总报告。</p>
+    </div>
+  </header>
+
+  <nav>
+    <a href="#conclusion">总结论</a>
+    <a href="#novelty">创新点</a>
+    <a href="#related">相关工作</a>
+    <a href="#method">方法</a>
+    <a href="#experiments">实验结果</a>
+    <a href="#visual">视觉素材</a>
+    <a href="#claims">Claim 边界</a>
+    <a href="#artifacts">归档与论文</a>
+  </nav>
+
+  <main>
+    <section id="conclusion">
+      <h2>总总结论</h2>
+      <div class="note ok">
+        当前工作最稳的定位是：我们不是提出一个全新的 3D 场景生成大模型，而是在现有 InstructScene 上发现并修复一个重要 failure mode：instruction 里的显式空间关系，在 scene graph 到 continuous layout 的解码过程中会丢失。我们的 Relation-Aware verifier-repair layer 可以在不重新训练、不构建新 benchmark 的前提下，显著提升最终 layout 的关系满足率。
+      </div>
+      <div class="grid">
+        <div class="card"><span class="k">主方法</span><span class="v">Floor-Prior Repair</span></div>
+        <div class="card"><span class="k">主 benchmark</span><span class="v">InstructScene</span></div>
+        <div class="card"><span class="k">房间类型</span><span class="v">3</span></div>
+        <div class="card"><span class="k">归档文件</span><span class="v">596</span></div>
+      </div>
+      <p>
+        最安全的 paper claim 是：
+        <strong>Relation-Aware InstructScene identifies a graph-to-layout grounding gap and introduces a training-free relation verifier-repair layer that improves explicit spatial relation realization on existing InstructScene validation splits while preserving object height and controlling mesh collision with a collision-gated variant.</strong>
+      </p>
+      <p>
+        目前已经能支撑一篇 paper seed：有方法、有 ablation、有 multi-seed、有 mesh collision、有高度诊断、有真实 3D-FUTURE mesh 展示、有 NeurIPS 模板初稿。它还不是“可直接主会稳投”的终稿，因为强外部 baseline 和正式人类视觉质量评估还没有完成。
+      </p>
+    </section>
+
+    <section id="novelty">
+      <h2>创新点</h2>
+      <div class="two">
+        <div class="card">
+          <h3>1. 关系实现从 graph-level 推到 layout-level</h3>
+          <p>以往很多 pipeline 关注 scene graph 是否包含关系，但最终物体坐标可能不满足关系。我们的核心问题是 final realized relation，而不是只看 symbolic graph。</p>
+        </div>
+        <div class="card">
+          <h3>2. 不新增 benchmark，不新增人工标注</h3>
+          <p>所有实验使用现有 InstructScene validation prompts、官方 checkpoint 和已有 evaluator，避免“自己造数据自己赢”的风险。</p>
+        </div>
+        <div class="card">
+          <h3>3. Plug-in verifier-repair layer</h3>
+          <p>方法不替换原生成模型，而是在输出后解析、验证、修复，训练自由，适合作为 pretrained generator 的关系一致性控制模块。</p>
+        </div>
+        <div class="card">
+          <h3>4. Floor-prior 修复与高度保持</h3>
+          <p>最终版本只移动 x/z 地面平面，不改 y 高度，解决了早期家具、椅子、沙发腾空的问题。</p>
+        </div>
+        <div class="card">
+          <h3>5. Collision-gated 选择</h3>
+          <p>当 mesh collision pair 增加时回退到 baseline layout，使 mesh-validity claim 更安全。</p>
+        </div>
+        <div class="card">
+          <h3>6. 分层评估体系</h3>
+          <p>不只报 relation acc，还报 movement、mesh collision、multi-seed、height diagnostics、visual diagnostics、strong baseline feasibility。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="related">
+      <h2>相关工作定位</h2>
+      <table>
+        <thead><tr><th>方向/方法</th><th>关系</th><th>论文中怎么写</th></tr></thead>
+        <tbody>
+          <tr><td>InstructScene</td><td>直接 baseline，同协议、同 split、同 checkpoint。</td><td>主对比对象。我们修复它的 graph-to-layout grounding gap。</td></tr>
+          <tr><td>ATISS / SceneFormer / DiffuScene</td><td>3D indoor scene synthesis 背景方法。</td><td>放在 indoor scene synthesis 相关工作中。</td></tr>
+          <tr><td>CommonScenes</td><td>scene-graph diffusion，和关系/commonsense 场景生成相关。</td><td>相关工作，不作为同协议直接 baseline。</td></tr>
+          <tr><td>LayoutGPT / Holodeck</td><td>语言驱动 layout planning / 3D environment generation。</td><td>说明语言与空间布局生成已有大量工作。</td></tr>
+          <tr><td>ReSpace</td><td>强相关 text-driven 3D indoor scene synthesis/editing。</td><td>必须讨论，但当前不能 claim 超过，因为没有同协议复现。</td></tr>
+          <tr><td>SDGScenes</td><td>Semantic Dependency Graph + VLM constraints + optimization，非常接近 broad idea。</td><td>必须承认接近，不能 claim first relation-aware。</td></tr>
+        </tbody>
+      </table>
+      <div class="note warn">
+        相关工作的写法要非常克制：我们的新意不是“第一个关系感知 3D 场景生成”，而是“在现有 InstructScene 协议上，发现并修复 final layout relation realization 的 gap”。
+      </div>
+    </section>
+
+    <section id="method">
+      <h2>我们的方法</h2>
+      <p>方法整体是一个 training-free post-generation module，坐在 InstructScene 生成结果之后。</p>
+      <div class="flow">
+        <div class="step"><b>1. 生成</b>使用 InstructScene 生成 scene graph 和 layout boxes。</div>
+        <div class="step"><b>2. 解析</b>从 instruction 中抽取显式空间关系，如 left/right/front/behind。</div>
+        <div class="step"><b>3. 匹配</b>把 relation triple 匹配到生成物体类别和实例。</div>
+        <div class="step"><b>4. 验证</b>在 x/z 地面平面判断关系是否真的成立。</div>
+        <div class="step"><b>5. 修复</b>用 bounded floor-prior candidate 移动物体。</div>
+        <div class="step"><b>6. 筛选</b>collision-gated variant 在 collision 增加时回退 baseline。</div>
+      </div>
+      <h3>Direct y-fixed repair</h3>
+      <p>直接修复沿 x/z 移动物体并保持 y 不变。它 relation gain 很高，但平均移动幅度接近 2 米，容易让真实 mesh 展示显得不自然，所以更适合做 internal baseline。</p>
+      <h3>Floor-prior repair</h3>
+      <p>当前主方法在候选位移中选择更温和的修复：限制最大移动范围，考虑 overlap penalty，保留原始高度。推荐主配置是 <span class="pill">floor_prior_max1.8_mesh_p2_close0.75_far1.6</span>。</p>
+      <h3>Collision-gated repair</h3>
+      <p>如果 repaired layout 的 FCL mesh collision pairs 比 baseline 更多，就回退 baseline。这让 mesh claim 更安全，但论文中必须说明这是 verifier-selection/fallback，不是纯生成器自动学到了 collision-free synthesis。</p>
+    </section>
+
+    <section id="experiments">
+      <h2>实验结果</h2>
+      <h3>主结果：Floor-prior 在三个房间上都提升关系满足率</h3>
+      <table>
+        <thead>
+          <tr><th>Room</th><th class="num">Baseline</th><th class="num">Floor-prior</th><th class="num">Gain</th><th class="num">Avg move</th><th class="num">Mesh delta</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td class="num">0.7388</td><td class="num">0.8408</td><td class="num good">+0.1020</td><td class="num">0.7837</td><td class="num">+0.0029</td></tr>
+          <tr><td>Dining room</td><td class="num">0.5948</td><td class="num">0.7286</td><td class="num good">+0.1338</td><td class="num">0.7315</td><td class="num">+0.0008</td></tr>
+          <tr><td>Living room</td><td class="num">0.5510</td><td class="num">0.6939</td><td class="num good">+0.1429</td><td class="num">0.8808</td><td class="num">+0.0008</td></tr>
+        </tbody>
+      </table>
+      <p>解释：关系提升稳定，但 ungated mesh delta 仍有轻微正值，所以 mesh collision claim 应该使用 collision-gated 结果。</p>
+
+      <h3>Direct y-fixed：提升更大，但移动太激进</h3>
+      <table>
+        <thead><tr><th>Room</th><th class="num">Direct gain</th><th class="num">Avg move</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td>Bedroom</td><td class="num good">+0.1347</td><td class="num">2.2101</td><td>强 baseline，但移动过大。</td></tr>
+          <tr><td>Dining room</td><td class="num good">+0.1896</td><td class="num">1.9694</td><td>关系提升高，但几何副作用更明显。</td></tr>
+          <tr><td>Living room</td><td class="num good">+0.1973</td><td class="num">2.2834</td><td>证明 repair 有效，但不适合作主方法。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Collision-gated：mesh claim 的核心证据</h3>
+      <table>
+        <thead>
+          <tr><th>Room</th><th class="num">Baseline</th><th class="num">Repair</th><th class="num">Gated</th><th class="num">Gated gain</th><th class="num">Base mesh</th><th class="num">Gated mesh</th><th class="num">Fallback</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td class="num">0.7388</td><td class="num">0.8408</td><td class="num">0.8163</td><td class="num good">+0.0776</td><td class="num">0.0702</td><td class="num good">0.0683</td><td class="num">6</td></tr>
+          <tr><td>Dining room</td><td class="num">0.5948</td><td class="num">0.7286</td><td class="num">0.6729</td><td class="num good">+0.0781</td><td class="num">0.0342</td><td class="num good">0.0336</td><td class="num">15</td></tr>
+          <tr><td>Living room</td><td class="num">0.5510</td><td class="num">0.6939</td><td class="num">0.6395</td><td class="num good">+0.0884</td><td class="num">0.0313</td><td class="num good">0.0310</td><td class="num">14</td></tr>
+        </tbody>
+      </table>
+      <p>解释：gated 后 relation gain 仍然为正，而且 mesh pair rate 低于 baseline。这是“控制 mesh collision 不增加”的主要证据。</p>
+
+      <h3>Multi-seed 稳定性</h3>
+      <table>
+        <thead><tr><th>Room</th><th class="num">Mean repair gain</th><th class="num">Std</th><th class="num">Mean gated gain</th><th class="num">Mean gated mesh delta</th></tr></thead>
+        <tbody>
+          <tr><td>Bedroom</td><td class="num good">+0.1061</td><td class="num">0.0058</td><td class="num good">+0.0803</td><td class="num good">-0.0020</td></tr>
+          <tr><td>Dining room</td><td class="num good">+0.1462</td><td class="num">0.0093</td><td class="num good">+0.0867</td><td class="num good">-0.0008</td></tr>
+          <tr><td>Living room</td><td class="num good">+0.1270</td><td class="num">0.0125</td><td class="num good">+0.0703</td><td class="num good">-0.0003</td></tr>
+        </tbody>
+      </table>
+
+      <h3>高度诊断</h3>
+      <div class="note ok">
+        所有主结果的 <strong>y_changed_rate = 0.0</strong>，<strong>max_abs_y_delta = 0.0</strong>。这说明最终 repair 不再修改高度轴，可以支撑“解决家具腾空问题”的说法。但这还不等于完整 support/contact physics。
+      </div>
+    </section>
+
+    <section id="visual">
+      <h2>视觉结果与展示素材</h2>
+      <table>
+        <thead><tr><th>Showcase</th><th class="num">Examples</th><th class="num">Relation gain</th><th class="num">Mesh-pair delta</th><th class="num">CLIP delta</th><th class="num">SSIM</th></tr></thead>
+        <tbody>
+          <tr><td>Old direct y-fixed showcase</td><td class="num">3</td><td class="num good">+1.333</td><td class="num">0.000</td><td class="num bad">-0.0165</td><td class="num">0.8358</td></tr>
+          <tr><td>New floor-prior showcase</td><td class="num">15</td><td class="num good">+1.400</td><td class="num good">-0.267</td><td class="num good">+0.0027</td><td class="num">0.9065</td></tr>
+        </tbody>
+      </table>
+      <p>新 floor-prior 展示比旧 direct 展示更适合论文：更多样例、更高 SSIM、mesh pairs 平均下降，且关系数提升稳定。</p>
+      <div class="showcase">
+        <figure>
+          <img src="floor_prior_showcase/bedroom_0155_comparison.png" alt="Bedroom floor-prior comparison">
+          <figcaption>Bedroom floor-prior before/after：关系提升，mesh pairs 不增加。</figcaption>
+        </figure>
+        <figure>
+          <img src="floor_prior_showcase/livingroom_0113_comparison.png" alt="Livingroom floor-prior comparison">
+          <figcaption>Living room floor-prior before/after：真实 3D-FUTURE mesh 渲染。</figcaption>
+        </figure>
+        <figure>
+          <img src="floor_prior_showcase/diningroom_0136_comparison.png" alt="Diningroom floor-prior comparison">
+          <figcaption>Dining room floor-prior before/after：selected relation 从失败变成功。</figcaption>
+        </figure>
+      </div>
+      <p>
+        更多展示：
+        <a href="floor_prior_showcase.html">floor_prior_showcase.html</a>，
+        <a href="a_conf_visual_quality.html">a_conf_visual_quality.html</a>，
+        <a href="a_conf_floor_prior_results.html">a_conf_floor_prior_results.html</a>。
+      </p>
+    </section>
+
+    <section id="claims">
+      <h2>能说什么，不能说什么</h2>
+      <div class="two">
+        <div class="card">
+          <h3>可以强 claim</h3>
+          <ul>
+            <li>在现有 InstructScene splits 上，显式空间关系 realization 明显提升。</li>
+            <li>Floor-prior 比 direct repair 更适合主方法，因为移动更受控。</li>
+            <li>Collision-gated variant 在 mesh collision pair rate 不增加的情况下仍保留正 relation gain。</li>
+            <li>方法保持 y 高度不变，修复了家具腾空问题。</li>
+            <li>Multi-seed 结果稳定。</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>不能 claim</h3>
+          <ul>
+            <li>不能说超过 ReSpace / SDGScenes。</li>
+            <li>不能说 first relation-aware 3D scene generation。</li>
+            <li>不能说视觉质量全面更好。</li>
+            <li>不能说处理所有隐式 commonsense relation。</li>
+            <li>不能说完整解决物理支撑、可达性和功能合理性。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note warn">
+        最终投稿的安全叙事是：这是一个 relation-consistency verifier-repair module，不是 SOTA full generator。用强相关工作做 related work，用 InstructScene 做 fair baseline。
+      </div>
+    </section>
+
+    <section id="artifacts">
+      <h2>产物、归档与论文初稿</h2>
+      <table>
+        <thead><tr><th>产物</th><th>位置</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>完整实验归档</td><td><code>E:/research_worldmodel/experiment_archive/relation_aware_instructscene_20260530</code></td><td>596 个文件，约 687.83 MB，含 raw eval、表格、图、文档、脚本、checksum。</td></tr>
+          <tr><td>NeurIPS 初稿 PDF</td><td><code>E:/research_worldmodel/paper/neurips_ra_instructscene/main.pdf</code></td><td>已编译成功，8 页。</td></tr>
+          <tr><td>中文 Notion 风格报告</td><td><code>E:/research_worldmodel/docs/relation_aware_instructscene_notion_report_zh.md</code></td><td>完整中文文字版报告。</td></tr>
+          <tr><td>Floor-prior 展示页</td><td><code>visual/floor_prior_showcase.html</code></td><td>15 个真实 mesh before/after 展示。</td></tr>
+          <tr><td>视觉诊断页</td><td><code>visual/a_conf_visual_quality.html</code></td><td>CLIP/SSIM/mesh pair 诊断。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>下一步建议</h3>
+      <ul>
+        <li>把 floor-prior showcase 中 3 到 6 个图整理成论文 Figure 2。</li>
+        <li>把 NeurIPS checklist 填完整，补 compute、seed、数据许可、局限性。</li>
+        <li>若目标是 A 会主会，继续做 ReSpace / SDGScenes 的 shared-protocol comparison，或者明确把论文定位成 verifier-repair module。</li>
+        <li>若想 claim 视觉质量，补 human preference study 或更正式的 perceptual evaluation。</li>
+      </ul>
+      <p class="footer">生成时间：2026-05-30。当前报告基于本地结果表、远端同步归档、真实 mesh 展示和 NeurIPS 初稿。</p>
+    </section>
+  </main>
+</body>
+</html>

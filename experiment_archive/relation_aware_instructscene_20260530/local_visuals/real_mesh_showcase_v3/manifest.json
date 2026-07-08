@@ -1,0 +1,44 @@
+[
+  {
+    "room": "bedroom",
+    "idx": 145,
+    "text": "Position a gray wardrobe with doors and a drawer to the right of a grey and white nightstand with a magazine. Then, set up a nightstand behind a black single bed with a white sheet.",
+    "before": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/bedroom_0145_before.png",
+    "after": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/bedroom_0145_after.png",
+    "combined": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/bedroom_0145_comparison.png",
+    "beforeScore": 1,
+    "afterScore": 2,
+    "total": 2,
+    "beforePairs": 1,
+    "afterPairs": 1,
+    "heightFix": "repair moves x/z only and preserves each object's original y"
+  },
+  {
+    "room": "livingroom",
+    "idx": 16,
+    "text": "Set up a grey and white tv stand with drawers behind a black coffee table with a lid. Then, arrange a black coffee table with a lid right of a black corner side table with a round base.",
+    "before": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/livingroom_0016_before.png",
+    "after": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/livingroom_0016_after.png",
+    "combined": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/livingroom_0016_comparison.png",
+    "beforeScore": 1,
+    "afterScore": 2,
+    "total": 2,
+    "beforePairs": 0,
+    "afterPairs": 0,
+    "heightFix": "repair moves x/z only and preserves each object's original y"
+  },
+  {
+    "room": "diningroom",
+    "idx": 136,
+    "text": "Position a blue dining table with a wooden top behind a white cabinet with a vase. Then, position a blue dining table with a wooden top behind a white cabinet with a vase.",
+    "before": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/diningroom_0136_before.png",
+    "after": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/diningroom_0136_after.png",
+    "combined": "/root/RelationAwareInstructScene/outputs/real_mesh_showcase_v3/diningroom_0136_comparison.png",
+    "beforeScore": 0,
+    "afterScore": 2,
+    "total": 2,
+    "beforePairs": 0,
+    "afterPairs": 0,
+    "heightFix": "repair moves x/z only and preserves each object's original y"
+  }
+]

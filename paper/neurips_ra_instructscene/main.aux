@@ -1,0 +1,77 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{paschalidou2021atiss,wang2021sceneformer,tang2024diffuscene,lin2024instructscene}
+\citation{lin2024instructscene}
+\providecommand \oddpage@label [2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{feng2023layoutgpt,yang2024holodeck,zhai2023commonscenes,bucher2026respace,gao2026sdgscenes}
+\citation{fu20213dfront}
+\citation{fu20203dfuture}
+\citation{paschalidou2021atiss}
+\citation{wang2021sceneformer}
+\citation{tang2024diffuscene}
+\citation{lin2024instructscene}
+\citation{zhai2023commonscenes}
+\citation{feng2023layoutgpt}
+\citation{yang2024holodeck}
+\citation{bucher2026respace}
+\citation{gao2026sdgscenes}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {Relation-Grounded Floor Repair{} overview.} We keep the pretrained InstructScene generator fixed, parse explicit spatial relations from the input instruction, match them to generated objects, verify the final continuous layout, and repair violated relations in the floor plane while preserving object height. The collision gate falls back to the original layout when mesh collision would increase.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:overview}{{1}{2}{\textbf {\method {} overview.} We keep the pretrained InstructScene generator fixed, parse explicit spatial relations from the input instruction, match them to generated objects, verify the final continuous layout, and repair violated relations in the floor plane while preserving object height. The collision gate falls back to the original layout when mesh collision would increase}{figure.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Indoor scene synthesis.}{2}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Text and graph conditioned scene generation.}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Strong relation-aware systems.}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Method}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Problem Setup}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Explicit Relation Extraction and Matching}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Relation Verification}{3}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Direct Height-Preserving Repair}{3}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Floor-Prior Repair}{3}{subsection.3.5}\protected@file@percent }
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Floor-Prior{} relation repair}}{4}{algocf.1}\protected@file@percent }
+\newlabel{alg:floor-prior}{{1}{4}{Floor-Prior Repair}{algocf.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Main Floor-Prior{} relation results. Accuracy is exact realized selected-relation accuracy. Movement is the average floor-plane movement for repaired pairs.}}{4}{table.1}\protected@file@percent }
+\newlabel{tab:main}{{1}{4}{Main \fp {} relation results. Accuracy is exact realized selected-relation accuracy. Movement is the average floor-plane movement for repaired pairs}{table.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Collision-Gated Selection}{4}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Experimental Setup}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Main Results}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Direct height-preserving repair. Direct repair is a strong internal baseline but moves objects much more than Floor-Prior{} repair.}}{5}{table.2}\protected@file@percent }
+\newlabel{tab:direct}{{2}{5}{Direct height-preserving repair. Direct repair is a strong internal baseline but moves objects much more than \fp {} repair}{table.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Collision-gated Floor-Prior{} results. The gate keeps repaired layouts only when FCL mesh collision pairs do not increase.}}{5}{table.3}\protected@file@percent }
+\newlabel{tab:gated}{{3}{5}{Collision-gated \fp {} results. The gate keeps repaired layouts only when FCL mesh collision pairs do not increase}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Direct Repair Is Strong but Too Aggressive}{5}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Collision-Gated Results}{5}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Multi-Seed Stability}{5}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Movement Ablation}{5}{subsection.4.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Height Preservation and Visual Diagnostics}{5}{subsection.4.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Three-seed stability. Standard deviations are population standard deviations over three seeds.}}{6}{table.4}\protected@file@percent }
+\newlabel{tab:multiseed}{{4}{6}{Three-seed stability. Standard deviations are population standard deviations over three seeds}{table.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Conservative max-move ablation. Smaller movement budgets reduce geometry changes but also reduce relation gains.}}{6}{table.5}\protected@file@percent }
+\newlabel{tab:maxmove}{{5}{6}{Conservative max-move ablation. Smaller movement budgets reduce geometry changes but also reduce relation gains}{table.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.8}Strong Baseline Feasibility and Missing Controls}{6}{subsection.4.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{6}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Limitations}{6}{section.6}\protected@file@percent }
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{bucher2026respace}{{1}{2026}{{Bucher and Armeni}}{{}}}
+\bibcite{feng2023layoutgpt}{{2}{2023}{{Feng et~al.}}{{Feng, Zhu, Fu, Jampani, Akula, He, Basu, Wang, and Wang}}}
+\bibcite{fu20203dfuture}{{3}{2020}{{Fu et~al.}}{{Fu, Jia, Gao, Gong, Zhao, Maybank, and Tao}}}
+\bibcite{fu20213dfront}{{4}{2021}{{Fu et~al.}}{{Fu, Cai, Gao, Zhang, Li, Xun, Sun, Jia, Zhao, and Zhang}}}
+\bibcite{gao2026sdgscenes}{{5}{2026}{{Gao et~al.}}{{Gao, Li, Ao, Yu, Liu, and Bai}}}
+\bibcite{lin2024instructscene}{{6}{2024}{{Lin and Mu}}{{}}}
+\bibcite{paschalidou2021atiss}{{7}{2021}{{Paschalidou et~al.}}{{Paschalidou, Kar, Shugrina, Kreis, Geiger, and Fidler}}}
+\bibcite{tang2024diffuscene}{{8}{2024}{{Tang et~al.}}{{Tang, Nie, Markhasin, Dai, Thies, and Nie{\ss }ner}}}
+\bibcite{wang2021sceneformer}{{9}{2021}{{Wang et~al.}}{{Wang, Yeshwanth, and Nie{\ss }ner}}}
+\bibcite{yang2024holodeck}{{10}{2024}{{Yang et~al.}}{{Yang, Sun, Weihs, VanderBilt, Herrasti, Han, Wu, Haber, Krishna, Liu, Callison-Burch, Yatskar, Kembhavi, and Clark}}}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Real-mesh visual diagnostics. CLIP delta is after-minus-before text-image similarity; SSIM measures before/after structural similarity.}}{7}{table.6}\protected@file@percent }
+\newlabel{tab:visual}{{6}{7}{Real-mesh visual diagnostics. CLIP delta is after-minus-before text-image similarity; SSIM measures before/after structural similarity}{table.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusion}{7}{section.7}\protected@file@percent }
+\bibcite{zhai2023commonscenes}{{11}{2023}{{Zhai et~al.}}{{Zhai, {\"O}rnek, Wu, Di, Tombari, Navab, and Busam}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Additional Result Tables}{8}{appendix.A}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Key archived tables used in this draft.}}{8}{table.7}\protected@file@percent }
+\newlabel{tab:archive}{{7}{8}{Key archived tables used in this draft}{table.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}NeurIPS Checklist Placeholder}{8}{appendix.B}\protected@file@percent }
+\gdef \@abspage@last{8}

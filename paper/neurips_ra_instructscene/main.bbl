@@ -1,0 +1,89 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Bucher and Armeni(2026)]{bucher2026respace}
+Martin J.~J. Bucher and Iro Armeni.
+\newblock Respace: Text-driven autoregressive 3d indoor scene synthesis and
+  editing, 2026.
+\newblock URL \url{https://arxiv.org/abs/2506.02459}.
+
+\bibitem[Feng et~al.(2023)Feng, Zhu, Fu, Jampani, Akula, He, Basu, Wang, and
+  Wang]{feng2023layoutgpt}
+Weixi Feng, Wanrong Zhu, Tsu-jui Fu, Varun Jampani, Arjun Akula, Xuehai He,
+  Sugato Basu, Xin~Eric Wang, and William~Yang Wang.
+\newblock Layoutgpt: Compositional visual planning and generation with large
+  language models, 2023.
+\newblock URL \url{https://arxiv.org/abs/2305.15393}.
+
+\bibitem[Fu et~al.(2020)Fu, Jia, Gao, Gong, Zhao, Maybank, and
+  Tao]{fu20203dfuture}
+Huan Fu, Rongfei Jia, Lin Gao, Mingming Gong, Binqiang Zhao, Steve Maybank, and
+  Dacheng Tao.
+\newblock 3d-future: 3d furniture shape with texture, 2020.
+\newblock URL \url{https://arxiv.org/abs/2009.09633}.
+
+\bibitem[Fu et~al.(2021)Fu, Cai, Gao, Zhang, Li, Xun, Sun, Jia, Zhao, and
+  Zhang]{fu20213dfront}
+Huan Fu, Bowen Cai, Lin Gao, Lingxiao Zhang, Jiaming Wang~Cao Li, Zengqi Xun,
+  Chengyue Sun, Rongfei Jia, Binqiang Zhao, and Hao Zhang.
+\newblock 3d-front: 3d furnished rooms with layouts and semantics, 2021.
+\newblock URL \url{https://arxiv.org/abs/2011.09127}.
+
+\bibitem[Gao et~al.(2026)Gao, Li, Ao, Yu, Liu, and Bai]{gao2026sdgscenes}
+Yuhan Gao, Xueying Li, Jicong Ao, Chao Yu, Peng Liu, and Chenjia Bai.
+\newblock Sdgscenes: User-intent driven indoor scene generation via semantic
+  dependency graph.
+\newblock \emph{Pattern Recognition}, 179:\penalty0 113674, 2026.
+\newblock \doi{10.1016/j.patcog.2026.113674}.
+\newblock URL \url{https://doi.org/10.1016/j.patcog.2026.113674}.
+
+\bibitem[Lin and Mu(2024)]{lin2024instructscene}
+Chenguo Lin and Yadong Mu.
+\newblock Instructscene: Instruction-driven 3d indoor scene synthesis with
+  semantic graph prior, 2024.
+\newblock URL \url{https://arxiv.org/abs/2402.04717}.
+
+\bibitem[Paschalidou et~al.(2021)Paschalidou, Kar, Shugrina, Kreis, Geiger, and
+  Fidler]{paschalidou2021atiss}
+Despoina Paschalidou, Amlan Kar, Maria Shugrina, Karsten Kreis, Andreas Geiger,
+  and Sanja Fidler.
+\newblock Atiss: Autoregressive transformers for indoor scene synthesis, 2021.
+\newblock URL \url{https://arxiv.org/abs/2110.03675}.
+
+\bibitem[Tang et~al.(2024)Tang, Nie, Markhasin, Dai, Thies, and
+  Nie{\ss}ner]{tang2024diffuscene}
+Jiapeng Tang, Yinyu Nie, Lev Markhasin, Angela Dai, Justus Thies, and Matthias
+  Nie{\ss}ner.
+\newblock Diffuscene: Denoising diffusion models for generative indoor scene
+  synthesis, 2024.
+\newblock URL \url{https://arxiv.org/abs/2303.14207}.
+
+\bibitem[Wang et~al.(2021)Wang, Yeshwanth, and
+  Nie{\ss}ner]{wang2021sceneformer}
+Xinpeng Wang, Chandan Yeshwanth, and Matthias Nie{\ss}ner.
+\newblock Sceneformer: Indoor scene generation with transformers, 2021.
+\newblock URL \url{https://arxiv.org/abs/2012.09793}.
+
+\bibitem[Yang et~al.(2024)Yang, Sun, Weihs, VanderBilt, Herrasti, Han, Wu,
+  Haber, Krishna, Liu, Callison-Burch, Yatskar, Kembhavi, and
+  Clark]{yang2024holodeck}
+Yue Yang, Fan-Yun Sun, Luca Weihs, Eli VanderBilt, Alvaro Herrasti, Winson Han,
+  Jiajun Wu, Nick Haber, Ranjay Krishna, Lingjie Liu, Chris Callison-Burch,
+  Mark Yatskar, Aniruddha Kembhavi, and Christopher Clark.
+\newblock Holodeck: Language guided generation of 3d embodied ai environments,
+  2024.
+\newblock URL \url{https://arxiv.org/abs/2312.09067}.
+
+\bibitem[Zhai et~al.(2023)Zhai, {\"O}rnek, Wu, Di, Tombari, Navab, and
+  Busam]{zhai2023commonscenes}
+Guangyao Zhai, Evin~P{\i}nar {\"O}rnek, Shun-Cheng Wu, Yan Di, Federico
+  Tombari, Nassir Navab, and Benjamin Busam.
+\newblock Commonscenes: Generating commonsense 3d indoor scenes with scene
+  graph diffusion, 2023.
+\newblock URL \url{https://arxiv.org/abs/2305.16283}.
+
+\end{thebibliography}

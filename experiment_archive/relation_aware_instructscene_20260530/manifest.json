@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-05-30T14:49:40",
+  "archive_root": "E:\\research_worldmodel\\experiment_archive\\relation_aware_instructscene_20260530",
+  "description": "Relation-Aware InstructScene experiment archive: remote raw eval outputs, local summary tables, visual assets, docs, and analysis scripts.",
+  "excludes": [
+    "raw 3D-FRONT/3D-FUTURE datasets",
+    "model checkpoints",
+    "conda/venv environments"
+  ],
+  "counts": {
+    "files_before_manifest": 592,
+    "bytes_before_manifest": 721138966
+  },
+  "top_level": {
+    "docs": {
+      "files": 13,
+      "bytes": 74016
+    },
+    "local_results": {
+      "files": 187,
+      "bytes": 332047914
+    },
+    "local_visuals": {
+      "files": 165,
+      "bytes": 36069561
+    },
+    "remote_eval_outputs": {
+      "files": 170,
+      "bytes": 333969496
+    },
+    "remote_floor_prior_showcase": {
+      "files": 46,
+      "bytes": 18899392
+    },
+    "scripts": {
+      "files": 11,
+      "bytes": 78587
+    }
+  },
+  "key_files": {
+    "main_floor_prior_table": "local_results/tables/floor_prior_results.csv",
+    "collision_gated_table": "local_results/tables/floor_prior_gated_results.csv",
+    "mesh_table": "local_results/tables/floor_prior_mesh_results.csv",
+    "visual_quality_table": "local_results/tables/visual_quality_real_mesh.csv",
+    "strong_baseline_feasibility": "local_results/tables/strong_baseline_feasibility.csv",
+    "floor_prior_showcase_html": "local_visuals/floor_prior_showcase.html",
+    "visual_quality_html": "local_visuals/a_conf_visual_quality.html",
+    "result_summary_page": "local_visuals/a_conf_floor_prior_results.html",
+    "baseline_status_doc": "docs/relation_aware_strong_baseline_status.md",
+    "visual_baseline_update_doc": "docs/relation_aware_visual_quality_and_baseline_update.md"
+  }
+}

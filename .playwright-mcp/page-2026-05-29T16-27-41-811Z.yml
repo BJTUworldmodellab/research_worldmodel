@@ -1,0 +1,43 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - paragraph [ref=e3]: Relation-Aware InstructScene / Floor-Plane Repair
+    - heading "Height-Fixed 3D Furniture Renders" [level=1] [ref=e4]
+    - paragraph [ref=e5]: Curated examples rendered after fixing the repair rule to move objects only on the floor plane. The relation repair changes x/z placement while preserving each object's original height, so sofas, chairs, tables, and beds do not inherit the height of lamps or cabinets.
+  - main [ref=e6]:
+    - generic [ref=e7]:
+      - generic [ref=e8]:
+        - paragraph [ref=e9]: "bedroom #145 / curated real 3D-FUTURE mesh"
+        - heading "Relation 1/2 -> 2/2" [level=2] [ref=e10]
+        - paragraph [ref=e11]: Position a gray wardrobe with doors and a drawer to the right of a grey and white nightstand with a magazine. Then, set up a nightstand behind a black single bed with a white sheet.
+        - generic [ref=e12]:
+          - generic [ref=e13]: Before mesh pairs 1
+          - generic [ref=e14]: After mesh pairs 1
+      - img "bedroom real mesh before after comparison" [ref=e15]
+      - generic [ref=e16]:
+        - img "before" [ref=e17]
+        - img "after" [ref=e18]
+    - generic [ref=e19]:
+      - generic [ref=e20]:
+        - paragraph [ref=e21]: "livingroom #159 / curated real 3D-FUTURE mesh"
+        - heading "Relation 1/2 -> 2/2" [level=2] [ref=e22]
+        - paragraph [ref=e23]: Set up a multi seat sofa to the close right of a pendant lamp. Then, place a multi-seat sofa with pillows behind a brown corner side table with two legs.
+        - generic [ref=e24]:
+          - generic [ref=e25]: Before mesh pairs 2
+          - generic [ref=e26]: After mesh pairs 1
+      - img "livingroom real mesh before after comparison" [ref=e27]
+      - generic [ref=e28]:
+        - img "before" [ref=e29]
+        - img "after" [ref=e30]
+    - generic [ref=e31]:
+      - generic [ref=e32]:
+        - paragraph [ref=e33]: "diningroom #136 / curated real 3D-FUTURE mesh"
+        - heading "Relation 0/2 -> 2/2" [level=2] [ref=e34]
+        - paragraph [ref=e35]: Position a blue dining table with a wooden top behind a white cabinet with a vase. Then, position a blue dining table with a wooden top behind a white cabinet with a vase.
+        - generic [ref=e36]:
+          - generic [ref=e37]: Before mesh pairs 0
+          - generic [ref=e38]: After mesh pairs 0
+      - img "diningroom real mesh before after comparison" [ref=e39]
+      - generic [ref=e40]:
+        - img "before" [ref=e41]
+        - img "after" [ref=e42]
+  - contentinfo [ref=e43]: Generated from the validated mesh-collision run plus the floor-plane repair fix. These are real mesh renders for qualitative display, not a human-study visual-quality metric.

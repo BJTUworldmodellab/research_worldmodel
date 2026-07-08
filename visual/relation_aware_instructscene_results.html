@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relation-Aware InstructScene Results</title>
+  <style>
+    :root {
+      --bg: #f7f7f4;
+      --ink: #202421;
+      --muted: #647067;
+      --line: #d8ddd6;
+      --panel: #ffffff;
+      --base: #9aa3ad;
+      --ours: #1e8f73;
+      --accent: #c35b35;
+      --gold: #c4922f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.45;
+    }
+    header {
+      padding: 48px 5vw 28px;
+      background: #e9ede8;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      max-width: 980px;
+      font-size: clamp(36px, 6vw, 76px);
+      line-height: .96;
+      letter-spacing: 0;
+    }
+    .subtitle {
+      max-width: 840px;
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 22px);
+    }
+    main { padding: 28px 5vw 56px; }
+    section { margin: 0 auto 34px; max-width: 1180px; }
+    h2 { margin: 0 0 14px; font-size: 24px; letter-spacing: 0; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(30, 37, 33, .05);
+    }
+    .room-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: baseline;
+      margin-bottom: 14px;
+    }
+    .room-title h3 { margin: 0; font-size: 21px; }
+    .tag { color: var(--muted); font-size: 13px; }
+    .metric {
+      display: grid;
+      grid-template-columns: 82px 1fr 64px;
+      gap: 10px;
+      align-items: center;
+      margin: 10px 0;
+      font-size: 14px;
+    }
+    .bar {
+      height: 12px;
+      background: #eef0ed;
+      border-radius: 999px;
+      overflow: hidden;
+      border: 1px solid #e4e8e2;
+    }
+    .fill {
+      height: 100%;
+      border-radius: 999px;
+    }
+    .fill.base { background: var(--base); }
+    .fill.ours { background: var(--ours); }
+    .gain {
+      margin-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+    }
+    .gain strong { color: var(--ours); font-size: 20px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 12px 14px;
+      text-align: right;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+    th:first-child, td:first-child { text-align: left; }
+    th { background: #eef2ed; color: #3e4942; font-weight: 700; }
+    tr:last-child td { border-bottom: 0; }
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .flow {
+      display: grid;
+      gap: 10px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 13px;
+    }
+    .num {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #dfe7e1;
+      color: #275b4c;
+      font-weight: 800;
+    }
+    .step p { margin: 2px 0 0; color: var(--muted); font-size: 14px; }
+    .example {
+      min-height: 286px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .prompt {
+      margin: 0;
+      color: #384039;
+      font-size: 15px;
+      padding: 13px;
+      border-left: 4px solid var(--gold);
+      background: #fbfaf4;
+    }
+    .mini-scene {
+      margin-top: 16px;
+      height: 150px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(90deg, rgba(32,36,33,.05) 1px, transparent 1px),
+        linear-gradient(rgba(32,36,33,.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .obj {
+      position: absolute;
+      min-width: 82px;
+      height: 38px;
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      padding: 0 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 2px solid rgba(0,0,0,.12);
+    }
+    .obj.a { left: 42px; top: 55px; background: #dbe7f3; }
+    .obj.b { right: 48px; top: 55px; background: #d9eadf; }
+    .arrow {
+      position: absolute;
+      left: calc(50% - 58px);
+      top: 67px;
+      width: 116px;
+      height: 2px;
+      background: var(--ours);
+    }
+    .arrow::after {
+      content: "";
+      position: absolute;
+      right: -1px;
+      top: -5px;
+      border-left: 9px solid var(--ours);
+      border-top: 6px solid transparent;
+      border-bottom: 6px solid transparent;
+    }
+    .caption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .pill {
+      padding: 6px 9px;
+      border-radius: 999px;
+      background: #eef2ed;
+      color: #3e4942;
+      font-size: 13px;
+      font-weight: 700;
+    }
+    footer {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 10px 5vw 36px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (max-width: 860px) {
+      .grid, .story-grid { grid-template-columns: 1fr; }
+      th, td { padding: 10px 8px; font-size: 12px; }
+      .metric { grid-template-columns: 76px 1fr 52px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="eyebrow">Existing InstructScene Benchmarks · Parsed Relations · No Retraining</p>
+    <h1>Relation-Aware InstructScene</h1>
+    <p class="subtitle">A lightweight verifier-repair layer improves whether generated 3D indoor layouts actually satisfy spatial relations stated in the instruction.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Main Result</h2>
+      <div class="grid">
+        <article class="card">
+          <div class="room-title"><h3>Bedroom</h3><span class="tag">162 scenes · 245 relations</span></div>
+          <div class="metric"><span>Baseline</span><div class="bar"><div class="fill base" style="width:73.88%"></div></div><strong>0.7388</strong></div>
+          <div class="metric"><span>Ours</span><div class="bar"><div class="fill ours" style="width:87.35%"></div></div><strong>0.8735</strong></div>
+          <div class="gain"><span>Absolute gain</span><strong>+13.47</strong></div>
+          <div class="pill-row"><span class="pill">31 improved</span><span class="pill">0 degraded</span><span class="pill">131 same</span></div>
+        </article>
+        <article class="card">
+          <div class="room-title"><h3>Living Room</h3><span class="tag">192 scenes · 294 relations</span></div>
+          <div class="metric"><span>Baseline</span><div class="bar"><div class="fill base" style="width:55.10%"></div></div><strong>0.5510</strong></div>
+          <div class="metric"><span>Ours</span><div class="bar"><div class="fill ours" style="width:74.15%"></div></div><strong>0.7415</strong></div>
+          <div class="gain"><span>Absolute gain</span><strong>+19.05</strong></div>
+          <div class="pill-row"><span class="pill">48 improved</span><span class="pill">0 degraded</span><span class="pill">144 same</span></div>
+        </article>
+        <article class="card">
+          <div class="room-title"><h3>Dining Room</h3><span class="tag">177 scenes · 269 relations</span></div>
+          <div class="metric"><span>Baseline</span><div class="bar"><div class="fill base" style="width:59.48%"></div></div><strong>0.5948</strong></div>
+          <div class="metric"><span>Ours</span><div class="bar"><div class="fill ours" style="width:78.44%"></div></div><strong>0.7844</strong></div>
+          <div class="gain"><span>Absolute gain</span><strong>+18.96</strong></div>
+          <div class="pill-row"><span class="pill">43 improved</span><span class="pill">0 degraded</span><span class="pill">134 same</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Detailed Table</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Graph Acc</th>
+            <th>Baseline Layout</th>
+            <th>Relation-Aware</th>
+            <th>Error Reduction</th>
+            <th>Parser Recall</th>
+            <th>Parser Precision</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td>0.7388</td><td>0.7388</td><td>0.8735</td><td>51.6%</td><td>0.5265</td><td>0.5309</td></tr>
+          <tr><td>Living room</td><td>0.5272</td><td>0.5510</td><td>0.7415</td><td>42.4%</td><td>0.4320</td><td>0.5546</td></tr>
+          <tr><td>Dining room</td><td>0.5874</td><td>0.5948</td><td>0.7844</td><td>46.8%</td><td>0.4833</td><td>0.5508</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Geometry Sanity Check</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Overlap Ratio Base</th>
+            <th>Overlap Ratio Ours</th>
+            <th>Overlap Pairs / Scene Base</th>
+            <th>Overlap Pairs / Scene Ours</th>
+            <th>OOB Center Rate Ours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td>0.086977</td><td>0.083586</td><td>2.642</td><td>2.562</td><td>0.000000</td></tr>
+          <tr><td>Living room</td><td>0.139931</td><td>0.134841</td><td>7.911</td><td>7.708</td><td>0.000000</td></tr>
+          <tr><td>Dining room</td><td>0.155403</td><td>0.154162</td><td>8.107</td><td>7.932</td><td>0.000000</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">AABB footprint overlap is a coarse proxy, not full mesh collision. The key sanity result is that relation repair does not increase this proxy and does not push centers out of bounds.</p>
+    </section>
+
+    <section>
+      <h2>Oriented Footprint Proxy</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>OBB Overlap Base</th>
+            <th>OBB Overlap Ours</th>
+            <th>Delta</th>
+            <th>Pairs / Scene Base</th>
+            <th>Pairs / Scene Ours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td>0.046569</td><td>0.041681</td><td>-0.004888</td><td>0.907</td><td>0.889</td></tr>
+          <tr><td>Living room</td><td>0.054337</td><td>0.050177</td><td>-0.004160</td><td>1.911</td><td>1.833</td></tr>
+          <tr><td>Dining room</td><td>0.057112</td><td>0.055276</td><td>-0.001837</td><td>1.734</td><td>1.701</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">This oriented 2D footprint metric is stronger than AABB overlap for rotated furniture, but it is still a proxy. It should not be described as mesh-level collision.</p>
+    </section>
+
+    <section>
+      <h2>Mesh Collision</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Base Pair Rate</th>
+            <th>Direct Repair</th>
+            <th>Collision-Gated</th>
+            <th>Gated Relation Acc</th>
+            <th>Fallback Scenes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td>0.070244</td><td>0.070244</td><td>0.064878</td><td>0.8449</td><td>9</td></tr>
+          <tr><td>Living room</td><td>0.031257</td><td>0.031616</td><td>0.030540</td><td>0.6871</td><td>14</td></tr>
+          <tr><td>Dining room</td><td>0.034229</td><td>0.034766</td><td>0.033154</td><td>0.7212</td><td>13</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">Direct repair does not prove lower mesh collision. The collision-gated variant keeps repaired scenes only when FCL mesh collision pairs do not increase, preserving relation gains while reducing mesh pair rate below baseline.</p>
+    </section>
+
+    <section>
+      <h2>Parsed vs Oracle Upper Bound</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Baseline</th>
+            <th>Parsed Repair</th>
+            <th>Oracle Repair</th>
+            <th>Oracle Gap</th>
+            <th>Gain Captured</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td>0.7388</td><td>0.8735</td><td>0.8857</td><td>+0.0122</td><td>91.7%</td></tr>
+          <tr><td>Living room</td><td>0.5510</td><td>0.7415</td><td>0.7755</td><td>+0.0340</td><td>84.8%</td></tr>
+          <tr><td>Dining room</td><td>0.5948</td><td>0.7844</td><td>0.8141</td><td>+0.0297</td><td>86.4%</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Repair Pass Ablation</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>p0</th>
+            <th>p1</th>
+            <th>p2</th>
+            <th>p3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td>0.7388</td><td>0.8531</td><td>0.8735</td><td>0.8816</td></tr>
+          <tr><td>Living room</td><td>0.5510</td><td>0.7211</td><td>0.7415</td><td>0.7449</td></tr>
+          <tr><td>Dining room</td><td>0.5948</td><td>0.7732</td><td>0.7844</td><td>0.7844</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">Two passes are the default: most gains arrive by p1, p2 improves further, and p3 adds little beyond p2.</p>
+    </section>
+
+    <section>
+      <h2>Multi-Seed Stability</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Room</th>
+            <th>Baseline Mean</th>
+            <th>Ours Mean</th>
+            <th>Ours Std</th>
+            <th>Gain Mean</th>
+            <th>Overlap Mean</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td>0.7565</td><td>0.8939</td><td>0.0178</td><td>+0.1374</td><td>0.0921</td></tr>
+          <tr><td>Living room</td><td>0.5420</td><td>0.7483</td><td>0.0180</td><td>+0.2063</td><td>0.1330</td></tr>
+          <tr><td>Dining room</td><td>0.5923</td><td>0.7993</td><td>0.0170</td><td>+0.2069</td><td>0.1507</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">Seeds 0, 1, and 2 use the same default setting. The gains remain stable across room categories.</p>
+    </section>
+
+    <section>
+      <h2>Claim Boundaries</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Claim</th>
+            <th>Status</th>
+            <th>Why</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Explicit relation satisfaction improves</td><td>Supported</td><td>Main, oracle, ablation, and multi-seed results agree.</td></tr>
+          <tr><td>Box-level validity does not obviously degrade</td><td>Supported as proxy</td><td>AABB and oriented-footprint overlap both decrease slightly.</td></tr>
+          <tr><td>Visual quality is better</td><td>Not supported</td><td>No rendered perceptual metric or human study yet.</td></tr>
+          <tr><td>Mesh collision is lower</td><td>Variant-specific</td><td>Not true for direct repair; supported for the collision-gated variant.</td></tr>
+          <tr><td>Beats SDGScenes / ReSpace</td><td>Not supported</td><td>No shared-protocol baseline reproduction yet.</td></tr>
+          <tr><td>Handles all implicit commonsense relations</td><td>Not supported</td><td>The current benchmark audit found 0 implicit-only scenes.</td></tr>
+        </tbody>
+      </table>
+      <p class="caption">Safe paper framing: a plug-in verifier-repair layer for explicit spatial relation realization in InstructScene, not a first or universal relation-aware 3D scene generator claim.</p>
+    </section>
+
+    <section class="story-grid">
+      <div>
+        <h2>Pipeline</h2>
+        <div class="flow">
+          <div class="step"><div class="num">1</div><div><strong>Generate with InstructScene</strong><p>Use the official pretrained scene-graph and layout checkpoints.</p></div></div>
+          <div class="step"><div class="num">2</div><div><strong>Parse explicit relations</strong><p>Extract phrases such as left of, right of, behind, in front of, and close right.</p></div></div>
+          <div class="step"><div class="num">3</div><div><strong>Verify realized layout</strong><p>Check whether generated boxes satisfy the selected spatial relation triples.</p></div></div>
+          <div class="step"><div class="num">4</div><div><strong>Repair translations</strong><p>Apply two bounded passes with close distance 0.75 and far distance 1.6.</p></div></div>
+        </div>
+      </div>
+      <article class="card example">
+        <div>
+          <h2>Visual Example</h2>
+          <p class="prompt">Put a wooden dining table right of a bookshelf with doors and shelves.</p>
+          <div class="mini-scene" aria-label="Dining table right of bookshelf visual relation">
+            <div class="obj a">bookshelf</div>
+            <div class="arrow"></div>
+            <div class="obj b">dining table</div>
+          </div>
+          <p class="caption">Dining-room sample: baseline selected-relation count 0, repaired count 1. The page shows relation-level visualization because the current run saved evaluation JSON, not rendered images.</p>
+        </div>
+        <div class="pill-row">
+          <span class="pill">parsed relation</span>
+          <span class="pill">1 edit</span>
+          <span class="pill">+1 satisfied relation</span>
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <h2>Takeaway</h2>
+      <div class="card">
+        <p><strong>Current conclusion:</strong> this is now a stronger paper seed for explicit spatial-relation realization. The relation metric is convincing across bedroom, living-room, and dining-room splits, and the box-level geometry checks do not show overlap or out-of-bound degradation. A submission-ready package still needs full mesh collision, diversity, rendered qualitative examples, and shared-protocol comparisons before making stronger SOTA claims.</p>
+        <p><strong>Best storyline:</strong> InstructScene can know the relation at the graph level but fail to realize it in geometry. Relation-Aware InstructScene exposes and repairs this graph-to-layout grounding gap.</p>
+        <p><strong>Qualitative diagnostics:</strong> a top-down before/after gallery is available at <a href="qualitative/qualitative_gallery.html">qualitative/qualitative_gallery.html</a>.</p>
+        <p><strong>Mesh diagnostics:</strong> mesh-projection before/after examples are available at <a href="mesh_renders_gallery.html">mesh_renders_gallery.html</a>.</p>
+        <p><strong>Paper figures:</strong> cleaned before/after relation figures are available at <a href="paper_figures_gallery.html">paper_figures_gallery.html</a>.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Generated locally from synchronized experiment files under E:\research_worldmodel\results. No external JavaScript or network assets are required.
+  </footer>
+</body>
+</html>

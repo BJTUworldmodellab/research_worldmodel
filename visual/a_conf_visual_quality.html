@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Relation-Aware Visual Quality Diagnostics</title>
+  <style>
+    body { margin:0; font-family:Inter,Arial,sans-serif; background:#101315; color:#edf5ef; }
+    header, main { padding:28px 5vw; }
+    header { background:#182120; border-bottom:1px solid #2b3835; }
+    h1 { margin:0 0 10px; font-size:38px; letter-spacing:0; }
+    p { color:#b9cac4; line-height:1.5; }
+    .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin:22px 0; }
+    .stat { background:#17201f; border:1px solid #2c3a37; padding:16px; border-radius:8px; }
+    .stat strong { display:block; font-size:28px; color:#70ffd4; }
+    article { border-top:1px solid #2c3a37; padding:22px 0; }
+    .pair { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    img { width:100%; display:block; border-radius:6px; background:#080a0c; }
+    a { color:#70ffd4; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Visual Quality Diagnostics</h1>
+    <p>Real 3D-FUTURE before/after renders plus automatic diagnostics. Treat these as visual-consistency evidence, not as a human-preference proof.</p>
+  </header>
+  <main>
+    <section class="stats">
+      <div class="stat"><span>Real mesh examples</span><strong>18</strong></div>
+      <div class="stat"><span>Mean relation gain</span><strong>+1.389</strong></div>
+      <div class="stat"><span>Mean CLIP delta</span><strong>-0.0005</strong></div>
+      <div class="stat"><span>Mesh projection mean SSIM</span><strong>0.807</strong></div>
+    </section>
+    
+        <article>
+          <h3>bedroom #145</h3>
+          <div class="pair"><img src="real_mesh_showcase_v3/bedroom_0145_before.png"><img src="real_mesh_showcase_v3/bedroom_0145_after.png"></div>
+          <p>Relation 1/2 -> 2/2; mesh pairs 1 -> 1; CLIP delta -0.0037; SSIM 0.8349</p>
+        </article>
+        
+
+        <article>
+          <h3>livingroom #16</h3>
+          <div class="pair"><img src="real_mesh_showcase_v3/livingroom_0016_before.png"><img src="real_mesh_showcase_v3/livingroom_0016_after.png"></div>
+          <p>Relation 1/2 -> 2/2; mesh pairs 0 -> 0; CLIP delta -0.0309; SSIM 0.8240</p>
+        </article>
+        
+
+        <article>
+          <h3>diningroom #136</h3>
+          <div class="pair"><img src="real_mesh_showcase_v3/diningroom_0136_before.png"><img src="real_mesh_showcase_v3/diningroom_0136_after.png"></div>
+          <p>Relation 0/2 -> 2/2; mesh pairs 0 -> 0; CLIP delta -0.0149; SSIM 0.8486</p>
+        </article>
+        
+
+        <article>
+          <h3>bedroom #155</h3>
+          <div class="pair"><img src="floor_prior_showcase/bedroom_0155_before.png"><img src="floor_prior_showcase/bedroom_0155_after.png"></div>
+          <p>Relation 0/1 -> 1/1; mesh pairs 0 -> 0; CLIP delta +0.0034; SSIM 0.9072</p>
+        </article>
+        
+
+        <article>
+          <h3>bedroom #121</h3>
+          <div class="pair"><img src="floor_prior_showcase/bedroom_0121_before.png"><img src="floor_prior_showcase/bedroom_0121_after.png"></div>
+          <p>Relation 0/1 -> 1/1; mesh pairs 1 -> 0; CLIP delta +0.0067; SSIM 0.9014</p>
+        </article>
+        
+
+        <article>
+          <h3>bedroom #115</h3>
+          <div class="pair"><img src="floor_prior_showcase/bedroom_0115_before.png"><img src="floor_prior_showcase/bedroom_0115_after.png"></div>
+          <p>Relation 0/1 -> 1/1; mesh pairs 0 -> 0; CLIP delta +0.0039; SSIM 0.7341</p>
+        </article>
+        
+
+        <article>
+          <h3>bedroom #78</h3>
+          <div class="pair"><img src="floor_prior_showcase/bedroom_0078_before.png"><img src="floor_prior_showcase/bedroom_0078_after.png"></div>
+          <p>Relation 0/2 -> 1/2; mesh pairs 0 -> 0; CLIP delta +0.0165; SSIM 0.7644</p>
+        </article>
+        
+
+        <article>
+          <h3>bedroom #59</h3>
+          <div class="pair"><img src="floor_prior_showcase/bedroom_0059_before.png"><img src="floor_prior_showcase/bedroom_0059_after.png"></div>
+          <p>Relation 1/2 -> 2/2; mesh pairs 2 -> 0; CLIP delta +0.0066; SSIM 0.7285</p>
+        </article>
+        
+
+        <article>
+          <h3>livingroom #113</h3>
+          <div class="pair"><img src="floor_prior_showcase/livingroom_0113_before.png"><img src="floor_prior_showcase/livingroom_0113_after.png"></div>
+          <p>Relation 0/2 -> 2/2; mesh pairs 1 -> 1; CLIP delta -0.0070; SSIM 0.9870</p>
+        </article>
+        
+
+        <article>
+          <h3>livingroom #148</h3>
+          <div class="pair"><img src="floor_prior_showcase/livingroom_0148_before.png"><img src="floor_prior_showcase/livingroom_0148_after.png"></div>
+          <p>Relation 0/2 -> 2/2; mesh pairs 7 -> 7; CLIP delta -0.0082; SSIM 0.9769</p>
+        </article>
+        
+
+        <article>
+          <h3>livingroom #180</h3>
+          <div class="pair"><img src="floor_prior_showcase/livingroom_0180_before.png"><img src="floor_prior_showcase/livingroom_0180_after.png"></div>
+          <p>Relation 0/2 -> 1/2; mesh pairs 0 -> 0; CLIP delta +0.0002; SSIM 0.9650</p>
+        </article>
+        
+
+        <article>
+          <h3>livingroom #127</h3>
+          <div class="pair"><img src="floor_prior_showcase/livingroom_0127_before.png"><img src="floor_prior_showcase/livingroom_0127_after.png"></div>
+          <p>Relation 1/2 -> 2/2; mesh pairs 0 -> 0; CLIP delta +0.0028; SSIM 0.9630</p>
+        </article>
+        
+
+        <article>
+          <h3>livingroom #116</h3>
+          <div class="pair"><img src="floor_prior_showcase/livingroom_0116_before.png"><img src="floor_prior_showcase/livingroom_0116_after.png"></div>
+          <p>Relation 1/2 -> 2/2; mesh pairs 0 -> 0; CLIP delta -0.0083; SSIM 0.9922</p>
+        </article>
+        
+
+        <article>
+          <h3>diningroom #136</h3>
+          <div class="pair"><img src="floor_prior_showcase/diningroom_0136_before.png"><img src="floor_prior_showcase/diningroom_0136_after.png"></div>
+          <p>Relation 0/2 -> 2/2; mesh pairs 0 -> 0; CLIP delta -0.0090; SSIM 0.8842</p>
+        </article>
+        
+
+        <article>
+          <h3>diningroom #39</h3>
+          <div class="pair"><img src="floor_prior_showcase/diningroom_0039_before.png"><img src="floor_prior_showcase/diningroom_0039_after.png"></div>
+          <p>Relation 0/2 -> 2/2; mesh pairs 0 -> 0; CLIP delta -0.0039; SSIM 0.9940</p>
+        </article>
+        
+
+        <article>
+          <h3>diningroom #82</h3>
+          <div class="pair"><img src="floor_prior_showcase/diningroom_0082_before.png"><img src="floor_prior_showcase/diningroom_0082_after.png"></div>
+          <p>Relation 0/2 -> 2/2; mesh pairs 5 -> 4; CLIP delta +0.0201; SSIM 0.9489</p>
+        </article>
+        
+
+        <article>
+          <h3>diningroom #94</h3>
+          <div class="pair"><img src="floor_prior_showcase/diningroom_0094_before.png"><img src="floor_prior_showcase/diningroom_0094_after.png"></div>
+          <p>Relation 0/2 -> 2/2; mesh pairs 10 -> 10; CLIP delta +0.0146; SSIM 0.8703</p>
+        </article>
+        
+
+        <article>
+          <h3>diningroom #127</h3>
+          <div class="pair"><img src="floor_prior_showcase/diningroom_0127_before.png"><img src="floor_prior_showcase/diningroom_0127_after.png"></div>
+          <p>Relation 1/2 -> 2/2; mesh pairs 0 -> 0; CLIP delta +0.0012; SSIM 0.9807</p>
+        </article>
+        
+    <p>Tables: <a href="../results/tables/visual_quality_real_mesh.csv">visual_quality_real_mesh.csv</a> and <a href="../results/tables/visual_quality_mesh_projection.csv">visual_quality_mesh_projection.csv</a>.</p>
+  </main>
+</body>
+</html>

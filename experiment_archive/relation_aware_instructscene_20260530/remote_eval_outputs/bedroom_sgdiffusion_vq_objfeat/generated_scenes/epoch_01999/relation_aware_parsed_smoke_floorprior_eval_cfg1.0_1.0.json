@@ -1,0 +1,1696 @@
+{
+  "args": {
+    "config_file": "configs/bedroom_sg_diffusion_vq_objfeat.yaml",
+    "tag": "bedroom_sgdiffusion_vq_objfeat",
+    "fvqvae_tag": "threedfront_objfeat_vqvae",
+    "fvqvae_epoch": 1999,
+    "sg2sc_tag": "bedroom_sg2scdiffusion_objfeat",
+    "sg2sc_epoch": 1999,
+    "output_dir": "out",
+    "checkpoint_epoch": 1999,
+    "n_workers": 0,
+    "seed": 0,
+    "n_epochs": 1,
+    "n_scenes": 3,
+    "condition_type": "text",
+    "verbose": false,
+    "device": "0",
+    "cfg_scale": 1.0,
+    "sg2sc_cfg_scale": 1.0,
+    "relation_source": "parsed",
+    "repair_passes": 2,
+    "close_distance": 0.75,
+    "far_distance": 1.6,
+    "repair_strategy": "floor_prior",
+    "max_repair_move": 1.2,
+    "repair_overlap_weight": 1.0,
+    "output_suffix": "smoke_floorprior",
+    "mesh_collision": false,
+    "render_examples": 0
+  },
+  "metrics": {
+    "rel_total": 4,
+    "graph_correct": 3,
+    "graph_easy_correct": 3,
+    "layout_correct": 3,
+    "layout_easy_correct": 3,
+    "repair_correct": 4,
+    "repair_easy_correct": 4,
+    "repair_edits": 2,
+    "repair_skipped": 0,
+    "repair_total_movement": 1.8535482055985382,
+    "parsed_total": 4,
+    "parsed_oracle_exact": 3,
+    "parsed_oracle_easy": 3,
+    "object_count": 15,
+    "layout_overlap_pairs": 12,
+    "layout_overlap_area": 4.44433349924009,
+    "layout_footprint_area": 27.826122265331517,
+    "layout_out_of_bounds_centers": 0,
+    "layout_scenes_with_overlap": 3,
+    "repair_overlap_pairs": 12,
+    "repair_overlap_area": 5.521466158437047,
+    "repair_footprint_area": 27.826122265331517,
+    "repair_out_of_bounds_centers": 0,
+    "repair_scenes_with_overlap": 3,
+    "mesh_collision_scenes_evaluated": 0,
+    "layout_mesh_collision_pairs": 0,
+    "layout_mesh_total_pairs": 0,
+    "layout_mesh_collision_scenes": 0,
+    "repair_mesh_collision_pairs": 0,
+    "repair_mesh_total_pairs": 0,
+    "repair_mesh_collision_scenes": 0
+  },
+  "scores": {
+    "graph_relation_acc": 0.75,
+    "graph_relation_acc_easy": 0.75,
+    "baseline_relation_acc": 0.75,
+    "baseline_relation_acc_easy": 0.75,
+    "repaired_relation_acc": 1.0,
+    "repaired_relation_acc_easy": 1.0,
+    "avg_repair_movement": 0.9267741027992691,
+    "parser_relation_precision": 0.75,
+    "parser_relation_recall": 0.75,
+    "parser_relation_recall_easy": 0.75,
+    "layout_overlap_ratio": 0.15971803246107602,
+    "repair_overlap_ratio": 0.19842743828220094,
+    "layout_overlap_pairs_per_scene": 4.0,
+    "repair_overlap_pairs_per_scene": 4.0,
+    "layout_out_of_bounds_rate": 0.0,
+    "repair_out_of_bounds_rate": 0.0,
+    "mesh_collision_scenes_evaluated": 0,
+    "layout_mesh_collision_pair_rate": 0.0,
+    "repair_mesh_collision_pair_rate": 0.0,
+    "layout_mesh_collision_scene_rate": 0.0,
+    "repair_mesh_collision_scene_rate": 0.0
+  },
+  "per_scene": [
+    {
+      "scene_uid": "015ed8e0-35dc-41ab-9a9e-b3dbba4ec64a_MasterBedroom-33296",
+      "text": "Put a grey double bed with headboard and pillows to the left of a nightstand.",
+      "selected_relations": [
+        [
+          8,
+          1,
+          12
+        ]
+      ],
+      "parsed_relations": [
+        [
+          8,
+          1,
+          12
+        ]
+      ],
+      "repair_target_relations": [
+        [
+          8,
+          1,
+          12
+        ]
+      ],
+      "graph_relations": [
+        [
+          8,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          8
+        ],
+        [
+          20,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          20
+        ]
+      ],
+      "layout_relations": [
+        [
+          8,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          8
+        ],
+        [
+          20,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          20
+        ]
+      ],
+      "repair_relations": [
+        [
+          8,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          8
+        ],
+        [
+          20,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          20
+        ]
+      ],
+      "repair_stats": {
+        "edits": 0,
+        "skipped": 0,
+        "total_movement": 0.0
+      },
+      "layout_quality": {
+        "object_count": 3,
+        "out_of_bounds_centers": 0,
+        "overlap_pairs": 2,
+        "overlap_area": 0.24824665159475098,
+        "footprint_area": 7.145893521106236,
+        "overlap_ratio": 0.03473976359450716
+      },
+      "repair_quality": {
+        "object_count": 3,
+        "out_of_bounds_centers": 0,
+        "overlap_pairs": 2,
+        "overlap_area": 0.24824665159475098,
+        "footprint_area": 7.145893521106236,
+        "overlap_ratio": 0.03473976359450716
+      },
+      "layout_mesh_collision": null,
+      "repair_mesh_collision": null,
+      "object_model_jids": [
+        "6c185b06-6b95-45d0-bad2-fea9895e1e5a",
+        "e0d0379b-0835-482f-836a-5803975ade24",
+        "62319141-32fa-4353-b2ff-ec31ca232e3e",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "repair_object_model_jids": null,
+      "render_paths": {},
+      "layout_boxes": [
+        {
+          "index": 0,
+          "class_id": 8,
+          "class_name": "double_bed",
+          "translation": [
+            0.09942983614596823,
+            0.7836447390100996,
+            -0.20856226714253223
+          ],
+          "size": [
+            1.05002,
+            0.7814099847412,
+            1.1658499999999998
+          ],
+          "angle": 0.0026574255898594856
+        },
+        {
+          "index": 1,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -1.2116085198549609,
+            1.1934697504717944,
+            0.1577376296473063
+          ],
+          "size": [
+            1.4813889999999998,
+            1.19539,
+            0.333518
+          ],
+          "angle": 1.5699878931045532
+        },
+        {
+          "index": 2,
+          "class_id": 12,
+          "class_name": "nightstand",
+          "translation": [
+            1.208158534335666,
+            0.3024916430759482,
+            -1.2367656962095939
+          ],
+          "size": [
+            0.24316750000000012,
+            0.3035885,
+            0.24227899999999988
+          ],
+          "angle": 0.007785532157868147
+        }
+      ],
+      "repair_boxes": [
+        {
+          "index": 0,
+          "class_id": 8,
+          "class_name": "double_bed",
+          "translation": [
+            0.09942983614596823,
+            0.7836447390100996,
+            -0.20856226714253223
+          ],
+          "size": [
+            1.05002,
+            0.7814099847412,
+            1.1658499999999998
+          ],
+          "angle": 0.0026574255898594856
+        },
+        {
+          "index": 1,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -1.2116085198549609,
+            1.1934697504717944,
+            0.1577376296473063
+          ],
+          "size": [
+            1.4813889999999998,
+            1.19539,
+            0.333518
+          ],
+          "angle": 1.5699878931045532
+        },
+        {
+          "index": 2,
+          "class_id": 12,
+          "class_name": "nightstand",
+          "translation": [
+            1.208158534335666,
+            0.3024916430759482,
+            -1.2367656962095939
+          ],
+          "size": [
+            0.24316750000000012,
+            0.3035885,
+            0.24227899999999988
+          ],
+          "angle": 0.007785532157868147
+        }
+      ]
+    },
+    {
+      "scene_uid": "04684207-3d45-4d33-bd9d-0f66c9a45402_MasterBedroom-9404",
+      "text": "Add a double bed left of a gray nightstand with drawers. Place a gray nightstand with drawers to the right of a gray wardrobe with shelves and drawers.",
+      "selected_relations": [
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          20,
+          1,
+          12
+        ]
+      ],
+      "parsed_relations": [
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          20
+        ]
+      ],
+      "repair_target_relations": [
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          20
+        ]
+      ],
+      "graph_relations": [
+        [
+          13,
+          7,
+          10
+        ],
+        [
+          10,
+          2,
+          13
+        ],
+        [
+          13,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          0,
+          8
+        ],
+        [
+          8,
+          5,
+          13
+        ],
+        [
+          10,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          10
+        ],
+        [
+          10,
+          8,
+          20
+        ],
+        [
+          20,
+          3,
+          10
+        ],
+        [
+          10,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          10
+        ],
+        [
+          10,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          10
+        ],
+        [
+          10,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          10
+        ],
+        [
+          12,
+          6,
+          8
+        ],
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          20,
+          2,
+          20
+        ],
+        [
+          20,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          20
+        ],
+        [
+          20,
+          7,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          20
+        ],
+        [
+          20,
+          4,
+          20
+        ],
+        [
+          20,
+          9,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          20
+        ]
+      ],
+      "layout_relations": [
+        [
+          13,
+          7,
+          10
+        ],
+        [
+          10,
+          2,
+          13
+        ],
+        [
+          13,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          0,
+          8
+        ],
+        [
+          8,
+          5,
+          13
+        ],
+        [
+          10,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          10
+        ],
+        [
+          10,
+          8,
+          20
+        ],
+        [
+          20,
+          3,
+          10
+        ],
+        [
+          10,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          10
+        ],
+        [
+          10,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          10
+        ],
+        [
+          10,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          10
+        ],
+        [
+          12,
+          6,
+          8
+        ],
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          20,
+          2,
+          20
+        ],
+        [
+          20,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          20
+        ],
+        [
+          20,
+          7,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          20
+        ],
+        [
+          20,
+          4,
+          20
+        ],
+        [
+          20,
+          9,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          20
+        ]
+      ],
+      "repair_relations": [
+        [
+          13,
+          7,
+          10
+        ],
+        [
+          10,
+          2,
+          13
+        ],
+        [
+          13,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          13
+        ],
+        [
+          13,
+          0,
+          8
+        ],
+        [
+          8,
+          5,
+          13
+        ],
+        [
+          10,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          10
+        ],
+        [
+          10,
+          8,
+          20
+        ],
+        [
+          20,
+          3,
+          10
+        ],
+        [
+          10,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          10
+        ],
+        [
+          10,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          10
+        ],
+        [
+          10,
+          3,
+          8
+        ],
+        [
+          8,
+          8,
+          10
+        ],
+        [
+          12,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          12
+        ],
+        [
+          12,
+          6,
+          8
+        ],
+        [
+          8,
+          1,
+          12
+        ],
+        [
+          20,
+          2,
+          20
+        ],
+        [
+          20,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          20
+        ],
+        [
+          20,
+          7,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          20
+        ],
+        [
+          20,
+          4,
+          20
+        ],
+        [
+          20,
+          9,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          20
+        ],
+        [
+          20,
+          1,
+          8
+        ],
+        [
+          8,
+          6,
+          20
+        ]
+      ],
+      "repair_stats": {
+        "edits": 2,
+        "skipped": 0,
+        "total_movement": 1.8535482055985382
+      },
+      "layout_quality": {
+        "object_count": 7,
+        "out_of_bounds_centers": 0,
+        "overlap_pairs": 8,
+        "overlap_area": 2.9371941339342333,
+        "footprint_area": 12.694922666983565,
+        "overlap_ratio": 0.23136762712018463
+      },
+      "repair_quality": {
+        "object_count": 7,
+        "out_of_bounds_centers": 0,
+        "overlap_pairs": 8,
+        "overlap_area": 4.014326793131191,
+        "footprint_area": 12.694922666983565,
+        "overlap_ratio": 0.31621514352123525
+      },
+      "layout_mesh_collision": null,
+      "repair_mesh_collision": null,
+      "object_model_jids": [
+        "6863834d-718a-4e93-be23-aa2fb45b6b51",
+        "df95ad28-aa55-4529-a62d-66d04e654fd9",
+        "9c4424b3-ed58-4cf8-b1b5-7c75dcf54286",
+        "6ffa21e8-16e0-4fe9-8606-dfa097353763",
+        "6ffa21e8-16e0-4fe9-8606-dfa097353763",
+        "6ffa21e8-16e0-4fe9-8606-dfa097353763",
+        "83db09d8-0c4c-4b13-8909-404bdf4ea3ec",
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "repair_object_model_jids": null,
+      "render_paths": {},
+      "layout_boxes": [
+        {
+          "index": 0,
+          "class_id": 13,
+          "class_name": "pendant_lamp",
+          "translation": [
+            0.050297830379589126,
+            2.3809561989294723,
+            0.11295400505156428
+          ],
+          "size": [
+            0.4007744999999998,
+            0.25324631649999985,
+            0.3975940000000001
+          ],
+          "angle": 3.133310556411743
+        },
+        {
+          "index": 1,
+          "class_id": 10,
+          "class_name": "dressing_table",
+          "translation": [
+            -0.43222179713158715,
+            0.7624689705514026,
+            1.3963478831187102
+          ],
+          "size": [
+            0.5850000000000001,
+            0.7568699999999999,
+            0.21854099999999996
+          ],
+          "angle": 3.135502815246582
+        },
+        {
+          "index": 2,
+          "class_id": 12,
+          "class_name": "nightstand",
+          "translation": [
+            2.266906443410619,
+            0.29177904111958797,
+            1.4187918311800507
+          ],
+          "size": [
+            0.32772099999999993,
+            0.285851,
+            0.2349199999999998
+          ],
+          "angle": 3.1409647464752197
+        },
+        {
+          "index": 3,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -1.2433639158583427,
+            1.0889236488505356,
+            1.2711220962383978
+          ],
+          "size": [
+            1.12027,
+            1.095340003471255,
+            0.3475059999999999
+          ],
+          "angle": 3.13318133354187
+        },
+        {
+          "index": 4,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -2.0097028238953834,
+            1.0968718701186122,
+            0.43453536393126635
+          ],
+          "size": [
+            1.12027,
+            1.095340003471255,
+            0.3475059999999999
+          ],
+          "angle": 1.5732240676879883
+        },
+        {
+          "index": 5,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -2.1320262104294665,
+            1.1096299921605137,
+            0.12190740922144716
+          ],
+          "size": [
+            1.12027,
+            1.095340003471255,
+            0.3475059999999999
+          ],
+          "angle": 1.5716538429260254
+        },
+        {
+          "index": 6,
+          "class_id": 8,
+          "class_name": "double_bed",
+          "translation": [
+            0.9711257111948224,
+            0.6460325432881687,
+            0.1418139727689507
+          ],
+          "size": [
+            1.1795449999999998,
+            0.638800119169,
+            1.3624799999999997
+          ],
+          "angle": 3.137486696243286
+        }
+      ],
+      "repair_boxes": [
+        {
+          "index": 0,
+          "class_id": 13,
+          "class_name": "pendant_lamp",
+          "translation": [
+            0.050297830379589126,
+            2.3809561989294723,
+            0.11295400505156428
+          ],
+          "size": [
+            0.4007744999999998,
+            0.25324631649999985,
+            0.3975940000000001
+          ],
+          "angle": 3.133310556411743
+        },
+        {
+          "index": 1,
+          "class_id": 10,
+          "class_name": "dressing_table",
+          "translation": [
+            -0.43222179713158715,
+            0.7624689705514026,
+            1.3963478831187102
+          ],
+          "size": [
+            0.5850000000000001,
+            0.7568699999999999,
+            0.21854099999999996
+          ],
+          "angle": 3.135502815246582
+        },
+        {
+          "index": 2,
+          "class_id": 12,
+          "class_name": "nightstand",
+          "translation": [
+            1.3117712756970672,
+            0.29177904111958797,
+            1.3699569640817533
+          ],
+          "size": [
+            0.32772099999999993,
+            0.285851,
+            0.2349199999999998
+          ],
+          "angle": 3.1409647464752197
+        },
+        {
+          "index": 3,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -1.2433639158583427,
+            1.0889236488505356,
+            1.2711220962383978
+          ],
+          "size": [
+            1.12027,
+            1.095340003471255,
+            0.3475059999999999
+          ],
+          "angle": 3.13318133354187
+        },
+        {
+          "index": 4,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -2.0097028238953834,
+            1.0968718701186122,
+            0.43453536393126635
+          ],
+          "size": [
+            1.12027,
+            1.095340003471255,
+            0.3475059999999999
+          ],
+          "angle": 1.5732240676879883
+        },
+        {
+          "index": 5,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -2.1320262104294665,
+            1.1096299921605137,
+            0.12190740922144716
+          ],
+          "size": [
+            1.12027,
+            1.095340003471255,
+            0.3475059999999999
+          ],
+          "angle": 1.5716538429260254
+        },
+        {
+          "index": 6,
+          "class_id": 8,
+          "class_name": "double_bed",
+          "translation": [
+            0.34144848152501583,
+            0.6460325432881687,
+            0.780885468797881
+          ],
+          "size": [
+            1.1795449999999998,
+            0.638800119169,
+            1.3624799999999997
+          ],
+          "angle": 3.137486696243286
+        }
+      ]
+    },
+    {
+      "scene_uid": "04f7a09d-08be-4e6f-965d-b655e0f654fe_SecondBedroom-30034",
+      "text": "Position a black and white circular pendant lamp behind a black and silver nightstand with a drawer.",
+      "selected_relations": [
+        [
+          13,
+          7,
+          12
+        ]
+      ],
+      "parsed_relations": [
+        [
+          13,
+          7,
+          12
+        ]
+      ],
+      "repair_target_relations": [
+        [
+          13,
+          7,
+          12
+        ]
+      ],
+      "graph_relations": [
+        [
+          20,
+          2,
+          8
+        ],
+        [
+          8,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          13
+        ],
+        [
+          13,
+          7,
+          20
+        ],
+        [
+          8,
+          7,
+          12
+        ],
+        [
+          12,
+          2,
+          8
+        ],
+        [
+          8,
+          5,
+          13
+        ],
+        [
+          13,
+          0,
+          8
+        ],
+        [
+          8,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          8
+        ],
+        [
+          12,
+          2,
+          13
+        ],
+        [
+          13,
+          7,
+          12
+        ],
+        [
+          12,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          12
+        ],
+        [
+          13,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          13
+        ]
+      ],
+      "layout_relations": [
+        [
+          20,
+          2,
+          8
+        ],
+        [
+          8,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          13
+        ],
+        [
+          13,
+          7,
+          20
+        ],
+        [
+          8,
+          7,
+          12
+        ],
+        [
+          12,
+          2,
+          8
+        ],
+        [
+          8,
+          5,
+          13
+        ],
+        [
+          13,
+          0,
+          8
+        ],
+        [
+          8,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          8
+        ],
+        [
+          12,
+          2,
+          13
+        ],
+        [
+          13,
+          7,
+          12
+        ],
+        [
+          12,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          12
+        ],
+        [
+          13,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          13
+        ]
+      ],
+      "repair_relations": [
+        [
+          20,
+          2,
+          8
+        ],
+        [
+          8,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          20
+        ],
+        [
+          20,
+          2,
+          13
+        ],
+        [
+          13,
+          7,
+          20
+        ],
+        [
+          8,
+          7,
+          12
+        ],
+        [
+          12,
+          2,
+          8
+        ],
+        [
+          8,
+          5,
+          13
+        ],
+        [
+          13,
+          0,
+          8
+        ],
+        [
+          8,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          8
+        ],
+        [
+          12,
+          2,
+          13
+        ],
+        [
+          13,
+          7,
+          12
+        ],
+        [
+          12,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          12
+        ],
+        [
+          13,
+          2,
+          12
+        ],
+        [
+          12,
+          7,
+          13
+        ]
+      ],
+      "repair_stats": {
+        "edits": 0,
+        "skipped": 0,
+        "total_movement": 0.0
+      },
+      "layout_quality": {
+        "object_count": 5,
+        "out_of_bounds_centers": 0,
+        "overlap_pairs": 2,
+        "overlap_area": 1.2588927137111057,
+        "footprint_area": 7.985306077241713,
+        "overlap_ratio": 0.15765115344782787
+      },
+      "repair_quality": {
+        "object_count": 5,
+        "out_of_bounds_centers": 0,
+        "overlap_pairs": 2,
+        "overlap_area": 1.2588927137111057,
+        "footprint_area": 7.985306077241713,
+        "overlap_ratio": 0.15765115344782787
+      },
+      "layout_mesh_collision": null,
+      "repair_mesh_collision": null,
+      "object_model_jids": [
+        "146cea9c-0e87-4c90-8526-e5f7e5340530",
+        "27c28ae1-d885-4018-81a3-f3c033cd8f47",
+        "3664dd1d-7fd1-49b2-b5d4-8b9c613c1fcd",
+        "f7a9e634-d3af-4d90-beb4-c97da4d82ee4",
+        "3664dd1d-7fd1-49b2-b5d4-8b9c613c1fcd",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "repair_object_model_jids": null,
+      "render_paths": {},
+      "layout_boxes": [
+        {
+          "index": 0,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -0.5464569719141252,
+            1.1928816887854905,
+            1.9009297566763799
+          ],
+          "size": [
+            1.1,
+            1.2000000000000008,
+            0.306909
+          ],
+          "angle": -3.1342597007751465
+        },
+        {
+          "index": 1,
+          "class_id": 8,
+          "class_name": "double_bed",
+          "translation": [
+            -0.27163330868441093,
+            0.41690975557475973,
+            -0.20648845922617154
+          ],
+          "size": [
+            1.0752299999999997,
+            0.41681037000000004,
+            1.1556899999999999
+          ],
+          "angle": 1.5684150457382202
+        },
+        {
+          "index": 2,
+          "class_id": 12,
+          "class_name": "nightstand",
+          "translation": [
+            -1.2074002718297183,
+            0.24661105999741623,
+            1.018299507502142
+          ],
+          "size": [
+            0.20999999999999996,
+            0.24896751637,
+            0.22000849999999986
+          ],
+          "angle": 1.5691457986831665
+        },
+        {
+          "index": 3,
+          "class_id": 13,
+          "class_name": "pendant_lamp",
+          "translation": [
+            -0.02201586877399775,
+            2.181213451023956,
+            -0.27522597657431813
+          ],
+          "size": [
+            0.553874,
+            0.42923599999999995,
+            0.5538740000000001
+          ],
+          "angle": -0.0015394786605611444
+        },
+        {
+          "index": 4,
+          "class_id": 12,
+          "class_name": "nightstand",
+          "translation": [
+            -1.2181943520533096,
+            0.2517536125016287,
+            -1.5401478547766951
+          ],
+          "size": [
+            0.20999999999999996,
+            0.24896751637,
+            0.22000849999999986
+          ],
+          "angle": 1.567335605621338
+        }
+      ],
+      "repair_boxes": [
+        {
+          "index": 0,
+          "class_id": 20,
+          "class_name": "wardrobe",
+          "translation": [
+            -0.5464569719141252,
+            1.1928816887854905,
+            1.9009297566763799
+          ],
+          "size": [
+            1.1,
+            1.2000000000000008,
+            0.306909
+          ],
+          "angle": -3.1342597007751465
+        },
+        {
+          "index": 1,
+          "class_id": 8,
+          "class_name": "double_bed",
+          "translation": [
+            -0.27163330868441093,
+            0.41690975557475973,
+            -0.20648845922617154
+          ],
+          "size": [
+            1.0752299999999997,
+            0.41681037000000004,
+            1.1556899999999999
+          ],
+          "angle": 1.5684150457382202
+        },
+        {
+          "index": 2,
+          "class_id": 12,
+          "class_name": "nightstand",
+          "translation": [
+            -1.2074002718297183,
+            0.24661105999741623,
+            1.018299507502142
+          ],
+          "size": [
+            0.20999999999999996,
+            0.24896751637,
+            0.22000849999999986
+          ],
+          "angle": 1.5691457986831665
+        },
+        {
+          "index": 3,
+          "class_id": 13,
+          "class_name": "pendant_lamp",
+          "translation": [
+            -0.02201586877399775,
+            2.181213451023956,
+            -0.27522597657431813
+          ],
+          "size": [
+            0.553874,
+            0.42923599999999995,
+            0.5538740000000001
+          ],
+          "angle": -0.0015394786605611444
+        },
+        {
+          "index": 4,
+          "class_id": 12,
+          "class_name": "nightstand",
+          "translation": [
+            -1.2181943520533096,
+            0.2517536125016287,
+            -1.5401478547766951
+          ],
+          "size": [
+            0.20999999999999996,
+            0.24896751637,
+            0.22000849999999986
+          ],
+          "angle": 1.567335605621338
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="360" viewBox="0 0 520 360">
+<rect width="100%" height="100%" fill="#fbfbf8"/>
+<rect x="10" y="10" width="500" height="340" fill="none" stroke="#d8ddd6" stroke-width="1"/>
+<text x="18" y="30" font-family="Arial" font-size="15" font-weight="700" fill="#202421">bedroom after: 1/1 relations</text>
+<g transform="translate(430.50,144.44) rotate(-90.20)">
+<rect x="-8.09" y="-7.53" width="16.19" height="15.05" rx="3" fill="#dbe7f3" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="430.50" y="148.44" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">table</text>
+<g transform="translate(219.72,33.31) rotate(-90.14)">
+<rect x="-17.51" y="-5.31" width="35.01" height="10.61" rx="3" fill="#d9eadf" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="219.72" y="37.31" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">pendant lamp</text>
+<g transform="translate(341.78,199.77) rotate(-0.04)">
+<rect x="-32.56" y="-37.15" width="65.12" height="74.30" rx="3" fill="#f5dfc4" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="341.78" y="203.77" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">double bed</text>
+<g transform="translate(111.64,188.02) rotate(-89.74)">
+<rect x="-30.23" y="-10.77" width="60.46" height="21.55" rx="3" fill="#eadcf4" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="111.64" y="192.02" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">wardrobe</text>
+<g transform="translate(213.49,324.90) rotate(179.96)">
+<rect x="-18.02" y="-7.10" width="36.04" height="14.21" rx="3" fill="#f5d2cf" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="213.49" y="328.90" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">cabinet</text>
+<g transform="translate(216.19,146.23) rotate(0.03)">
+<rect x="-21.18" y="-8.24" width="42.35" height="16.48" rx="3" fill="#d8eceb" stroke="#39423d" stroke-width="1" opacity="0.88"/>
+</g>
+<text x="216.19" y="150.23" text-anchor="middle" font-family="Arial" font-size="9" fill="#202421">dressing table</text>
+</svg>

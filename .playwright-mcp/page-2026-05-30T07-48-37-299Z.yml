@@ -1,0 +1,373 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e3]:
+      - heading "Relation-Aware InstructScene 完整实验总结" [level=1] [ref=e4]
+      - paragraph [ref=e5]: 从论文创新点、相关工作、方法设计、所有关键实验结果，到最终可投稿 claim 与风险边界的一份中文总报告。
+  - navigation [ref=e6]:
+    - link "总结论" [ref=e7] [cursor=pointer]:
+      - /url: "#conclusion"
+    - link "创新点" [ref=e8] [cursor=pointer]:
+      - /url: "#novelty"
+    - link "相关工作" [ref=e9] [cursor=pointer]:
+      - /url: "#related"
+    - link "方法" [ref=e10] [cursor=pointer]:
+      - /url: "#method"
+    - link "实验结果" [ref=e11] [cursor=pointer]:
+      - /url: "#experiments"
+    - link "视觉素材" [ref=e12] [cursor=pointer]:
+      - /url: "#visual"
+    - link "Claim 边界" [ref=e13] [cursor=pointer]:
+      - /url: "#claims"
+    - link "归档与论文" [ref=e14] [cursor=pointer]:
+      - /url: "#artifacts"
+  - main [ref=e15]:
+    - generic [ref=e16]:
+      - heading "总总结论" [level=2] [ref=e17]
+      - generic [ref=e18]: 当前工作最稳的定位是：我们不是提出一个全新的 3D 场景生成大模型，而是在现有 InstructScene 上发现并修复一个重要 failure mode：instruction 里的显式空间关系，在 scene graph 到 continuous layout 的解码过程中会丢失。我们的 Relation-Aware verifier-repair layer 可以在不重新训练、不构建新 benchmark 的前提下，显著提升最终 layout 的关系满足率。
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]: 主方法
+          - generic [ref=e22]: Floor-Prior Repair
+        - generic [ref=e23]:
+          - generic [ref=e24]: 主 benchmark
+          - generic [ref=e25]: InstructScene
+        - generic [ref=e26]:
+          - generic [ref=e27]: 房间类型
+          - generic [ref=e28]: "3"
+        - generic [ref=e29]:
+          - generic [ref=e30]: 归档文件
+          - generic [ref=e31]: "596"
+      - paragraph [ref=e32]:
+        - text: 最安全的 paper claim 是：
+        - strong [ref=e33]: Relation-Aware InstructScene identifies a graph-to-layout grounding gap and introduces a training-free relation verifier-repair layer that improves explicit spatial relation realization on existing InstructScene validation splits while preserving object height and controlling mesh collision with a collision-gated variant.
+      - paragraph [ref=e34]: 目前已经能支撑一篇 paper seed：有方法、有 ablation、有 multi-seed、有 mesh collision、有高度诊断、有真实 3D-FUTURE mesh 展示、有 NeurIPS 模板初稿。它还不是“可直接主会稳投”的终稿，因为强外部 baseline 和正式人类视觉质量评估还没有完成。
+    - generic [ref=e35]:
+      - heading "创新点" [level=2] [ref=e36]
+      - generic [ref=e37]:
+        - generic [ref=e38]:
+          - heading "1. 关系实现从 graph-level 推到 layout-level" [level=3] [ref=e39]
+          - paragraph [ref=e40]: 以往很多 pipeline 关注 scene graph 是否包含关系，但最终物体坐标可能不满足关系。我们的核心问题是 final realized relation，而不是只看 symbolic graph。
+        - generic [ref=e41]:
+          - heading "2. 不新增 benchmark，不新增人工标注" [level=3] [ref=e42]
+          - paragraph [ref=e43]: 所有实验使用现有 InstructScene validation prompts、官方 checkpoint 和已有 evaluator，避免“自己造数据自己赢”的风险。
+        - generic [ref=e44]:
+          - heading "3. Plug-in verifier-repair layer" [level=3] [ref=e45]
+          - paragraph [ref=e46]: 方法不替换原生成模型，而是在输出后解析、验证、修复，训练自由，适合作为 pretrained generator 的关系一致性控制模块。
+        - generic [ref=e47]:
+          - heading "4. Floor-prior 修复与高度保持" [level=3] [ref=e48]
+          - paragraph [ref=e49]: 最终版本只移动 x/z 地面平面，不改 y 高度，解决了早期家具、椅子、沙发腾空的问题。
+        - generic [ref=e50]:
+          - heading "5. Collision-gated 选择" [level=3] [ref=e51]
+          - paragraph [ref=e52]: 当 mesh collision pair 增加时回退到 baseline layout，使 mesh-validity claim 更安全。
+        - generic [ref=e53]:
+          - heading "6. 分层评估体系" [level=3] [ref=e54]
+          - paragraph [ref=e55]: 不只报 relation acc，还报 movement、mesh collision、multi-seed、height diagnostics、visual diagnostics、strong baseline feasibility。
+    - generic [ref=e56]:
+      - heading "相关工作定位" [level=2] [ref=e57]
+      - table [ref=e58]:
+        - rowgroup [ref=e59]:
+          - row "方向/方法 关系 论文中怎么写" [ref=e60]:
+            - columnheader "方向/方法" [ref=e61]
+            - columnheader "关系" [ref=e62]
+            - columnheader "论文中怎么写" [ref=e63]
+        - rowgroup [ref=e64]:
+          - row "InstructScene 直接 baseline，同协议、同 split、同 checkpoint。 主对比对象。我们修复它的 graph-to-layout grounding gap。" [ref=e65]:
+            - cell "InstructScene" [ref=e66]
+            - cell "直接 baseline，同协议、同 split、同 checkpoint。" [ref=e67]
+            - cell "主对比对象。我们修复它的 graph-to-layout grounding gap。" [ref=e68]
+          - row "ATISS / SceneFormer / DiffuScene 3D indoor scene synthesis 背景方法。 放在 indoor scene synthesis 相关工作中。" [ref=e69]:
+            - cell "ATISS / SceneFormer / DiffuScene" [ref=e70]
+            - cell "3D indoor scene synthesis 背景方法。" [ref=e71]
+            - cell "放在 indoor scene synthesis 相关工作中。" [ref=e72]
+          - row "CommonScenes scene-graph diffusion，和关系/commonsense 场景生成相关。 相关工作，不作为同协议直接 baseline。" [ref=e73]:
+            - cell "CommonScenes" [ref=e74]
+            - cell "scene-graph diffusion，和关系/commonsense 场景生成相关。" [ref=e75]
+            - cell "相关工作，不作为同协议直接 baseline。" [ref=e76]
+          - row "LayoutGPT / Holodeck 语言驱动 layout planning / 3D environment generation。 说明语言与空间布局生成已有大量工作。" [ref=e77]:
+            - cell "LayoutGPT / Holodeck" [ref=e78]
+            - cell "语言驱动 layout planning / 3D environment generation。" [ref=e79]
+            - cell "说明语言与空间布局生成已有大量工作。" [ref=e80]
+          - row "ReSpace 强相关 text-driven 3D indoor scene synthesis/editing。 必须讨论，但当前不能 claim 超过，因为没有同协议复现。" [ref=e81]:
+            - cell "ReSpace" [ref=e82]
+            - cell "强相关 text-driven 3D indoor scene synthesis/editing。" [ref=e83]
+            - cell "必须讨论，但当前不能 claim 超过，因为没有同协议复现。" [ref=e84]
+          - row "SDGScenes Semantic Dependency Graph + VLM constraints + optimization，非常接近 broad idea。 必须承认接近，不能 claim first relation-aware。" [ref=e85]:
+            - cell "SDGScenes" [ref=e86]
+            - cell "Semantic Dependency Graph + VLM constraints + optimization，非常接近 broad idea。" [ref=e87]
+            - cell "必须承认接近，不能 claim first relation-aware。" [ref=e88]
+      - generic [ref=e89]: 相关工作的写法要非常克制：我们的新意不是“第一个关系感知 3D 场景生成”，而是“在现有 InstructScene 协议上，发现并修复 final layout relation realization 的 gap”。
+    - generic [ref=e90]:
+      - heading "我们的方法" [level=2] [ref=e91]
+      - paragraph [ref=e92]: 方法整体是一个 training-free post-generation module，坐在 InstructScene 生成结果之后。
+      - generic [ref=e93]:
+        - generic [ref=e94]:
+          - generic [ref=e95]: 1. 生成
+          - text: 使用 InstructScene 生成 scene graph 和 layout boxes。
+        - generic [ref=e96]:
+          - generic [ref=e97]: 2. 解析
+          - text: 从 instruction 中抽取显式空间关系，如 left/right/front/behind。
+        - generic [ref=e98]:
+          - generic [ref=e99]: 3. 匹配
+          - text: 把 relation triple 匹配到生成物体类别和实例。
+        - generic [ref=e100]:
+          - generic [ref=e101]: 4. 验证
+          - text: 在 x/z 地面平面判断关系是否真的成立。
+        - generic [ref=e102]:
+          - generic [ref=e103]: 5. 修复
+          - text: 用 bounded floor-prior candidate 移动物体。
+        - generic [ref=e104]:
+          - generic [ref=e105]: 6. 筛选
+          - text: collision-gated variant 在 collision 增加时回退 baseline。
+      - heading "Direct y-fixed repair" [level=3] [ref=e106]
+      - paragraph [ref=e107]: 直接修复沿 x/z 移动物体并保持 y 不变。它 relation gain 很高，但平均移动幅度接近 2 米，容易让真实 mesh 展示显得不自然，所以更适合做 internal baseline。
+      - heading "Floor-prior repair" [level=3] [ref=e108]
+      - paragraph [ref=e109]:
+        - text: 当前主方法在候选位移中选择更温和的修复：限制最大移动范围，考虑 overlap penalty，保留原始高度。推荐主配置是
+        - generic [ref=e110]: floor_prior_max1.8_mesh_p2_close0.75_far1.6
+        - text: 。
+      - heading "Collision-gated repair" [level=3] [ref=e111]
+      - paragraph [ref=e112]: 如果 repaired layout 的 FCL mesh collision pairs 比 baseline 更多，就回退 baseline。这让 mesh claim 更安全，但论文中必须说明这是 verifier-selection/fallback，不是纯生成器自动学到了 collision-free synthesis。
+    - generic [ref=e113]:
+      - heading "实验结果" [level=2] [ref=e114]
+      - heading "主结果：Floor-prior 在三个房间上都提升关系满足率" [level=3] [ref=e115]
+      - table [ref=e116]:
+        - rowgroup [ref=e117]:
+          - row "Room Baseline Floor-prior Gain Avg move Mesh delta" [ref=e118]:
+            - columnheader "Room" [ref=e119]
+            - columnheader "Baseline" [ref=e120]
+            - columnheader "Floor-prior" [ref=e121]
+            - columnheader "Gain" [ref=e122]
+            - columnheader "Avg move" [ref=e123]
+            - columnheader "Mesh delta" [ref=e124]
+        - rowgroup [ref=e125]:
+          - row "Bedroom 0.7388 0.8408 +0.1020 0.7837 +0.0029" [ref=e126]:
+            - cell "Bedroom" [ref=e127]
+            - cell "0.7388" [ref=e128]
+            - cell "0.8408" [ref=e129]
+            - cell "+0.1020" [ref=e130]
+            - cell "0.7837" [ref=e131]
+            - cell "+0.0029" [ref=e132]
+          - row "Dining room 0.5948 0.7286 +0.1338 0.7315 +0.0008" [ref=e133]:
+            - cell "Dining room" [ref=e134]
+            - cell "0.5948" [ref=e135]
+            - cell "0.7286" [ref=e136]
+            - cell "+0.1338" [ref=e137]
+            - cell "0.7315" [ref=e138]
+            - cell "+0.0008" [ref=e139]
+          - row "Living room 0.5510 0.6939 +0.1429 0.8808 +0.0008" [ref=e140]:
+            - cell "Living room" [ref=e141]
+            - cell "0.5510" [ref=e142]
+            - cell "0.6939" [ref=e143]
+            - cell "+0.1429" [ref=e144]
+            - cell "0.8808" [ref=e145]
+            - cell "+0.0008" [ref=e146]
+      - paragraph [ref=e147]: 解释：关系提升稳定，但 ungated mesh delta 仍有轻微正值，所以 mesh collision claim 应该使用 collision-gated 结果。
+      - heading "Direct y-fixed：提升更大，但移动太激进" [level=3] [ref=e148]
+      - table [ref=e149]:
+        - rowgroup [ref=e150]:
+          - row "Room Direct gain Avg move 结论" [ref=e151]:
+            - columnheader "Room" [ref=e152]
+            - columnheader "Direct gain" [ref=e153]
+            - columnheader "Avg move" [ref=e154]
+            - columnheader "结论" [ref=e155]
+        - rowgroup [ref=e156]:
+          - row "Bedroom +0.1347 2.2101 强 baseline，但移动过大。" [ref=e157]:
+            - cell "Bedroom" [ref=e158]
+            - cell "+0.1347" [ref=e159]
+            - cell "2.2101" [ref=e160]
+            - cell "强 baseline，但移动过大。" [ref=e161]
+          - row "Dining room +0.1896 1.9694 关系提升高，但几何副作用更明显。" [ref=e162]:
+            - cell "Dining room" [ref=e163]
+            - cell "+0.1896" [ref=e164]
+            - cell "1.9694" [ref=e165]
+            - cell "关系提升高，但几何副作用更明显。" [ref=e166]
+          - row "Living room +0.1973 2.2834 证明 repair 有效，但不适合作主方法。" [ref=e167]:
+            - cell "Living room" [ref=e168]
+            - cell "+0.1973" [ref=e169]
+            - cell "2.2834" [ref=e170]
+            - cell "证明 repair 有效，但不适合作主方法。" [ref=e171]
+      - heading "Collision-gated：mesh claim 的核心证据" [level=3] [ref=e172]
+      - table [ref=e173]:
+        - rowgroup [ref=e174]:
+          - row "Room Baseline Repair Gated Gated gain Base mesh Gated mesh Fallback" [ref=e175]:
+            - columnheader "Room" [ref=e176]
+            - columnheader "Baseline" [ref=e177]
+            - columnheader "Repair" [ref=e178]
+            - columnheader "Gated" [ref=e179]
+            - columnheader "Gated gain" [ref=e180]
+            - columnheader "Base mesh" [ref=e181]
+            - columnheader "Gated mesh" [ref=e182]
+            - columnheader "Fallback" [ref=e183]
+        - rowgroup [ref=e184]:
+          - row "Bedroom 0.7388 0.8408 0.8163 +0.0776 0.0702 0.0683 6" [ref=e185]:
+            - cell "Bedroom" [ref=e186]
+            - cell "0.7388" [ref=e187]
+            - cell "0.8408" [ref=e188]
+            - cell "0.8163" [ref=e189]
+            - cell "+0.0776" [ref=e190]
+            - cell "0.0702" [ref=e191]
+            - cell "0.0683" [ref=e192]
+            - cell "6" [ref=e193]
+          - row "Dining room 0.5948 0.7286 0.6729 +0.0781 0.0342 0.0336 15" [ref=e194]:
+            - cell "Dining room" [ref=e195]
+            - cell "0.5948" [ref=e196]
+            - cell "0.7286" [ref=e197]
+            - cell "0.6729" [ref=e198]
+            - cell "+0.0781" [ref=e199]
+            - cell "0.0342" [ref=e200]
+            - cell "0.0336" [ref=e201]
+            - cell "15" [ref=e202]
+          - row "Living room 0.5510 0.6939 0.6395 +0.0884 0.0313 0.0310 14" [ref=e203]:
+            - cell "Living room" [ref=e204]
+            - cell "0.5510" [ref=e205]
+            - cell "0.6939" [ref=e206]
+            - cell "0.6395" [ref=e207]
+            - cell "+0.0884" [ref=e208]
+            - cell "0.0313" [ref=e209]
+            - cell "0.0310" [ref=e210]
+            - cell "14" [ref=e211]
+      - paragraph [ref=e212]: 解释：gated 后 relation gain 仍然为正，而且 mesh pair rate 低于 baseline。这是“控制 mesh collision 不增加”的主要证据。
+      - heading "Multi-seed 稳定性" [level=3] [ref=e213]
+      - table [ref=e214]:
+        - rowgroup [ref=e215]:
+          - row "Room Mean repair gain Std Mean gated gain Mean gated mesh delta" [ref=e216]:
+            - columnheader "Room" [ref=e217]
+            - columnheader "Mean repair gain" [ref=e218]
+            - columnheader "Std" [ref=e219]
+            - columnheader "Mean gated gain" [ref=e220]
+            - columnheader "Mean gated mesh delta" [ref=e221]
+        - rowgroup [ref=e222]:
+          - row "Bedroom +0.1061 0.0058 +0.0803 -0.0020" [ref=e223]:
+            - cell "Bedroom" [ref=e224]
+            - cell "+0.1061" [ref=e225]
+            - cell "0.0058" [ref=e226]
+            - cell "+0.0803" [ref=e227]
+            - cell "-0.0020" [ref=e228]
+          - row "Dining room +0.1462 0.0093 +0.0867 -0.0008" [ref=e229]:
+            - cell "Dining room" [ref=e230]
+            - cell "+0.1462" [ref=e231]
+            - cell "0.0093" [ref=e232]
+            - cell "+0.0867" [ref=e233]
+            - cell "-0.0008" [ref=e234]
+          - row "Living room +0.1270 0.0125 +0.0703 -0.0003" [ref=e235]:
+            - cell "Living room" [ref=e236]
+            - cell "+0.1270" [ref=e237]
+            - cell "0.0125" [ref=e238]
+            - cell "+0.0703" [ref=e239]
+            - cell "-0.0003" [ref=e240]
+      - heading "高度诊断" [level=3] [ref=e241]
+      - generic [ref=e242]:
+        - text: 所有主结果的
+        - strong [ref=e243]: y_changed_rate = 0.0
+        - text: ，
+        - strong [ref=e244]: max_abs_y_delta = 0.0
+        - text: 。这说明最终 repair 不再修改高度轴，可以支撑“解决家具腾空问题”的说法。但这还不等于完整 support/contact physics。
+    - generic [ref=e245]:
+      - heading "视觉结果与展示素材" [level=2] [ref=e246]
+      - table [ref=e247]:
+        - rowgroup [ref=e248]:
+          - row "Showcase Examples Relation gain Mesh-pair delta CLIP delta SSIM" [ref=e249]:
+            - columnheader "Showcase" [ref=e250]
+            - columnheader "Examples" [ref=e251]
+            - columnheader "Relation gain" [ref=e252]
+            - columnheader "Mesh-pair delta" [ref=e253]
+            - columnheader "CLIP delta" [ref=e254]
+            - columnheader "SSIM" [ref=e255]
+        - rowgroup [ref=e256]:
+          - row "Old direct y-fixed showcase 3 +1.333 0.000 -0.0165 0.8358" [ref=e257]:
+            - cell "Old direct y-fixed showcase" [ref=e258]
+            - cell "3" [ref=e259]
+            - cell "+1.333" [ref=e260]
+            - cell "0.000" [ref=e261]
+            - cell "-0.0165" [ref=e262]
+            - cell "0.8358" [ref=e263]
+          - row "New floor-prior showcase 15 +1.400 -0.267 +0.0027 0.9065" [ref=e264]:
+            - cell "New floor-prior showcase" [ref=e265]
+            - cell "15" [ref=e266]
+            - cell "+1.400" [ref=e267]
+            - cell "-0.267" [ref=e268]
+            - cell "+0.0027" [ref=e269]
+            - cell "0.9065" [ref=e270]
+      - paragraph [ref=e271]: 新 floor-prior 展示比旧 direct 展示更适合论文：更多样例、更高 SSIM、mesh pairs 平均下降，且关系数提升稳定。
+      - generic [ref=e272]:
+        - figure "Bedroom floor-prior before/after：关系提升，mesh pairs 不增加。" [ref=e273]:
+          - img "Bedroom floor-prior comparison" [ref=e274]
+          - generic [ref=e275]: Bedroom floor-prior before/after：关系提升，mesh pairs 不增加。
+        - figure "Living room floor-prior before/after：真实 3D-FUTURE mesh 渲染。" [ref=e276]:
+          - img "Livingroom floor-prior comparison" [ref=e277]
+          - generic [ref=e278]: Living room floor-prior before/after：真实 3D-FUTURE mesh 渲染。
+        - figure "Dining room floor-prior before/after：selected relation 从失败变成功。" [ref=e279]:
+          - img "Diningroom floor-prior comparison" [ref=e280]
+          - generic [ref=e281]: Dining room floor-prior before/after：selected relation 从失败变成功。
+      - paragraph [ref=e282]:
+        - text: 更多展示：
+        - link "floor_prior_showcase.html" [ref=e283] [cursor=pointer]:
+          - /url: floor_prior_showcase.html
+        - text: ，
+        - link "a_conf_visual_quality.html" [ref=e284] [cursor=pointer]:
+          - /url: a_conf_visual_quality.html
+        - text: ，
+        - link "a_conf_floor_prior_results.html" [ref=e285] [cursor=pointer]:
+          - /url: a_conf_floor_prior_results.html
+        - text: 。
+    - generic [ref=e286]:
+      - heading "能说什么，不能说什么" [level=2] [ref=e287]
+      - generic [ref=e288]:
+        - generic [ref=e289]:
+          - heading "可以强 claim" [level=3] [ref=e290]
+          - list [ref=e291]:
+            - listitem [ref=e292]: 在现有 InstructScene splits 上，显式空间关系 realization 明显提升。
+            - listitem [ref=e293]: Floor-prior 比 direct repair 更适合主方法，因为移动更受控。
+            - listitem [ref=e294]: Collision-gated variant 在 mesh collision pair rate 不增加的情况下仍保留正 relation gain。
+            - listitem [ref=e295]: 方法保持 y 高度不变，修复了家具腾空问题。
+            - listitem [ref=e296]: Multi-seed 结果稳定。
+        - generic [ref=e297]:
+          - heading "不能 claim" [level=3] [ref=e298]
+          - list [ref=e299]:
+            - listitem [ref=e300]: 不能说超过 ReSpace / SDGScenes。
+            - listitem [ref=e301]: 不能说 first relation-aware 3D scene generation。
+            - listitem [ref=e302]: 不能说视觉质量全面更好。
+            - listitem [ref=e303]: 不能说处理所有隐式 commonsense relation。
+            - listitem [ref=e304]: 不能说完整解决物理支撑、可达性和功能合理性。
+      - generic [ref=e305]: 最终投稿的安全叙事是：这是一个 relation-consistency verifier-repair module，不是 SOTA full generator。用强相关工作做 related work，用 InstructScene 做 fair baseline。
+    - generic [ref=e306]:
+      - heading "产物、归档与论文初稿" [level=2] [ref=e307]
+      - table [ref=e308]:
+        - rowgroup [ref=e309]:
+          - row "产物 位置 说明" [ref=e310]:
+            - columnheader "产物" [ref=e311]
+            - columnheader "位置" [ref=e312]
+            - columnheader "说明" [ref=e313]
+        - rowgroup [ref=e314]:
+          - row "完整实验归档 E:/research_worldmodel/experiment_archive/relation_aware_instructscene_20260530 596 个文件，约 687.83 MB，含 raw eval、表格、图、文档、脚本、checksum。" [ref=e315]:
+            - cell "完整实验归档" [ref=e316]
+            - cell "E:/research_worldmodel/experiment_archive/relation_aware_instructscene_20260530" [ref=e317]:
+              - code [ref=e318]: E:/research_worldmodel/experiment_archive/relation_aware_instructscene_20260530
+            - cell "596 个文件，约 687.83 MB，含 raw eval、表格、图、文档、脚本、checksum。" [ref=e319]
+          - row "NeurIPS 初稿 PDF E:/research_worldmodel/paper/neurips_ra_instructscene/main.pdf 已编译成功，8 页。" [ref=e320]:
+            - cell "NeurIPS 初稿 PDF" [ref=e321]
+            - cell "E:/research_worldmodel/paper/neurips_ra_instructscene/main.pdf" [ref=e322]:
+              - code [ref=e323]: E:/research_worldmodel/paper/neurips_ra_instructscene/main.pdf
+            - cell "已编译成功，8 页。" [ref=e324]
+          - row "中文 Notion 风格报告 E:/research_worldmodel/docs/relation_aware_instructscene_notion_report_zh.md 完整中文文字版报告。" [ref=e325]:
+            - cell "中文 Notion 风格报告" [ref=e326]
+            - cell "E:/research_worldmodel/docs/relation_aware_instructscene_notion_report_zh.md" [ref=e327]:
+              - code [ref=e328]: E:/research_worldmodel/docs/relation_aware_instructscene_notion_report_zh.md
+            - cell "完整中文文字版报告。" [ref=e329]
+          - row "Floor-prior 展示页 visual/floor_prior_showcase.html 15 个真实 mesh before/after 展示。" [ref=e330]:
+            - cell "Floor-prior 展示页" [ref=e331]
+            - cell "visual/floor_prior_showcase.html" [ref=e332]:
+              - code [ref=e333]: visual/floor_prior_showcase.html
+            - cell "15 个真实 mesh before/after 展示。" [ref=e334]
+          - row "视觉诊断页 visual/a_conf_visual_quality.html CLIP/SSIM/mesh pair 诊断。" [ref=e335]:
+            - cell "视觉诊断页" [ref=e336]
+            - cell "visual/a_conf_visual_quality.html" [ref=e337]:
+              - code [ref=e338]: visual/a_conf_visual_quality.html
+            - cell "CLIP/SSIM/mesh pair 诊断。" [ref=e339]
+      - heading "下一步建议" [level=3] [ref=e340]
+      - list [ref=e341]:
+        - listitem [ref=e342]: 把 floor-prior showcase 中 3 到 6 个图整理成论文 Figure 2。
+        - listitem [ref=e343]: 把 NeurIPS checklist 填完整，补 compute、seed、数据许可、局限性。
+        - listitem [ref=e344]: 若目标是 A 会主会，继续做 ReSpace / SDGScenes 的 shared-protocol comparison，或者明确把论文定位成 verifier-repair module。
+        - listitem [ref=e345]: 若想 claim 视觉质量，补 human preference study 或更正式的 perceptual evaluation。
+      - paragraph [ref=e346]: 生成时间：2026-05-30。当前报告基于本地结果表、远端同步归档、真实 mesh 展示和 NeurIPS 初稿。

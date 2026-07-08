@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Height-Fixed Real 3D-FUTURE Mesh Showcase</title>
+  <style>
+    :root { --bg:#080a0d; --panel:#10161c; --ink:#effffb; --muted:#a6bab5; --line:#22343a; --accent:#41ffd0; --warm:#ffb36f; }
+    * { box-sizing:border-box; }
+    body { margin:0; background: radial-gradient(circle at 70% 10%, rgba(65,255,208,.12), transparent 35%), var(--bg); color:var(--ink); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    header { min-height:38vh; padding:44px 5vw 28px; display:flex; flex-direction:column; justify-content:flex-end; border-bottom:1px solid var(--line); background:linear-gradient(180deg, rgba(8,10,13,.55), rgba(8,10,13,.98)); }
+    .label { margin:0 0 10px; color:var(--accent); font-size:13px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:0; max-width:1050px; font-size:clamp(40px, 7vw, 96px); line-height:.92; letter-spacing:0; }
+    header p:last-child { max-width:900px; color:var(--muted); font-size:18px; line-height:1.45; }
+    main { padding:28px 5vw 72px; display:grid; gap:28px; }
+    .scene-card { background:linear-gradient(135deg, rgba(16,22,28,.92), rgba(13,18,23,.72)); border:1px solid var(--line); border-radius:12px; overflow:hidden; box-shadow:0 28px 90px rgba(0,0,0,.32); }
+    .scene-copy { padding:22px 24px 10px; }
+    .eyebrow { margin:0 0 8px; color:var(--accent); font-weight:800; letter-spacing:.08em; text-transform:uppercase; font-size:12px; }
+    h2 { margin:0 0 8px; font-size:30px; }
+    .scene-copy p { color:var(--muted); line-height:1.45; max-width:1100px; }
+    .stats { display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 4px; }
+    .stats span { border:1px solid var(--line); border-radius:999px; padding:8px 11px; color:#dffbf5; background:rgba(255,255,255,.045); font-weight:700; }
+    .comparison { width:100%; display:block; background:#07090c; border-top:1px solid var(--line); }
+    .duo { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border-top:1px solid var(--line); }
+    .duo img { width:100%; display:block; background:#080a0d; }
+    footer { padding:0 5vw 36px; color:var(--muted); }
+    @media (max-width:800px) { .duo { grid-template-columns:1fr; } h1 { font-size:48px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="label">Relation-Aware InstructScene / Floor-Plane Repair</p>
+    <h1>Height-Fixed 3D Furniture Renders</h1>
+    <p>Curated examples rendered after fixing the repair rule to move objects only on the floor plane. The relation repair changes x/z placement while preserving each object's original height, so sofas, chairs, tables, and beds do not inherit the height of lamps or cabinets.</p>
+  </header>
+  <main>
+      <section class="scene-card">
+        <div class="scene-copy">
+          <p class="eyebrow">bedroom #145 / curated real 3D-FUTURE mesh</p>
+          <h2>Relation 1/2 -> 2/2</h2>
+          <p>Position a gray wardrobe with doors and a drawer to the right of a grey and white nightstand with a magazine. Then, set up a nightstand behind a black single bed with a white sheet.</p>
+          <div class="stats"><span>Before mesh pairs 1</span><span>After mesh pairs 1</span></div>
+        </div>
+        <img class="comparison" src="real_mesh_showcase_v3/bedroom_0145_comparison.png" alt="bedroom real mesh before after comparison">
+        <div class="duo"><img src="real_mesh_showcase_v3/bedroom_0145_before.png" alt="before"><img src="real_mesh_showcase_v3/bedroom_0145_after.png" alt="after"></div>
+      </section>
+    
+      <section class="scene-card">
+        <div class="scene-copy">
+          <p class="eyebrow">livingroom #16 / curated real 3D-FUTURE mesh</p>
+          <h2>Relation 1/2 -> 2/2</h2>
+          <p>Set up a grey and white tv stand with drawers behind a black coffee table with a lid. Then, arrange a black coffee table with a lid right of a black corner side table with a round base.</p>
+          <div class="stats"><span>Before mesh pairs 0</span><span>After mesh pairs 0</span></div>
+        </div>
+        <img class="comparison" src="real_mesh_showcase_v3/livingroom_0016_comparison.png" alt="livingroom real mesh before after comparison">
+        <div class="duo"><img src="real_mesh_showcase_v3/livingroom_0016_before.png" alt="before"><img src="real_mesh_showcase_v3/livingroom_0016_after.png" alt="after"></div>
+      </section>
+    
+      <section class="scene-card">
+        <div class="scene-copy">
+          <p class="eyebrow">diningroom #136 / curated real 3D-FUTURE mesh</p>
+          <h2>Relation 0/2 -> 2/2</h2>
+          <p>Position a blue dining table with a wooden top behind a white cabinet with a vase. Then, position a blue dining table with a wooden top behind a white cabinet with a vase.</p>
+          <div class="stats"><span>Before mesh pairs 0</span><span>After mesh pairs 0</span></div>
+        </div>
+        <img class="comparison" src="real_mesh_showcase_v3/diningroom_0136_comparison.png" alt="diningroom real mesh before after comparison">
+        <div class="duo"><img src="real_mesh_showcase_v3/diningroom_0136_before.png" alt="before"><img src="real_mesh_showcase_v3/diningroom_0136_after.png" alt="after"></div>
+      </section>
+    </main>
+  <footer>Generated from the validated mesh-collision run plus the floor-plane repair fix. These are real mesh renders for qualitative display, not a human-study visual-quality metric.</footer>
+</body>
+</html>

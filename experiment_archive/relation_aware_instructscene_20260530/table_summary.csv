@@ -1,0 +1,6 @@
+table,rows,columns
+local_results/tables/floor_prior_results.csv,33,15
+local_results/tables/floor_prior_gated_results.csv,33,14
+local_results/tables/floor_prior_mesh_results.csv,33,11
+local_results/tables/visual_quality_real_mesh.csv,18,31
+local_results/tables/strong_baseline_feasibility.csv,6,7

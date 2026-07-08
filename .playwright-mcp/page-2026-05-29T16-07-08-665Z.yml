@@ -1,0 +1,23 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - paragraph [ref=e5]: Cinematic 3D Layout Showcase
+    - 'heading "bedroom #78" [level=1] [ref=e6]'
+    - paragraph [ref=e7]: Arrange a black tv stand with a bottle of wine right of a nightstand. Add a double bed in front of a gray nightstand with a handle.
+    - generic [ref=e8]:
+      - button "Before" [ref=e9] [cursor=pointer]
+      - button "After" [ref=e10] [cursor=pointer]
+      - button "Bedroom" [ref=e11] [cursor=pointer]
+      - button "Living" [ref=e12] [cursor=pointer]
+      - button "Dining" [ref=e13] [cursor=pointer]
+      - button "Auto Camera" [ref=e14] [cursor=pointer]
+    - generic [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]: Relation Score
+        - strong [ref=e18]: 2/2
+      - generic [ref=e19]:
+        - generic [ref=e20]: Mesh Pairs
+        - strong [ref=e21]: "0"
+      - generic [ref=e22]:
+        - generic [ref=e23]: Scene
+        - strong [ref=e24]: AFTER
+  - complementary [ref=e25]: Drag to orbit, scroll to zoom. Cyan arrows mark repaired relation targets. This is a stylized 3D layout view using generated boxes and retrieved-object sizes; raw mesh diagnostics remain available separately.
