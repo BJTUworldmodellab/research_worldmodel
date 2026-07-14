@@ -1,0 +1,5 @@
+config_id,description,sg_layout_consistency,layout_overlap_iou_sum,overlap_reduction_pct,mean_movement_m,max_movement_m,worse_overlap_scenes,worse_consistency_scenes,failures,skips,rollbacks
+baseline,"Baseline (eval-only, no repair)",0.9095,0.2245,+0.0,0.0000,0.0000,0,0,0,0,0
+s0075_d025_i050,"Primary (step=0.075, max_disp=0.25, iter=50)",0.9133,0.1309,-41.7,0.0772,0.2498,0,0,0,7,0
+s0075_d035_i050,"Aggressive (step=0.075, max_disp=0.35, iter=50)",0.9135,0.1216,-45.8,0.0885,0.3474,0,0,0,7,0
+s0025_d015_i025,"Minimal movement (step=0.025, max_disp=0.15, iter=25)",0.9139,0.1511,-32.7,0.0508,0.1500,0,0,0,7,0
