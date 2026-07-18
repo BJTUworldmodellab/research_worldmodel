@@ -1,0 +1,554 @@
+[
+  {
+    "scan": "DiningRoom-10302",
+    "mean_abs_pixel_diff": 0.0002288818359375,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000518798828125,
+    "ssim": 0.9999975694684398,
+    "psnr": 84.53469032435927
+  },
+  {
+    "scan": "DiningRoom-10559",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-11145",
+    "mean_abs_pixel_diff": 9.1552734375e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000274658203125,
+    "ssim": 0.9999984449654463,
+    "psnr": 88.51409041107965
+  },
+  {
+    "scan": "DiningRoom-113004",
+    "mean_abs_pixel_diff": 1.52587890625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.9999999084035988,
+    "psnr": 96.29560291491609
+  },
+  {
+    "scan": "DiningRoom-11336",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-114621",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-116178",
+    "mean_abs_pixel_diff": 0.8494211832682291,
+    "max_abs_pixel_diff": 200,
+    "changed_pixel_ratio": 0.008544921875,
+    "ssim": 0.9819962229764541,
+    "psnr": 28.035862632836373
+  },
+  {
+    "scan": "DiningRoom-11628",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-12376",
+    "mean_abs_pixel_diff": 0.3023325602213542,
+    "max_abs_pixel_diff": 233,
+    "changed_pixel_ratio": 0.003082275390625,
+    "ssim": 0.9943581082987716,
+    "psnr": 31.84897768457877
+  },
+  {
+    "scan": "DiningRoom-12866",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-13034",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-13727",
+    "mean_abs_pixel_diff": 3.0517578125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 0.9999997452794789,
+    "psnr": 93.28530295827628
+  },
+  {
+    "scan": "DiningRoom-15534",
+    "mean_abs_pixel_diff": 3.0517578125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 0.9999996783845182,
+    "psnr": 93.28530295827628
+  },
+  {
+    "scan": "DiningRoom-164",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-16460",
+    "mean_abs_pixel_diff": 0.00017801920572916666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0005035400390625,
+    "ssim": 0.999998118968338,
+    "psnr": 85.62613490027411
+  },
+  {
+    "scan": "DiningRoom-16628",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-168152",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-17147",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-17995",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-18332",
+    "mean_abs_pixel_diff": 0.000152587890625,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003662109375,
+    "ssim": 0.9999975535823524,
+    "psnr": 86.29560291491609
+  },
+  {
+    "scan": "DiningRoom-19325",
+    "mean_abs_pixel_diff": 8.138020833333333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000213623046875,
+    "ssim": 0.9999995657852148,
+    "psnr": 89.02561550612363
+  },
+  {
+    "scan": "DiningRoom-197500",
+    "mean_abs_pixel_diff": 0.5161946614583334,
+    "max_abs_pixel_diff": 237,
+    "changed_pixel_ratio": 0.00909423828125,
+    "ssim": 0.9894057693087743,
+    "psnr": 30.20105263006895
+  },
+  {
+    "scan": "DiningRoom-19885",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-20718",
+    "mean_abs_pixel_diff": 1.52587890625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.9999992412427785,
+    "psnr": 96.29560291491609
+  },
+  {
+    "scan": "DiningRoom-21509",
+    "mean_abs_pixel_diff": 0.000152587890625,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00042724609375,
+    "ssim": 0.9999984916819764,
+    "psnr": 86.29560291491609
+  },
+  {
+    "scan": "DiningRoom-22156",
+    "mean_abs_pixel_diff": 4.0690104166666664e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001220703125,
+    "ssim": 0.999999253033497,
+    "psnr": 92.03591546276344
+  },
+  {
+    "scan": "DiningRoom-22308",
+    "mean_abs_pixel_diff": 9.663899739583333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000213623046875,
+    "ssim": 0.9999990636110231,
+    "psnr": 88.27927934359089
+  },
+  {
+    "scan": "DiningRoom-22339",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001068115234375,
+    "ssim": 0.999999728479838,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "DiningRoom-22384",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-225770",
+    "mean_abs_pixel_diff": 4.57763671875e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001373291015625,
+    "ssim": 0.9999996844114882,
+    "psnr": 91.52439036771946
+  },
+  {
+    "scan": "DiningRoom-24191",
+    "mean_abs_pixel_diff": 0.18962605794270834,
+    "max_abs_pixel_diff": 200,
+    "changed_pixel_ratio": 0.0025634765625,
+    "ssim": 0.9963471788712198,
+    "psnr": 34.668933345822104
+  },
+  {
+    "scan": "DiningRoom-24272",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-2432",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 1.0,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "DiningRoom-25528",
+    "mean_abs_pixel_diff": 0.00013224283854166666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000244140625,
+    "ssim": 0.9999992579419393,
+    "psnr": 86.91708182310627
+  },
+  {
+    "scan": "DiningRoom-26805",
+    "mean_abs_pixel_diff": 0.000152587890625,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00042724609375,
+    "ssim": 0.9999972410799006,
+    "psnr": 86.29560291491609
+  },
+  {
+    "scan": "DiningRoom-27933",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999991301230713,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "DiningRoom-2817",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.9999999833327576,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "DiningRoom-2831",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-29864",
+    "mean_abs_pixel_diff": 0.00011189778645833333,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003204345703125,
+    "ssim": 0.9999997888139511,
+    "psnr": 87.64258855975987
+  },
+  {
+    "scan": "DiningRoom-3017",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-31158",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-31322",
+    "mean_abs_pixel_diff": 0.51947021484375,
+    "max_abs_pixel_diff": 215,
+    "changed_pixel_ratio": 0.006317138671875,
+    "ssim": 0.9892582507663553,
+    "psnr": 30.30284646932179
+  },
+  {
+    "scan": "DiningRoom-33238",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-34036",
+    "mean_abs_pixel_diff": 0.16272989908854166,
+    "max_abs_pixel_diff": 195,
+    "changed_pixel_ratio": 0.0022430419921875,
+    "ssim": 0.9973925004491654,
+    "psnr": 35.58022912102651
+  },
+  {
+    "scan": "DiningRoom-35065",
+    "mean_abs_pixel_diff": 8.138020833333333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002288818359375,
+    "ssim": 0.9999991939496464,
+    "psnr": 89.02561550612363
+  },
+  {
+    "scan": "DiningRoom-35093",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-375",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-42541",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-43067",
+    "mean_abs_pixel_diff": 3.0517578125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 0.9999995405975296,
+    "psnr": 93.28530295827628
+  },
+  {
+    "scan": "DiningRoom-451",
+    "mean_abs_pixel_diff": 0.7688547770182291,
+    "max_abs_pixel_diff": 238,
+    "changed_pixel_ratio": 0.00927734375,
+    "ssim": 0.9834328012898975,
+    "psnr": 28.49226666606393
+  },
+  {
+    "scan": "DiningRoom-5492",
+    "mean_abs_pixel_diff": 2.0345052083333332e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 6.103515625e-05,
+    "ssim": 0.999999839972573,
+    "psnr": 95.04621541940325
+  },
+  {
+    "scan": "DiningRoom-55572",
+    "mean_abs_pixel_diff": 9.663899739583333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000213623046875,
+    "ssim": 0.9999990339385489,
+    "psnr": 88.27927934359089
+  },
+  {
+    "scan": "DiningRoom-60525",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999996724427291,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "DiningRoom-6151",
+    "mean_abs_pixel_diff": 2.0345052083333332e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.9999999348165357,
+    "psnr": 95.04621541940325
+  },
+  {
+    "scan": "DiningRoom-6259",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-663",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999998150944421,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "DiningRoom-6919",
+    "mean_abs_pixel_diff": 0.13192240397135416,
+    "max_abs_pixel_diff": 182,
+    "changed_pixel_ratio": 0.00384521484375,
+    "ssim": 0.9964602618006879,
+    "psnr": 38.26505092693783
+  },
+  {
+    "scan": "DiningRoom-69393",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-7122",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-7217",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 6.103515625e-05,
+    "ssim": 0.999999842798054,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "DiningRoom-8121",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-85692",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001068115234375,
+    "ssim": 0.9999993803167384,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "DiningRoom-87276",
+    "mean_abs_pixel_diff": 0.00020345052083333334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0005645751953125,
+    "ssim": 0.9999948845942228,
+    "psnr": 85.04621565237697
+  },
+  {
+    "scan": "DiningRoom-88173",
+    "mean_abs_pixel_diff": 0.19814046223958334,
+    "max_abs_pixel_diff": 194,
+    "changed_pixel_ratio": 0.0026397705078125,
+    "ssim": 0.9961213854840207,
+    "psnr": 34.44286608209004
+  },
+  {
+    "scan": "DiningRoom-88590",
+    "mean_abs_pixel_diff": 7.120768229166667e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001983642578125,
+    "ssim": 0.9999997225899514,
+    "psnr": 89.60553525325017
+  },
+  {
+    "scan": "DiningRoom-8951",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "DiningRoom-9630",
+    "mean_abs_pixel_diff": 0.8586934407552084,
+    "max_abs_pixel_diff": 201,
+    "changed_pixel_ratio": 0.009796142578125,
+    "ssim": 0.9883960558654876,
+    "psnr": 28.3563492643178
+  },
+  {
+    "scan": "DiningRoom-9824",
+    "mean_abs_pixel_diff": 1.0172526041666666e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 3.0517578125e-05,
+    "ssim": 0.9999999079316414,
+    "psnr": 98.05651537604307
+  },
+  {
+    "scan": "DiningRoom-9982",
+    "mean_abs_pixel_diff": 7.62939453125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00018310546875,
+    "ssim": 0.9999989556962047,
+    "psnr": 89.3059028715559
+  }
+]

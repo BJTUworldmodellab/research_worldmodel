@@ -1,0 +1,72 @@
+diff --git a/src/respace.py b/src/respace.py
+index 57e780d..d5c3782 100644
+--- a/src/respace.py
++++ b/src/respace.py
+@@ -59,8 +59,10 @@ class ReSpace:
+ 		# load zero-shot LLM
+ 		self.vanilla_vllm_engine = None
+ 		# self.vanilla_pipeline = None
+-		_, self.vanilla_tokenizer, _ = get_model("meta-llama/Meta-Llama-3.1-8B-Instruct", use_gpu, accelerator=None, do_not_load_hf_model=True)
+-		self.vanilla_pipeline = get_llama_vanilla_pipeline()
++		vanilla_model_id = os.environ.get("RESPACE_VANILLA_MODEL_ID", "meta-llama/Meta-Llama-3.1-8B-Instruct")
++		print(f"Using vanilla command-decomposition model: {vanilla_model_id}")
++		_, self.vanilla_tokenizer, _ = get_model(vanilla_model_id, use_gpu, accelerator=None, do_not_load_hf_model=True)
++		self.vanilla_pipeline = get_llama_vanilla_pipeline(vanilla_model_id)
+ 
+ 		# sampling engine
+ 		if not do_removal_only:
+@@ -917,8 +919,36 @@ only output the JSON (with the removed objects) as a plain string and nothing el
+ 
+ 		print(f"[handle_prompt] vanilla pipeline generation took {time.time() - start_time:.2f}s")
+ 
+-		response_json = json.loads(response)
+-		if response_json.get("commands") is None:
++		def _parse_commands_response(raw_response):
++			text = raw_response.strip()
++			if text.startswith("```"):
++				text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE).strip()
++				text = re.sub(r"\s*```$", "", text).strip()
++
++			candidates = [text]
++			if "{" in text and "}" in text:
++				candidates.append(text[text.find("{"):text.rfind("}") + 1])
++			if "[" in text and "]" in text:
++				candidates.append(text[text.find("["):text.rfind("]") + 1])
++
++			for candidate in candidates:
++				repaired_candidates = [candidate, re.sub(r'("</(?:add|remove)>")\s+("<(?:add|remove)>)', r'\1, \2', candidate)]
++				for repaired in repaired_candidates:
++					try:
++						parsed = json.loads(repaired)
++					except Exception:
++						continue
++					if isinstance(parsed, list):
++						return {"commands": parsed}
++					return parsed
++			tag_commands = re.findall(r'<(?:add|remove)>.*?</(?:add|remove)>', text, flags=re.DOTALL)
++			if tag_commands:
++				return {"commands": [cmd.strip() for cmd in tag_commands]}
++
++			raise ValueError(f"Could not parse commands JSON from response: {text[:500]}")
++
++		response_json = _parse_commands_response(response)
++		if not isinstance(response_json, dict) or response_json.get("commands") is None:
+ 			raise ValueError("No commands in response")
+ 
+ 		return response_json["commands"]
+diff --git a/src/utils.py b/src/utils.py
+index 4de453e..62574fd 100644
+--- a/src/utils.py
++++ b/src/utils.py
+@@ -66,8 +66,9 @@ def remove_and_recreate_folder(pth):
+ 		shutil.rmtree(pth, ignore_errors=False)
+ 	os.makedirs(pth, exist_ok=True)
+ 
+-def get_llama_vanilla_pipeline():
+-	model_id = "meta-llama/Meta-Llama-3.1-8B-Instruct"
++def get_llama_vanilla_pipeline(model_id=None):
++	model_id = model_id or os.environ.get("RESPACE_VANILLA_MODEL_ID", "meta-llama/Meta-Llama-3.1-8B-Instruct")
++	print(f"get_llama_vanilla_pipeline(): loading vanilla pipeline for {model_id}")
+ 	pipeline = transformers.pipeline(
+ 		"text-generation",
+ 		model=model_id,

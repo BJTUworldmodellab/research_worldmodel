@@ -1,0 +1,172 @@
+{
+  "scenes_pt": 52,
+  "scenes_png": 52,
+  "total_boxes": 602,
+  "changed_boxes": 22,
+  "changed_box_ratio": 0.036544850498338874,
+  "mean_center_movement": 0.03740412947347394,
+  "median_center_movement": 0.0,
+  "max_center_movement": 1.4928295612335205,
+  "mean_abs_pixel_diff": 0.35939514942658257,
+  "median_abs_pixel_diff": 0.0001220703125,
+  "mean_changed_pixel_ratio": 0.0039006746732271635,
+  "max_changed_pixel_ratio": 0.0324249267578125,
+  "mean_ssim": 0.9946538102825472,
+  "median_ssim": 0.9999990482197381,
+  "mean_psnr": 61.96717442361255,
+  "median_psnr": 84.34682016184598,
+  "top_image_changes": [
+    {
+      "scan": "LivingRoom-1520",
+      "mean_abs_pixel_diff": 2.7952880859375,
+      "max_abs_pixel_diff": 207,
+      "changed_pixel_ratio": 0.0324249267578125,
+      "ssim": 0.9624983423999666,
+      "psnr": 23.105630589751627
+    },
+    {
+      "scan": "LivingRoom-6045",
+      "mean_abs_pixel_diff": 1.9938507080078125,
+      "max_abs_pixel_diff": 213,
+      "changed_pixel_ratio": 0.01898193359375,
+      "ssim": 0.9741009131998966,
+      "psnr": 24.119399212779147
+    },
+    {
+      "scan": "LivingRoom-24701",
+      "mean_abs_pixel_diff": 1.9350535074869792,
+      "max_abs_pixel_diff": 227,
+      "changed_pixel_ratio": 0.01727294921875,
+      "ssim": 0.9759565188662979,
+      "psnr": 24.089103798605485
+    },
+    {
+      "scan": "LivingRoom-3540",
+      "mean_abs_pixel_diff": 1.8594156901041667,
+      "max_abs_pixel_diff": 201,
+      "changed_pixel_ratio": 0.0176544189453125,
+      "ssim": 0.9752258826722374,
+      "psnr": 24.315270573874784
+    },
+    {
+      "scan": "LivingRoom-13599",
+      "mean_abs_pixel_diff": 1.6352945963541667,
+      "max_abs_pixel_diff": 207,
+      "changed_pixel_ratio": 0.0174713134765625,
+      "ssim": 0.9735531200658195,
+      "psnr": 25.22631720454161
+    },
+    {
+      "scan": "LivingRoom-35085",
+      "mean_abs_pixel_diff": 1.4637451171875,
+      "max_abs_pixel_diff": 234,
+      "changed_pixel_ratio": 0.0133514404296875,
+      "ssim": 0.9768279853402312,
+      "psnr": 25.18737572338857
+    },
+    {
+      "scan": "LivingRoom-1618",
+      "mean_abs_pixel_diff": 1.1862436930338542,
+      "max_abs_pixel_diff": 200,
+      "changed_pixel_ratio": 0.0133209228515625,
+      "ssim": 0.9822039011087661,
+      "psnr": 26.581944380533603
+    },
+    {
+      "scan": "LivingRoom-71071",
+      "mean_abs_pixel_diff": 0.9950510660807291,
+      "max_abs_pixel_diff": 227,
+      "changed_pixel_ratio": 0.0088958740234375,
+      "ssim": 0.9831788771227751,
+      "psnr": 26.78028646620512
+    },
+    {
+      "scan": "LivingRoom-88425",
+      "mean_abs_pixel_diff": 0.968780517578125,
+      "max_abs_pixel_diff": 213,
+      "changed_pixel_ratio": 0.011444091796875,
+      "ssim": 0.9854181287721792,
+      "psnr": 27.399105083958
+    },
+    {
+      "scan": "LivingRoom-35461",
+      "mean_abs_pixel_diff": 0.8532307942708334,
+      "max_abs_pixel_diff": 153,
+      "changed_pixel_ratio": 0.0102081298828125,
+      "ssim": 0.9875700389243607,
+      "psnr": 28.40726241436725
+    }
+  ],
+  "top_box_movements": [
+    {
+      "scan": "LivingRoom-1520",
+      "boxes": 14,
+      "changed_boxes": 2,
+      "mean_center_movement": 0.17994225025177002,
+      "max_center_movement": 1.4928295612335205
+    },
+    {
+      "scan": "LivingRoom-3540",
+      "boxes": 17,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.08766154199838638,
+      "max_center_movement": 1.4902461767196655
+    },
+    {
+      "scan": "LivingRoom-13599",
+      "boxes": 10,
+      "changed_boxes": 2,
+      "mean_center_movement": 0.2744871973991394,
+      "max_center_movement": 1.4849841594696045
+    },
+    {
+      "scan": "LivingRoom-6045",
+      "boxes": 9,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.16488221287727356,
+      "max_center_movement": 1.4839398860931396
+    },
+    {
+      "scan": "LivingRoom-3797",
+      "boxes": 13,
+      "changed_boxes": 2,
+      "mean_center_movement": 0.16820445656776428,
+      "max_center_movement": 1.4687938690185547
+    },
+    {
+      "scan": "LivingRoom-1618",
+      "boxes": 10,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.14338082075119019,
+      "max_center_movement": 1.4338082075119019
+    },
+    {
+      "scan": "LivingRoom-1097",
+      "boxes": 19,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.06275710463523865,
+      "max_center_movement": 1.192384958267212
+    },
+    {
+      "scan": "LivingRoom-35085",
+      "boxes": 10,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.10860127210617065,
+      "max_center_movement": 1.0860127210617065
+    },
+    {
+      "scan": "LivingRoom-35461",
+      "boxes": 12,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.08741988986730576,
+      "max_center_movement": 1.0490386486053467
+    },
+    {
+      "scan": "LivingRoom-71071",
+      "boxes": 16,
+      "changed_boxes": 2,
+      "mean_center_movement": 0.09843818843364716,
+      "max_center_movement": 1.0486572980880737
+    }
+  ]
+}

@@ -563,6 +563,11 @@ def main():
     parser.add_argument("--output_suffix", type=str, default="")
     parser.add_argument("--mesh_collision", action="store_true")
     parser.add_argument("--render_examples", type=int, default=0)
+    parser.add_argument(
+        "--skip_object_matching",
+        action="store_true",
+        help="Evaluate generated layouts without matching boxes to textured 3D-FUTURE objects.",
+    )
     args = parser.parse_args()
 
     if args.seed is not None and args.seed >= 0:
@@ -816,15 +821,32 @@ def main():
                 disable=args.verbose,
             )
             for i in range(len(bbox_params_t)):
-                _trimesh_meshes, _bbox_meshes, obj_classes, obj_sizes, _obj_ids = get_textured_objects(
-                    bbox_params_t[i],
-                    objects_dataset,
-                    classes,
-                    objfeats[i] if objfeats is not None else None,
-                    "openshape_vitg14",
-                    verbose=args.verbose,
-                )
-                obj_class_ids = [dataset.object_types.index(c) if c is not None else dataset.n_object_types for c in obj_classes]
+                if args.skip_object_matching:
+                    class_ids = bbox_params_t[i, :, :dataset.n_object_types + 1].argmax(axis=-1)
+                    obj_class_ids = [
+                        int(c) if int(c) < dataset.n_object_types else dataset.n_object_types
+                        for c in class_ids
+                    ]
+                    obj_classes = [
+                        dataset.object_types[c] if c < dataset.n_object_types else None
+                        for c in obj_class_ids
+                    ]
+                    obj_sizes = bbox_params_t[i, :, dataset.n_object_types + 4:dataset.n_object_types + 7]
+                    _trimesh_meshes = []
+                    _obj_ids = [None] * len(obj_class_ids)
+                else:
+                    _trimesh_meshes, _bbox_meshes, obj_classes, obj_sizes, _obj_ids = get_textured_objects(
+                        bbox_params_t[i],
+                        objects_dataset,
+                        classes,
+                        objfeats[i] if objfeats is not None else None,
+                        "openshape_vitg14",
+                        verbose=args.verbose,
+                    )
+                    obj_class_ids = [
+                        dataset.object_types.index(c) if c is not None else dataset.n_object_types
+                        for c in obj_classes
+                    ]
                 selected = [tuple(map(int, rel)) for rel in batch_selected_relations[i]]
                 parsed = parse_instruction_relations(texts[i], dataset.object_types, dataset.predicate_types)
                 repair_targets = selected if args.relation_source == "oracle" else parsed

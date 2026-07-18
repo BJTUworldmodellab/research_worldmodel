@@ -1,0 +1,274 @@
+{
+  "fullshape_pt_epoch195": {
+    "pt_dir": "/root/autodl-tmp/RelationAwareInstructScene/commonscenes_models/balancing/all/results/fullshape_pt_epoch195",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 518,
+        "total": 533,
+        "acc": 0.9718574108818011
+      },
+      "right": {
+        "ok": 537,
+        "total": 541,
+        "acc": 0.9926062846580407
+      },
+      "front": {
+        "ok": 552,
+        "total": 557,
+        "acc": 0.9910233393177738
+      },
+      "behind": {
+        "ok": 536,
+        "total": 544,
+        "acc": 0.9852941176470589
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 216,
+        "total": 260,
+        "acc": 0.8307692307692308
+      },
+      "symmetrical to": {
+        "ok": 21,
+        "total": 40,
+        "acc": 0.525
+      },
+      "total": {
+        "ok": 5728,
+        "total": 5886,
+        "acc": 0.9731566428814136
+      },
+      "mean_of_means": 0.9275620752210589
+    }
+  },
+  "commonscenes_ours_generic_gate_t0.8_pt_epoch195_bedroom": {
+    "pt_dir": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/commonscenes_ours_generic_gate_t0.8_pt_epoch195_bedroom",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 517,
+        "total": 533,
+        "acc": 0.9699812382739212
+      },
+      "right": {
+        "ok": 536,
+        "total": 541,
+        "acc": 0.9907578558225508
+      },
+      "front": {
+        "ok": 552,
+        "total": 557,
+        "acc": 0.9910233393177738
+      },
+      "behind": {
+        "ok": 535,
+        "total": 544,
+        "acc": 0.9834558823529411
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 214,
+        "total": 260,
+        "acc": 0.823076923076923
+      },
+      "symmetrical to": {
+        "ok": 21,
+        "total": 40,
+        "acc": 0.525
+      },
+      "total": {
+        "ok": 5723,
+        "total": 5886,
+        "acc": 0.972307169554876
+      },
+      "mean_of_means": 0.9263570620910776
+    }
+  },
+  "commonscenes_ours_generic_gate_t1.2_pt_epoch195_bedroom": {
+    "pt_dir": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/commonscenes_ours_generic_gate_t1.2_pt_epoch195_bedroom",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 515,
+        "total": 533,
+        "acc": 0.9662288930581614
+      },
+      "right": {
+        "ok": 535,
+        "total": 541,
+        "acc": 0.988909426987061
+      },
+      "front": {
+        "ok": 551,
+        "total": 557,
+        "acc": 0.9892280071813285
+      },
+      "behind": {
+        "ok": 534,
+        "total": 544,
+        "acc": 0.9816176470588235
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 208,
+        "total": 260,
+        "acc": 0.8
+      },
+      "symmetrical to": {
+        "ok": 23,
+        "total": 40,
+        "acc": 0.575
+      },
+      "total": {
+        "ok": 5714,
+        "total": 5886,
+        "acc": 0.9707781175671084
+      },
+      "mean_of_means": 0.9279651289493742
+    }
+  },
+  "commonscenes_ours_generic_gate_t1.5_pt_epoch195_bedroom": {
+    "pt_dir": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/commonscenes_ours_generic_gate_t1.5_pt_epoch195_bedroom",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 515,
+        "total": 533,
+        "acc": 0.9662288930581614
+      },
+      "right": {
+        "ok": 534,
+        "total": 541,
+        "acc": 0.9870609981515711
+      },
+      "front": {
+        "ok": 550,
+        "total": 557,
+        "acc": 0.9874326750448833
+      },
+      "behind": {
+        "ok": 533,
+        "total": 544,
+        "acc": 0.9797794117647058
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 204,
+        "total": 260,
+        "acc": 0.7846153846153846
+      },
+      "symmetrical to": {
+        "ok": 23,
+        "total": 40,
+        "acc": 0.575
+      },
+      "total": {
+        "ok": 5707,
+        "total": 5886,
+        "acc": 0.9695888549099558
+      },
+      "mean_of_means": 0.926068164253859
+    }
+  }
+}

@@ -1,0 +1,1298 @@
+[
+  {
+    "scan": "Bedroom-11202",
+    "mean_abs_pixel_diff": 0.0001068115234375,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00018310546875,
+    "ssim": 0.9999995599431353,
+    "psnr": 87.84462251477352
+  },
+  {
+    "scan": "Bedroom-12864",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-13675",
+    "mean_abs_pixel_diff": 0.0002543131510416667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0005645751953125,
+    "ssim": 0.9999975813532501,
+    "psnr": 84.07711558442273
+  },
+  {
+    "scan": "Bedroom-13858",
+    "mean_abs_pixel_diff": 7.120768229166667e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001983642578125,
+    "ssim": 0.9999997451154774,
+    "psnr": 89.60553525325017
+  },
+  {
+    "scan": "Bedroom-1541",
+    "mean_abs_pixel_diff": 3.0517578125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 1.0,
+    "psnr": 93.28530295827628
+  },
+  {
+    "scan": "Bedroom-15797",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-15856",
+    "mean_abs_pixel_diff": 0.628509521484375,
+    "max_abs_pixel_diff": 194,
+    "changed_pixel_ratio": 0.007049560546875,
+    "ssim": 0.9882004849936357,
+    "psnr": 29.59291796303966
+  },
+  {
+    "scan": "Bedroom-17102",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-18",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-18055",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-18759",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-1989",
+    "mean_abs_pixel_diff": 0.00019327799479166666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000457763671875,
+    "ssim": 0.9999991955405915,
+    "psnr": 85.26897938695107
+  },
+  {
+    "scan": "Bedroom-20397",
+    "mean_abs_pixel_diff": 0.00015767415364583334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000457763671875,
+    "ssim": 0.9999990188684962,
+    "psnr": 86.15319865737499
+  },
+  {
+    "scan": "Bedroom-21085",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-2160",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-22495",
+    "mean_abs_pixel_diff": 1.52587890625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.99999996257379,
+    "psnr": 96.29560291491609
+  },
+  {
+    "scan": "Bedroom-22570",
+    "mean_abs_pixel_diff": 0.0004221598307291667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0009307861328125,
+    "ssim": 0.9999979498813019,
+    "psnr": 81.8760346381533
+  },
+  {
+    "scan": "Bedroom-26487",
+    "mean_abs_pixel_diff": 0.3217569986979167,
+    "max_abs_pixel_diff": 236,
+    "changed_pixel_ratio": 0.0034027099609375,
+    "ssim": 0.9947307016229513,
+    "psnr": 31.151376655406395
+  },
+  {
+    "scan": "Bedroom-2719",
+    "mean_abs_pixel_diff": 1.188507080078125,
+    "max_abs_pixel_diff": 232,
+    "changed_pixel_ratio": 0.0173492431640625,
+    "ssim": 0.980385264865374,
+    "psnr": 26.614568859806184
+  },
+  {
+    "scan": "Bedroom-32051",
+    "mean_abs_pixel_diff": 0.00017293294270833334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003814697265625,
+    "ssim": 0.9999987178988292,
+    "psnr": 85.7520264135065
+  },
+  {
+    "scan": "Bedroom-35352",
+    "mean_abs_pixel_diff": 0.00011189778645833333,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003204345703125,
+    "ssim": 0.999999583146292,
+    "psnr": 87.64258855975987
+  },
+  {
+    "scan": "Bedroom-38427",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-4098",
+    "mean_abs_pixel_diff": 8.646647135416667e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001983642578125,
+    "ssim": 0.9999992641254931,
+    "psnr": 88.76232637014631
+  },
+  {
+    "scan": "Bedroom-41491",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-430",
+    "mean_abs_pixel_diff": 0.00012715657552083334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000274658203125,
+    "ssim": 0.999999761832489,
+    "psnr": 87.08741554106254
+  },
+  {
+    "scan": "Bedroom-47437",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-47481",
+    "mean_abs_pixel_diff": 0.000213623046875,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0005035400390625,
+    "ssim": 0.9999981162829769,
+    "psnr": 84.8343225581337
+  },
+  {
+    "scan": "Bedroom-5215",
+    "mean_abs_pixel_diff": 0.0001678466796875,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000457763671875,
+    "ssim": 0.999999446592687,
+    "psnr": 85.88167606333384
+  },
+  {
+    "scan": "Bedroom-5265",
+    "mean_abs_pixel_diff": 4.0690104166666664e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 6.103515625e-05,
+    "ssim": 0.9999994723154739,
+    "psnr": 92.03591546276344
+  },
+  {
+    "scan": "Bedroom-53437",
+    "mean_abs_pixel_diff": 2.8061065673828125,
+    "max_abs_pixel_diff": 238,
+    "changed_pixel_ratio": 0.024169921875,
+    "ssim": 0.9704180195311976,
+    "psnr": 21.686621181303916
+  },
+  {
+    "scan": "Bedroom-54233",
+    "mean_abs_pixel_diff": 1.0172526041666666e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 3.0517578125e-05,
+    "ssim": 1.0,
+    "psnr": 98.05651537604307
+  },
+  {
+    "scan": "Bedroom-54381",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-68718",
+    "mean_abs_pixel_diff": 1.52587890625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 3.0517578125e-05,
+    "ssim": 0.9999998376314764,
+    "psnr": 96.29560291491609
+  },
+  {
+    "scan": "Bedroom-691",
+    "mean_abs_pixel_diff": 0.00011189778645833333,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00018310546875,
+    "ssim": 0.9999991386885759,
+    "psnr": 87.64258855975987
+  },
+  {
+    "scan": "Bedroom-6993",
+    "mean_abs_pixel_diff": 0.00020345052083333334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003662109375,
+    "ssim": 0.9999991441967123,
+    "psnr": 85.04621565237697
+  },
+  {
+    "scan": "Bedroom-74",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 0.9999997924859321,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "Bedroom-74674",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-8136",
+    "mean_abs_pixel_diff": 5.5948893229166664e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000152587890625,
+    "ssim": 0.9999994093958511,
+    "psnr": 90.65288851639968
+  },
+  {
+    "scan": "Bedroom-837",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Bedroom-8490",
+    "mean_abs_pixel_diff": 0.00021870930989583334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00042724609375,
+    "ssim": 0.9999982894342093,
+    "psnr": 84.73213100263675
+  },
+  {
+    "scan": "Bedroom-87322",
+    "mean_abs_pixel_diff": 1.52587890625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 1.0,
+    "psnr": 96.29560291491609
+  },
+  {
+    "scan": "MasterBedroom-10364",
+    "mean_abs_pixel_diff": 7.120768229166667e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001678466796875,
+    "ssim": 0.9999996232508286,
+    "psnr": 89.60553525325017
+  },
+  {
+    "scan": "MasterBedroom-104323",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-1069",
+    "mean_abs_pixel_diff": 8.138020833333333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001983642578125,
+    "ssim": 0.9999994504669512,
+    "psnr": 89.02561550612363
+  },
+  {
+    "scan": "MasterBedroom-109561",
+    "mean_abs_pixel_diff": 4.57763671875e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001220703125,
+    "ssim": 0.9999997588799692,
+    "psnr": 91.52439036771946
+  },
+  {
+    "scan": "MasterBedroom-1096",
+    "mean_abs_pixel_diff": 0.00013224283854166666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000274658203125,
+    "ssim": 0.9999993536956343,
+    "psnr": 86.91708182310627
+  },
+  {
+    "scan": "MasterBedroom-113",
+    "mean_abs_pixel_diff": 9.1552734375e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002593994140625,
+    "ssim": 0.9999987921339699,
+    "psnr": 88.51409041107965
+  },
+  {
+    "scan": "MasterBedroom-116808",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-118",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-118594",
+    "mean_abs_pixel_diff": 5.5948893229166664e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001373291015625,
+    "ssim": 0.9999995625353871,
+    "psnr": 90.65288851639968
+  },
+  {
+    "scan": "MasterBedroom-12183",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-12352",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-12479",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-13100",
+    "mean_abs_pixel_diff": 0.00018310546875,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003814697265625,
+    "ssim": 0.9999979214250598,
+    "psnr": 85.50379045443984
+  },
+  {
+    "scan": "MasterBedroom-132469",
+    "mean_abs_pixel_diff": 5.086263020833333e-06,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 1.52587890625e-05,
+    "ssim": 1.0,
+    "psnr": 101.06681533268288
+  },
+  {
+    "scan": "MasterBedroom-1362",
+    "mean_abs_pixel_diff": 2.46624755859375,
+    "max_abs_pixel_diff": 236,
+    "changed_pixel_ratio": 0.01910400390625,
+    "ssim": 0.9754462115279101,
+    "psnr": 22.40995047979243
+  },
+  {
+    "scan": "MasterBedroom-13658",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-14075",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-1446",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-1615",
+    "mean_abs_pixel_diff": 5.5948893229166664e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001373291015625,
+    "ssim": 0.999999931121472,
+    "psnr": 90.65288851639968
+  },
+  {
+    "scan": "MasterBedroom-16450",
+    "mean_abs_pixel_diff": 0.0001068115234375,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002288818359375,
+    "ssim": 0.9999992962636765,
+    "psnr": 87.84462251477352
+  },
+  {
+    "scan": "MasterBedroom-17206",
+    "mean_abs_pixel_diff": 0.0001068115234375,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000274658203125,
+    "ssim": 0.9999994100611315,
+    "psnr": 87.84462251477352
+  },
+  {
+    "scan": "MasterBedroom-18415",
+    "mean_abs_pixel_diff": 4.0690104166666664e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001068115234375,
+    "ssim": 0.9999995305922335,
+    "psnr": 92.03591546276344
+  },
+  {
+    "scan": "MasterBedroom-18517",
+    "mean_abs_pixel_diff": 0.0001373291015625,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002899169921875,
+    "ssim": 0.9999986659355742,
+    "psnr": 86.75317782052284
+  },
+  {
+    "scan": "MasterBedroom-19531",
+    "mean_abs_pixel_diff": 4.084747314453125,
+    "max_abs_pixel_diff": 238,
+    "changed_pixel_ratio": 0.032806396484375,
+    "ssim": 0.9598298445514967,
+    "psnr": 20.080029951796515
+  },
+  {
+    "scan": "MasterBedroom-196",
+    "mean_abs_pixel_diff": 0.13506062825520834,
+    "max_abs_pixel_diff": 221,
+    "changed_pixel_ratio": 0.0016021728515625,
+    "ssim": 0.9981271089385659,
+    "psnr": 36.68586864114293
+  },
+  {
+    "scan": "MasterBedroom-21047",
+    "mean_abs_pixel_diff": 6.612141927083333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001373291015625,
+    "ssim": 0.9999998215522029,
+    "psnr": 89.92738177974609
+  },
+  {
+    "scan": "MasterBedroom-21684",
+    "mean_abs_pixel_diff": 0.00013224283854166666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000335693359375,
+    "ssim": 0.9999989246861041,
+    "psnr": 86.91708182310627
+  },
+  {
+    "scan": "MasterBedroom-22121",
+    "mean_abs_pixel_diff": 0.00016276041666666666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00030517578125,
+    "ssim": 0.9999986070481826,
+    "psnr": 86.01531554948382
+  },
+  {
+    "scan": "MasterBedroom-22581",
+    "mean_abs_pixel_diff": 1.52587890625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.9999997051404371,
+    "psnr": 96.29560291491609
+  },
+  {
+    "scan": "MasterBedroom-24714",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999998483572736,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "MasterBedroom-27127",
+    "mean_abs_pixel_diff": 0.00021870930989583334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003662109375,
+    "ssim": 0.9999976625465269,
+    "psnr": 84.73213100263675
+  },
+  {
+    "scan": "MasterBedroom-28978",
+    "mean_abs_pixel_diff": 0.0001373291015625,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003204345703125,
+    "ssim": 0.9999988137465932,
+    "psnr": 86.75317782052284
+  },
+  {
+    "scan": "MasterBedroom-29436",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 6.103515625e-05,
+    "ssim": 0.9999996102731921,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "MasterBedroom-30192",
+    "mean_abs_pixel_diff": 0.00011189778645833333,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000274658203125,
+    "ssim": 0.999998657662929,
+    "psnr": 87.64258855975987
+  },
+  {
+    "scan": "MasterBedroom-3151",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.9999999918751272,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "MasterBedroom-32488",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001068115234375,
+    "ssim": 0.9999998762860131,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "MasterBedroom-33296",
+    "mean_abs_pixel_diff": 9.663899739583333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001983642578125,
+    "ssim": 0.9999997632376316,
+    "psnr": 88.27927934359089
+  },
+  {
+    "scan": "MasterBedroom-34041",
+    "mean_abs_pixel_diff": 0.00017801920572916666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0004119873046875,
+    "ssim": 0.9999978585994413,
+    "psnr": 85.62613490027411
+  },
+  {
+    "scan": "MasterBedroom-34469",
+    "mean_abs_pixel_diff": 0.0001678466796875,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00042724609375,
+    "ssim": 0.9999990692076756,
+    "psnr": 85.88167606333384
+  },
+  {
+    "scan": "MasterBedroom-34912",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-36389",
+    "mean_abs_pixel_diff": 6.103515625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001068115234375,
+    "ssim": 0.9999999416548379,
+    "psnr": 90.27500300163646
+  },
+  {
+    "scan": "MasterBedroom-3712",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-3845",
+    "mean_abs_pixel_diff": 7.62939453125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001983642578125,
+    "ssim": 0.9999994363427207,
+    "psnr": 89.3059028715559
+  },
+  {
+    "scan": "MasterBedroom-392",
+    "mean_abs_pixel_diff": 0.0004323323567708333,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00091552734375,
+    "ssim": 0.9999936837964085,
+    "psnr": 81.77262610751674
+  },
+  {
+    "scan": "MasterBedroom-40255",
+    "mean_abs_pixel_diff": 4.0690104166666664e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001220703125,
+    "ssim": 0.9999997120814635,
+    "psnr": 92.03591546276344
+  },
+  {
+    "scan": "MasterBedroom-40319",
+    "mean_abs_pixel_diff": 0.00018819173177083334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0004425048828125,
+    "ssim": 0.9999991043554034,
+    "psnr": 85.3847983333821
+  },
+  {
+    "scan": "MasterBedroom-4089",
+    "mean_abs_pixel_diff": 0.2840830485026042,
+    "max_abs_pixel_diff": 217,
+    "changed_pixel_ratio": 0.0028533935546875,
+    "ssim": 0.994562199128448,
+    "psnr": 32.96274723545519
+  },
+  {
+    "scan": "MasterBedroom-41843",
+    "mean_abs_pixel_diff": 1.7916005452473958,
+    "max_abs_pixel_diff": 239,
+    "changed_pixel_ratio": 0.0157318115234375,
+    "ssim": 0.9797110175878501,
+    "psnr": 24.010791902687455
+  },
+  {
+    "scan": "MasterBedroom-424",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-4284",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-45545",
+    "mean_abs_pixel_diff": 0.00011698404947916667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002899169921875,
+    "ssim": 0.9999996391373207,
+    "psnr": 87.44953719197495
+  },
+  {
+    "scan": "MasterBedroom-49865",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-514",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-58086",
+    "mean_abs_pixel_diff": 0.0001220703125,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002288818359375,
+    "ssim": 0.9999992933602675,
+    "psnr": 87.26470304499665
+  },
+  {
+    "scan": "MasterBedroom-6351",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-63654",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-6399",
+    "mean_abs_pixel_diff": 0.0003763834635416667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000823974609375,
+    "ssim": 0.9999979518495328,
+    "psnr": 82.37449837674228
+  },
+  {
+    "scan": "MasterBedroom-6631",
+    "mean_abs_pixel_diff": 0.00020345052083333334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000518798828125,
+    "ssim": 0.9999983951293575,
+    "psnr": 85.04621565237697
+  },
+  {
+    "scan": "MasterBedroom-6907",
+    "mean_abs_pixel_diff": 3.529022216796875,
+    "max_abs_pixel_diff": 227,
+    "changed_pixel_ratio": 0.0337982177734375,
+    "ssim": 0.9619623150306975,
+    "psnr": 21.657321679618704
+  },
+  {
+    "scan": "MasterBedroom-74105",
+    "mean_abs_pixel_diff": 9.1552734375e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000213623046875,
+    "ssim": 0.9999990094390446,
+    "psnr": 88.51409041107965
+  },
+  {
+    "scan": "MasterBedroom-75552",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.9999998099115905,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "MasterBedroom-7894",
+    "mean_abs_pixel_diff": 0.0001373291015625,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000274658203125,
+    "ssim": 0.9999984902369012,
+    "psnr": 86.75317782052284
+  },
+  {
+    "scan": "MasterBedroom-86835",
+    "mean_abs_pixel_diff": 0.00016276041666666666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000335693359375,
+    "ssim": 0.9999985053411492,
+    "psnr": 86.01531554948382
+  },
+  {
+    "scan": "MasterBedroom-8979",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-9222",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "MasterBedroom-9302",
+    "mean_abs_pixel_diff": 2.0345052083333332e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 6.103515625e-05,
+    "ssim": 0.999999462982253,
+    "psnr": 95.04621541940325
+  },
+  {
+    "scan": "MasterBedroom-935",
+    "mean_abs_pixel_diff": 0.00014750162760416666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003509521484375,
+    "ssim": 0.9999988301656726,
+    "psnr": 86.44283534030401
+  },
+  {
+    "scan": "MasterBedroom-9404",
+    "mean_abs_pixel_diff": 7.62939453125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001983642578125,
+    "ssim": 0.999999373202403,
+    "psnr": 89.3059028715559
+  },
+  {
+    "scan": "MasterBedroom-9583",
+    "mean_abs_pixel_diff": 0.0004526774088541667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.001068115234375,
+    "ssim": 0.9999965532575177,
+    "psnr": 81.57291548873674
+  },
+  {
+    "scan": "SecondBedroom-11167",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-11204",
+    "mean_abs_pixel_diff": 6.612141927083333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000152587890625,
+    "ssim": 0.999999867236848,
+    "psnr": 89.92738177974609
+  },
+  {
+    "scan": "SecondBedroom-11303",
+    "mean_abs_pixel_diff": 1.3874257405598958,
+    "max_abs_pixel_diff": 234,
+    "changed_pixel_ratio": 0.0166168212890625,
+    "ssim": 0.98005356936455,
+    "psnr": 24.99725604908862
+  },
+  {
+    "scan": "SecondBedroom-1145",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-13044",
+    "mean_abs_pixel_diff": 0.00012715657552083334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002593994140625,
+    "ssim": 0.999999467140317,
+    "psnr": 87.08741554106254
+  },
+  {
+    "scan": "SecondBedroom-13218",
+    "mean_abs_pixel_diff": 5.0862630208333336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 0.9999998232156235,
+    "psnr": 91.0668155656566
+  },
+  {
+    "scan": "SecondBedroom-13281",
+    "mean_abs_pixel_diff": 7.120768229166667e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00018310546875,
+    "ssim": 0.9999996670975422,
+    "psnr": 89.60553525325017
+  },
+  {
+    "scan": "SecondBedroom-13841",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-143",
+    "mean_abs_pixel_diff": 0.08058675130208333,
+    "max_abs_pixel_diff": 212,
+    "changed_pixel_ratio": 0.00091552734375,
+    "ssim": 0.9962347196017786,
+    "psnr": 38.33127985738336
+  },
+  {
+    "scan": "SecondBedroom-14328",
+    "mean_abs_pixel_diff": 3.063959757486979,
+    "max_abs_pixel_diff": 239,
+    "changed_pixel_ratio": 0.0312957763671875,
+    "ssim": 0.9699739333391042,
+    "psnr": 21.465156809665608
+  },
+  {
+    "scan": "SecondBedroom-14817",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-15551",
+    "mean_abs_pixel_diff": 0.00010172526041666667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001678466796875,
+    "ssim": 0.9999992311652453,
+    "psnr": 88.05651560901678
+  },
+  {
+    "scan": "SecondBedroom-19119",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-19232",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-19262",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-22370",
+    "mean_abs_pixel_diff": 3.0517578125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999996392283493,
+    "psnr": 93.28530295827628
+  },
+  {
+    "scan": "SecondBedroom-2311",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-24075",
+    "mean_abs_pixel_diff": 6.103515625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001220703125,
+    "ssim": 0.999999636487406,
+    "psnr": 90.27500300163646
+  },
+  {
+    "scan": "SecondBedroom-24334",
+    "mean_abs_pixel_diff": 0.0001983642578125,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0005645751953125,
+    "ssim": 0.9999992930891048,
+    "psnr": 85.15616939184773
+  },
+  {
+    "scan": "SecondBedroom-258160",
+    "mean_abs_pixel_diff": 2.624323527018229,
+    "max_abs_pixel_diff": 239,
+    "changed_pixel_ratio": 0.023345947265625,
+    "ssim": 0.9697792577245229,
+    "psnr": 22.17352329919665
+  },
+  {
+    "scan": "SecondBedroom-266050",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-2787",
+    "mean_abs_pixel_diff": 5.0862630208333336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001220703125,
+    "ssim": 0.9999998275196279,
+    "psnr": 91.0668155656566
+  },
+  {
+    "scan": "SecondBedroom-30034",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-30334",
+    "mean_abs_pixel_diff": 2.395563761393229,
+    "max_abs_pixel_diff": 235,
+    "changed_pixel_ratio": 0.0274810791015625,
+    "ssim": 0.969349409190166,
+    "psnr": 22.7554275623335
+  },
+  {
+    "scan": "SecondBedroom-32238",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-34317",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999999227361814,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "SecondBedroom-35274",
+    "mean_abs_pixel_diff": 2.0345052083333332e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.9999998006679996,
+    "psnr": 95.04621541940325
+  },
+  {
+    "scan": "SecondBedroom-35821",
+    "mean_abs_pixel_diff": 1.52587890625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 4.57763671875e-05,
+    "ssim": 0.999999952444194,
+    "psnr": 96.29560291491609
+  },
+  {
+    "scan": "SecondBedroom-36408",
+    "mean_abs_pixel_diff": 5.0862630208333336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001373291015625,
+    "ssim": 0.9999998315915198,
+    "psnr": 91.0668155656566
+  },
+  {
+    "scan": "SecondBedroom-37794",
+    "mean_abs_pixel_diff": 7.62939453125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001678466796875,
+    "ssim": 0.9999996158657091,
+    "psnr": 89.3059028715559
+  },
+  {
+    "scan": "SecondBedroom-39108",
+    "mean_abs_pixel_diff": 0.6647084554036459,
+    "max_abs_pixel_diff": 237,
+    "changed_pixel_ratio": 0.0069732666015625,
+    "ssim": 0.9895122300155769,
+    "psnr": 28.57295112754532
+  },
+  {
+    "scan": "SecondBedroom-3960",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-48379",
+    "mean_abs_pixel_diff": 9.663899739583333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002288818359375,
+    "ssim": 0.9999998011539445,
+    "psnr": 88.27927934359089
+  },
+  {
+    "scan": "SecondBedroom-48968",
+    "mean_abs_pixel_diff": 0.00023905436197916666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003814697265625,
+    "ssim": 0.9999994996372931,
+    "psnr": 84.3458367946331
+  },
+  {
+    "scan": "SecondBedroom-52584",
+    "mean_abs_pixel_diff": 3.0517578125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 0.9999997028305727,
+    "psnr": 93.28530295827628
+  },
+  {
+    "scan": "SecondBedroom-6261",
+    "mean_abs_pixel_diff": 4.57763671875e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001068115234375,
+    "ssim": 0.9999996759599054,
+    "psnr": 91.52439036771946
+  },
+  {
+    "scan": "SecondBedroom-6482",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-66007",
+    "mean_abs_pixel_diff": 9.663899739583333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001678466796875,
+    "ssim": 0.9999997995965022,
+    "psnr": 88.27927934359089
+  },
+  {
+    "scan": "SecondBedroom-6685",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-6847",
+    "mean_abs_pixel_diff": 0.0001068115234375,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00018310546875,
+    "ssim": 0.9999996486741106,
+    "psnr": 87.84462251477352
+  },
+  {
+    "scan": "SecondBedroom-69017",
+    "mean_abs_pixel_diff": 4.57763671875e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001068115234375,
+    "ssim": 0.9999997507105023,
+    "psnr": 91.52439036771946
+  },
+  {
+    "scan": "SecondBedroom-69136",
+    "mean_abs_pixel_diff": 0.00011698404947916667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002899169921875,
+    "ssim": 0.9999991315328812,
+    "psnr": 87.44953719197495
+  },
+  {
+    "scan": "SecondBedroom-69556",
+    "mean_abs_pixel_diff": 5.0862630208333336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001068115234375,
+    "ssim": 0.9999998038918101,
+    "psnr": 91.0668155656566
+  },
+  {
+    "scan": "SecondBedroom-739",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-7635",
+    "mean_abs_pixel_diff": 3.5603841145833336e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999998023843425,
+    "psnr": 92.61583520988998
+  },
+  {
+    "scan": "SecondBedroom-8497",
+    "mean_abs_pixel_diff": 1.52587890625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 1.52587890625e-05,
+    "ssim": 0.9999999475284596,
+    "psnr": 96.29560291491609
+  },
+  {
+    "scan": "SecondBedroom-860",
+    "mean_abs_pixel_diff": 0.00010172526041666667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001678466796875,
+    "ssim": 0.999999629172625,
+    "psnr": 88.05651560901678
+  },
+  {
+    "scan": "SecondBedroom-86888",
+    "mean_abs_pixel_diff": 6.103515625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001220703125,
+    "ssim": 0.9999996535413999,
+    "psnr": 90.27500300163646
+  },
+  {
+    "scan": "SecondBedroom-8823",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "SecondBedroom-9594",
+    "mean_abs_pixel_diff": 0.00011189778645833333,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000335693359375,
+    "ssim": 0.999998545583179,
+    "psnr": 87.64258855975987
+  },
+  {
+    "scan": "SecondBedroom-9825",
+    "mean_abs_pixel_diff": 0.00014750162760416666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000396728515625,
+    "ssim": 0.9999981234895976,
+    "psnr": 86.44283534030401
+  },
+  {
+    "scan": "SecondBedroom-9923",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  }
+]

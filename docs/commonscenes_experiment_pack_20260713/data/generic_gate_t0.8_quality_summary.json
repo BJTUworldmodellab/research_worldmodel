@@ -1,0 +1,172 @@
+{
+  "scenes_pt": 162,
+  "scenes_png": 162,
+  "total_boxes": 1159,
+  "changed_boxes": 1158,
+  "changed_box_ratio": 0.999137187230371,
+  "mean_center_movement": 0.0019350138657671372,
+  "median_center_movement": 8.67400158313103e-05,
+  "max_center_movement": 0.7266541123390198,
+  "mean_abs_pixel_diff": 0.029978371451421043,
+  "median_abs_pixel_diff": 3.814697265625e-05,
+  "mean_changed_pixel_ratio": 0.0004603068033854167,
+  "max_changed_pixel_ratio": 0.0181732177734375,
+  "mean_ssim": 0.9995965164809213,
+  "median_ssim": 0.9999998208921226,
+  "mean_psnr": 87.50562158431781,
+  "median_psnr": 88.76232637014631,
+  "top_image_changes": [
+    {
+      "scan": "MasterBedroom-41843",
+      "mean_abs_pixel_diff": 1.7915445963541667,
+      "max_abs_pixel_diff": 239,
+      "changed_pixel_ratio": 0.015625,
+      "ssim": 0.9797111631860439,
+      "psnr": 24.010792415942504
+    },
+    {
+      "scan": "SecondBedroom-258160",
+      "mean_abs_pixel_diff": 1.6667734781901042,
+      "max_abs_pixel_diff": 238,
+      "changed_pixel_ratio": 0.0181732177734375,
+      "ssim": 0.9749466539531351,
+      "psnr": 24.473857087412448
+    },
+    {
+      "scan": "SecondBedroom-11303",
+      "mean_abs_pixel_diff": 1.3875020345052083,
+      "max_abs_pixel_diff": 234,
+      "changed_pixel_ratio": 0.0167388916015625,
+      "ssim": 0.9800514984093507,
+      "psnr": 24.997491488288716
+    },
+    {
+      "scan": "Bedroom-20397",
+      "mean_abs_pixel_diff": 0.0005035400390625,
+      "max_abs_pixel_diff": 1,
+      "changed_pixel_ratio": 0.0011749267578125,
+      "ssim": 0.999996511585472,
+      "psnr": 81.11046351613722
+    },
+    {
+      "scan": "MasterBedroom-9583",
+      "mean_abs_pixel_diff": 0.0004475911458333333,
+      "max_abs_pixel_diff": 1,
+      "changed_pixel_ratio": 0.0010223388671875,
+      "ssim": 0.9999974800282795,
+      "psnr": 81.62198864648025
+    },
+    {
+      "scan": "Bedroom-22570",
+      "mean_abs_pixel_diff": 0.0004221598307291667,
+      "max_abs_pixel_diff": 1,
+      "changed_pixel_ratio": 0.0009307861328125,
+      "ssim": 0.9999979498813019,
+      "psnr": 81.8760346381533
+    },
+    {
+      "scan": "MasterBedroom-392",
+      "mean_abs_pixel_diff": 0.0003102620442708333,
+      "max_abs_pixel_diff": 1,
+      "changed_pixel_ratio": 0.0005950927734375,
+      "ssim": 0.9999967302508977,
+      "psnr": 83.21351697620982
+    },
+    {
+      "scan": "Bedroom-47481",
+      "mean_abs_pixel_diff": 0.0002797444661458333,
+      "max_abs_pixel_diff": 1,
+      "changed_pixel_ratio": 0.0006256103515625,
+      "ssim": 0.999997744735818,
+      "psnr": 83.66318841656101
+    },
+    {
+      "scan": "Bedroom-8490",
+      "mean_abs_pixel_diff": 0.0002797444661458333,
+      "max_abs_pixel_diff": 1,
+      "changed_pixel_ratio": 0.0005340576171875,
+      "ssim": 0.999998237406804,
+      "psnr": 83.66318841656101
+    },
+    {
+      "scan": "MasterBedroom-17206",
+      "mean_abs_pixel_diff": 0.000244140625,
+      "max_abs_pixel_diff": 1,
+      "changed_pixel_ratio": 0.0005950927734375,
+      "ssim": 0.9999981281466277,
+      "psnr": 84.25440308835684
+    }
+  ],
+  "top_box_movements": [
+    {
+      "scan": "MasterBedroom-41843",
+      "boxes": 11,
+      "changed_boxes": 11,
+      "mean_center_movement": 0.06616014987230301,
+      "max_center_movement": 0.7266541123390198
+    },
+    {
+      "scan": "SecondBedroom-258160",
+      "boxes": 8,
+      "changed_boxes": 8,
+      "mean_center_movement": 0.08828794211149216,
+      "max_center_movement": 0.7055275440216064
+    },
+    {
+      "scan": "SecondBedroom-11303",
+      "boxes": 7,
+      "changed_boxes": 7,
+      "mean_center_movement": 0.09750295430421829,
+      "max_center_movement": 0.6819891333580017
+    },
+    {
+      "scan": "MasterBedroom-22121",
+      "boxes": 9,
+      "changed_boxes": 9,
+      "mean_center_movement": 0.000244159804424271,
+      "max_center_movement": 0.00084159045945853
+    },
+    {
+      "scan": "SecondBedroom-13841",
+      "boxes": 5,
+      "changed_boxes": 5,
+      "mean_center_movement": 0.00043088645907118917,
+      "max_center_movement": 0.0008243743795901537
+    },
+    {
+      "scan": "Bedroom-47437",
+      "boxes": 5,
+      "changed_boxes": 5,
+      "mean_center_movement": 0.00031945682712830603,
+      "max_center_movement": 0.0006735272472724319
+    },
+    {
+      "scan": "Bedroom-18055",
+      "boxes": 8,
+      "changed_boxes": 8,
+      "mean_center_movement": 0.000264039816102013,
+      "max_center_movement": 0.0006099159945733845
+    },
+    {
+      "scan": "MasterBedroom-104323",
+      "boxes": 5,
+      "changed_boxes": 5,
+      "mean_center_movement": 0.00022888444073032588,
+      "max_center_movement": 0.00058765709400177
+    },
+    {
+      "scan": "MasterBedroom-9404",
+      "boxes": 8,
+      "changed_boxes": 8,
+      "mean_center_movement": 0.00019197996880393475,
+      "max_center_movement": 0.0005496774683706462
+    },
+    {
+      "scan": "SecondBedroom-3960",
+      "boxes": 6,
+      "changed_boxes": 6,
+      "mean_center_movement": 0.0002365420659771189,
+      "max_center_movement": 0.0005209053633734584
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+diff --git a/src/utils/visualize.py b/src/utils/visualize.py
+index 950d072..38b8322 100644
+--- a/src/utils/visualize.py
++++ b/src/utils/visualize.py
+@@ -89,6 +89,9 @@ def get_textured_objects(
+         obj_classes.append(furniture.label)
+         obj_sizes.append(furniture.size)
+ 
++        if os.environ.get("INSTRUCTSCENE_NO_MESH_LOAD") == "1":
++            continue
++
+         # Extract the predicted affine transformation to position the mesh
+         translation = bbox_params_t[j, -7:-4]
+         theta = bbox_params_t[j, -1]

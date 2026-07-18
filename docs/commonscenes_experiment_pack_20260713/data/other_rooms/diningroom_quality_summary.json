@@ -1,0 +1,172 @@
+{
+  "scenes_pt": 69,
+  "scenes_png": 69,
+  "total_boxes": 684,
+  "changed_boxes": 16,
+  "changed_box_ratio": 0.023391812865497075,
+  "mean_center_movement": 0.018451222354731366,
+  "median_center_movement": 0.0,
+  "max_center_movement": 1.460030436515808,
+  "mean_abs_pixel_diff": 0.06521414789024758,
+  "median_abs_pixel_diff": 2.5431315104166668e-05,
+  "mean_changed_pixel_ratio": 0.0009230461673460145,
+  "max_changed_pixel_ratio": 0.009796142578125,
+  "mean_ssim": 0.9987411551947719,
+  "median_ssim": 0.9999997888139511,
+  "mean_psnr": 77.3193954271292,
+  "median_psnr": 89.02561550612363,
+  "top_image_changes": [
+    {
+      "scan": "DiningRoom-9630",
+      "mean_abs_pixel_diff": 0.8586934407552084,
+      "max_abs_pixel_diff": 201,
+      "changed_pixel_ratio": 0.009796142578125,
+      "ssim": 0.9883960558654876,
+      "psnr": 28.3563492643178
+    },
+    {
+      "scan": "DiningRoom-116178",
+      "mean_abs_pixel_diff": 0.8494211832682291,
+      "max_abs_pixel_diff": 200,
+      "changed_pixel_ratio": 0.008544921875,
+      "ssim": 0.9819962229764541,
+      "psnr": 28.035862632836373
+    },
+    {
+      "scan": "DiningRoom-451",
+      "mean_abs_pixel_diff": 0.7688547770182291,
+      "max_abs_pixel_diff": 238,
+      "changed_pixel_ratio": 0.00927734375,
+      "ssim": 0.9834328012898975,
+      "psnr": 28.49226666606393
+    },
+    {
+      "scan": "DiningRoom-31322",
+      "mean_abs_pixel_diff": 0.51947021484375,
+      "max_abs_pixel_diff": 215,
+      "changed_pixel_ratio": 0.006317138671875,
+      "ssim": 0.9892582507663553,
+      "psnr": 30.30284646932179
+    },
+    {
+      "scan": "DiningRoom-197500",
+      "mean_abs_pixel_diff": 0.5161946614583334,
+      "max_abs_pixel_diff": 237,
+      "changed_pixel_ratio": 0.00909423828125,
+      "ssim": 0.9894057693087743,
+      "psnr": 30.20105263006895
+    },
+    {
+      "scan": "DiningRoom-12376",
+      "mean_abs_pixel_diff": 0.3023325602213542,
+      "max_abs_pixel_diff": 233,
+      "changed_pixel_ratio": 0.003082275390625,
+      "ssim": 0.9943581082987716,
+      "psnr": 31.84897768457877
+    },
+    {
+      "scan": "DiningRoom-88173",
+      "mean_abs_pixel_diff": 0.19814046223958334,
+      "max_abs_pixel_diff": 194,
+      "changed_pixel_ratio": 0.0026397705078125,
+      "ssim": 0.9961213854840207,
+      "psnr": 34.44286608209004
+    },
+    {
+      "scan": "DiningRoom-24191",
+      "mean_abs_pixel_diff": 0.18962605794270834,
+      "max_abs_pixel_diff": 200,
+      "changed_pixel_ratio": 0.0025634765625,
+      "ssim": 0.9963471788712198,
+      "psnr": 34.668933345822104
+    },
+    {
+      "scan": "DiningRoom-34036",
+      "mean_abs_pixel_diff": 0.16272989908854166,
+      "max_abs_pixel_diff": 195,
+      "changed_pixel_ratio": 0.0022430419921875,
+      "ssim": 0.9973925004491654,
+      "psnr": 35.58022912102651
+    },
+    {
+      "scan": "DiningRoom-6919",
+      "mean_abs_pixel_diff": 0.13192240397135416,
+      "max_abs_pixel_diff": 182,
+      "changed_pixel_ratio": 0.00384521484375,
+      "ssim": 0.9964602618006879,
+      "psnr": 38.26505092693783
+    }
+  ],
+  "top_box_movements": [
+    {
+      "scan": "DiningRoom-9630",
+      "boxes": 10,
+      "changed_boxes": 2,
+      "mean_center_movement": 0.24340851604938507,
+      "max_center_movement": 1.460030436515808
+    },
+    {
+      "scan": "DiningRoom-451",
+      "boxes": 11,
+      "changed_boxes": 3,
+      "mean_center_movement": 0.22005857527256012,
+      "max_center_movement": 1.3980270624160767
+    },
+    {
+      "scan": "DiningRoom-116178",
+      "boxes": 11,
+      "changed_boxes": 3,
+      "mean_center_movement": 0.24028606712818146,
+      "max_center_movement": 1.1889255046844482
+    },
+    {
+      "scan": "DiningRoom-31322",
+      "boxes": 11,
+      "changed_boxes": 2,
+      "mean_center_movement": 0.15419797599315643,
+      "max_center_movement": 0.9453065395355225
+    },
+    {
+      "scan": "DiningRoom-88173",
+      "boxes": 13,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.06324558705091476,
+      "max_center_movement": 0.8221926689147949
+    },
+    {
+      "scan": "DiningRoom-12376",
+      "boxes": 14,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.04578397795557976,
+      "max_center_movement": 0.6409757137298584
+    },
+    {
+      "scan": "DiningRoom-6919",
+      "boxes": 13,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.045817118138074875,
+      "max_center_movement": 0.5956225395202637
+    },
+    {
+      "scan": "DiningRoom-197500",
+      "boxes": 13,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.03959017992019653,
+      "max_center_movement": 0.5146723389625549
+    },
+    {
+      "scan": "DiningRoom-24191",
+      "boxes": 12,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.03764061629772186,
+      "max_center_movement": 0.45168739557266235
+    },
+    {
+      "scan": "DiningRoom-34036",
+      "boxes": 15,
+      "changed_boxes": 1,
+      "mean_center_movement": 0.026762111112475395,
+      "max_center_movement": 0.401431679725647
+    }
+  ]
+}

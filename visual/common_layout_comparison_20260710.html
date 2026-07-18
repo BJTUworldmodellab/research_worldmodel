@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>共同布局评估对比</title>
+  <style>
+    body{margin:0;background:#f6f7f9;color:#1f2937;font-family:Arial,"Microsoft YaHei",sans-serif;line-height:1.65}
+    main{max-width:1080px;margin:0 auto;padding:34px 22px 60px}
+    h1{font-size:30px;margin:0 0 8px}
+    h2{font-size:21px;margin:30px 0 10px}
+    .card{background:#fff;border:1px solid #dde3ea;border-radius:8px;padding:16px 18px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dde3ea;margin:10px 0 18px}
+    th,td{padding:10px 12px;border-bottom:1px solid #e8edf2;text-align:left;vertical-align:top}
+    th{background:#eef3f7}
+    code{background:#eef2f6;border-radius:5px;padding:1px 5px}
+    .ok{color:#18794e;font-weight:700}.warn{color:#a15c00;font-weight:700}
+  </style>
+</head>
+<body>
+<main>
+  <h1>共同布局评估对比</h1>
+  <p>更新时间：2026-07-10</p>
+
+  <section class="card">
+    <p><span class="ok">已完成：</span>原算法和 Qwen/ReSpace 已经进入同一个几何/布局 evaluator，输出统一 CSV/JSON。</p>
+    <p><span class="warn">边界：</span>这不是目标语义关系准确率，而是共同布局质量指标：非空率、物体数、越界率、footprint overlap 和空间 pair 分布。</p>
+  </section>
+
+  <h2>核心结果</h2>
+  <table>
+    <tr><th>Method</th><th>Scenes</th><th>Non-empty</th><th>Avg objects</th><th>Overlap pairs / scene</th><th>Overlap ratio</th><th>OOB</th></tr>
+    <tr><td>Original baseline layout</td><td>162</td><td>1.000</td><td>5.346</td><td>0.907</td><td>0.0461</td><td>0.000</td></tr>
+    <tr><td>Original repaired floor-prior</td><td>162</td><td>1.000</td><td>5.346</td><td>0.926</td><td>0.0439</td><td>0.000</td></tr>
+    <tr><td>Qwen/ReSpace full-scene</td><td>30</td><td>1.000</td><td>4.700</td><td>2.000</td><td>0.0505</td><td>0.000</td></tr>
+    <tr><td>Qwen/ReSpace add-only</td><td>30</td><td>1.000</td><td>3.567</td><td>0.967</td><td>0.0350</td><td>0.000</td></tr>
+  </table>
+
+  <h2>怎么理解</h2>
+  <p>原算法 floor-prior 相比自己的 baseline 略微降低了 footprint overlap ratio，说明修复没有明显牺牲布局几何质量。Qwen/ReSpace full-scene 的 overlap pairs per scene 更高；add-only 多种子结果的 overlap ratio 更低，但平均物体数也更少，所以更像“稀疏 add-only 布局检查”，不是语义关系胜出。</p>
+  <p>这张表适合作为“布局质量安全检查”。真正论文主结论仍应来自同一套 target-relation evaluator。</p>
+
+  <h2>产物</h2>
+  <table>
+    <tr><th>项目</th><th>路径</th></tr>
+    <tr><td>Evaluator</td><td><code>scripts/compare_common_layout_metrics.py</code></td></tr>
+    <tr><td>CSV</td><td><code>results/tables/common_layout_metrics_20260710.csv</code></td></tr>
+    <tr><td>JSON</td><td><code>results/tables/common_layout_metrics_20260710.json</code></td></tr>
+    <tr><td>Report</td><td><code>docs/common_layout_comparison_20260710.md</code></td></tr>
+  </table>
+
+  <h2>下一步</h2>
+  <p>需要做 relation-target adapter：保存或恢复 ReSpace 每个场景的 prompt/command，解析其中的目标空间关系，再和原算法用同一套 relation accuracy 评分。这样才是最终“谁更满足指令关系”的强对比。</p>
+</main>
+</body>
+</html>

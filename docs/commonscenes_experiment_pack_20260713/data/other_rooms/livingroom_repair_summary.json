@@ -1,0 +1,140 @@
+{
+  "out_dir": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/fullshape_pt_epoch195_generic_gate_t1.5_livingroom",
+  "files": 52,
+  "accepted_scenes": 18,
+  "edits": 26,
+  "max_move_threshold": 1.5,
+  "changed_boxes": 22,
+  "total_boxes": 602,
+  "changed_box_ratio": 0.036544850498338874,
+  "mean_center_movement": 0.03740412890265826,
+  "max_center_movement": 1.4928295952342314,
+  "baseline_generic": {
+    "left": {
+      "ok": 965,
+      "total": 965,
+      "acc": 1.0
+    },
+    "right": {
+      "ok": 900,
+      "total": 901,
+      "acc": 0.9988901220865705
+    },
+    "front": {
+      "ok": 826,
+      "total": 827,
+      "acc": 0.9987908101571947
+    },
+    "behind": {
+      "ok": 836,
+      "total": 837,
+      "acc": 0.998805256869773
+    },
+    "close by": {
+      "ok": 188,
+      "total": 236,
+      "acc": 0.7966101694915254
+    },
+    "bigger than": {
+      "ok": 1060,
+      "total": 1095,
+      "acc": 0.9680365296803652
+    },
+    "smaller than": {
+      "ok": 994,
+      "total": 1020,
+      "acc": 0.9745098039215686
+    },
+    "taller than": {
+      "ok": 644,
+      "total": 688,
+      "acc": 0.936046511627907
+    },
+    "shorter than": {
+      "ok": 670,
+      "total": 714,
+      "acc": 0.938375350140056
+    },
+    "standing on": {
+      "ok": 417,
+      "total": 419,
+      "acc": 0.9952267303102625
+    },
+    "symmetrical to": {
+      "ok": 11,
+      "total": 34,
+      "acc": 0.3235294117647059
+    },
+    "total": {
+      "ok": 7511,
+      "total": 7736,
+      "acc": 0.9709152016546019
+    }
+  },
+  "repaired_generic": {
+    "left": {
+      "ok": 965,
+      "total": 965,
+      "acc": 1.0
+    },
+    "right": {
+      "ok": 901,
+      "total": 901,
+      "acc": 1.0
+    },
+    "front": {
+      "ok": 826,
+      "total": 827,
+      "acc": 0.9987908101571947
+    },
+    "behind": {
+      "ok": 836,
+      "total": 837,
+      "acc": 0.998805256869773
+    },
+    "close by": {
+      "ok": 204,
+      "total": 236,
+      "acc": 0.864406779661017
+    },
+    "bigger than": {
+      "ok": 1060,
+      "total": 1095,
+      "acc": 0.9680365296803652
+    },
+    "smaller than": {
+      "ok": 994,
+      "total": 1020,
+      "acc": 0.9745098039215686
+    },
+    "taller than": {
+      "ok": 644,
+      "total": 688,
+      "acc": 0.936046511627907
+    },
+    "shorter than": {
+      "ok": 670,
+      "total": 714,
+      "acc": 0.938375350140056
+    },
+    "standing on": {
+      "ok": 417,
+      "total": 419,
+      "acc": 0.9952267303102625
+    },
+    "symmetrical to": {
+      "ok": 11,
+      "total": 34,
+      "acc": 0.3235294117647059
+    },
+    "total": {
+      "ok": 7528,
+      "total": 7736,
+      "acc": 0.9731127197518097
+    }
+  },
+  "baseline_collision_penalty": 54.79814715083264,
+  "repaired_collision_penalty": 51.840586757109705,
+  "baseline_collision_pairs": 377,
+  "repaired_collision_pairs": 360
+}

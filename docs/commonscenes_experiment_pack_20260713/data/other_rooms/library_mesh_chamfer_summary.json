@@ -1,0 +1,91 @@
+{
+  "scenes": 56,
+  "valid": 56,
+  "mean_chamfer": 0.1309298936579976,
+  "median_chamfer": 0.0974702479524165,
+  "max_chamfer": 0.5181817305792745,
+  "mean_baseline_to_generic": 0.06891303964048126,
+  "mean_generic_to_baseline": 0.06201685401751634,
+  "top_chamfer": [
+    {
+      "scan": "Library-35695",
+      "chamfer": 0.5181817305792745,
+      "baseline_to_generic": 0.23005362499807488,
+      "generic_to_baseline": 0.2881281055811996,
+      "baseline_vertices": 55990,
+      "generic_vertices": 55990
+    },
+    {
+      "scan": "Library-2480",
+      "chamfer": 0.35419267840466107,
+      "baseline_to_generic": 0.2329492490447822,
+      "generic_to_baseline": 0.12124342935987883,
+      "baseline_vertices": 21670,
+      "generic_vertices": 21670
+    },
+    {
+      "scan": "Library-56351",
+      "chamfer": 0.34760346597512215,
+      "baseline_to_generic": 0.20078415357727744,
+      "generic_to_baseline": 0.14681931239784468,
+      "baseline_vertices": 27010,
+      "generic_vertices": 27010
+    },
+    {
+      "scan": "Library-16688",
+      "chamfer": 0.32291898933488095,
+      "baseline_to_generic": 0.20844751407164613,
+      "generic_to_baseline": 0.11447147526323481,
+      "baseline_vertices": 45230,
+      "generic_vertices": 45230
+    },
+    {
+      "scan": "Library-1511",
+      "chamfer": 0.3151163844325455,
+      "baseline_to_generic": 0.180641921994024,
+      "generic_to_baseline": 0.13447446243852154,
+      "baseline_vertices": 23662,
+      "generic_vertices": 23662
+    },
+    {
+      "scan": "Library-32231",
+      "chamfer": 0.308926813489102,
+      "baseline_to_generic": 0.14925725607203136,
+      "generic_to_baseline": 0.15966955741707062,
+      "baseline_vertices": 39218,
+      "generic_vertices": 39218
+    },
+    {
+      "scan": "Library-16869",
+      "chamfer": 0.2334997773127248,
+      "baseline_to_generic": 0.15749608310508711,
+      "generic_to_baseline": 0.07600369420763771,
+      "baseline_vertices": 54252,
+      "generic_vertices": 54252
+    },
+    {
+      "scan": "Library-2159",
+      "chamfer": 0.19185696465541235,
+      "baseline_to_generic": 0.10546641407743955,
+      "generic_to_baseline": 0.08639055057797279,
+      "baseline_vertices": 45508,
+      "generic_vertices": 45508
+    },
+    {
+      "scan": "Library-145994",
+      "chamfer": 0.18326505500648615,
+      "baseline_to_generic": 0.08310106952967534,
+      "generic_to_baseline": 0.1001639854768108,
+      "baseline_vertices": 88954,
+      "generic_vertices": 88954
+    },
+    {
+      "scan": "Library-23898",
+      "chamfer": 0.17449556623248624,
+      "baseline_to_generic": 0.11782724115996335,
+      "generic_to_baseline": 0.056668325072522896,
+      "baseline_vertices": 29482,
+      "generic_vertices": 29482
+    }
+  ]
+}

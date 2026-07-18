@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>语义关系满足率评估 - 2026-07-10</title>
+  <style>
+    body { font-family: Arial, "Microsoft YaHei", sans-serif; margin: 32px; color: #1f2937; line-height: 1.65; }
+    main { max-width: 1080px; margin: 0 auto; }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    h2 { font-size: 20px; margin-top: 28px; border-bottom: 1px solid #d1d5db; padding-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th, td { border: 1px solid #d1d5db; padding: 9px 10px; text-align: left; }
+    th { background: #f3f4f6; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    code, pre { background: #f3f4f6; border-radius: 6px; }
+    code { padding: 2px 4px; }
+    pre { padding: 12px; overflow-x: auto; }
+    .callout { border-left: 4px solid #15803d; background: #f0fdf4; padding: 12px 16px; margin: 18px 0; }
+    .risk { border-left-color: #d97706; background: #fffbeb; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>语义关系满足率评估</h1>
+  <p>日期：2026-07-10。目标：检查原算法和 Qwen/ReSpace baseline 是否真正满足文本中的 left/right/front/behind/above/below 关系。</p>
+
+  <div class="callout">
+    <strong>核心结论：</strong>上一版 <code>0.209</code> 不能直接解释成模型差。ReSpace full-scene 的类别覆盖率只有 <code>0.341</code>，但在目标类别都出现时，条件关系准确率是 <code>0.614</code>。
+  </div>
+
+  <h2>整体结果</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>方法</th>
+        <th>场景数</th>
+        <th>目标关系数</th>
+        <th>正确数</th>
+        <th>总体准确率</th>
+        <th>类别覆盖率</th>
+        <th>条件关系准确率</th>
+        <th>missing class</th>
+        <th>方向/距离错误</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>原始 baseline layout</td><td class="num">162</td><td class="num">245</td><td class="num">181</td><td class="num">0.739</td><td class="num">1.000</td><td class="num">0.739</td><td class="num">-</td><td class="num">-</td></tr>
+      <tr><td>原算法 repaired floor-prior</td><td class="num">162</td><td class="num">245</td><td class="num">206</td><td class="num">0.841</td><td class="num">1.000</td><td class="num">0.841</td><td class="num">-</td><td class="num">-</td></tr>
+      <tr><td>原始 baseline matched n54x3</td><td class="num">162</td><td class="num">258</td><td class="num">198</td><td class="num">0.767</td><td class="num">1.000</td><td class="num">0.767</td><td class="num">-</td><td class="num">-</td></tr>
+      <tr><td>原算法 repaired matched n54x3</td><td class="num">162</td><td class="num">258</td><td class="num">219</td><td class="num">0.849</td><td class="num">1.000</td><td class="num">0.849</td><td class="num">-</td><td class="num">-</td></tr>
+      <tr><td>Qwen/ReSpace full-scene n54</td><td class="num">162</td><td class="num">258</td><td class="num">54</td><td class="num">0.209</td><td class="num">0.341</td><td class="num">0.614</td><td class="num">170</td><td class="num">34</td></tr>
+      <tr><td>Qwen/ReSpace add-only n54</td><td class="num">162</td><td class="num">258</td><td class="num">27</td><td class="num">0.105</td><td class="num">0.143</td><td class="num">0.730</td><td class="num">221</td><td class="num">10</td></tr>
+    </tbody>
+  </table>
+
+  <h2>按谓词结果</h2>
+  <table>
+    <thead>
+      <tr><th>方法</th><th>above</th><th>left</th><th>front</th><th>below</th><th>right</th><th>behind</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>原算法 repaired matched n54x3</td><td class="num">0.833</td><td class="num">0.765</td><td class="num">0.929</td><td class="num">1.000</td><td class="num">0.773</td><td class="num">0.909</td></tr>
+      <tr><td>Qwen/ReSpace full-scene n54</td><td class="num">0.056</td><td class="num">0.235</td><td class="num">0.262</td><td class="num">0.200</td><td class="num">0.182</td><td class="num">0.227</td></tr>
+      <tr><td>Qwen/ReSpace add-only n54</td><td class="num">0.167</td><td class="num">0.235</td><td class="num">0.024</td><td class="num">0.067</td><td class="num">0.061</td><td class="num">0.091</td></tr>
+    </tbody>
+  </table>
+
+  <h2>解释</h2>
+  <p>Qwen/ReSpace full-scene 并不是完全空跑，它能生成床、床头柜、衣柜和灯。问题是这套评估把 ReSpace 输出强行对齐到原算法文本目标，很多时候目标物体类别并没有同时出现。</p>
+  <p>因此，总体准确率更像“类别覆盖 + 关系摆放”的端到端指标；条件关系准确率才更接近“物体都在时，关系是否摆对”。这个修正后，ReSpace 和原算法仍有差距，但差距没有 <code>0.209</code> 看起来那么夸张。</p>
+
+  <h2>产物</h2>
+  <pre><code>scripts/evaluate_semantic_relation_respace.py
+results/tables/semantic_relation_accuracy_n54_20260710.csv
+results/tables/semantic_relation_by_predicate_n54_20260710.csv
+results/tables/semantic_relation_details_n54_20260710.csv
+results/tables/semantic_relation_accuracy_n54_20260710.json</code></pre>
+
+  <div class="callout risk">
+    <strong>注意：</strong>ReSpace JSON 没保存目标三元组，所以这里使用透明的启发式 adapter。这个限制需要在论文或报告中说明，但由于差距很大，当前结论仍然有参考价值。
+  </div>
+</main>
+</body>
+</html>

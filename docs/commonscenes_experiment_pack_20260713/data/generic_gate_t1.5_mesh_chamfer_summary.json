@@ -1,0 +1,91 @@
+{
+  "scenes": 162,
+  "valid": 162,
+  "mean_chamfer": 0.12878604892745338,
+  "median_chamfer": 0.11338592032008375,
+  "max_chamfer": 0.6706068277350339,
+  "mean_baseline_to_generic": 0.0642437245103026,
+  "mean_generic_to_baseline": 0.06454232441715081,
+  "top_chamfer": [
+    {
+      "scan": "MasterBedroom-19531",
+      "chamfer": 0.6706068277350339,
+      "baseline_to_generic": 0.3280718960940557,
+      "generic_to_baseline": 0.34253493164097826,
+      "baseline_vertices": 47492,
+      "generic_vertices": 47492
+    },
+    {
+      "scan": "Bedroom-53437",
+      "chamfer": 0.529394552272582,
+      "baseline_to_generic": 0.25293125297448016,
+      "generic_to_baseline": 0.2764632992981018,
+      "baseline_vertices": 71868,
+      "generic_vertices": 71868
+    },
+    {
+      "scan": "SecondBedroom-14328",
+      "chamfer": 0.4649994692617766,
+      "baseline_to_generic": 0.2201065389910489,
+      "generic_to_baseline": 0.24489293027072767,
+      "baseline_vertices": 59970,
+      "generic_vertices": 59970
+    },
+    {
+      "scan": "MasterBedroom-6907",
+      "chamfer": 0.4402575055452568,
+      "baseline_to_generic": 0.23137845385600878,
+      "generic_to_baseline": 0.20887905168924803,
+      "baseline_vertices": 76730,
+      "generic_vertices": 76730
+    },
+    {
+      "scan": "SecondBedroom-258160",
+      "chamfer": 0.37518181209539525,
+      "baseline_to_generic": 0.17042927808191424,
+      "generic_to_baseline": 0.204752534013481,
+      "baseline_vertices": 81178,
+      "generic_vertices": 81178
+    },
+    {
+      "scan": "MasterBedroom-1362",
+      "chamfer": 0.3242524950691601,
+      "baseline_to_generic": 0.1699097091056373,
+      "generic_to_baseline": 0.15434278596352277,
+      "baseline_vertices": 89860,
+      "generic_vertices": 89860
+    },
+    {
+      "scan": "SecondBedroom-30334",
+      "chamfer": 0.2885239614081134,
+      "baseline_to_generic": 0.08659630670995996,
+      "generic_to_baseline": 0.20192765469815344,
+      "baseline_vertices": 93382,
+      "generic_vertices": 93382
+    },
+    {
+      "scan": "MasterBedroom-41843",
+      "chamfer": 0.2717117896919602,
+      "baseline_to_generic": 0.12447657685414419,
+      "generic_to_baseline": 0.14723521283781602,
+      "baseline_vertices": 111124,
+      "generic_vertices": 111124
+    },
+    {
+      "scan": "Bedroom-2719",
+      "chamfer": 0.24117162861076202,
+      "baseline_to_generic": 0.10197290639181501,
+      "generic_to_baseline": 0.13919872221894702,
+      "baseline_vertices": 36918,
+      "generic_vertices": 36918
+    },
+    {
+      "scan": "SecondBedroom-11303",
+      "chamfer": 0.22301740237765116,
+      "baseline_to_generic": 0.1383155181056091,
+      "generic_to_baseline": 0.08470188427204205,
+      "baseline_vertices": 43328,
+      "generic_vertices": 43328
+    }
+  ]
+}

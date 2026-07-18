@@ -1,0 +1,410 @@
+{
+  "fullshape_pt_epoch195": {
+    "pt_dir": "/root/autodl-tmp/RelationAwareInstructScene/commonscenes_models/balancing/all/results/fullshape_pt_epoch195",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 518,
+        "total": 533,
+        "acc": 0.9718574108818011
+      },
+      "right": {
+        "ok": 537,
+        "total": 541,
+        "acc": 0.9926062846580407
+      },
+      "front": {
+        "ok": 552,
+        "total": 557,
+        "acc": 0.9910233393177738
+      },
+      "behind": {
+        "ok": 536,
+        "total": 544,
+        "acc": 0.9852941176470589
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 216,
+        "total": 260,
+        "acc": 0.8307692307692308
+      },
+      "symmetrical to": {
+        "ok": 21,
+        "total": 40,
+        "acc": 0.525
+      },
+      "total": {
+        "ok": 5728,
+        "total": 5886,
+        "acc": 0.9731566428814136
+      },
+      "mean_of_means": 0.9275620752210589
+    }
+  },
+  "commonscenes_ours_repair_pt_epoch195_bedroom": {
+    "pt_dir": "/root/RelationAwareInstructScene/results/commonscenes_ours_repair_pt_epoch195_bedroom",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 514,
+        "total": 533,
+        "acc": 0.9643527204502814
+      },
+      "right": {
+        "ok": 532,
+        "total": 541,
+        "acc": 0.9833641404805915
+      },
+      "front": {
+        "ok": 544,
+        "total": 557,
+        "acc": 0.9766606822262118
+      },
+      "behind": {
+        "ok": 530,
+        "total": 544,
+        "acc": 0.9742647058823529
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 197,
+        "total": 260,
+        "acc": 0.7576923076923077
+      },
+      "symmetrical to": {
+        "ok": 20,
+        "total": 40,
+        "acc": 0.5
+      },
+      "total": {
+        "ok": 5685,
+        "total": 5886,
+        "acc": 0.9658511722731906
+      },
+      "mean_of_means": 0.9148151818990443
+    }
+  },
+  "commonscenes_ours_gated_t0.75_pt_epoch195_bedroom": {
+    "pt_dir": "/root/RelationAwareInstructScene/results/commonscenes_ours_gated_t0.75_pt_epoch195_bedroom",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 518,
+        "total": 533,
+        "acc": 0.9718574108818011
+      },
+      "right": {
+        "ok": 537,
+        "total": 541,
+        "acc": 0.9926062846580407
+      },
+      "front": {
+        "ok": 552,
+        "total": 557,
+        "acc": 0.9910233393177738
+      },
+      "behind": {
+        "ok": 536,
+        "total": 544,
+        "acc": 0.9852941176470589
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 216,
+        "total": 260,
+        "acc": 0.8307692307692308
+      },
+      "symmetrical to": {
+        "ok": 21,
+        "total": 40,
+        "acc": 0.525
+      },
+      "total": {
+        "ok": 5728,
+        "total": 5886,
+        "acc": 0.9731566428814136
+      },
+      "mean_of_means": 0.9275620752210589
+    }
+  },
+  "commonscenes_ours_gated_t1.0_pt_epoch195_bedroom": {
+    "pt_dir": "/root/RelationAwareInstructScene/results/commonscenes_ours_gated_t1.0_pt_epoch195_bedroom",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 518,
+        "total": 533,
+        "acc": 0.9718574108818011
+      },
+      "right": {
+        "ok": 537,
+        "total": 541,
+        "acc": 0.9926062846580407
+      },
+      "front": {
+        "ok": 552,
+        "total": 557,
+        "acc": 0.9910233393177738
+      },
+      "behind": {
+        "ok": 536,
+        "total": 544,
+        "acc": 0.9852941176470589
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 215,
+        "total": 260,
+        "acc": 0.8269230769230769
+      },
+      "symmetrical to": {
+        "ok": 21,
+        "total": 40,
+        "acc": 0.525
+      },
+      "total": {
+        "ok": 5727,
+        "total": 5886,
+        "acc": 0.972986748216106
+      },
+      "mean_of_means": 0.9272124248714085
+    }
+  },
+  "commonscenes_ours_gated_t1.5_pt_epoch195_bedroom": {
+    "pt_dir": "/root/RelationAwareInstructScene/results/commonscenes_ours_gated_t1.5_pt_epoch195_bedroom",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 516,
+        "total": 533,
+        "acc": 0.9681050656660413
+      },
+      "right": {
+        "ok": 534,
+        "total": 541,
+        "acc": 0.9870609981515711
+      },
+      "front": {
+        "ok": 550,
+        "total": 557,
+        "acc": 0.9874326750448833
+      },
+      "behind": {
+        "ok": 534,
+        "total": 544,
+        "acc": 0.9816176470588235
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 207,
+        "total": 260,
+        "acc": 0.7961538461538461
+      },
+      "symmetrical to": {
+        "ok": 21,
+        "total": 40,
+        "acc": 0.525
+      },
+      "total": {
+        "ok": 5710,
+        "total": 5886,
+        "acc": 0.9700985389058784
+      },
+      "mean_of_means": 0.9229093342029916
+    }
+  },
+  "commonscenes_ours_gated_t3.0_pt_epoch195_bedroom": {
+    "pt_dir": "/root/RelationAwareInstructScene/results/commonscenes_ours_gated_t3.0_pt_epoch195_bedroom",
+    "files": 162,
+    "missing": [],
+    "official_common_scenes_constraints": {
+      "left": {
+        "ok": 516,
+        "total": 533,
+        "acc": 0.9681050656660413
+      },
+      "right": {
+        "ok": 534,
+        "total": 541,
+        "acc": 0.9870609981515711
+      },
+      "front": {
+        "ok": 549,
+        "total": 557,
+        "acc": 0.9856373429084381
+      },
+      "behind": {
+        "ok": 534,
+        "total": 544,
+        "acc": 0.9816176470588235
+      },
+      "smaller": {
+        "ok": 818,
+        "total": 839,
+        "acc": 0.9749702026221693
+      },
+      "bigger": {
+        "ok": 878,
+        "total": 893,
+        "acc": 0.9832026875699889
+      },
+      "shorter": {
+        "ok": 500,
+        "total": 512,
+        "acc": 0.9765625
+      },
+      "taller": {
+        "ok": 486,
+        "total": 497,
+        "acc": 0.9778672032193159
+      },
+      "standing on": {
+        "ok": 666,
+        "total": 670,
+        "acc": 0.9940298507462687
+      },
+      "close by": {
+        "ok": 202,
+        "total": 260,
+        "acc": 0.7769230769230769
+      },
+      "symmetrical to": {
+        "ok": 21,
+        "total": 40,
+        "acc": 0.525
+      },
+      "total": {
+        "ok": 5704,
+        "total": 5886,
+        "acc": 0.9690791709140333
+      },
+      "mean_of_means": 0.9209978704423359
+    }
+  }
+}

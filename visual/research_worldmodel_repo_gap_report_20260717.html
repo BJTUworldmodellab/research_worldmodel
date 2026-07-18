@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>research_worldmodel 仓库差异与实验报告</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; margin: 0; color: #172033; background: #f7f8fb; }
+    main { max-width: 1080px; margin: 0 auto; padding: 40px 24px 64px; background: #fff; }
+    h1 { font-size: 30px; margin: 0 0 8px; }
+    h2 { margin-top: 34px; border-top: 1px solid #d8dee9; padding-top: 22px; }
+    h3 { margin-top: 24px; }
+    code, pre { background: #f1f4f8; border-radius: 6px; }
+    code { padding: 2px 5px; }
+    pre { padding: 14px; overflow: auto; }
+    table { border-collapse: collapse; width: 100%; margin: 14px 0 20px; font-size: 14px; }
+    th, td { border: 1px solid #d8dee9; padding: 8px 10px; text-align: left; }
+    th { background: #eef2f7; }
+    .note { padding: 12px 14px; background: #eef6ff; border-left: 4px solid #3b82f6; margin: 16px 0; }
+    .warn { padding: 12px 14px; background: #fff7ed; border-left: 4px solid #f97316; margin: 16px 0; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>research_worldmodel 仓库差异与实验报告</h1>
+  <p>日期：2026-07-17</p>
+  <div class="note">一句话结论：GitHub 代码仓库已经有原始 InstructScene 关系修复实验，但还缺后续 CommonScenes 对比实验、AutoDL 复现脚本、参数消融、bootstrap 和可视化面板。</div>
+
+  <h2>1. 对比对象</h2>
+  <ul>
+    <li>代码仓库：<code>BJTUworldmodellab/research_worldmodel</code>，默认分支 <code>master</code>，公开仓库。</li>
+    <li>本地工作区：<code>C:\Users\14754\Desktop\research_worldmodel</code></li>
+    <li>远端 AutoDL：<code>/root/RelationAwareInstructScene</code> 和 <code>/root/autodl-tmp/RelationAwareInstructScene</code></li>
+  </ul>
+
+  <h2>2. 主要差异</h2>
+  <table>
+    <tr><th>位置</th><th>已有内容</th><th>缺少内容</th></tr>
+    <tr><td>GitHub 代码仓库</td><td>原 InstructScene 报告、结果表、可视化、paper 草稿</td><td>CommonScenes 对比包、server_setup、远端复现实验脚本</td></tr>
+    <tr><td>本地工作区</td><td>GitHub 旧内容 + CommonScenes 新报告/脚本/小图</td><td>不包含完整远端大数据和 checkpoint</td></tr>
+    <tr><td>远端 AutoDL</td><td>完整运行环境、大数据、checkpoint、渲染和 .pt 中间结果</td><td>不适合直接全部进入 GitHub</td></tr>
+    <tr><td>bghind/experiment-data</td><td>已归档 compact 实验数据，commit <code>6649dd4</code></td><td>不是代码仓库，不承载完整运行脚本结构</td></tr>
+  </table>
+
+  <h2>3. 建议上传到代码仓库的内容</h2>
+  <pre>docs/commonscenes_experiment_pack_20260713/
+docs/commonscenes_generic_no_official_search/
+docs/commonscenes_environment_audit_20260710.md
+docs/commonscenes_reproduction_comparison_20260713.md
+server_setup/
+scripts/compare_common_layout_metrics.py
+scripts/compute_commonscenes_bootstrap_ci.py
+scripts/evaluate_semantic_relation_respace.py
+visual/commonscenes_paper_panels/
+visual/*20260709*.html
+visual/*20260710*.html
+visual/relation_aware_plain_conclusion_and_next_experiments.html
+docs/research_worldmodel_repo_gap_report_20260717.md
+visual/research_worldmodel_repo_gap_report_20260717.html</pre>
+
+  <div class="warn">不要上传 raw data、checkpoint、HF cache、.pt 张量、GLB/OBJ/PLY 大网格目录。这些应该留在 AutoDL 或数据仓库/对象存储。</div>
+
+  <h2>4. 实验报告：原 InstructScene</h2>
+  <p>目标是验证：生成出来的 3D 室内场景如果不满足空间关系，后处理修复能不能把关系补回来，同时不明显破坏场景。</p>
+  <table>
+    <tr><th>房间</th><th>场景数</th><th>baseline</th><th>修复后</th><th>提升</th></tr>
+    <tr><td>bedroom</td><td>162</td><td>0.7388</td><td>0.8735</td><td>+0.1347</td></tr>
+    <tr><td>livingroom</td><td>192</td><td>0.5510</td><td>0.7415</td><td>+0.1905</td></tr>
+    <tr><td>diningroom</td><td>177</td><td>0.5948</td><td>0.7844</td><td>+0.1896</td></tr>
+  </table>
+  <p>通俗解释：原方法在原始任务上是有效的，关系满足率提升明显。加上碰撞安全门控后提升会变小，但仍然稳定存在。</p>
+
+  <h2>5. 实验报告：CommonScenes 对比</h2>
+  <table>
+    <tr><th>房间</th><th>场景数</th><th>baseline</th><th>修复后</th><th>提升</th><th>碰撞惩罚变化</th></tr>
+    <tr><td>bedroom</td><td>162</td><td>0.981312</td><td>0.984370</td><td>+0.003058</td><td>164.012 -> 161.487</td></tr>
+    <tr><td>livingroom</td><td>52</td><td>0.970915</td><td>0.973113</td><td>+0.002198</td><td>54.798 -> 51.841</td></tr>
+    <tr><td>diningroom</td><td>69</td><td>0.968892</td><td>0.970467</td><td>+0.001575</td><td>103.200 -> 99.130</td></tr>
+    <tr><td>library</td><td>56</td><td>0.958588</td><td>0.964019</td><td>+0.005431</td><td>72.028 -> 68.498</td></tr>
+  </table>
+  <p>通俗解释：CommonScenes 本身已经很强，所以提升不大；但四类房间都是正提升，而且碰撞惩罚下降。这说明方法不是只在原始 InstructScene 上有用。</p>
+
+  <h2>6. 参数消融</h2>
+  <table>
+    <tr><th>阈值</th><th>接受场景</th><th>提升</th><th>SSIM</th><th>GLB Chamfer</th></tr>
+    <tr><td>0.8</td><td>3</td><td>+0.000510</td><td>0.999597</td><td>0.113173</td></tr>
+    <tr><td>1.2</td><td>13</td><td>+0.002548</td><td>0.998696</td><td>0.119049</td></tr>
+    <tr><td>1.5</td><td>16</td><td>+0.003058</td><td>0.998014</td><td>0.128786</td></tr>
+  </table>
+  <p><code>t1.5</code> 效果最好，但改动更大；<code>t1.2</code> 更保守；<code>t0.8</code> 太谨慎。</p>
+
+  <h2>7. 论文写法建议</h2>
+  <ul>
+    <li>强主张：原 InstructScene 上，关系修复明显提高空间关系满足率。</li>
+    <li>中等主张：CommonScenes 上，在不使用 official-search 的设置下，修复带来小但一致的提升。</li>
+    <li>谨慎主张：视觉质量保持较好，但不要说已经完整证明“3D 质量全面提升”。还缺人工偏好或更严格 object-level 几何评估。</li>
+  </ul>
+</main>
+</body>
+</html>

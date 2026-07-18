@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>强 Baseline 对比实验运行报告</title>
+  <style>
+    body{margin:0;background:#f5f7fa;color:#182033;font-family:Arial,"Microsoft YaHei",sans-serif;line-height:1.65}
+    main{max-width:1040px;margin:0 auto;padding:34px 22px 58px}
+    h1{font-size:30px;margin:0 0 8px}
+    h2{font-size:21px;margin:30px 0 10px}
+    p{margin:8px 0}
+    code,pre{background:#eef2f6;border-radius:6px}
+    code{padding:1px 5px}
+    pre{padding:14px;overflow:auto}
+    table{width:100%;border-collapse:collapse;background:white;border:1px solid #dce3eb;margin:10px 0 18px}
+    th,td{padding:10px 12px;border-bottom:1px solid #e8edf3;text-align:left;vertical-align:top}
+    th{background:#edf3f8}
+    .note{background:white;border:1px solid #dce3eb;border-radius:8px;padding:16px 18px;margin:16px 0}
+    .ok{color:#18794e;font-weight:700}.warn{color:#b45309;font-weight:700}.bad{color:#b42318;font-weight:700}
+  </style>
+</head>
+<body>
+<main>
+  <h1>强 Baseline 对比实验运行报告</h1>
+  <p>更新时间：2026-07-08 23:40</p>
+  <section class="note">
+    <p><span class="ok">A100 结论：</span>ReSpace 的 vLLM、BF16、Flash Attention 和 1.5B checkpoint 加载已经通过。</p>
+    <p><span class="bad">正式对比仍未完成：</span>当前阻塞在 Llama gated tokenizer 权限和 ReSpace asset embedding cache 缺失。</p>
+  </section>
+  <h2>远程日志与产物</h2>
+  <table>
+    <tr><th>类型</th><th>路径</th></tr>
+    <tr><td>主日志</td><td><code>/root/RelationAwareInstructScene/logs/strong_baseline_a100_compare/audit_20260708_233225.log</code></td></tr>
+    <tr><td>产物目录</td><td><code>/root/RelationAwareInstructScene/results/strong_baseline_a100_compare/20260708_233225</code></td></tr>
+    <tr><td>summary JSON</td><td><code>/root/RelationAwareInstructScene/results/strong_baseline_a100_compare/20260708_233225/summary.json</code></td></tr>
+  </table>
+  <h2>关键指标</h2>
+  <table>
+    <tr><th>指标</th><th>值</th></tr>
+    <tr><td>GPU</td><td>NVIDIA A100-PCIE-40GB</td></tr>
+    <tr><td>compute capability</td><td>8.0</td></tr>
+    <tr><td>vLLM 状态</td><td>初始化成功</td></tr>
+    <tr><td>模型权重加载</td><td>2.8875 GB</td></tr>
+    <tr><td>KV cache</td><td>4.68 GiB</td></tr>
+    <tr><td>最大并发，3000 tokens</td><td>58.47x</td></tr>
+    <tr><td>smoke 返回码</td><td>1</td></tr>
+  </table>
+  <h2>可靠的现有对比</h2>
+  <table>
+    <tr><th>指标</th><th>值</th></tr>
+    <tr><td>mesh scenes</td><td>1062</td></tr>
+    <tr><td>floor-prior 平均关系提升</td><td>0.1193</td></tr>
+    <tr><td>gated 平均关系提升</td><td>0.0702</td></tr>
+    <tr><td>baseline mesh-pair rate</td><td>0.0441</td></tr>
+    <tr><td>gated mesh-pair rate</td><td>0.0430</td></tr>
+    <tr><td>fallback scenes</td><td>73 / 1062</td></tr>
+  </table>
+  <h2>下一步</h2>
+  <p>提供有权限的 Hugging Face token，并补齐 <code>model_info_3dfuture_assets_embeds.pickle</code> 后，重跑远端 audit 脚本；通过后再做 bedroom/livingroom 的 n=10 sanity，再扩大到正式同数量对比。</p>
+</main>
+</body>
+</html>

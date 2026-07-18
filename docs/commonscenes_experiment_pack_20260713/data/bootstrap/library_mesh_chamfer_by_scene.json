@@ -1,0 +1,450 @@
+[
+  {
+    "scan": "Library-1093",
+    "chamfer": 0.08717828586349866,
+    "baseline_to_generic": 0.04346774260658981,
+    "generic_to_baseline": 0.04371054325690884,
+    "baseline_vertices": 57754,
+    "generic_vertices": 57754
+  },
+  {
+    "scan": "Library-110125",
+    "chamfer": 0.083218160688662,
+    "baseline_to_generic": 0.04144922977937098,
+    "generic_to_baseline": 0.04176893090929102,
+    "baseline_vertices": 33366,
+    "generic_vertices": 33366
+  },
+  {
+    "scan": "Library-11256",
+    "chamfer": 0.1345442262894022,
+    "baseline_to_generic": 0.06652181798164855,
+    "generic_to_baseline": 0.06802240830775368,
+    "baseline_vertices": 78260,
+    "generic_vertices": 78260
+  },
+  {
+    "scan": "Library-11820",
+    "chamfer": 0.10626777051403233,
+    "baseline_to_generic": 0.05341978426632184,
+    "generic_to_baseline": 0.05284798624771049,
+    "baseline_vertices": 30498,
+    "generic_vertices": 30498
+  },
+  {
+    "scan": "Library-123334",
+    "chamfer": 0.13760297833933238,
+    "baseline_to_generic": 0.06877518123589157,
+    "generic_to_baseline": 0.0688277971034408,
+    "baseline_vertices": 40326,
+    "generic_vertices": 40326
+  },
+  {
+    "scan": "Library-123545",
+    "chamfer": 0.1263579489154574,
+    "baseline_to_generic": 0.06311649279351123,
+    "generic_to_baseline": 0.06324145612194618,
+    "baseline_vertices": 48056,
+    "generic_vertices": 48056
+  },
+  {
+    "scan": "Library-13751",
+    "chamfer": 0.08347873675606442,
+    "baseline_to_generic": 0.04177995664837982,
+    "generic_to_baseline": 0.041698780107684595,
+    "baseline_vertices": 40036,
+    "generic_vertices": 40036
+  },
+  {
+    "scan": "Library-13832",
+    "chamfer": 0.08005136193643533,
+    "baseline_to_generic": 0.03994299934190776,
+    "generic_to_baseline": 0.04010836259452758,
+    "baseline_vertices": 29084,
+    "generic_vertices": 29084
+  },
+  {
+    "scan": "Library-145994",
+    "chamfer": 0.18326505500648615,
+    "baseline_to_generic": 0.08310106952967534,
+    "generic_to_baseline": 0.1001639854768108,
+    "baseline_vertices": 88954,
+    "generic_vertices": 88954
+  },
+  {
+    "scan": "Library-1511",
+    "chamfer": 0.3151163844325455,
+    "baseline_to_generic": 0.180641921994024,
+    "generic_to_baseline": 0.13447446243852154,
+    "baseline_vertices": 23662,
+    "generic_vertices": 23662
+  },
+  {
+    "scan": "Library-163346",
+    "chamfer": 0.07563697697772992,
+    "baseline_to_generic": 0.03784291552085905,
+    "generic_to_baseline": 0.03779406145687087,
+    "baseline_vertices": 22020,
+    "generic_vertices": 22020
+  },
+  {
+    "scan": "Library-16688",
+    "chamfer": 0.32291898933488095,
+    "baseline_to_generic": 0.20844751407164613,
+    "generic_to_baseline": 0.11447147526323481,
+    "baseline_vertices": 45230,
+    "generic_vertices": 45230
+  },
+  {
+    "scan": "Library-16869",
+    "chamfer": 0.2334997773127248,
+    "baseline_to_generic": 0.15749608310508711,
+    "generic_to_baseline": 0.07600369420763771,
+    "baseline_vertices": 54252,
+    "generic_vertices": 54252
+  },
+  {
+    "scan": "Library-17832",
+    "chamfer": 0.12863169463538293,
+    "baseline_to_generic": 0.06400586708882176,
+    "generic_to_baseline": 0.06462582754656117,
+    "baseline_vertices": 47794,
+    "generic_vertices": 47794
+  },
+  {
+    "scan": "Library-1808",
+    "chamfer": 0.1214072748230757,
+    "baseline_to_generic": 0.060938271348498746,
+    "generic_to_baseline": 0.06046900347457695,
+    "baseline_vertices": 31458,
+    "generic_vertices": 31458
+  },
+  {
+    "scan": "Library-19283",
+    "chamfer": 0.09822518051354984,
+    "baseline_to_generic": 0.04918409771124942,
+    "generic_to_baseline": 0.04904108280230041,
+    "baseline_vertices": 19772,
+    "generic_vertices": 19772
+  },
+  {
+    "scan": "Library-19478",
+    "chamfer": 0.0919191579967239,
+    "baseline_to_generic": 0.045518324484095755,
+    "generic_to_baseline": 0.04640083351262814,
+    "baseline_vertices": 26508,
+    "generic_vertices": 26508
+  },
+  {
+    "scan": "Library-19891",
+    "chamfer": 0.12312605359285189,
+    "baseline_to_generic": 0.061857713368571,
+    "generic_to_baseline": 0.06126834022428088,
+    "baseline_vertices": 66180,
+    "generic_vertices": 66180
+  },
+  {
+    "scan": "Library-2159",
+    "chamfer": 0.19185696465541235,
+    "baseline_to_generic": 0.10546641407743955,
+    "generic_to_baseline": 0.08639055057797279,
+    "baseline_vertices": 45508,
+    "generic_vertices": 45508
+  },
+  {
+    "scan": "Library-22443",
+    "chamfer": 0.09110014235908379,
+    "baseline_to_generic": 0.04556964126556716,
+    "generic_to_baseline": 0.04553050109351662,
+    "baseline_vertices": 31544,
+    "generic_vertices": 31544
+  },
+  {
+    "scan": "Library-23898",
+    "chamfer": 0.17449556623248624,
+    "baseline_to_generic": 0.11782724115996335,
+    "generic_to_baseline": 0.056668325072522896,
+    "baseline_vertices": 29482,
+    "generic_vertices": 29482
+  },
+  {
+    "scan": "Library-24675",
+    "chamfer": 0.09517344493858677,
+    "baseline_to_generic": 0.04756420253891944,
+    "generic_to_baseline": 0.04760924239966734,
+    "baseline_vertices": 29954,
+    "generic_vertices": 29954
+  },
+  {
+    "scan": "Library-24727",
+    "chamfer": 0.09397919726385356,
+    "baseline_to_generic": 0.04682424540417705,
+    "generic_to_baseline": 0.04715495185967652,
+    "baseline_vertices": 23310,
+    "generic_vertices": 23310
+  },
+  {
+    "scan": "Library-2480",
+    "chamfer": 0.35419267840466107,
+    "baseline_to_generic": 0.2329492490447822,
+    "generic_to_baseline": 0.12124342935987883,
+    "baseline_vertices": 21670,
+    "generic_vertices": 21670
+  },
+  {
+    "scan": "Library-25138",
+    "chamfer": 0.04970951865505793,
+    "baseline_to_generic": 0.025261471185250878,
+    "generic_to_baseline": 0.024448047469807055,
+    "baseline_vertices": 40752,
+    "generic_vertices": 40752
+  },
+  {
+    "scan": "Library-28947",
+    "chamfer": 0.07018057337282788,
+    "baseline_to_generic": 0.03515478756096674,
+    "generic_to_baseline": 0.035025785811861145,
+    "baseline_vertices": 25182,
+    "generic_vertices": 25182
+  },
+  {
+    "scan": "Library-29416",
+    "chamfer": 0.12603181221794554,
+    "baseline_to_generic": 0.06338729883979995,
+    "generic_to_baseline": 0.0626445133781456,
+    "baseline_vertices": 51780,
+    "generic_vertices": 51780
+  },
+  {
+    "scan": "Library-29737",
+    "chamfer": 0.08052458911008098,
+    "baseline_to_generic": 0.04001500350623465,
+    "generic_to_baseline": 0.04050958560384633,
+    "baseline_vertices": 26858,
+    "generic_vertices": 26858
+  },
+  {
+    "scan": "Library-29744",
+    "chamfer": 0.1098948994063692,
+    "baseline_to_generic": 0.055017223854086694,
+    "generic_to_baseline": 0.05487767555228252,
+    "baseline_vertices": 31496,
+    "generic_vertices": 31496
+  },
+  {
+    "scan": "Library-32140",
+    "chamfer": 0.05795285255921606,
+    "baseline_to_generic": 0.028983064509594113,
+    "generic_to_baseline": 0.028969788049621952,
+    "baseline_vertices": 22300,
+    "generic_vertices": 22300
+  },
+  {
+    "scan": "Library-32231",
+    "chamfer": 0.308926813489102,
+    "baseline_to_generic": 0.14925725607203136,
+    "generic_to_baseline": 0.15966955741707062,
+    "baseline_vertices": 39218,
+    "generic_vertices": 39218
+  },
+  {
+    "scan": "Library-35695",
+    "chamfer": 0.5181817305792745,
+    "baseline_to_generic": 0.23005362499807488,
+    "generic_to_baseline": 0.2881281055811996,
+    "baseline_vertices": 55990,
+    "generic_vertices": 55990
+  },
+  {
+    "scan": "Library-36052",
+    "chamfer": 0.12317924235056935,
+    "baseline_to_generic": 0.061695392297451225,
+    "generic_to_baseline": 0.061483850053118114,
+    "baseline_vertices": 40174,
+    "generic_vertices": 40174
+  },
+  {
+    "scan": "Library-39529",
+    "chamfer": 0.08106527030622238,
+    "baseline_to_generic": 0.04070456794296228,
+    "generic_to_baseline": 0.0403607023632601,
+    "baseline_vertices": 24292,
+    "generic_vertices": 24292
+  },
+  {
+    "scan": "Library-40642",
+    "chamfer": 0.07896350474416625,
+    "baseline_to_generic": 0.0399155339502504,
+    "generic_to_baseline": 0.03904797079391585,
+    "baseline_vertices": 28156,
+    "generic_vertices": 28156
+  },
+  {
+    "scan": "Library-4345",
+    "chamfer": 0.11242053165647267,
+    "baseline_to_generic": 0.0557941822130417,
+    "generic_to_baseline": 0.05662634944343098,
+    "baseline_vertices": 42452,
+    "generic_vertices": 42452
+  },
+  {
+    "scan": "Library-43565",
+    "chamfer": 0.11292722576531378,
+    "baseline_to_generic": 0.056582587764857625,
+    "generic_to_baseline": 0.056344638000456145,
+    "baseline_vertices": 46716,
+    "generic_vertices": 46716
+  },
+  {
+    "scan": "Library-4425",
+    "chamfer": 0.06660769616940794,
+    "baseline_to_generic": 0.03319027325230856,
+    "generic_to_baseline": 0.03341742291709938,
+    "baseline_vertices": 24436,
+    "generic_vertices": 24436
+  },
+  {
+    "scan": "Library-457",
+    "chamfer": 0.0787717905918848,
+    "baseline_to_generic": 0.03973843846296017,
+    "generic_to_baseline": 0.03903335212892462,
+    "baseline_vertices": 19666,
+    "generic_vertices": 19666
+  },
+  {
+    "scan": "Library-45741",
+    "chamfer": 0.08676620872065997,
+    "baseline_to_generic": 0.0435080255096525,
+    "generic_to_baseline": 0.043258183211007474,
+    "baseline_vertices": 33174,
+    "generic_vertices": 33174
+  },
+  {
+    "scan": "Library-4659",
+    "chamfer": 0.06328756813139563,
+    "baseline_to_generic": 0.031696828573359884,
+    "generic_to_baseline": 0.03159073955803575,
+    "baseline_vertices": 43926,
+    "generic_vertices": 43926
+  },
+  {
+    "scan": "Library-51220",
+    "chamfer": 0.08451085865391632,
+    "baseline_to_generic": 0.042003270849509,
+    "generic_to_baseline": 0.04250758780440732,
+    "baseline_vertices": 37332,
+    "generic_vertices": 37332
+  },
+  {
+    "scan": "Library-5406",
+    "chamfer": 0.10694512080838861,
+    "baseline_to_generic": 0.05427306191487075,
+    "generic_to_baseline": 0.052672058893517865,
+    "baseline_vertices": 39916,
+    "generic_vertices": 39916
+  },
+  {
+    "scan": "Library-56351",
+    "chamfer": 0.34760346597512215,
+    "baseline_to_generic": 0.20078415357727744,
+    "generic_to_baseline": 0.14681931239784468,
+    "baseline_vertices": 27010,
+    "generic_vertices": 27010
+  },
+  {
+    "scan": "Library-57472",
+    "chamfer": 0.08884433507164902,
+    "baseline_to_generic": 0.0447405394566748,
+    "generic_to_baseline": 0.044103795614974226,
+    "baseline_vertices": 28314,
+    "generic_vertices": 28314
+  },
+  {
+    "scan": "Library-5781",
+    "chamfer": 0.11651481694610584,
+    "baseline_to_generic": 0.05789584612600778,
+    "generic_to_baseline": 0.05861897082009806,
+    "baseline_vertices": 40200,
+    "generic_vertices": 40200
+  },
+  {
+    "scan": "Library-58697",
+    "chamfer": 0.09914866532517796,
+    "baseline_to_generic": 0.049549572580393796,
+    "generic_to_baseline": 0.049599092744784176,
+    "baseline_vertices": 39628,
+    "generic_vertices": 39628
+  },
+  {
+    "scan": "Library-70308",
+    "chamfer": 0.07526394415090187,
+    "baseline_to_generic": 0.03769926638094074,
+    "generic_to_baseline": 0.03756467776996113,
+    "baseline_vertices": 19114,
+    "generic_vertices": 19114
+  },
+  {
+    "scan": "Library-71638",
+    "chamfer": 0.09478358670811896,
+    "baseline_to_generic": 0.047302389287758234,
+    "generic_to_baseline": 0.04748119742036073,
+    "baseline_vertices": 23510,
+    "generic_vertices": 23510
+  },
+  {
+    "scan": "Library-7168",
+    "chamfer": 0.10571755069408059,
+    "baseline_to_generic": 0.05301274865223222,
+    "generic_to_baseline": 0.05270480204184837,
+    "baseline_vertices": 17180,
+    "generic_vertices": 17180
+  },
+  {
+    "scan": "Library-7291",
+    "chamfer": 0.09350777707164325,
+    "baseline_to_generic": 0.047061706756141006,
+    "generic_to_baseline": 0.04644607031550224,
+    "baseline_vertices": 47488,
+    "generic_vertices": 47488
+  },
+  {
+    "scan": "Library-74566",
+    "chamfer": 0.09671531539128317,
+    "baseline_to_generic": 0.04832268606436305,
+    "generic_to_baseline": 0.04839262932692012,
+    "baseline_vertices": 39058,
+    "generic_vertices": 39058
+  },
+  {
+    "scan": "Library-8543",
+    "chamfer": 0.08894834704879945,
+    "baseline_to_generic": 0.04510957109731149,
+    "generic_to_baseline": 0.043838775951487954,
+    "baseline_vertices": 40176,
+    "generic_vertices": 40176
+  },
+  {
+    "scan": "Library-898",
+    "chamfer": 0.08440515499778573,
+    "baseline_to_generic": 0.042244668748466725,
+    "generic_to_baseline": 0.042160486249319,
+    "baseline_vertices": 19598,
+    "generic_vertices": 19598
+  },
+  {
+    "scan": "Library-90753",
+    "chamfer": 0.0864981108108723,
+    "baseline_to_generic": 0.04353694427721033,
+    "generic_to_baseline": 0.04296116653366198,
+    "baseline_vertices": 33338,
+    "generic_vertices": 33338
+  },
+  {
+    "scan": "Library-934",
+    "chamfer": 0.10403115958513334,
+    "baseline_to_generic": 0.051930257237910726,
+    "generic_to_baseline": 0.05210090234722262,
+    "baseline_vertices": 62862,
+    "generic_vertices": 62862
+  }
+]

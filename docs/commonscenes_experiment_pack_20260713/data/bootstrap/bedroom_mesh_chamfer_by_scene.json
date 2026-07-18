@@ -1,0 +1,1298 @@
+[
+  {
+    "scan": "Bedroom-11202",
+    "chamfer": 0.10269756199536943,
+    "baseline_to_generic": 0.051498493741976584,
+    "generic_to_baseline": 0.05119906825339285,
+    "baseline_vertices": 35642,
+    "generic_vertices": 35642
+  },
+  {
+    "scan": "Bedroom-12864",
+    "chamfer": 0.122663407131682,
+    "baseline_to_generic": 0.06123930517858674,
+    "generic_to_baseline": 0.06142410195309526,
+    "baseline_vertices": 74900,
+    "generic_vertices": 74900
+  },
+  {
+    "scan": "Bedroom-13675",
+    "chamfer": 0.12136949274973775,
+    "baseline_to_generic": 0.060661788825795586,
+    "generic_to_baseline": 0.06070770392394217,
+    "baseline_vertices": 17300,
+    "generic_vertices": 17300
+  },
+  {
+    "scan": "Bedroom-13858",
+    "chamfer": 0.11223131239632848,
+    "baseline_to_generic": 0.05657637182157155,
+    "generic_to_baseline": 0.055654940574756936,
+    "baseline_vertices": 63642,
+    "generic_vertices": 63642
+  },
+  {
+    "scan": "Bedroom-1541",
+    "chamfer": 0.11412372718479472,
+    "baseline_to_generic": 0.05677593977399171,
+    "generic_to_baseline": 0.057347787410803014,
+    "baseline_vertices": 38060,
+    "generic_vertices": 38060
+  },
+  {
+    "scan": "Bedroom-15797",
+    "chamfer": 0.09364181926662773,
+    "baseline_to_generic": 0.0466591132821799,
+    "generic_to_baseline": 0.04698270598444783,
+    "baseline_vertices": 60104,
+    "generic_vertices": 60104
+  },
+  {
+    "scan": "Bedroom-15856",
+    "chamfer": 0.14660142498992526,
+    "baseline_to_generic": 0.08596348253348962,
+    "generic_to_baseline": 0.06063794245643563,
+    "baseline_vertices": 57394,
+    "generic_vertices": 57394
+  },
+  {
+    "scan": "Bedroom-17102",
+    "chamfer": 0.1102936960764874,
+    "baseline_to_generic": 0.055284643198284106,
+    "generic_to_baseline": 0.0550090528782033,
+    "baseline_vertices": 44368,
+    "generic_vertices": 44368
+  },
+  {
+    "scan": "Bedroom-18",
+    "chamfer": 0.10080559089413893,
+    "baseline_to_generic": 0.050268632525988864,
+    "generic_to_baseline": 0.05053695836815006,
+    "baseline_vertices": 45072,
+    "generic_vertices": 45072
+  },
+  {
+    "scan": "Bedroom-18055",
+    "chamfer": 0.1089748062587531,
+    "baseline_to_generic": 0.05448248894483254,
+    "generic_to_baseline": 0.054492317313920555,
+    "baseline_vertices": 47390,
+    "generic_vertices": 47390
+  },
+  {
+    "scan": "Bedroom-18759",
+    "chamfer": 0.11600304203742812,
+    "baseline_to_generic": 0.05801885982075821,
+    "generic_to_baseline": 0.05798418221666991,
+    "baseline_vertices": 75240,
+    "generic_vertices": 75240
+  },
+  {
+    "scan": "Bedroom-1989",
+    "chamfer": 0.12301180108774226,
+    "baseline_to_generic": 0.061299170932434664,
+    "generic_to_baseline": 0.06171263015530759,
+    "baseline_vertices": 32098,
+    "generic_vertices": 32098
+  },
+  {
+    "scan": "Bedroom-20397",
+    "chamfer": 0.13282727368954053,
+    "baseline_to_generic": 0.06631851574270667,
+    "generic_to_baseline": 0.06650875794683386,
+    "baseline_vertices": 90246,
+    "generic_vertices": 90246
+  },
+  {
+    "scan": "Bedroom-21085",
+    "chamfer": 0.11378552963152898,
+    "baseline_to_generic": 0.057111534574450035,
+    "generic_to_baseline": 0.056673995057078944,
+    "baseline_vertices": 51924,
+    "generic_vertices": 51924
+  },
+  {
+    "scan": "Bedroom-2160",
+    "chamfer": 0.121569847888117,
+    "baseline_to_generic": 0.06147318974478254,
+    "generic_to_baseline": 0.06009665814333446,
+    "baseline_vertices": 44048,
+    "generic_vertices": 44048
+  },
+  {
+    "scan": "Bedroom-22495",
+    "chamfer": 0.10634819440128523,
+    "baseline_to_generic": 0.05381676655327766,
+    "generic_to_baseline": 0.05253142784800758,
+    "baseline_vertices": 23030,
+    "generic_vertices": 23030
+  },
+  {
+    "scan": "Bedroom-22570",
+    "chamfer": 0.1194082065950197,
+    "baseline_to_generic": 0.059670375916654736,
+    "generic_to_baseline": 0.05973783067836497,
+    "baseline_vertices": 54876,
+    "generic_vertices": 54876
+  },
+  {
+    "scan": "Bedroom-26487",
+    "chamfer": 0.16473404650466797,
+    "baseline_to_generic": 0.09331539126477643,
+    "generic_to_baseline": 0.07141865523989153,
+    "baseline_vertices": 107318,
+    "generic_vertices": 107318
+  },
+  {
+    "scan": "Bedroom-2719",
+    "chamfer": 0.23841385140953664,
+    "baseline_to_generic": 0.10144939315789135,
+    "generic_to_baseline": 0.1369644582516453,
+    "baseline_vertices": 36918,
+    "generic_vertices": 36918
+  },
+  {
+    "scan": "Bedroom-32051",
+    "chamfer": 0.11260998203526298,
+    "baseline_to_generic": 0.056641227940230306,
+    "generic_to_baseline": 0.05596875409503268,
+    "baseline_vertices": 51062,
+    "generic_vertices": 51062
+  },
+  {
+    "scan": "Bedroom-35352",
+    "chamfer": 0.11607304921243883,
+    "baseline_to_generic": 0.05826411756303431,
+    "generic_to_baseline": 0.05780893164940451,
+    "baseline_vertices": 57490,
+    "generic_vertices": 57490
+  },
+  {
+    "scan": "Bedroom-38427",
+    "chamfer": 0.09730906604292569,
+    "baseline_to_generic": 0.048160880840862515,
+    "generic_to_baseline": 0.04914818520206317,
+    "baseline_vertices": 52752,
+    "generic_vertices": 52752
+  },
+  {
+    "scan": "Bedroom-4098",
+    "chamfer": 0.11449684481211442,
+    "baseline_to_generic": 0.057335979629709315,
+    "generic_to_baseline": 0.057160865182405096,
+    "baseline_vertices": 48948,
+    "generic_vertices": 48948
+  },
+  {
+    "scan": "Bedroom-41491",
+    "chamfer": 0.08867837967920919,
+    "baseline_to_generic": 0.04401311761646041,
+    "generic_to_baseline": 0.04466526206274879,
+    "baseline_vertices": 38176,
+    "generic_vertices": 38176
+  },
+  {
+    "scan": "Bedroom-430",
+    "chamfer": 0.09045797389383399,
+    "baseline_to_generic": 0.04549548426435166,
+    "generic_to_baseline": 0.04496248962948233,
+    "baseline_vertices": 54662,
+    "generic_vertices": 54662
+  },
+  {
+    "scan": "Bedroom-47437",
+    "chamfer": 0.08376176797217119,
+    "baseline_to_generic": 0.04170560184152111,
+    "generic_to_baseline": 0.04205616613065007,
+    "baseline_vertices": 34384,
+    "generic_vertices": 34384
+  },
+  {
+    "scan": "Bedroom-47481",
+    "chamfer": 0.11807723379765796,
+    "baseline_to_generic": 0.059420349560289104,
+    "generic_to_baseline": 0.05865688423736885,
+    "baseline_vertices": 50130,
+    "generic_vertices": 50130
+  },
+  {
+    "scan": "Bedroom-5215",
+    "chamfer": 0.10815663532050437,
+    "baseline_to_generic": 0.05423453478975412,
+    "generic_to_baseline": 0.053922100530750264,
+    "baseline_vertices": 78244,
+    "generic_vertices": 78244
+  },
+  {
+    "scan": "Bedroom-5265",
+    "chamfer": 0.12672126921062132,
+    "baseline_to_generic": 0.06338767950416065,
+    "generic_to_baseline": 0.06333358970646069,
+    "baseline_vertices": 70518,
+    "generic_vertices": 70518
+  },
+  {
+    "scan": "Bedroom-53437",
+    "chamfer": 0.5019592719685946,
+    "baseline_to_generic": 0.25363173309333015,
+    "generic_to_baseline": 0.24832753887526438,
+    "baseline_vertices": 71868,
+    "generic_vertices": 71868
+  },
+  {
+    "scan": "Bedroom-54233",
+    "chamfer": 0.10315076315119062,
+    "baseline_to_generic": 0.05199658733583406,
+    "generic_to_baseline": 0.051154175815356556,
+    "baseline_vertices": 66536,
+    "generic_vertices": 66536
+  },
+  {
+    "scan": "Bedroom-54381",
+    "chamfer": 0.1020235180473052,
+    "baseline_to_generic": 0.05088409607113367,
+    "generic_to_baseline": 0.051139421976171516,
+    "baseline_vertices": 44436,
+    "generic_vertices": 44436
+  },
+  {
+    "scan": "Bedroom-68718",
+    "chamfer": 0.12499133046646632,
+    "baseline_to_generic": 0.06226800884472245,
+    "generic_to_baseline": 0.06272332162174388,
+    "baseline_vertices": 52232,
+    "generic_vertices": 52232
+  },
+  {
+    "scan": "Bedroom-691",
+    "chamfer": 0.11377896960633296,
+    "baseline_to_generic": 0.057685888532507876,
+    "generic_to_baseline": 0.05609308107382508,
+    "baseline_vertices": 23040,
+    "generic_vertices": 23040
+  },
+  {
+    "scan": "Bedroom-6993",
+    "chamfer": 0.11928390577069917,
+    "baseline_to_generic": 0.059369263237186054,
+    "generic_to_baseline": 0.059914642533513106,
+    "baseline_vertices": 22684,
+    "generic_vertices": 22684
+  },
+  {
+    "scan": "Bedroom-74",
+    "chamfer": 0.1095176257529177,
+    "baseline_to_generic": 0.05433204244598502,
+    "generic_to_baseline": 0.05518558330693268,
+    "baseline_vertices": 28784,
+    "generic_vertices": 28784
+  },
+  {
+    "scan": "Bedroom-74674",
+    "chamfer": 0.07850668250648479,
+    "baseline_to_generic": 0.03934223409697177,
+    "generic_to_baseline": 0.03916444840951303,
+    "baseline_vertices": 29642,
+    "generic_vertices": 29642
+  },
+  {
+    "scan": "Bedroom-8136",
+    "chamfer": 0.11027347980078703,
+    "baseline_to_generic": 0.055025307256515193,
+    "generic_to_baseline": 0.055248172544271834,
+    "baseline_vertices": 26570,
+    "generic_vertices": 26570
+  },
+  {
+    "scan": "Bedroom-837",
+    "chamfer": 0.10140797061268811,
+    "baseline_to_generic": 0.050568993527408054,
+    "generic_to_baseline": 0.050838977085280054,
+    "baseline_vertices": 43702,
+    "generic_vertices": 43702
+  },
+  {
+    "scan": "Bedroom-8490",
+    "chamfer": 0.11504721858121601,
+    "baseline_to_generic": 0.057353010655909316,
+    "generic_to_baseline": 0.0576942079253067,
+    "baseline_vertices": 63508,
+    "generic_vertices": 63508
+  },
+  {
+    "scan": "Bedroom-87322",
+    "chamfer": 0.10406304743615157,
+    "baseline_to_generic": 0.05198014701091087,
+    "generic_to_baseline": 0.0520829004252407,
+    "baseline_vertices": 62102,
+    "generic_vertices": 62102
+  },
+  {
+    "scan": "MasterBedroom-10364",
+    "chamfer": 0.101279925290485,
+    "baseline_to_generic": 0.05057134220612097,
+    "generic_to_baseline": 0.05070858308436403,
+    "baseline_vertices": 66392,
+    "generic_vertices": 66392
+  },
+  {
+    "scan": "MasterBedroom-104323",
+    "chamfer": 0.08293236525862775,
+    "baseline_to_generic": 0.04127558986162078,
+    "generic_to_baseline": 0.04165677539700697,
+    "baseline_vertices": 26426,
+    "generic_vertices": 26426
+  },
+  {
+    "scan": "MasterBedroom-1069",
+    "chamfer": 0.10554313012154065,
+    "baseline_to_generic": 0.05268180801919535,
+    "generic_to_baseline": 0.0528613221023453,
+    "baseline_vertices": 43800,
+    "generic_vertices": 43800
+  },
+  {
+    "scan": "MasterBedroom-109561",
+    "chamfer": 0.11575311305693944,
+    "baseline_to_generic": 0.05789043357730533,
+    "generic_to_baseline": 0.05786267947963411,
+    "baseline_vertices": 45836,
+    "generic_vertices": 45836
+  },
+  {
+    "scan": "MasterBedroom-1096",
+    "chamfer": 0.11447600623974243,
+    "baseline_to_generic": 0.05704264075239421,
+    "generic_to_baseline": 0.05743336548734822,
+    "baseline_vertices": 52024,
+    "generic_vertices": 52024
+  },
+  {
+    "scan": "MasterBedroom-113",
+    "chamfer": 0.0937457721592608,
+    "baseline_to_generic": 0.04665796067436321,
+    "generic_to_baseline": 0.04708781148489759,
+    "baseline_vertices": 65350,
+    "generic_vertices": 65350
+  },
+  {
+    "scan": "MasterBedroom-116808",
+    "chamfer": 0.11563313323032899,
+    "baseline_to_generic": 0.05817017815977927,
+    "generic_to_baseline": 0.05746295507054972,
+    "baseline_vertices": 60780,
+    "generic_vertices": 60780
+  },
+  {
+    "scan": "MasterBedroom-118",
+    "chamfer": 0.08326273352733864,
+    "baseline_to_generic": 0.041619874173609774,
+    "generic_to_baseline": 0.04164285935372886,
+    "baseline_vertices": 30790,
+    "generic_vertices": 30790
+  },
+  {
+    "scan": "MasterBedroom-118594",
+    "chamfer": 0.1400942977879816,
+    "baseline_to_generic": 0.07002861034728118,
+    "generic_to_baseline": 0.07006568744070044,
+    "baseline_vertices": 32256,
+    "generic_vertices": 32256
+  },
+  {
+    "scan": "MasterBedroom-12183",
+    "chamfer": 0.09420310386835948,
+    "baseline_to_generic": 0.04694097000783398,
+    "generic_to_baseline": 0.0472621338605255,
+    "baseline_vertices": 54154,
+    "generic_vertices": 54154
+  },
+  {
+    "scan": "MasterBedroom-12352",
+    "chamfer": 0.0949651420377855,
+    "baseline_to_generic": 0.04756171368691131,
+    "generic_to_baseline": 0.047403428350874195,
+    "baseline_vertices": 52218,
+    "generic_vertices": 52218
+  },
+  {
+    "scan": "MasterBedroom-12479",
+    "chamfer": 0.11510536278501043,
+    "baseline_to_generic": 0.057954453270259776,
+    "generic_to_baseline": 0.05715090951475065,
+    "baseline_vertices": 76938,
+    "generic_vertices": 76938
+  },
+  {
+    "scan": "MasterBedroom-13100",
+    "chamfer": 0.12639300972264872,
+    "baseline_to_generic": 0.06319260799412867,
+    "generic_to_baseline": 0.06320040172852004,
+    "baseline_vertices": 56160,
+    "generic_vertices": 56160
+  },
+  {
+    "scan": "MasterBedroom-132469",
+    "chamfer": 0.10819834714694035,
+    "baseline_to_generic": 0.05416359636565869,
+    "generic_to_baseline": 0.05403475078128165,
+    "baseline_vertices": 24604,
+    "generic_vertices": 24604
+  },
+  {
+    "scan": "MasterBedroom-1362",
+    "chamfer": 0.32207013155487685,
+    "baseline_to_generic": 0.17206596107256913,
+    "generic_to_baseline": 0.15000417048230774,
+    "baseline_vertices": 89860,
+    "generic_vertices": 89860
+  },
+  {
+    "scan": "MasterBedroom-13658",
+    "chamfer": 0.11349641753495582,
+    "baseline_to_generic": 0.056469336136207346,
+    "generic_to_baseline": 0.057027081398748465,
+    "baseline_vertices": 60868,
+    "generic_vertices": 60868
+  },
+  {
+    "scan": "MasterBedroom-14075",
+    "chamfer": 0.09177433656663442,
+    "baseline_to_generic": 0.04597972944828894,
+    "generic_to_baseline": 0.04579460711834548,
+    "baseline_vertices": 59902,
+    "generic_vertices": 59902
+  },
+  {
+    "scan": "MasterBedroom-1446",
+    "chamfer": 0.09855606929496656,
+    "baseline_to_generic": 0.04932040649448578,
+    "generic_to_baseline": 0.04923566280048078,
+    "baseline_vertices": 74058,
+    "generic_vertices": 74058
+  },
+  {
+    "scan": "MasterBedroom-1615",
+    "chamfer": 0.13436104768997453,
+    "baseline_to_generic": 0.06769568864130793,
+    "generic_to_baseline": 0.06666535904866659,
+    "baseline_vertices": 84094,
+    "generic_vertices": 84094
+  },
+  {
+    "scan": "MasterBedroom-16450",
+    "chamfer": 0.08368330559262821,
+    "baseline_to_generic": 0.041772898864519764,
+    "generic_to_baseline": 0.04191040672810845,
+    "baseline_vertices": 46840,
+    "generic_vertices": 46840
+  },
+  {
+    "scan": "MasterBedroom-17206",
+    "chamfer": 0.12763164762624712,
+    "baseline_to_generic": 0.06373810518815323,
+    "generic_to_baseline": 0.06389354243809389,
+    "baseline_vertices": 81342,
+    "generic_vertices": 81342
+  },
+  {
+    "scan": "MasterBedroom-18415",
+    "chamfer": 0.11335324863058305,
+    "baseline_to_generic": 0.05639034487739939,
+    "generic_to_baseline": 0.05696290375318365,
+    "baseline_vertices": 40306,
+    "generic_vertices": 40306
+  },
+  {
+    "scan": "MasterBedroom-18517",
+    "chamfer": 0.13134332375842594,
+    "baseline_to_generic": 0.06559538027769035,
+    "generic_to_baseline": 0.06574794348073561,
+    "baseline_vertices": 92008,
+    "generic_vertices": 92008
+  },
+  {
+    "scan": "MasterBedroom-19531",
+    "chamfer": 0.6655752494745135,
+    "baseline_to_generic": 0.333495756059192,
+    "generic_to_baseline": 0.3320794934153215,
+    "baseline_vertices": 47492,
+    "generic_vertices": 47492
+  },
+  {
+    "scan": "MasterBedroom-196",
+    "chamfer": 0.13965965846806694,
+    "baseline_to_generic": 0.0705604011614428,
+    "generic_to_baseline": 0.06909925730662415,
+    "baseline_vertices": 90222,
+    "generic_vertices": 90222
+  },
+  {
+    "scan": "MasterBedroom-21047",
+    "chamfer": 0.10795739020139311,
+    "baseline_to_generic": 0.053682395030904675,
+    "generic_to_baseline": 0.05427499517048844,
+    "baseline_vertices": 57392,
+    "generic_vertices": 57392
+  },
+  {
+    "scan": "MasterBedroom-21684",
+    "chamfer": 0.13069156819770106,
+    "baseline_to_generic": 0.06530900007155307,
+    "generic_to_baseline": 0.06538256812614798,
+    "baseline_vertices": 49998,
+    "generic_vertices": 49998
+  },
+  {
+    "scan": "MasterBedroom-22121",
+    "chamfer": 0.12394020705207097,
+    "baseline_to_generic": 0.06130268465440454,
+    "generic_to_baseline": 0.06263752239766643,
+    "baseline_vertices": 90716,
+    "generic_vertices": 90716
+  },
+  {
+    "scan": "MasterBedroom-22581",
+    "chamfer": 0.12343044785663367,
+    "baseline_to_generic": 0.06194751899270545,
+    "generic_to_baseline": 0.06148292886392821,
+    "baseline_vertices": 53304,
+    "generic_vertices": 53304
+  },
+  {
+    "scan": "MasterBedroom-24714",
+    "chamfer": 0.1346090738761666,
+    "baseline_to_generic": 0.06744954073668137,
+    "generic_to_baseline": 0.06715953313948522,
+    "baseline_vertices": 46682,
+    "generic_vertices": 46682
+  },
+  {
+    "scan": "MasterBedroom-27127",
+    "chamfer": 0.12245215928402339,
+    "baseline_to_generic": 0.061174374407815514,
+    "generic_to_baseline": 0.061277784876207886,
+    "baseline_vertices": 58202,
+    "generic_vertices": 58202
+  },
+  {
+    "scan": "MasterBedroom-28978",
+    "chamfer": 0.13422446179190206,
+    "baseline_to_generic": 0.06703202640057027,
+    "generic_to_baseline": 0.06719243539133181,
+    "baseline_vertices": 75546,
+    "generic_vertices": 75546
+  },
+  {
+    "scan": "MasterBedroom-29436",
+    "chamfer": 0.10888123851775053,
+    "baseline_to_generic": 0.05458855984787212,
+    "generic_to_baseline": 0.0542926786698784,
+    "baseline_vertices": 49312,
+    "generic_vertices": 49312
+  },
+  {
+    "scan": "MasterBedroom-30192",
+    "chamfer": 0.13795831869326364,
+    "baseline_to_generic": 0.06926854921815206,
+    "generic_to_baseline": 0.06868976947511159,
+    "baseline_vertices": 74118,
+    "generic_vertices": 74118
+  },
+  {
+    "scan": "MasterBedroom-3151",
+    "chamfer": 0.07898631835974143,
+    "baseline_to_generic": 0.0398075575279261,
+    "generic_to_baseline": 0.03917876083181533,
+    "baseline_vertices": 31294,
+    "generic_vertices": 31294
+  },
+  {
+    "scan": "MasterBedroom-32488",
+    "chamfer": 0.13832154945929825,
+    "baseline_to_generic": 0.06900508157239114,
+    "generic_to_baseline": 0.0693164678869071,
+    "baseline_vertices": 82476,
+    "generic_vertices": 82476
+  },
+  {
+    "scan": "MasterBedroom-33296",
+    "chamfer": 0.1385514217516699,
+    "baseline_to_generic": 0.06848567599613703,
+    "generic_to_baseline": 0.07006574575553286,
+    "baseline_vertices": 83010,
+    "generic_vertices": 83010
+  },
+  {
+    "scan": "MasterBedroom-34041",
+    "chamfer": 0.12444012973339898,
+    "baseline_to_generic": 0.06246804959880512,
+    "generic_to_baseline": 0.061972080134593856,
+    "baseline_vertices": 48516,
+    "generic_vertices": 48516
+  },
+  {
+    "scan": "MasterBedroom-34469",
+    "chamfer": 0.10774612855682537,
+    "baseline_to_generic": 0.05427720470373247,
+    "generic_to_baseline": 0.0534689238530929,
+    "baseline_vertices": 33148,
+    "generic_vertices": 33148
+  },
+  {
+    "scan": "MasterBedroom-34912",
+    "chamfer": 0.13314976755710428,
+    "baseline_to_generic": 0.06675328673250024,
+    "generic_to_baseline": 0.06639648082460406,
+    "baseline_vertices": 78500,
+    "generic_vertices": 78500
+  },
+  {
+    "scan": "MasterBedroom-36389",
+    "chamfer": 0.14106763327193678,
+    "baseline_to_generic": 0.07021972586004308,
+    "generic_to_baseline": 0.07084790741189372,
+    "baseline_vertices": 58748,
+    "generic_vertices": 58748
+  },
+  {
+    "scan": "MasterBedroom-3712",
+    "chamfer": 0.0813423911776897,
+    "baseline_to_generic": 0.040282260028048134,
+    "generic_to_baseline": 0.04106013114964156,
+    "baseline_vertices": 32736,
+    "generic_vertices": 32736
+  },
+  {
+    "scan": "MasterBedroom-3845",
+    "chamfer": 0.11668656936303218,
+    "baseline_to_generic": 0.058116454802533885,
+    "generic_to_baseline": 0.05857011456049829,
+    "baseline_vertices": 52576,
+    "generic_vertices": 52576
+  },
+  {
+    "scan": "MasterBedroom-392",
+    "chamfer": 0.13457743399839925,
+    "baseline_to_generic": 0.06768117088380583,
+    "generic_to_baseline": 0.06689626311459342,
+    "baseline_vertices": 76980,
+    "generic_vertices": 76980
+  },
+  {
+    "scan": "MasterBedroom-40255",
+    "chamfer": 0.11296101219725121,
+    "baseline_to_generic": 0.057062949981789804,
+    "generic_to_baseline": 0.05589806221546141,
+    "baseline_vertices": 60068,
+    "generic_vertices": 60068
+  },
+  {
+    "scan": "MasterBedroom-40319",
+    "chamfer": 0.12030357547385293,
+    "baseline_to_generic": 0.06026103516062072,
+    "generic_to_baseline": 0.06004254031323221,
+    "baseline_vertices": 73840,
+    "generic_vertices": 73840
+  },
+  {
+    "scan": "MasterBedroom-4089",
+    "chamfer": 0.1307408808545471,
+    "baseline_to_generic": 0.06719499675435872,
+    "generic_to_baseline": 0.06354588410018837,
+    "baseline_vertices": 36188,
+    "generic_vertices": 36188
+  },
+  {
+    "scan": "MasterBedroom-41843",
+    "chamfer": 0.279057508627727,
+    "baseline_to_generic": 0.12159318506067969,
+    "generic_to_baseline": 0.1574643235670473,
+    "baseline_vertices": 111124,
+    "generic_vertices": 111124
+  },
+  {
+    "scan": "MasterBedroom-424",
+    "chamfer": 0.09940484611736786,
+    "baseline_to_generic": 0.04984518765773431,
+    "generic_to_baseline": 0.04955965845963354,
+    "baseline_vertices": 52366,
+    "generic_vertices": 52366
+  },
+  {
+    "scan": "MasterBedroom-4284",
+    "chamfer": 0.11104970203312786,
+    "baseline_to_generic": 0.055333036321861366,
+    "generic_to_baseline": 0.05571666571126649,
+    "baseline_vertices": 52910,
+    "generic_vertices": 52910
+  },
+  {
+    "scan": "MasterBedroom-45545",
+    "chamfer": 0.12358547406109677,
+    "baseline_to_generic": 0.061833650254518625,
+    "generic_to_baseline": 0.061751823806578135,
+    "baseline_vertices": 56058,
+    "generic_vertices": 56058
+  },
+  {
+    "scan": "MasterBedroom-49865",
+    "chamfer": 0.11743755523282107,
+    "baseline_to_generic": 0.0586565594484393,
+    "generic_to_baseline": 0.05878099578438178,
+    "baseline_vertices": 61270,
+    "generic_vertices": 61270
+  },
+  {
+    "scan": "MasterBedroom-514",
+    "chamfer": 0.07835041549977098,
+    "baseline_to_generic": 0.0389203967429981,
+    "generic_to_baseline": 0.039430018756772885,
+    "baseline_vertices": 33058,
+    "generic_vertices": 33058
+  },
+  {
+    "scan": "MasterBedroom-58086",
+    "chamfer": 0.10915414220943426,
+    "baseline_to_generic": 0.054582114459866965,
+    "generic_to_baseline": 0.05457202774956729,
+    "baseline_vertices": 19926,
+    "generic_vertices": 19926
+  },
+  {
+    "scan": "MasterBedroom-6351",
+    "chamfer": 0.07811817941440574,
+    "baseline_to_generic": 0.039178998648087694,
+    "generic_to_baseline": 0.03893918076631804,
+    "baseline_vertices": 40572,
+    "generic_vertices": 40572
+  },
+  {
+    "scan": "MasterBedroom-63654",
+    "chamfer": 0.08537903540847169,
+    "baseline_to_generic": 0.042233756683636874,
+    "generic_to_baseline": 0.04314527872483481,
+    "baseline_vertices": 62770,
+    "generic_vertices": 62770
+  },
+  {
+    "scan": "MasterBedroom-6399",
+    "chamfer": 0.10586052116239118,
+    "baseline_to_generic": 0.05313889211366336,
+    "generic_to_baseline": 0.052721629048727826,
+    "baseline_vertices": 34834,
+    "generic_vertices": 34834
+  },
+  {
+    "scan": "MasterBedroom-6631",
+    "chamfer": 0.12335387264792169,
+    "baseline_to_generic": 0.060972405257805506,
+    "generic_to_baseline": 0.062381467390116185,
+    "baseline_vertices": 53690,
+    "generic_vertices": 53690
+  },
+  {
+    "scan": "MasterBedroom-6907",
+    "chamfer": 0.45606623496867355,
+    "baseline_to_generic": 0.22875581724360658,
+    "generic_to_baseline": 0.22731041772506697,
+    "baseline_vertices": 76730,
+    "generic_vertices": 76730
+  },
+  {
+    "scan": "MasterBedroom-74105",
+    "chamfer": 0.1265334174979023,
+    "baseline_to_generic": 0.06287358016993029,
+    "generic_to_baseline": 0.06365983732797204,
+    "baseline_vertices": 63126,
+    "generic_vertices": 63126
+  },
+  {
+    "scan": "MasterBedroom-75552",
+    "chamfer": 0.1290311071130415,
+    "baseline_to_generic": 0.0642632985746412,
+    "generic_to_baseline": 0.06476780853840029,
+    "baseline_vertices": 30414,
+    "generic_vertices": 30414
+  },
+  {
+    "scan": "MasterBedroom-7894",
+    "chamfer": 0.12101584438269367,
+    "baseline_to_generic": 0.06058565955441119,
+    "generic_to_baseline": 0.060430184828282475,
+    "baseline_vertices": 39942,
+    "generic_vertices": 39942
+  },
+  {
+    "scan": "MasterBedroom-86835",
+    "chamfer": 0.10524132576242859,
+    "baseline_to_generic": 0.0523297509878782,
+    "generic_to_baseline": 0.0529115747745504,
+    "baseline_vertices": 41840,
+    "generic_vertices": 41840
+  },
+  {
+    "scan": "MasterBedroom-8979",
+    "chamfer": 0.12301736896536736,
+    "baseline_to_generic": 0.06148544302352178,
+    "generic_to_baseline": 0.06153192594184557,
+    "baseline_vertices": 54686,
+    "generic_vertices": 54686
+  },
+  {
+    "scan": "MasterBedroom-9222",
+    "chamfer": 0.11509522667320893,
+    "baseline_to_generic": 0.05740306484810965,
+    "generic_to_baseline": 0.05769216182509928,
+    "baseline_vertices": 66962,
+    "generic_vertices": 66962
+  },
+  {
+    "scan": "MasterBedroom-9302",
+    "chamfer": 0.09956078580488759,
+    "baseline_to_generic": 0.04960292677269974,
+    "generic_to_baseline": 0.04995785903218784,
+    "baseline_vertices": 54796,
+    "generic_vertices": 54796
+  },
+  {
+    "scan": "MasterBedroom-935",
+    "chamfer": 0.12449873502509017,
+    "baseline_to_generic": 0.06262111784799135,
+    "generic_to_baseline": 0.06187761717709882,
+    "baseline_vertices": 67192,
+    "generic_vertices": 67192
+  },
+  {
+    "scan": "MasterBedroom-9404",
+    "chamfer": 0.13101028042099666,
+    "baseline_to_generic": 0.06611465904718287,
+    "generic_to_baseline": 0.0648956213738138,
+    "baseline_vertices": 65922,
+    "generic_vertices": 65922
+  },
+  {
+    "scan": "MasterBedroom-9583",
+    "chamfer": 0.13734886047700934,
+    "baseline_to_generic": 0.06805488643349325,
+    "generic_to_baseline": 0.0692939740435161,
+    "baseline_vertices": 82634,
+    "generic_vertices": 82634
+  },
+  {
+    "scan": "SecondBedroom-11167",
+    "chamfer": 0.12197099392768762,
+    "baseline_to_generic": 0.060929999478480976,
+    "generic_to_baseline": 0.06104099444920664,
+    "baseline_vertices": 86546,
+    "generic_vertices": 86546
+  },
+  {
+    "scan": "SecondBedroom-11204",
+    "chamfer": 0.10597678480729503,
+    "baseline_to_generic": 0.052914744385272834,
+    "generic_to_baseline": 0.053062040422022186,
+    "baseline_vertices": 39496,
+    "generic_vertices": 39496
+  },
+  {
+    "scan": "SecondBedroom-11303",
+    "chamfer": 0.21454744583111662,
+    "baseline_to_generic": 0.13101230509108563,
+    "generic_to_baseline": 0.08353514074003099,
+    "baseline_vertices": 43328,
+    "generic_vertices": 43328
+  },
+  {
+    "scan": "SecondBedroom-1145",
+    "chamfer": 0.08873897844450723,
+    "baseline_to_generic": 0.04472961996879866,
+    "generic_to_baseline": 0.044009358475708575,
+    "baseline_vertices": 52454,
+    "generic_vertices": 52454
+  },
+  {
+    "scan": "SecondBedroom-13044",
+    "chamfer": 0.10320822336912173,
+    "baseline_to_generic": 0.052045505859857226,
+    "generic_to_baseline": 0.05116271750926451,
+    "baseline_vertices": 28848,
+    "generic_vertices": 28848
+  },
+  {
+    "scan": "SecondBedroom-13218",
+    "chamfer": 0.11612351017226408,
+    "baseline_to_generic": 0.05765484411089726,
+    "generic_to_baseline": 0.058468666061366824,
+    "baseline_vertices": 44976,
+    "generic_vertices": 44976
+  },
+  {
+    "scan": "SecondBedroom-13281",
+    "chamfer": 0.12395482554118199,
+    "baseline_to_generic": 0.0622062237658708,
+    "generic_to_baseline": 0.06174860177531119,
+    "baseline_vertices": 82468,
+    "generic_vertices": 82468
+  },
+  {
+    "scan": "SecondBedroom-13841",
+    "chamfer": 0.11395500065963285,
+    "baseline_to_generic": 0.05695527565944945,
+    "generic_to_baseline": 0.0569997250001834,
+    "baseline_vertices": 30838,
+    "generic_vertices": 30838
+  },
+  {
+    "scan": "SecondBedroom-143",
+    "chamfer": 0.13452147335805797,
+    "baseline_to_generic": 0.07091364641566929,
+    "generic_to_baseline": 0.06360782694238867,
+    "baseline_vertices": 63910,
+    "generic_vertices": 63910
+  },
+  {
+    "scan": "SecondBedroom-14328",
+    "chamfer": 0.4675280635328934,
+    "baseline_to_generic": 0.22465649901189735,
+    "generic_to_baseline": 0.24287156452099604,
+    "baseline_vertices": 59970,
+    "generic_vertices": 59970
+  },
+  {
+    "scan": "SecondBedroom-14817",
+    "chamfer": 0.1197998639486552,
+    "baseline_to_generic": 0.05953200066832282,
+    "generic_to_baseline": 0.06026786328033238,
+    "baseline_vertices": 48660,
+    "generic_vertices": 48660
+  },
+  {
+    "scan": "SecondBedroom-15551",
+    "chamfer": 0.1043253962514438,
+    "baseline_to_generic": 0.05261821571040388,
+    "generic_to_baseline": 0.05170718054103992,
+    "baseline_vertices": 30844,
+    "generic_vertices": 30844
+  },
+  {
+    "scan": "SecondBedroom-19119",
+    "chamfer": 0.11615593172862956,
+    "baseline_to_generic": 0.05825243266216931,
+    "generic_to_baseline": 0.057903499066460244,
+    "baseline_vertices": 42254,
+    "generic_vertices": 42254
+  },
+  {
+    "scan": "SecondBedroom-19232",
+    "chamfer": 0.0808488288195011,
+    "baseline_to_generic": 0.04056136030854908,
+    "generic_to_baseline": 0.040287468510952024,
+    "baseline_vertices": 51204,
+    "generic_vertices": 51204
+  },
+  {
+    "scan": "SecondBedroom-19262",
+    "chamfer": 0.11320985029350789,
+    "baseline_to_generic": 0.0564284251537312,
+    "generic_to_baseline": 0.056781425139776694,
+    "baseline_vertices": 26966,
+    "generic_vertices": 26966
+  },
+  {
+    "scan": "SecondBedroom-22370",
+    "chamfer": 0.11385142753845953,
+    "baseline_to_generic": 0.056741133365504653,
+    "generic_to_baseline": 0.057110294172954885,
+    "baseline_vertices": 50166,
+    "generic_vertices": 50166
+  },
+  {
+    "scan": "SecondBedroom-2311",
+    "chamfer": 0.10402680373667209,
+    "baseline_to_generic": 0.05208084559396864,
+    "generic_to_baseline": 0.05194595814270345,
+    "baseline_vertices": 38404,
+    "generic_vertices": 38404
+  },
+  {
+    "scan": "SecondBedroom-24075",
+    "chamfer": 0.0798441609058273,
+    "baseline_to_generic": 0.03987408184964713,
+    "generic_to_baseline": 0.03997007905618017,
+    "baseline_vertices": 50138,
+    "generic_vertices": 50138
+  },
+  {
+    "scan": "SecondBedroom-24334",
+    "chamfer": 0.11874669009467259,
+    "baseline_to_generic": 0.05909836069963977,
+    "generic_to_baseline": 0.059648329395032826,
+    "baseline_vertices": 48890,
+    "generic_vertices": 48890
+  },
+  {
+    "scan": "SecondBedroom-258160",
+    "chamfer": 0.36973388774356986,
+    "baseline_to_generic": 0.16963055981711234,
+    "generic_to_baseline": 0.20010332792645755,
+    "baseline_vertices": 81178,
+    "generic_vertices": 81178
+  },
+  {
+    "scan": "SecondBedroom-266050",
+    "chamfer": 0.08870816971464579,
+    "baseline_to_generic": 0.04446684227182155,
+    "generic_to_baseline": 0.044241327442824246,
+    "baseline_vertices": 50332,
+    "generic_vertices": 50332
+  },
+  {
+    "scan": "SecondBedroom-2787",
+    "chamfer": 0.08898652452237438,
+    "baseline_to_generic": 0.044283772238569136,
+    "generic_to_baseline": 0.04470275228380524,
+    "baseline_vertices": 44810,
+    "generic_vertices": 44810
+  },
+  {
+    "scan": "SecondBedroom-30034",
+    "chamfer": 0.10545037314766736,
+    "baseline_to_generic": 0.05315996397974938,
+    "generic_to_baseline": 0.052290409167917974,
+    "baseline_vertices": 50766,
+    "generic_vertices": 50766
+  },
+  {
+    "scan": "SecondBedroom-30334",
+    "chamfer": 0.27639864422632643,
+    "baseline_to_generic": 0.0846950508557328,
+    "generic_to_baseline": 0.19170359337059362,
+    "baseline_vertices": 93382,
+    "generic_vertices": 93382
+  },
+  {
+    "scan": "SecondBedroom-32238",
+    "chamfer": 0.09756596653540894,
+    "baseline_to_generic": 0.04878120409666803,
+    "generic_to_baseline": 0.04878476243874092,
+    "baseline_vertices": 80178,
+    "generic_vertices": 80178
+  },
+  {
+    "scan": "SecondBedroom-34317",
+    "chamfer": 0.09759687497623518,
+    "baseline_to_generic": 0.04894133555290707,
+    "generic_to_baseline": 0.0486555394233281,
+    "baseline_vertices": 58324,
+    "generic_vertices": 58324
+  },
+  {
+    "scan": "SecondBedroom-35274",
+    "chamfer": 0.0982845632460692,
+    "baseline_to_generic": 0.0494973552774488,
+    "generic_to_baseline": 0.0487872079686204,
+    "baseline_vertices": 28722,
+    "generic_vertices": 28722
+  },
+  {
+    "scan": "SecondBedroom-35821",
+    "chamfer": 0.09162366530301422,
+    "baseline_to_generic": 0.04597177677709027,
+    "generic_to_baseline": 0.04565188852592394,
+    "baseline_vertices": 62056,
+    "generic_vertices": 62056
+  },
+  {
+    "scan": "SecondBedroom-36408",
+    "chamfer": 0.11475719226541124,
+    "baseline_to_generic": 0.057128475734641505,
+    "generic_to_baseline": 0.05762871653076974,
+    "baseline_vertices": 72578,
+    "generic_vertices": 72578
+  },
+  {
+    "scan": "SecondBedroom-37794",
+    "chamfer": 0.10363759398442299,
+    "baseline_to_generic": 0.05226060145238357,
+    "generic_to_baseline": 0.05137699253203942,
+    "baseline_vertices": 63572,
+    "generic_vertices": 63572
+  },
+  {
+    "scan": "SecondBedroom-39108",
+    "chamfer": 0.2179797978835921,
+    "baseline_to_generic": 0.14740884009235056,
+    "generic_to_baseline": 0.07057095779124153,
+    "baseline_vertices": 56516,
+    "generic_vertices": 56516
+  },
+  {
+    "scan": "SecondBedroom-3960",
+    "chamfer": 0.10439562306092659,
+    "baseline_to_generic": 0.051941904366909764,
+    "generic_to_baseline": 0.05245371869401683,
+    "baseline_vertices": 47616,
+    "generic_vertices": 47616
+  },
+  {
+    "scan": "SecondBedroom-48379",
+    "chamfer": 0.10929163968707421,
+    "baseline_to_generic": 0.054992674269980356,
+    "generic_to_baseline": 0.05429896541709386,
+    "baseline_vertices": 41304,
+    "generic_vertices": 41304
+  },
+  {
+    "scan": "SecondBedroom-48968",
+    "chamfer": 0.08837141923666292,
+    "baseline_to_generic": 0.04456028776483766,
+    "generic_to_baseline": 0.04381113147182525,
+    "baseline_vertices": 40878,
+    "generic_vertices": 40878
+  },
+  {
+    "scan": "SecondBedroom-52584",
+    "chamfer": 0.07715835492665166,
+    "baseline_to_generic": 0.038388143075968786,
+    "generic_to_baseline": 0.03877021185068287,
+    "baseline_vertices": 29070,
+    "generic_vertices": 29070
+  },
+  {
+    "scan": "SecondBedroom-6261",
+    "chamfer": 0.10182713952107288,
+    "baseline_to_generic": 0.051077722760168344,
+    "generic_to_baseline": 0.05074941676090453,
+    "baseline_vertices": 45272,
+    "generic_vertices": 45272
+  },
+  {
+    "scan": "SecondBedroom-6482",
+    "chamfer": 0.10454770235186721,
+    "baseline_to_generic": 0.052389930681138626,
+    "generic_to_baseline": 0.05215777167072858,
+    "baseline_vertices": 65990,
+    "generic_vertices": 65990
+  },
+  {
+    "scan": "SecondBedroom-66007",
+    "chamfer": 0.11602585414917765,
+    "baseline_to_generic": 0.05769564181323295,
+    "generic_to_baseline": 0.0583302123359447,
+    "baseline_vertices": 61362,
+    "generic_vertices": 61362
+  },
+  {
+    "scan": "SecondBedroom-6685",
+    "chamfer": 0.09383670680929196,
+    "baseline_to_generic": 0.04699879319506802,
+    "generic_to_baseline": 0.046837913614223944,
+    "baseline_vertices": 33472,
+    "generic_vertices": 33472
+  },
+  {
+    "scan": "SecondBedroom-6847",
+    "chamfer": 0.11361467165971788,
+    "baseline_to_generic": 0.05712574175243159,
+    "generic_to_baseline": 0.05648892990728629,
+    "baseline_vertices": 51658,
+    "generic_vertices": 51658
+  },
+  {
+    "scan": "SecondBedroom-69017",
+    "chamfer": 0.11624530370429025,
+    "baseline_to_generic": 0.058120564246370576,
+    "generic_to_baseline": 0.05812473945791967,
+    "baseline_vertices": 72196,
+    "generic_vertices": 72196
+  },
+  {
+    "scan": "SecondBedroom-69136",
+    "chamfer": 0.11447297029707568,
+    "baseline_to_generic": 0.057192789441962905,
+    "generic_to_baseline": 0.05728018085511278,
+    "baseline_vertices": 53212,
+    "generic_vertices": 53212
+  },
+  {
+    "scan": "SecondBedroom-69556",
+    "chamfer": 0.125638828647105,
+    "baseline_to_generic": 0.06341412380929326,
+    "generic_to_baseline": 0.062224704837811735,
+    "baseline_vertices": 70410,
+    "generic_vertices": 70410
+  },
+  {
+    "scan": "SecondBedroom-739",
+    "chamfer": 0.0860356267672156,
+    "baseline_to_generic": 0.04279680902467444,
+    "generic_to_baseline": 0.04323881774254116,
+    "baseline_vertices": 53064,
+    "generic_vertices": 53064
+  },
+  {
+    "scan": "SecondBedroom-7635",
+    "chamfer": 0.1257005671165928,
+    "baseline_to_generic": 0.06291977378312417,
+    "generic_to_baseline": 0.06278079333346863,
+    "baseline_vertices": 39610,
+    "generic_vertices": 39610
+  },
+  {
+    "scan": "SecondBedroom-8497",
+    "chamfer": 0.08667077602387928,
+    "baseline_to_generic": 0.04294761784358815,
+    "generic_to_baseline": 0.04372315818029113,
+    "baseline_vertices": 44192,
+    "generic_vertices": 44192
+  },
+  {
+    "scan": "SecondBedroom-860",
+    "chamfer": 0.12671483476597767,
+    "baseline_to_generic": 0.06317739312924466,
+    "generic_to_baseline": 0.063537441636733,
+    "baseline_vertices": 64198,
+    "generic_vertices": 64198
+  },
+  {
+    "scan": "SecondBedroom-86888",
+    "chamfer": 0.10014537098587158,
+    "baseline_to_generic": 0.05040026415061005,
+    "generic_to_baseline": 0.049745106835261524,
+    "baseline_vertices": 46036,
+    "generic_vertices": 46036
+  },
+  {
+    "scan": "SecondBedroom-8823",
+    "chamfer": 0.07789146002941447,
+    "baseline_to_generic": 0.03916337430779858,
+    "generic_to_baseline": 0.03872808572161588,
+    "baseline_vertices": 31470,
+    "generic_vertices": 31470
+  },
+  {
+    "scan": "SecondBedroom-9594",
+    "chamfer": 0.1269531155051729,
+    "baseline_to_generic": 0.06293854320177796,
+    "generic_to_baseline": 0.06401457230339495,
+    "baseline_vertices": 49744,
+    "generic_vertices": 49744
+  },
+  {
+    "scan": "SecondBedroom-9825",
+    "chamfer": 0.11429803592985607,
+    "baseline_to_generic": 0.05718722378956666,
+    "generic_to_baseline": 0.05711081214028941,
+    "baseline_vertices": 54060,
+    "generic_vertices": 54060
+  },
+  {
+    "scan": "SecondBedroom-9923",
+    "chamfer": 0.1121889361230689,
+    "baseline_to_generic": 0.0556318642828334,
+    "generic_to_baseline": 0.056557071840235514,
+    "baseline_vertices": 20062,
+    "generic_vertices": 20062
+  }
+]

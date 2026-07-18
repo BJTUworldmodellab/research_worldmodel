@@ -1,0 +1,74 @@
+[
+  {
+    "room": "bedroom",
+    "kind": "low_change",
+    "scan": "Bedroom-54233",
+    "ssim": 1.0,
+    "mean_abs_pixel_diff": 1.0172526041666666e-05,
+    "changed_pixel_ratio": 3.0517578125e-05,
+    "panel": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/paper_qualitative_panels/bedroom_low_change_Bedroom-54233.png"
+  },
+  {
+    "room": "bedroom",
+    "kind": "high_change",
+    "scan": "MasterBedroom-19531",
+    "ssim": 0.9598298445514967,
+    "mean_abs_pixel_diff": 4.084747314453125,
+    "changed_pixel_ratio": 0.032806396484375,
+    "panel": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/paper_qualitative_panels/bedroom_high_change_MasterBedroom-19531.png"
+  },
+  {
+    "room": "livingroom",
+    "kind": "low_change",
+    "scan": "LivingRoom-33324",
+    "ssim": 1.0,
+    "mean_abs_pixel_diff": 1.0172526041666666e-05,
+    "changed_pixel_ratio": 3.0517578125e-05,
+    "panel": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/paper_qualitative_panels/livingroom_low_change_LivingRoom-33324.png"
+  },
+  {
+    "room": "livingroom",
+    "kind": "high_change",
+    "scan": "LivingRoom-1520",
+    "ssim": 0.9624983423999666,
+    "mean_abs_pixel_diff": 2.7952880859375,
+    "changed_pixel_ratio": 0.0324249267578125,
+    "panel": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/paper_qualitative_panels/livingroom_high_change_LivingRoom-1520.png"
+  },
+  {
+    "room": "diningroom",
+    "kind": "low_change",
+    "scan": "DiningRoom-9824",
+    "ssim": 0.9999999079316414,
+    "mean_abs_pixel_diff": 1.0172526041666666e-05,
+    "changed_pixel_ratio": 3.0517578125e-05,
+    "panel": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/paper_qualitative_panels/diningroom_low_change_DiningRoom-9824.png"
+  },
+  {
+    "room": "diningroom",
+    "kind": "high_change",
+    "scan": "DiningRoom-9630",
+    "ssim": 0.9883960558654876,
+    "mean_abs_pixel_diff": 0.8586934407552084,
+    "changed_pixel_ratio": 0.009796142578125,
+    "panel": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/paper_qualitative_panels/diningroom_high_change_DiningRoom-9630.png"
+  },
+  {
+    "room": "library",
+    "kind": "low_change",
+    "scan": "Library-40642",
+    "ssim": 0.9999997695282588,
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "panel": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/paper_qualitative_panels/library_low_change_Library-40642.png"
+  },
+  {
+    "room": "library",
+    "kind": "high_change",
+    "scan": "Library-35695",
+    "ssim": 0.964184208309395,
+    "mean_abs_pixel_diff": 2.8687337239583335,
+    "changed_pixel_ratio": 0.02410888671875,
+    "panel": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/paper_qualitative_panels/library_high_change_Library-35695.png"
+  }
+]

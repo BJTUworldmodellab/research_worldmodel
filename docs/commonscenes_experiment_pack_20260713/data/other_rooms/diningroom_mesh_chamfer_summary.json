@@ -1,0 +1,91 @@
+{
+  "scenes": 69,
+  "valid": 69,
+  "mean_chamfer": 0.08755266493448258,
+  "median_chamfer": 0.07388234330517962,
+  "max_chamfer": 0.32868723424222135,
+  "mean_baseline_to_generic": 0.04429443657311934,
+  "mean_generic_to_baseline": 0.04325822836136326,
+  "top_chamfer": [
+    {
+      "scan": "DiningRoom-451",
+      "chamfer": 0.32868723424222135,
+      "baseline_to_generic": 0.19231432984162924,
+      "generic_to_baseline": 0.13637290440059208,
+      "baseline_vertices": 56494,
+      "generic_vertices": 56494
+    },
+    {
+      "scan": "DiningRoom-116178",
+      "chamfer": 0.23987667628893075,
+      "baseline_to_generic": 0.11466669632079601,
+      "generic_to_baseline": 0.12520997996813474,
+      "baseline_vertices": 43506,
+      "generic_vertices": 43506
+    },
+    {
+      "scan": "DiningRoom-31322",
+      "chamfer": 0.19120936966509122,
+      "baseline_to_generic": 0.12819183181893645,
+      "generic_to_baseline": 0.06301753784615476,
+      "baseline_vertices": 73856,
+      "generic_vertices": 73856
+    },
+    {
+      "scan": "DiningRoom-9630",
+      "chamfer": 0.16694337138310178,
+      "baseline_to_generic": 0.07647906444530406,
+      "generic_to_baseline": 0.09046430693779774,
+      "baseline_vertices": 42272,
+      "generic_vertices": 42272
+    },
+    {
+      "scan": "DiningRoom-197500",
+      "chamfer": 0.15787458813996297,
+      "baseline_to_generic": 0.08663112096093786,
+      "generic_to_baseline": 0.0712434671790251,
+      "baseline_vertices": 69560,
+      "generic_vertices": 69560
+    },
+    {
+      "scan": "DiningRoom-55572",
+      "chamfer": 0.13681655386194566,
+      "baseline_to_generic": 0.06799066216733822,
+      "generic_to_baseline": 0.06882589169460744,
+      "baseline_vertices": 86620,
+      "generic_vertices": 86620
+    },
+    {
+      "scan": "DiningRoom-6919",
+      "chamfer": 0.12795842006278893,
+      "baseline_to_generic": 0.05966314393148007,
+      "generic_to_baseline": 0.06829527613130885,
+      "baseline_vertices": 61056,
+      "generic_vertices": 61056
+    },
+    {
+      "scan": "DiningRoom-34036",
+      "chamfer": 0.12121458450808188,
+      "baseline_to_generic": 0.05978330153692365,
+      "generic_to_baseline": 0.061431282971158234,
+      "baseline_vertices": 72122,
+      "generic_vertices": 72122
+    },
+    {
+      "scan": "DiningRoom-12376",
+      "chamfer": 0.11392376455839644,
+      "baseline_to_generic": 0.053764292419823036,
+      "generic_to_baseline": 0.0601594721385734,
+      "baseline_vertices": 114886,
+      "generic_vertices": 114886
+    },
+    {
+      "scan": "DiningRoom-88173",
+      "chamfer": 0.11038954903985461,
+      "baseline_to_generic": 0.05033284336342367,
+      "generic_to_baseline": 0.06005670567643094,
+      "baseline_vertices": 76896,
+      "generic_vertices": 76896
+    }
+  ]
+}

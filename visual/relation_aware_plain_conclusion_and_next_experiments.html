@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Relation-Aware InstructScene 通俗结论与后续实验</title>
+  <style>
+    :root {
+      --bg: #f6f7f4;
+      --ink: #1d2522;
+      --muted: #5d6b66;
+      --soft: #ffffff;
+      --line: #d8ded8;
+      --green: #24765d;
+      --blue: #315f9f;
+      --gold: #a56f19;
+      --red: #b24a3c;
+      --gray: #eef1ed;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.65;
+    }
+    header {
+      padding: 46px min(6vw, 72px) 30px;
+      background: linear-gradient(180deg, #ffffff 0%, #eef3ef 100%);
+      border-bottom: 1px solid var(--line);
+    }
+    main {
+      padding: 28px min(6vw, 72px) 70px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+    h1 {
+      margin: 0 0 14px;
+      max-width: 1040px;
+      font-size: clamp(34px, 5vw, 64px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+    h2 {
+      margin: 42px 0 12px;
+      font-size: clamp(25px, 3vw, 38px);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+    h3 {
+      margin: 24px 0 8px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    p { margin: 0 0 12px; color: var(--muted); }
+    strong { color: var(--ink); }
+    .lead {
+      max-width: 980px;
+      font-size: 18px;
+      color: #46544f;
+    }
+    .bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 32px;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: var(--soft);
+      color: #40504a;
+      font-size: 13px;
+    }
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 14px;
+      margin: 18px 0 8px;
+    }
+    .tile {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 132px;
+    }
+    .tile b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 15px;
+    }
+    .tile p { font-size: 14px; }
+    .callout {
+      margin: 18px 0;
+      padding: 16px 18px;
+      background: var(--soft);
+      border-left: 5px solid var(--green);
+      border-radius: 0 8px 8px 0;
+      color: var(--muted);
+    }
+    .callout.warn { border-left-color: var(--gold); }
+    .callout.stop { border-left-color: var(--red); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0 26px;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+    th {
+      background: var(--gray);
+      color: var(--ink);
+      font-weight: 700;
+    }
+    td { color: var(--muted); }
+    tr:last-child td { border-bottom: 0; }
+    .num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .good { color: var(--green); font-weight: 700; }
+    .mid { color: var(--gold); font-weight: 700; }
+    .bad { color: var(--red); font-weight: 700; }
+    .plan {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .plan article {
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .plan h3 { margin-top: 0; }
+    ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+    li { margin: 6px 0; }
+    code {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      background: #e8ece8;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: #25322e;
+      font-size: 0.92em;
+    }
+    footer {
+      margin-top: 48px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Relation-Aware InstructScene：现在能说什么，下一步还该补什么</h1>
+    <p class="lead">
+      这份报告把刚在服务器上复现出来的结果换成更直白的说法：这个方法确实能让生成场景更听懂“左边、靠近、远离”这类明确空间关系；但如果要写成论文结论，还需要把强 baseline 和参数消融补齐，避免结论显得只是在和自己比。
+    </p>
+    <div class="bar">
+      <span class="tag">服务器：V100S 32GB</span>
+      <span class="tag">数据：3D-FRONT / 3D-FUTURE raw mesh 已就绪</span>
+      <span class="tag">验证日期：2026-07-08</span>
+      <span class="tag">主日志：reproduce_strict_mesh_suite_v100_20260707_225329.log</span>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>一句话结论</h2>
+      <div class="callout">
+        <strong>当前结论是可用的，但要讲得克制：</strong>
+        Relation-aware repair 能稳定提升显式空间关系的满足率；direct repair 提升最大但移动更激进，也可能带来轻微 mesh collision 增加；floor-prior 更保守，移动更小；如果要说“几何副作用受控”，应该使用 collision-gated floor-prior 版本。
+      </div>
+
+      <div class="summary">
+        <div class="tile">
+          <b>算法能跑通</b>
+          <p>环境、checkpoint、数据和 raw mesh 都已经配好。三类房间完整 split 都跑过，没有再卡在缺特征或缺 mesh。</p>
+        </div>
+        <div class="tile">
+          <b>关系提升是真的</b>
+          <p>bedroom、livingroom、diningroom 的 repair 后关系满足率都明显高于原始 InstructScene 输出。</p>
+        </div>
+        <div class="tile">
+          <b>副作用需要分版本讲</b>
+          <p>direct/floor-prior 未 gated 时 mesh pair rate 仍有小幅增加，所以不能笼统说 mesh collision 一定降低。</p>
+        </div>
+        <div class="tile">
+          <b>论文还不够硬</b>
+          <p>目前公平 baseline 是原始 InstructScene。若想更有说服力，需要补强 baseline 对比和参数消融。</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>通俗解释：这些数字说明了什么</h2>
+      <p>
+        原始 InstructScene 可以生成看起来合理的房间，但它不一定严格实现文本里的空间关系。例如文本要求“椅子靠近桌子”或“床在柜子左边”，模型可能选对了物体，却在最终 layout 里把位置放错。
+      </p>
+      <p>
+        Relation-aware repair 做的事情不是重新训练大模型，而是在生成后检查这些明确关系有没有被满足。如果没满足，就在地面平面上小幅移动相关物体，尽量把关系修回来。
+      </p>
+      <p>
+        现在的实验说明：这个后处理层确实有效。更激进的 direct 版本修得更多，但物体移动更大；floor-prior 版本修得保守一些，关系提升少一点，但平均移动大幅降低，更像论文主方法应该采用的版本。
+      </p>
+    </section>
+
+    <section>
+      <h2>刚复现出来的主要结果</h2>
+      <h3>Direct repair：关系提升最大，但移动更大</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>房间</th>
+            <th class="num">原始关系满足率</th>
+            <th class="num">修复后满足率</th>
+            <th class="num">提升</th>
+            <th class="num">平均移动</th>
+            <th class="num">mesh pair 变化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>bedroom</td>
+            <td class="num">0.7469</td>
+            <td class="num">0.8898</td>
+            <td class="num good">+0.1429</td>
+            <td class="num">2.36</td>
+            <td class="num mid">+0.00696</td>
+          </tr>
+          <tr>
+            <td>livingroom</td>
+            <td class="num">0.5442</td>
+            <td class="num">0.7687</td>
+            <td class="num good">+0.2245</td>
+            <td class="num">2.46</td>
+            <td class="num mid">+0.00113</td>
+          </tr>
+          <tr>
+            <td>diningroom</td>
+            <td class="num">0.6468</td>
+            <td class="num">0.8216</td>
+            <td class="num good">+0.1747</td>
+            <td class="num">2.15</td>
+            <td class="num mid">+0.00070</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Floor-prior：提升更保守，但移动明显更小</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>房间</th>
+            <th class="num">原始关系满足率</th>
+            <th class="num">修复后满足率</th>
+            <th class="num">提升</th>
+            <th class="num">平均移动</th>
+            <th class="num">mesh pair 变化</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>bedroom</td>
+            <td class="num">0.7469</td>
+            <td class="num">0.8327</td>
+            <td class="num good">+0.0857</td>
+            <td class="num">0.92</td>
+            <td class="num mid">+0.00278</td>
+          </tr>
+          <tr>
+            <td>livingroom</td>
+            <td class="num">0.5442</td>
+            <td class="num">0.6667</td>
+            <td class="num good">+0.1224</td>
+            <td class="num">0.88</td>
+            <td class="num mid">+0.00125</td>
+          </tr>
+          <tr>
+            <td>diningroom</td>
+            <td class="num">0.6468</td>
+            <td class="num">0.7695</td>
+            <td class="num good">+0.1227</td>
+            <td class="num">0.78</td>
+            <td class="num mid">+0.00101</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn">
+        <strong>这里要小心：</strong>
+        floor-prior 的 mesh pair rate 仍然有轻微上升，所以它支持“移动更保守、关系仍有提升”，但不能单独支持“碰撞一定下降”。
+      </div>
+
+      <h3>Collision-gated floor-prior：最适合写 mesh-validity claim</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>房间</th>
+            <th class="num">原始关系满足率</th>
+            <th class="num">gated 满足率</th>
+            <th class="num">gated 提升</th>
+            <th class="num">原始 mesh pair</th>
+            <th class="num">gated mesh pair</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>bedroom</td>
+            <td class="num">0.7469</td>
+            <td class="num">0.8000</td>
+            <td class="num good">+0.0531</td>
+            <td class="num">0.06543</td>
+            <td class="num good">0.06404</td>
+          </tr>
+          <tr>
+            <td>livingroom</td>
+            <td class="num">0.5442</td>
+            <td class="num">0.6088</td>
+            <td class="num good">+0.0646</td>
+            <td class="num">0.03184</td>
+            <td class="num good">0.03178</td>
+          </tr>
+          <tr>
+            <td>diningroom</td>
+            <td class="num">0.6468</td>
+            <td class="num">0.7138</td>
+            <td class="num good">+0.0669</td>
+            <td class="num">0.03573</td>
+            <td class="num good">0.03511</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        这个版本的逻辑很容易解释：如果修复之后碰撞变多，就退回原始布局；如果没有变坏，就保留修复。因此它牺牲一部分关系提升，换来更稳的几何约束。
+      </p>
+    </section>
+
+    <section>
+      <h2>现在能写进论文的说法</h2>
+      <div class="callout">
+        <strong>推荐写法：</strong>
+        在 InstructScene 官方验证 split 和 checkpoint 下，我们的方法作为一个无需训练的 verifier-repair 层，稳定提升显式空间关系满足率。直接修复版本提升最大；floor-prior 版本显著降低物体移动；collision-gated 版本在保持正向关系提升的同时，将 mesh collision pair rate 控制在 baseline 水平或更低。
+      </div>
+      <div class="callout stop">
+        <strong>不建议写法：</strong>
+        不要说已经超过 ReSpace 或 SDGScenes；不要说这是第一个 relation-aware 3D scene generation 方法；不要说所有视觉质量都变好；不要说未 gated floor-prior 一定减少 mesh collision。
+      </div>
+    </section>
+
+    <section>
+      <h2>是否需要强 baseline 对比？需要</h2>
+      <p>
+        如果只是为了证明代码能跑、方法内部有效，目前结果已经够。但如果目标是写论文或投稿，仅和原始 InstructScene 比会显得证据偏窄。强 baseline 不一定要马上完整复现成功，但至少要清楚区分“公平可比 baseline”和“相关但协议不同的方法”。
+      </p>
+      <table>
+        <thead>
+          <tr>
+            <th>baseline</th>
+            <th>现在状态</th>
+            <th>建议怎么处理</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>原始 InstructScene</td>
+            <td><span class="good">已完成，公平可比</span></td>
+            <td>作为主 baseline。因为使用同一 split、同一 checkpoint、同一生成结果。</td>
+          </tr>
+          <tr>
+            <td>Direct repair</td>
+            <td><span class="good">已完成，内部强 ablation</span></td>
+            <td>用来说明“只追求关系分数会移动过大，并可能增加碰撞”。</td>
+          </tr>
+          <tr>
+            <td>Collision-gated repair</td>
+            <td><span class="good">已完成，内部强 variant</span></td>
+            <td>用来支撑 mesh-validity claim，是当前最稳的几何结论版本。</td>
+          </tr>
+          <tr>
+            <td>ReSpace</td>
+            <td><span class="mid">相关性强，但尚未同协议复现</span></td>
+            <td>建议做 small pilot。若无法公平对齐，就放 related work，不写 outperform。</td>
+          </tr>
+          <tr>
+            <td>SDGScenes</td>
+            <td><span class="mid">相关性强，但没有同 split 结果</span></td>
+            <td>建议作为 close related method 讨论。除非完成共享协议，否则不要直接比数字。</td>
+          </tr>
+          <tr>
+            <td>CommonScenes / scene-graph methods</td>
+            <td><span class="mid">输入协议不同</span></td>
+            <td>可作为 related scene-graph generation 家族引用，不作为主表直接 baseline。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>是否需要参数消融？也需要</h2>
+      <p>
+        参数消融的作用不是让结果更花，而是回答审稿人很可能问的问题：为什么选这个版本？为什么移动阈值是 1.8？为什么 repair passes 是 2？为什么 close/far 阈值是 0.75/1.6？如果这些没有交代，方法看起来会像“调出来的”。
+      </p>
+      <div class="plan">
+        <article>
+          <h3>优先级 1：max repair move</h3>
+          <p>建议跑 <code>0.8 / 1.2 / 1.8</code>。这是最重要的消融，因为它直接解释关系提升和移动幅度之间的取舍。</p>
+          <ul>
+            <li>指标：relation gain、avg movement、mesh pair delta。</li>
+            <li>预期：阈值越大，关系提升越高，但移动和碰撞风险也更高。</li>
+          </ul>
+        </article>
+        <article>
+          <h3>优先级 2：repair passes</h3>
+          <p>建议跑 <code>1 / 2 / 3</code>。它回答多轮修复是否真的必要。</p>
+          <ul>
+            <li>指标：relation gain、repair skipped、avg movement。</li>
+            <li>预期：2 轮可能是比较好的折中，3 轮收益变小。</li>
+          </ul>
+        </article>
+        <article>
+          <h3>优先级 3：overlap weight</h3>
+          <p>建议跑 <code>0 / 0.5 / 1 / 2</code>。它解释 floor-prior 为什么不是单纯移动物体，而是在考虑重叠风险。</p>
+          <ul>
+            <li>指标：relation gain、footprint overlap、mesh pair rate。</li>
+            <li>预期：较高 weight 会更保守，但可能牺牲关系提升。</li>
+          </ul>
+        </article>
+        <article>
+          <h3>优先级 4：close / far threshold</h3>
+          <p>建议小范围跑，例如 close <code>0.6 / 0.75 / 0.9</code>，far <code>1.4 / 1.6 / 1.8</code>。</p>
+          <ul>
+            <li>指标：关系满足率和 per-relation breakdown。</li>
+            <li>预期：这个消融可以说明指标不是被某个任意距离阈值“卡”出来的。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>建议的下一批实验顺序</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>顺序</th>
+            <th>实验</th>
+            <th>目的</th>
+            <th>是否必须</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>同步 strict mesh JSON/log 到本地，生成最终 CSV 表</td>
+            <td>把刚跑出来的服务器结果变成论文表格和可追踪材料。</td>
+            <td><span class="good">必须</span></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>floor-prior seed 1 / seed 2 strict mesh</td>
+            <td>证明不是单 seed 偶然结果。</td>
+            <td><span class="good">必须</span></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>max move 参数消融</td>
+            <td>解释为什么选择 <code>max_repair_move=1.8</code>。</td>
+            <td><span class="good">必须</span></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>repair passes 和 overlap weight 消融</td>
+            <td>证明 floor-prior 的设计不是随意拼出来的。</td>
+            <td><span class="mid">强烈建议</span></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>ReSpace small pilot</td>
+            <td>确认能否做共享协议强 baseline。</td>
+            <td><span class="mid">建议尝试</span></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>SDGScenes 可复现性检查</td>
+            <td>确认是否有可运行代码或官方可比结果。</td>
+            <td><span class="mid">建议尝试</span></td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>真实 mesh 可视化样例筛选</td>
+            <td>给论文图和答辩展示用，证明不是只在表格上好看。</td>
+            <td><span class="good">必须</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>最终建议</h2>
+      <p>
+        目前最稳的论文结构是：主表用原始 InstructScene vs direct vs floor-prior vs collision-gated floor-prior；补充表放 multi-seed、参数消融、per-relation breakdown；相关工作里认真讨论 ReSpace、SDGScenes 和 CommonScenes，但在没有共享协议复现前不要写超越它们。
+      </p>
+      <p>
+        换句话说，现在这套实验已经能支撑“方法有效”；下一步要做的是让它支撑“方法可信、边界清楚、比较公平”。
+      </p>
+    </section>
+
+    <footer>
+      <p>Local file: <code>visual/relation_aware_plain_conclusion_and_next_experiments.html</code></p>
+      <p>Key remote logs: <code>reproduce_three_rooms_objectmatch_v100_20260707_200813.log</code>, <code>reproduce_three_rooms_floorprior_v100_20260707_201841.log</code>, <code>reproduce_strict_mesh_suite_v100_20260707_225329.log</code>.</p>
+    </footer>
+  </main>
+</body>
+</html>

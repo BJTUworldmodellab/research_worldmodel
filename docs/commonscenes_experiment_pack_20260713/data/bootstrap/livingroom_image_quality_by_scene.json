@@ -1,0 +1,418 @@
+[
+  {
+    "scan": "LivingRoom-1097",
+    "mean_abs_pixel_diff": 0.852142333984375,
+    "max_abs_pixel_diff": 234,
+    "changed_pixel_ratio": 0.0074920654296875,
+    "ssim": 0.9879790292602268,
+    "psnr": 27.390809235296235
+  },
+  {
+    "scan": "LivingRoom-11224",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-12271",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-1255",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-13136",
+    "mean_abs_pixel_diff": 0.00017801920572916666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00048828125,
+    "ssim": 0.9999990285029106,
+    "psnr": 85.62613490027411
+  },
+  {
+    "scan": "LivingRoom-13599",
+    "mean_abs_pixel_diff": 1.6352945963541667,
+    "max_abs_pixel_diff": 207,
+    "changed_pixel_ratio": 0.0174713134765625,
+    "ssim": 0.9735531200658195,
+    "psnr": 25.22631720454161
+  },
+  {
+    "scan": "LivingRoom-1520",
+    "mean_abs_pixel_diff": 2.7952880859375,
+    "max_abs_pixel_diff": 207,
+    "changed_pixel_ratio": 0.0324249267578125,
+    "ssim": 0.9624983423999666,
+    "psnr": 23.105630589751627
+  },
+  {
+    "scan": "LivingRoom-1618",
+    "mean_abs_pixel_diff": 1.1862436930338542,
+    "max_abs_pixel_diff": 200,
+    "changed_pixel_ratio": 0.0133209228515625,
+    "ssim": 0.9822039011087661,
+    "psnr": 26.581944380533603
+  },
+  {
+    "scan": "LivingRoom-1772",
+    "mean_abs_pixel_diff": 0.06700642903645833,
+    "max_abs_pixel_diff": 209,
+    "changed_pixel_ratio": 0.0010986328125,
+    "ssim": 0.9969471971347099,
+    "psnr": 39.49496864009661
+  },
+  {
+    "scan": "LivingRoom-17951",
+    "mean_abs_pixel_diff": 2.0345052083333332e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 3.0517578125e-05,
+    "ssim": 1.0,
+    "psnr": 95.04621541940325
+  },
+  {
+    "scan": "LivingRoom-18042",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-2050",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-2159",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-22102",
+    "mean_abs_pixel_diff": 2.0345052083333332e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 6.103515625e-05,
+    "ssim": 0.9999999686126348,
+    "psnr": 95.04621541940325
+  },
+  {
+    "scan": "LivingRoom-23405",
+    "mean_abs_pixel_diff": 0.0001068115234375,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000274658203125,
+    "ssim": 0.9999990679365657,
+    "psnr": 87.84462251477352
+  },
+  {
+    "scan": "LivingRoom-24046",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-2410",
+    "mean_abs_pixel_diff": 0.4008382161458333,
+    "max_abs_pixel_diff": 196,
+    "changed_pixel_ratio": 0.00360107421875,
+    "ssim": 0.9927318701028682,
+    "psnr": 30.88607388466306
+  },
+  {
+    "scan": "LivingRoom-24701",
+    "mean_abs_pixel_diff": 1.9350535074869792,
+    "max_abs_pixel_diff": 227,
+    "changed_pixel_ratio": 0.01727294921875,
+    "ssim": 0.9759565188662979,
+    "psnr": 24.089103798605485
+  },
+  {
+    "scan": "LivingRoom-25582",
+    "mean_abs_pixel_diff": 0.3227945963541667,
+    "max_abs_pixel_diff": 201,
+    "changed_pixel_ratio": 0.003631591796875,
+    "ssim": 0.9940835653169801,
+    "psnr": 32.15411883807593
+  },
+  {
+    "scan": "LivingRoom-26286",
+    "mean_abs_pixel_diff": 0.0001983642578125,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0004425048828125,
+    "ssim": 0.9999983149145661,
+    "psnr": 85.15616939184773
+  },
+  {
+    "scan": "LivingRoom-2715",
+    "mean_abs_pixel_diff": 0.00023396809895833334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000457763671875,
+    "ssim": 0.9999984054271696,
+    "psnr": 84.43923723533514
+  },
+  {
+    "scan": "LivingRoom-29294",
+    "mean_abs_pixel_diff": 4.57763671875e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001373291015625,
+    "ssim": 0.9999998985083232,
+    "psnr": 91.52439036771946
+  },
+  {
+    "scan": "LivingRoom-30098",
+    "mean_abs_pixel_diff": 3.0517578125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 1.0,
+    "psnr": 93.28530295827628
+  },
+  {
+    "scan": "LivingRoom-30147",
+    "mean_abs_pixel_diff": 0.259490966796875,
+    "max_abs_pixel_diff": 165,
+    "changed_pixel_ratio": 0.0031585693359375,
+    "ssim": 0.9941055101118101,
+    "psnr": 33.79926787247724
+  },
+  {
+    "scan": "LivingRoom-31397",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999997451998306,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "LivingRoom-3168",
+    "mean_abs_pixel_diff": 0.15092976888020834,
+    "max_abs_pixel_diff": 140,
+    "changed_pixel_ratio": 0.0033111572265625,
+    "ssim": 0.9964582970446293,
+    "psnr": 36.20833548785081
+  },
+  {
+    "scan": "LivingRoom-33324",
+    "mean_abs_pixel_diff": 1.0172526041666666e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 3.0517578125e-05,
+    "ssim": 1.0,
+    "psnr": 98.05651537604307
+  },
+  {
+    "scan": "LivingRoom-34874",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 6.103515625e-05,
+    "ssim": 0.9999998619780831,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "LivingRoom-35085",
+    "mean_abs_pixel_diff": 1.4637451171875,
+    "max_abs_pixel_diff": 234,
+    "changed_pixel_ratio": 0.0133514404296875,
+    "ssim": 0.9768279853402312,
+    "psnr": 25.18737572338857
+  },
+  {
+    "scan": "LivingRoom-3540",
+    "mean_abs_pixel_diff": 1.8594156901041667,
+    "max_abs_pixel_diff": 201,
+    "changed_pixel_ratio": 0.0176544189453125,
+    "ssim": 0.9752258826722374,
+    "psnr": 24.315270573874784
+  },
+  {
+    "scan": "LivingRoom-35461",
+    "mean_abs_pixel_diff": 0.8532307942708334,
+    "max_abs_pixel_diff": 153,
+    "changed_pixel_ratio": 0.0102081298828125,
+    "ssim": 0.9875700389243607,
+    "psnr": 28.40726241436725
+  },
+  {
+    "scan": "LivingRoom-360",
+    "mean_abs_pixel_diff": 8.646647135416667e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002288818359375,
+    "ssim": 0.9999997923834026,
+    "psnr": 88.76232637014631
+  },
+  {
+    "scan": "LivingRoom-37001",
+    "mean_abs_pixel_diff": 0.0001068115234375,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002288818359375,
+    "ssim": 0.9999992084093366,
+    "psnr": 87.84462251477352
+  },
+  {
+    "scan": "LivingRoom-37659",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-3797",
+    "mean_abs_pixel_diff": 0.7122039794921875,
+    "max_abs_pixel_diff": 171,
+    "changed_pixel_ratio": 0.010040283203125,
+    "ssim": 0.9882882292480022,
+    "psnr": 29.130760243005327
+  },
+  {
+    "scan": "LivingRoom-38721",
+    "mean_abs_pixel_diff": 0.0005544026692708334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0013275146484375,
+    "ssim": 0.9999975522158338,
+    "psnr": 80.69255063469748
+  },
+  {
+    "scan": "LivingRoom-40975",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-41893",
+    "mean_abs_pixel_diff": 0.0001983642578125,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000579833984375,
+    "ssim": 0.9999966041511293,
+    "psnr": 85.15616939184773
+  },
+  {
+    "scan": "LivingRoom-423",
+    "mean_abs_pixel_diff": 0.00020853678385416666,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000518798828125,
+    "ssim": 0.999999202523068,
+    "psnr": 84.93897679389696
+  },
+  {
+    "scan": "LivingRoom-4789",
+    "mean_abs_pixel_diff": 0.23445638020833334,
+    "max_abs_pixel_diff": 160,
+    "changed_pixel_ratio": 0.0027923583984375,
+    "ssim": 0.9948916086024292,
+    "psnr": 33.916144579478214
+  },
+  {
+    "scan": "LivingRoom-4960",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-50084",
+    "mean_abs_pixel_diff": 6.612141927083333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001983642578125,
+    "ssim": 0.9999989187688751,
+    "psnr": 89.92738177974609
+  },
+  {
+    "scan": "LivingRoom-52289",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-5361",
+    "mean_abs_pixel_diff": 6.103515625e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000152587890625,
+    "ssim": 0.9999998865056104,
+    "psnr": 90.27500300163646
+  },
+  {
+    "scan": "LivingRoom-55",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "LivingRoom-5655",
+    "mean_abs_pixel_diff": 0.00011698404947916667,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000274658203125,
+    "ssim": 0.9999991399594964,
+    "psnr": 87.44953719197495
+  },
+  {
+    "scan": "LivingRoom-6045",
+    "mean_abs_pixel_diff": 1.9938507080078125,
+    "max_abs_pixel_diff": 213,
+    "changed_pixel_ratio": 0.01898193359375,
+    "ssim": 0.9741009131998966,
+    "psnr": 24.119399212779147
+  },
+  {
+    "scan": "LivingRoom-68491",
+    "mean_abs_pixel_diff": 6.612141927083333e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00018310546875,
+    "ssim": 0.9999988955761052,
+    "psnr": 89.92738177974609
+  },
+  {
+    "scan": "LivingRoom-71071",
+    "mean_abs_pixel_diff": 0.9950510660807291,
+    "max_abs_pixel_diff": 227,
+    "changed_pixel_ratio": 0.0088958740234375,
+    "ssim": 0.9831788771227751,
+    "psnr": 26.78028646620512
+  },
+  {
+    "scan": "LivingRoom-791",
+    "mean_abs_pixel_diff": 0.000244140625,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00054931640625,
+    "ssim": 0.9999961206775301,
+    "psnr": 84.25440308835684
+  },
+  {
+    "scan": "LivingRoom-860",
+    "mean_abs_pixel_diff": 0.00012715657552083334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002899169921875,
+    "ssim": 0.9999995071477928,
+    "psnr": 87.08741554106254
+  },
+  {
+    "scan": "LivingRoom-88425",
+    "mean_abs_pixel_diff": 0.968780517578125,
+    "max_abs_pixel_diff": 213,
+    "changed_pixel_ratio": 0.011444091796875,
+    "ssim": 0.9854181287721792,
+    "psnr": 27.399105083958
+  }
+]

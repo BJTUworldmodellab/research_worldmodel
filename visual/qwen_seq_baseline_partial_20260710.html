@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Qwen/ReSpace Sequential Baseline 阶段结果</title>
+  <style>
+    body{margin:0;background:#f6f7f9;color:#1f2937;font-family:Arial,"Microsoft YaHei",sans-serif;line-height:1.65}
+    main{max-width:1080px;margin:0 auto;padding:34px 22px 60px}
+    h1{font-size:30px;margin:0 0 8px}
+    h2{font-size:21px;margin:30px 0 10px}
+    .card{background:#fff;border:1px solid #dde3ea;border-radius:8px;padding:16px 18px;margin:16px 0}
+    table{width:100%;border-collapse:collapse;background:#fff;border:1px solid #dde3ea;margin:10px 0 18px}
+    th,td{padding:10px 12px;border-bottom:1px solid #e8edf2;text-align:left;vertical-align:top}
+    th{background:#eef3f7}
+    code{background:#eef2f6;border-radius:5px;padding:1px 5px}
+    pre{background:#111827;color:#f9fafb;border-radius:8px;padding:14px 16px;overflow:auto}
+    .ok{color:#18794e;font-weight:700}.warn{color:#a15c00;font-weight:700}.bad{color:#b42318;font-weight:700}
+  </style>
+</head>
+<body>
+<main>
+  <h1>Qwen/ReSpace Sequential Baseline 阶段结果</h1>
+  <p>更新时间：2026-07-10</p>
+
+  <section class="card">
+    <p><span class="ok">已完成：</span>ReSpace 原生 sequential editing 测试跑通了 seed 1234 的 10 条样本，并保存了正式 <code>1234_seq_metrics.json</code>。</p>
+    <p><span class="warn">停止原因：</span>后续 seed 卡在一个 removal 样本上重复重试，每次约 70 秒。为了避免继续烧卡，已停止长跑并保留阶段结果。</p>
+  </section>
+
+  <h2>关键指标</h2>
+  <table>
+    <tr><th>指标</th><th>seed 1234</th></tr>
+    <tr><td>样本数</td><td>10</td></tr>
+    <tr><td>mean acc_seq</td><td>0.6042</td></tr>
+    <tr><td>mean acc_add</td><td>0.5440</td></tr>
+    <tr><td>mean acc_rem</td><td>1.0000</td></tr>
+    <tr><td>mean steps</td><td>5.3</td></tr>
+    <tr><td>mean add steps</td><td>4.2</td></tr>
+    <tr><td>mean removal steps</td><td>1.1</td></tr>
+  </table>
+
+  <h2>解释</h2>
+  <p>这个结果比之前的 30/30 非空场景更严格。它说明 Qwen/ReSpace 在已完成 seed 中删除操作很好，但添加操作质量不稳定，整体 sequence 成功率约 0.60。</p>
+  <p>这不能直接和原算法的 relation accuracy 混在一张指标里，因为两个指标定义不同；但它可以作为强 baseline 的原生 ReSpace 指标补充。</p>
+
+  <h2>日志与产物</h2>
+  <table>
+    <tr><th>项目</th><th>路径</th></tr>
+    <tr><td>日志</td><td><code>/root/RelationAwareInstructScene/logs/strong_baseline_a100_compare/qwen_seq_bedroom_n10_20260710_002357.log</code></td></tr>
+    <tr><td>输出目录</td><td><code>/root/RelationAwareInstructScene/results/strong_baseline_a100_compare/qwen_seq_bedroom_n10_20260710_002357</code></td></tr>
+    <tr><td>seed 指标</td><td><code>respace_qwen_seq_bedroom_n10/1234_seq_metrics.json</code></td></tr>
+    <tr><td>部分汇总</td><td><code>summary_partial_stopped.json</code></td></tr>
+  </table>
+
+  <h2>修复过的阻塞点</h2>
+  <table>
+    <tr><th>阻塞点</th><th>修复</th></tr>
+    <tr><td><code>ModuleNotFoundError: No module named 'src'</code></td><td>补充 <code>PYTHONPATH</code></td></tr>
+    <tr><td>seed 子目录不存在导致保存失败</td><td>预先创建 <code>1234/3456/5678</code> 输出目录</td></tr>
+    <tr><td>removal 多次重试太慢</td><td>停止长跑，保留 seed 1234 正式结果</td></tr>
+  </table>
+
+  <h2>下一步</h2>
+  <p>建议不要立刻重跑完整 3-seed sequential。更省钱的做法是先跑 add-only 原生 benchmark，或者把 removal retry budget 降到 1-2 次，再跑 3 seeds。真正论文级对比仍需要把 ReSpace/Qwen JSON 接到和原算法相同的 relation evaluator 上。</p>
+</main>
+</body>
+</html>

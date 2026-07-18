@@ -1,0 +1,91 @@
+{
+  "scenes": 52,
+  "valid": 52,
+  "mean_chamfer": 0.1310528440043999,
+  "median_chamfer": 0.11144581254673294,
+  "max_chamfer": 0.29373383610676895,
+  "mean_baseline_to_generic": 0.06778203926563535,
+  "mean_generic_to_baseline": 0.06327080473876454,
+  "top_chamfer": [
+    {
+      "scan": "LivingRoom-1520",
+      "chamfer": 0.29373383610676895,
+      "baseline_to_generic": 0.14498436566781364,
+      "generic_to_baseline": 0.1487494704389553,
+      "baseline_vertices": 71030,
+      "generic_vertices": 71030
+    },
+    {
+      "scan": "LivingRoom-24701",
+      "chamfer": 0.2833962702591005,
+      "baseline_to_generic": 0.1546383967715155,
+      "generic_to_baseline": 0.128757873487585,
+      "baseline_vertices": 54780,
+      "generic_vertices": 54780
+    },
+    {
+      "scan": "LivingRoom-13599",
+      "chamfer": 0.2396306276556,
+      "baseline_to_generic": 0.13573076965921846,
+      "generic_to_baseline": 0.10389985799638153,
+      "baseline_vertices": 81018,
+      "generic_vertices": 81018
+    },
+    {
+      "scan": "LivingRoom-6045",
+      "chamfer": 0.23562422399050548,
+      "baseline_to_generic": 0.13788203408575359,
+      "generic_to_baseline": 0.09774218990475188,
+      "baseline_vertices": 77394,
+      "generic_vertices": 77394
+    },
+    {
+      "scan": "LivingRoom-35085",
+      "chamfer": 0.23453803950079394,
+      "baseline_to_generic": 0.13740373329502814,
+      "generic_to_baseline": 0.0971343062057658,
+      "baseline_vertices": 58314,
+      "generic_vertices": 58314
+    },
+    {
+      "scan": "LivingRoom-3540",
+      "chamfer": 0.2132943525712997,
+      "baseline_to_generic": 0.112669010947493,
+      "generic_to_baseline": 0.10062534162380668,
+      "baseline_vertices": 111502,
+      "generic_vertices": 111502
+    },
+    {
+      "scan": "LivingRoom-1097",
+      "chamfer": 0.21269104086953294,
+      "baseline_to_generic": 0.11837075775615866,
+      "generic_to_baseline": 0.0943202831133743,
+      "baseline_vertices": 95598,
+      "generic_vertices": 95598
+    },
+    {
+      "scan": "LivingRoom-1618",
+      "chamfer": 0.2088760168133437,
+      "baseline_to_generic": 0.1417559237412834,
+      "generic_to_baseline": 0.0671200930720603,
+      "baseline_vertices": 72180,
+      "generic_vertices": 72180
+    },
+    {
+      "scan": "LivingRoom-71071",
+      "chamfer": 0.17798404891302363,
+      "baseline_to_generic": 0.08752183802698571,
+      "generic_to_baseline": 0.09046221088603792,
+      "baseline_vertices": 96176,
+      "generic_vertices": 96176
+    },
+    {
+      "scan": "LivingRoom-88425",
+      "chamfer": 0.16083086735885022,
+      "baseline_to_generic": 0.09038615640058867,
+      "generic_to_baseline": 0.07044471095826155,
+      "baseline_vertices": 140202,
+      "generic_vertices": 140202
+    }
+  ]
+}

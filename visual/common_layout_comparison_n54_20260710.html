@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>公平规模 Common Layout 对比 - 2026-07-10</title>
+  <style>
+    body { font-family: Arial, "Microsoft YaHei", sans-serif; margin: 32px; color: #1f2937; line-height: 1.65; }
+    main { max-width: 1080px; margin: 0 auto; }
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    h2 { font-size: 20px; margin-top: 28px; border-bottom: 1px solid #d1d5db; padding-bottom: 6px; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+    th, td { border: 1px solid #d1d5db; padding: 9px 10px; text-align: left; }
+    th { background: #f3f4f6; }
+    td.num { text-align: right; font-variant-numeric: tabular-nums; }
+    code, pre { background: #f3f4f6; border-radius: 6px; }
+    code { padding: 2px 4px; }
+    pre { padding: 12px; overflow-x: auto; }
+    .callout { border-left: 4px solid #2563eb; background: #eff6ff; padding: 12px 16px; margin: 18px 0; }
+    .risk { border-left-color: #d97706; background: #fffbeb; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>公平规模 Common Layout 对比</h1>
+  <p>日期：2026-07-10。目标：把 Qwen/ReSpace baseline 扩到 162 个 bedroom 场景，解决之前 30 场景样本太少的问题。</p>
+
+  <div class="callout">
+    <strong>核心结论：</strong>场景数公平后，Qwen/ReSpace full-scene 的物体数接近原算法，但碰撞更严重；Qwen/ReSpace add-only 碰撞更低，但平均物体数明显更少，所以不能证明它优于原算法。
+  </div>
+
+  <h2>关键指标</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>方法</th>
+        <th>场景数</th>
+        <th>非空率</th>
+        <th>平均物体数</th>
+        <th>每场景重叠对数</th>
+        <th>脚印重叠比例</th>
+        <th>中心越界率</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>原始 baseline layout</td><td class="num">162</td><td class="num">1.000</td><td class="num">5.346</td><td class="num">0.907</td><td class="num">0.0461</td><td class="num">0.0000</td></tr>
+      <tr><td>原算法 repaired floor-prior</td><td class="num">162</td><td class="num">1.000</td><td class="num">5.346</td><td class="num">0.926</td><td class="num">0.0439</td><td class="num">0.0000</td></tr>
+      <tr><td>Qwen/ReSpace full-scene n54</td><td class="num">162</td><td class="num">1.000</td><td class="num">5.148</td><td class="num">2.117</td><td class="num">0.0546</td><td class="num">0.0000</td></tr>
+      <tr><td>Qwen/ReSpace add-only n54</td><td class="num">162</td><td class="num">1.000</td><td class="num">3.673</td><td class="num">0.957</td><td class="num">0.0264</td><td class="num">0.0015</td></tr>
+    </tbody>
+  </table>
+
+  <h2>怎么理解</h2>
+  <p>full-scene 是更公平的强 baseline，因为它的平均物体数 <code>5.148</code> 接近原算法 <code>5.346</code>。但它的重叠对数是 <code>2.117</code>，明显高于原算法 repaired 的 <code>0.926</code>，说明在密度接近时，Qwen/ReSpace 的布局碰撞更严重。</p>
+  <p>add-only 的脚印重叠比例最低，但平均物体数只有 <code>3.673</code>。少放物体天然更不容易碰撞，所以这个结果不能直接用来反驳原算法。</p>
+
+  <h2>执行与产物</h2>
+  <pre><code>tmux new-session -d -s fair_compare_162 'bash /root/RelationAwareInstructScene/server_setup/run_respace_qwen_fair_bedroom_n54.sh'</code></pre>
+  <p>远端日志：<code>/root/RelationAwareInstructScene/logs/strong_baseline_a100_compare/qwen_fair_bedroom_n54_20260710_123802.log</code></p>
+  <p>远端产物：<code>/root/RelationAwareInstructScene/results/strong_baseline_a100_compare/qwen_fair_bedroom_n54_20260710_123802</code></p>
+  <p>本地指标：<code>results/tables/common_layout_metrics_n54_20260710.csv</code> 和 <code>results/tables/common_layout_metrics_n54_20260710.json</code></p>
+
+  <div class="callout risk">
+    <strong>仍需谨慎：</strong>这仍是几何布局评估，不是语义关系准确率评估。最终论文/报告里，应该把这张表作为强 baseline 的布局质量对比，再补语义关系满足率或参数消融。
+  </div>
+</main>
+</body>
+</html>

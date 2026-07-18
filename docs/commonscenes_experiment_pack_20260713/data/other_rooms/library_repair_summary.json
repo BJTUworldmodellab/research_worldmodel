@@ -1,0 +1,140 @@
+{
+  "out_dir": "/root/autodl-tmp/RelationAwareInstructScene/results_generic_repair/fullshape_pt_epoch195_generic_gate_t1.5_library",
+  "files": 56,
+  "accepted_scenes": 10,
+  "edits": 17,
+  "max_move_threshold": 1.5,
+  "changed_boxes": 15,
+  "total_boxes": 370,
+  "changed_box_ratio": 0.04054054054054054,
+  "mean_center_movement": 0.03869258187659127,
+  "max_center_movement": 1.3872523029275703,
+  "baseline_generic": {
+    "left": {
+      "ok": 122,
+      "total": 122,
+      "acc": 1.0
+    },
+    "right": {
+      "ok": 107,
+      "total": 107,
+      "acc": 1.0
+    },
+    "front": {
+      "ok": 129,
+      "total": 129,
+      "acc": 1.0
+    },
+    "behind": {
+      "ok": 137,
+      "total": 138,
+      "acc": 0.9927536231884058
+    },
+    "close by": {
+      "ok": 64,
+      "total": 85,
+      "acc": 0.7529411764705882
+    },
+    "bigger than": {
+      "ok": 198,
+      "total": 206,
+      "acc": 0.9611650485436893
+    },
+    "smaller than": {
+      "ok": 209,
+      "total": 211,
+      "acc": 0.990521327014218
+    },
+    "taller than": {
+      "ok": 101,
+      "total": 110,
+      "acc": 0.9181818181818182
+    },
+    "shorter than": {
+      "ok": 121,
+      "total": 130,
+      "acc": 0.9307692307692308
+    },
+    "standing on": {
+      "ok": 206,
+      "total": 207,
+      "acc": 0.9951690821256038
+    },
+    "symmetrical to": {
+      "ok": 18,
+      "total": 28,
+      "acc": 0.6428571428571429
+    },
+    "total": {
+      "ok": 1412,
+      "total": 1473,
+      "acc": 0.9585879158180584
+    }
+  },
+  "repaired_generic": {
+    "left": {
+      "ok": 122,
+      "total": 122,
+      "acc": 1.0
+    },
+    "right": {
+      "ok": 107,
+      "total": 107,
+      "acc": 1.0
+    },
+    "front": {
+      "ok": 129,
+      "total": 129,
+      "acc": 1.0
+    },
+    "behind": {
+      "ok": 137,
+      "total": 138,
+      "acc": 0.9927536231884058
+    },
+    "close by": {
+      "ok": 72,
+      "total": 85,
+      "acc": 0.8470588235294118
+    },
+    "bigger than": {
+      "ok": 198,
+      "total": 206,
+      "acc": 0.9611650485436893
+    },
+    "smaller than": {
+      "ok": 209,
+      "total": 211,
+      "acc": 0.990521327014218
+    },
+    "taller than": {
+      "ok": 101,
+      "total": 110,
+      "acc": 0.9181818181818182
+    },
+    "shorter than": {
+      "ok": 121,
+      "total": 130,
+      "acc": 0.9307692307692308
+    },
+    "standing on": {
+      "ok": 206,
+      "total": 207,
+      "acc": 0.9951690821256038
+    },
+    "symmetrical to": {
+      "ok": 18,
+      "total": 28,
+      "acc": 0.6428571428571429
+    },
+    "total": {
+      "ok": 1420,
+      "total": 1473,
+      "acc": 0.9640190088255262
+    }
+  },
+  "baseline_collision_penalty": 72.02824967851944,
+  "repaired_collision_penalty": 68.49793868038364,
+  "baseline_collision_pairs": 439,
+  "repaired_collision_pairs": 422
+}

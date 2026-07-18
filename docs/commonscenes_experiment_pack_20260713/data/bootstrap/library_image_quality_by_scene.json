@@ -1,0 +1,450 @@
+[
+  {
+    "scan": "Library-1093",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-110125",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-11256",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-11820",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-123334",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-123545",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-13751",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-13832",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-145994",
+    "mean_abs_pixel_diff": 0.7123616536458334,
+    "max_abs_pixel_diff": 225,
+    "changed_pixel_ratio": 0.0085906982421875,
+    "ssim": 0.9849270158878743,
+    "psnr": 28.979668933179482
+  },
+  {
+    "scan": "Library-1511",
+    "mean_abs_pixel_diff": 0.6250050862630209,
+    "max_abs_pixel_diff": 155,
+    "changed_pixel_ratio": 0.008270263671875,
+    "ssim": 0.9875437583294375,
+    "psnr": 30.30737733446947
+  },
+  {
+    "scan": "Library-163346",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-16688",
+    "mean_abs_pixel_diff": 1.7036183675130208,
+    "max_abs_pixel_diff": 232,
+    "changed_pixel_ratio": 0.0189666748046875,
+    "ssim": 0.9705696058351911,
+    "psnr": 25.085029832613728
+  },
+  {
+    "scan": "Library-16869",
+    "mean_abs_pixel_diff": 0.5300140380859375,
+    "max_abs_pixel_diff": 209,
+    "changed_pixel_ratio": 0.005523681640625,
+    "ssim": 0.9897163791294632,
+    "psnr": 30.10383894330028
+  },
+  {
+    "scan": "Library-17832",
+    "mean_abs_pixel_diff": 0.0001678466796875,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.00030517578125,
+    "ssim": 0.9999993985130748,
+    "psnr": 85.88167606333384
+  },
+  {
+    "scan": "Library-1808",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-19283",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-19478",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-19891",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-2159",
+    "mean_abs_pixel_diff": 1.1383107503255208,
+    "max_abs_pixel_diff": 195,
+    "changed_pixel_ratio": 0.0191497802734375,
+    "ssim": 0.9771127647460918,
+    "psnr": 27.511422852407907
+  },
+  {
+    "scan": "Library-22443",
+    "mean_abs_pixel_diff": 0.00014241536458333334,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0003662109375,
+    "ssim": 0.9999981025389673,
+    "psnr": 86.59523529661035
+  },
+  {
+    "scan": "Library-23898",
+    "mean_abs_pixel_diff": 0.6044718424479166,
+    "max_abs_pixel_diff": 234,
+    "changed_pixel_ratio": 0.005523681640625,
+    "ssim": 0.9914610353414705,
+    "psnr": 28.730457418643166
+  },
+  {
+    "scan": "Library-24675",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-24727",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-2480",
+    "mean_abs_pixel_diff": 1.3194376627604167,
+    "max_abs_pixel_diff": 159,
+    "changed_pixel_ratio": 0.0163421630859375,
+    "ssim": 0.9818983394349544,
+    "psnr": 26.958521163040047
+  },
+  {
+    "scan": "Library-25138",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-28947",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-29416",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-29737",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-29744",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-32140",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-32231",
+    "mean_abs_pixel_diff": 1.3499806722005208,
+    "max_abs_pixel_diff": 206,
+    "changed_pixel_ratio": 0.0168609619140625,
+    "ssim": 0.9761516332336734,
+    "psnr": 26.857916827899587
+  },
+  {
+    "scan": "Library-35695",
+    "mean_abs_pixel_diff": 2.8687337239583335,
+    "max_abs_pixel_diff": 237,
+    "changed_pixel_ratio": 0.02410888671875,
+    "ssim": 0.964184208309395,
+    "psnr": 22.188228295038954
+  },
+  {
+    "scan": "Library-36052",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-39529",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-40642",
+    "mean_abs_pixel_diff": 2.5431315104166668e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 7.62939453125e-05,
+    "ssim": 0.9999997695282588,
+    "psnr": 94.07711552229641
+  },
+  {
+    "scan": "Library-4345",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-43565",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-4425",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-457",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-45741",
+    "mean_abs_pixel_diff": 4.0690104166666664e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 9.1552734375e-05,
+    "ssim": 0.9999996203629732,
+    "psnr": 92.03591546276344
+  },
+  {
+    "scan": "Library-4659",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-51220",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-5406",
+    "mean_abs_pixel_diff": 7.62939453125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001373291015625,
+    "ssim": 0.999999342739034,
+    "psnr": 89.3059028715559
+  },
+  {
+    "scan": "Library-56351",
+    "mean_abs_pixel_diff": 2.507319132486979,
+    "max_abs_pixel_diff": 240,
+    "changed_pixel_ratio": 0.0282745361328125,
+    "ssim": 0.9590037707758118,
+    "psnr": 23.30932670245737
+  },
+  {
+    "scan": "Library-57472",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-5781",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-58697",
+    "mean_abs_pixel_diff": 4.57763671875e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0001373291015625,
+    "ssim": 1.0,
+    "psnr": 91.52439036771946
+  },
+  {
+    "scan": "Library-70308",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-71638",
+    "mean_abs_pixel_diff": 7.62939453125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.000152587890625,
+    "ssim": 0.9999999733718178,
+    "psnr": 89.3059028715559
+  },
+  {
+    "scan": "Library-7168",
+    "mean_abs_pixel_diff": 0.00011189778645833333,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002899169921875,
+    "ssim": 0.9999983701747035,
+    "psnr": 87.64258855975987
+  },
+  {
+    "scan": "Library-7291",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-74566",
+    "mean_abs_pixel_diff": 7.62939453125e-05,
+    "max_abs_pixel_diff": 1,
+    "changed_pixel_ratio": 0.0002288818359375,
+    "ssim": 0.9999992215621645,
+    "psnr": 89.3059028715559
+  },
+  {
+    "scan": "Library-8543",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-898",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-90753",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  },
+  {
+    "scan": "Library-934",
+    "mean_abs_pixel_diff": 0.0,
+    "max_abs_pixel_diff": 0,
+    "changed_pixel_ratio": 0.0,
+    "ssim": 1.0,
+    "psnr": Infinity
+  }
+]
