@@ -1,0 +1,33 @@
+__pycache__/
+*.py[cod]
+*temp*/
+archive/
+out/
+dataset/3D-FRONT
+dataset/InstructScene
+blender/blender-*
+# Local experiment artifacts
+outputs/
+data/
+cache/
+checkpoints/
+repaired_layouts/
+# Arrays, model weights, archives, and logs
+*.npz
+*.npy
+*.pth
+*.pt
+*.ckpt
+*.pkl
+*.pickle
+*.safetensors
+*.tar
+*.tar.gz
+*.zip
+*.log
+# Credentials
+.env
+.env.*
+*.pem
+*.key
+id_rsa*
