@@ -13,11 +13,12 @@ PREDICATES = {
     1: "left",
     2: "front",
     3: "close_left",
-    4: "close_behind",
+    4: "close_front",
     5: "below",
     6: "right",
     7: "behind",
-    9: "close_front",
+    8: "close_right",
+    9: "close_behind",
 }
 
 CLASS_NAMES = {
@@ -164,9 +165,11 @@ def relation_holds(a, pred, b, close_threshold=0.75, eps=1e-4):
     if pred == 3:
         return a["x"] < b["x"] - eps and horizontal_distance(a, b) <= close_threshold
     if pred == 4:
-        return a["z"] < b["z"] - eps and horizontal_distance(a, b) <= close_threshold
-    if pred == 9:
         return a["z"] > b["z"] + eps and horizontal_distance(a, b) <= close_threshold
+    if pred == 8:
+        return a["x"] > b["x"] + eps and horizontal_distance(a, b) <= close_threshold
+    if pred == 9:
+        return a["z"] < b["z"] - eps and horizontal_distance(a, b) <= close_threshold
     return False
 
 

@@ -134,6 +134,10 @@ def main():
     print("\n=== Config baseline: eval-only ===")
     baseline_scenes = copy.deepcopy(base_scenes)
     bl_per, bl_agg = evaluate_all(baseline_scenes, obj_types, pred_types, None)
+    baseline_by_scene = {
+        int(row["scene_index"]): row
+        for row in bl_per
+    }
     bl_agg["config_id"] = "baseline"
     bl_agg["repair_step_size"] = 0.0
     bl_agg["repair_max_displacement"] = 0.0
@@ -222,15 +226,16 @@ def main():
 
             # Tag per-scene rows
             for si, ps in enumerate(per_scene):
+                baseline = baseline_by_scene[int(ps["scene_index"])]
                 ps["config_id"] = config_id
                 ps["scene_id"] = f"{ps['scene_index']:06d}"
                 ps["movement_mean_displacement"] = movement_means[si]
                 ps["movement_max_displacement"] = movement_maxs[si]
-                ps["baseline_overlap_iou_sum"] = agg_overlap_base
+                ps["baseline_overlap_iou_sum"] = baseline["overlap_iou_sum"]
                 ps["overlap_iou_sum_delta"] = \
-                    ps["overlap_iou_sum"] - agg_overlap_base
+                    ps["overlap_iou_sum"] - baseline["overlap_iou_sum"]
                 ps["consistency_drop"] = \
-                    bl_agg["mean_sg_layout_consistency"] - ps["sg_layout_consistency"]
+                    baseline["sg_layout_consistency"] - ps["sg_layout_consistency"]
 
             # Tag aggregate
             aggregate["config_id"] = config_id

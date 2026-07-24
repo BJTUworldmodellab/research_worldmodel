@@ -292,6 +292,7 @@ def evaluate_bounds_proxy(
     bbox_params: np.ndarray,
     obj_masks: np.ndarray,
     bounds: Dict[str, np.ndarray],
+    cls_dim: int,
 ) -> Dict[str, float]:
     """Check whether bbox translations fall within dataset scale bounds.
 
@@ -302,7 +303,6 @@ def evaluate_bounds_proxy(
         n_objects, n_translation_violations, translation_violation_rate
     """
     active = np.where(obj_masks == 1)[0]
-    cls_dim = 22
     t_low = bounds["translations"][0]   # (3,)
     t_high = bounds["translations"][1]  # (3,)
 
@@ -364,7 +364,7 @@ def evaluate_scene(
 
     # --- bounds proxy ---
     if bounds is not None:
-        proxy = evaluate_bounds_proxy(bbox, masks, bounds)
+        proxy = evaluate_bounds_proxy(bbox, masks, bounds, cls_dim)
     else:
         proxy = {
             "proxy_n_active_objects": n_active,

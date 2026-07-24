@@ -5,10 +5,10 @@
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Bucher and Armeni(2026)]{bucher2026respace}
+\bibitem[Bucher and Armeni(2025)]{bucher2026respace}
 Martin J.~J. Bucher and Iro Armeni.
-\newblock Respace: Text-driven autoregressive 3d indoor scene synthesis and
-  editing, 2026.
+\newblock Respace: Text-driven 3d scene synthesis and editing with preference
+  alignment, 2025.
 \newblock URL \url{https://arxiv.org/abs/2506.02459}.
 
 \bibitem[Feng et~al.(2023)Feng, Zhu, Fu, Jampani, Akula, He, Basu, Wang, and
@@ -26,12 +26,13 @@ Huan Fu, Rongfei Jia, Lin Gao, Mingming Gong, Binqiang Zhao, Steve Maybank, and
 \newblock 3d-future: 3d furniture shape with texture, 2020.
 \newblock URL \url{https://arxiv.org/abs/2009.09633}.
 
-\bibitem[Fu et~al.(2021)Fu, Cai, Gao, Zhang, Li, Xun, Sun, Jia, Zhao, and
-  Zhang]{fu20213dfront}
-Huan Fu, Bowen Cai, Lin Gao, Lingxiao Zhang, Jiaming Wang~Cao Li, Zengqi Xun,
+\bibitem[Fu et~al.(2021)Fu, Cai, Gao, Zhang, Wang, Li, Zeng, Sun, Jia, Zhao,
+  and Zhang]{fu20213dfront}
+Huan Fu, Bowen Cai, Lin Gao, Ling-Xiao Zhang, Jiaming Wang, Cao Li, Qixun Zeng,
   Chengyue Sun, Rongfei Jia, Binqiang Zhao, and Hao Zhang.
-\newblock 3d-front: 3d furnished rooms with layouts and semantics, 2021.
-\newblock URL \url{https://arxiv.org/abs/2011.09127}.
+\newblock 3d-front: 3d furnished rooms with layouts and semantics.
+\newblock In \emph{Proceedings of the IEEE/CVF International Conference on
+  Computer Vision}, pages 10933--10942, 2021.
 
 \bibitem[Gao et~al.(2026)Gao, Li, Ao, Yu, Liu, and Bai]{gao2026sdgscenes}
 Yuhan Gao, Xueying Li, Jicong Ao, Chao Yu, Peng Liu, and Chenjia Bai.

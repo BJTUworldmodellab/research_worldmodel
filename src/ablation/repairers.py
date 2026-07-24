@@ -50,7 +50,13 @@ def _compute_pair_iou(
     return iou, ci, cj
 
 
-def _compute_push_direction(bbox: np.ndarray, cls_dim: int, i: int, j: int) -> np.ndarray:
+def _compute_push_direction(
+    bbox: np.ndarray,
+    cls_dim: int,
+    i: int,
+    j: int,
+    rng: np.random.RandomState,
+) -> np.ndarray:
     """Compute unit push direction (XZ only) from center_i away from center_j."""
     ci_xz = np.array([
         bbox[i, cls_dim + 0],  # x
@@ -64,7 +70,7 @@ def _compute_push_direction(bbox: np.ndarray, cls_dim: int, i: int, j: int) -> n
     dist = np.linalg.norm(diff)
     if dist < 1e-8:
         # Random small push if centers are identical
-        angle = np.random.uniform(0, 2 * np.pi)
+        angle = rng.uniform(0, 2 * np.pi)
         diff = np.array([np.cos(angle), np.sin(angle)])
     else:
         diff = diff / dist
@@ -161,8 +167,10 @@ def repair_overlap_with_sg_guard(
 
     accepted_moves = 0
     rejected_total = 0
+    iterations_run = 0
 
     for iteration in range(max_iter):
+        iterations_run = iteration + 1
         # Find all overlapping pairs, sorted by IoU (worst first)
         overlapping = []
         for a in range(len(active)):
@@ -179,7 +187,7 @@ def repair_overlap_with_sg_guard(
 
         any_improvement = False
         for _iou_val, i, j in overlapping:
-            direction = _compute_push_direction(repaired, cls_dim, i, j)
+            direction = _compute_push_direction(repaired, cls_dim, i, j, rng)
             dx = direction[0] * step_size
             dz = direction[1] * step_size
 
@@ -255,7 +263,7 @@ def repair_overlap_with_sg_guard(
     movement = np.linalg.norm(displacement, axis=1)
 
     log = {
-        "iterations_run": iteration + 1,
+        "iterations_run": iterations_run,
         "accepted_moves": accepted_moves,
         "rejected_overlap_or_consistency": rejected_total,
         "skipped_no_overlap": False,

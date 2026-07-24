@@ -26,6 +26,9 @@ import sys
 import time
 from datetime import datetime
 
+if __package__ in (None, ""):
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from src.ablation.io import (
     load_scenes_from_dir,
     load_metadata,
