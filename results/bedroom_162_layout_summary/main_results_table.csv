@@ -1,5 +1,10 @@
-config_id,description,sg_layout_consistency,layout_overlap_iou_sum,overlap_reduction_pct,mean_movement_m,max_movement_m,worse_overlap_scenes,worse_consistency_scenes,failures,skips,rollbacks
-baseline,"Baseline (eval-only, no repair)",0.9095,0.2245,+0.0,0.0000,0.0000,0,0,0,0,0
-s0075_d025_i050,"Primary (step=0.075, max_disp=0.25, iter=50)",0.9133,0.1309,-41.7,0.0772,0.2498,0,0,0,7,0
-s0075_d035_i050,"Aggressive (step=0.075, max_disp=0.35, iter=50)",0.9135,0.1216,-45.8,0.0885,0.3474,0,0,0,7,0
-s0025_d015_i025,"Minimal movement (step=0.025, max_disp=0.15, iter=25)",0.9139,0.1511,-32.7,0.0508,0.1500,0,0,0,7,0
+config_id,analysis_group,role,repair_step_size,repair_max_displacement,repair_max_iter,sg_layout_consistency,layout_overlap_iou_sum,overlap_delta,overlap_reduction_pct,mean_movement_m,max_movement_m,strict_pareto_status,worse_overlap_scenes,worse_consistency_scenes,failures,skips,rollbacks
+baseline,reference,reference,0,0,0,0.9095,0.2245,0.0,0.0,0,0,reference,0,0,0,7,0
+s0075_d035_i050,strict_one_factor,max_reduction,0.075,0.35,50,0.9135,0.1216,-0.1029,45.8,0.0885,0.3474,frontier,0,0,0,7,0
+s0050_d025_i050,strict_one_factor,recommended_primary,0.05,0.25,50,0.9134,0.1287,-0.0958,42.7,0.0753,0.25,frontier,0,0,0,7,0
+s0025_d025_i050,strict_one_factor,best_consistency,0.025,0.25,50,0.9137,0.1347,-0.0897,40.0,0.0698,0.25,frontier,0,0,0,7,0
+s0075_d015_i050,strict_one_factor,best_movement,0.075,0.15,50,0.9133,0.1507,-0.0737,32.9,0.0566,0.15,frontier,0,0,0,7,0
+s0075_d025_i050,strict_one_factor,dominated_by_s0050,0.075,0.25,50,0.9133,0.1309,-0.0936,41.7,0.0772,0.2498,dominated,0,0,0,7,0
+s0075_d025_i025,strict_one_factor,dominated_by_s0050,0.075,0.25,25,0.9133,0.1309,-0.0936,41.7,0.0772,0.2498,dominated,0,0,0,7,0
+s0075_d025_i075,strict_one_factor,dominated_by_s0050,0.075,0.25,75,0.9133,0.1309,-0.0936,41.7,0.0772,0.2498,dominated,0,0,0,7,0
+s0025_d015_i025,supplementary_tradeoff,minimal_movement,0.025,0.15,25,0.9139,0.1511,-0.0733,32.7,0.0508,0.15,not_in_strict_sweep,0,0,0,7,0
