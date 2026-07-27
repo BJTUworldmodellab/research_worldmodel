@@ -1,0 +1,247 @@
+{
+  "schema_version": "rg_sota_results_package.v1",
+  "export_id": "20260720_h800_sdgscenes_results",
+  "generated_at_utc": "2026-07-20T08:55:31Z",
+  "status": "ready",
+  "experiment": {
+    "name": "SDGScenes Defensive Baseline H800 Smoke Run",
+    "method_label": "SDGScenes-inspired constrained optimizer (ours-run defensive smoke)",
+    "official_sdgscenes_reproduction": false,
+    "direct_sota_ranking_allowed": false,
+    "rooms": [
+      "bedroom",
+      "livingroom",
+      "diningroom"
+    ],
+    "per_scene_rows": 531
+  },
+  "claim_boundary": {
+    "safe": [
+      "Compared with official InstructScene output under the same validation protocol, our method improves final realized relation accuracy.",
+      "SDGScenes is a stronger related user-intent/constraint system under a different protocol.",
+      "This smoke run is an internal defensive constrained-optimization baseline, not official SDGScenes."
+    ],
+    "not_allowed": [
+      "outperform SDGScenes",
+      "SOTA on text-driven 3D scene generation",
+      "official SDGScenes reproduction"
+    ]
+  },
+  "environment": {
+    "python": "3.10.8",
+    "platform": "Linux-5.15.0-140-generic-x86_64-with-glibc2.35",
+    "nvidia_smi": "NVIDIA H800 PCIe, 81559 MiB, 570.124.04",
+    "torch_cuda": {
+      "torch": "2.11.0+cu128",
+      "cuda_available": true,
+      "device_count": 1,
+      "device_0": "NVIDIA H800 PCIe",
+      "capability_0": [
+        9,
+        0
+      ]
+    }
+  },
+  "git": {
+    "branch": "exp/sdgscenes-defensive-baseline-20260711",
+    "head": "62768c7f09e9fd41bba9e937739fbb36f0f75437",
+    "status_short": "## exp/sdgscenes-defensive-baseline-20260711\n M experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/artifact.json\n M experiments/sdgscenes_baseline/scripts/export_sdgscenes_results_dual_format.py"
+  },
+  "summary": [
+    {
+      "room": "bedroom",
+      "scenes": 162,
+      "targets": 243,
+      "horizontal_targets": 209,
+      "before_all_acc_simple": 0.588477366255144,
+      "after_all_acc_simple": 0.8765432098765432,
+      "all_acc_gain_simple": 0.2880658436213992,
+      "before_horizontal_acc_simple": 0.5406698564593302,
+      "after_horizontal_acc_simple": 0.8755980861244019,
+      "horizontal_acc_gain_simple": 0.33492822966507174,
+      "optimizer_edits": 72,
+      "avg_final_movement_per_scene": 0.922389422046778,
+      "overlap_area_delta": -1.6297924016685386,
+      "oob_delta": 0
+    },
+    {
+      "room": "livingroom",
+      "scenes": 192,
+      "targets": 229,
+      "horizontal_targets": 209,
+      "before_all_acc_simple": 0.3318777292576419,
+      "after_all_acc_simple": 0.7685589519650655,
+      "all_acc_gain_simple": 0.4366812227074236,
+      "before_horizontal_acc_simple": 0.2966507177033493,
+      "after_horizontal_acc_simple": 0.7751196172248804,
+      "horizontal_acc_gain_simple": 0.47846889952153115,
+      "optimizer_edits": 101,
+      "avg_final_movement_per_scene": 0.9685213763812852,
+      "overlap_area_delta": -2.868814531717323,
+      "oob_delta": 0
+    },
+    {
+      "room": "diningroom",
+      "scenes": 177,
+      "targets": 236,
+      "horizontal_targets": 223,
+      "before_all_acc_simple": 0.3305084745762712,
+      "after_all_acc_simple": 0.7288135593220338,
+      "all_acc_gain_simple": 0.39830508474576265,
+      "before_horizontal_acc_simple": 0.29596412556053814,
+      "after_horizontal_acc_simple": 0.7174887892376681,
+      "horizontal_acc_gain_simple": 0.42152466367713,
+      "optimizer_edits": 120,
+      "avg_final_movement_per_scene": 0.9328259089063986,
+      "overlap_area_delta": -2.322678751199817,
+      "oob_delta": 0
+    }
+  ],
+  "same_protocol_archived_references": [
+    {
+      "room": "bedroom",
+      "official_instructscene_baseline_acc": 0.7387755102040816,
+      "direct_repair_acc": 0.8734693877551021,
+      "floor_prior_max1p8_mesh_p2_acc": 0.8408163265306122,
+      "collision_gated_acc": 0.8448979591836735,
+      "archived_main_setting": "parsed_p2_close0.75_far1.6",
+      "claim_status": "same-protocol archived reference"
+    },
+    {
+      "room": "livingroom",
+      "official_instructscene_baseline_acc": 0.5510204081632653,
+      "direct_repair_acc": 0.7414965986394558,
+      "floor_prior_max1p8_mesh_p2_acc": 0.6938775510204082,
+      "collision_gated_acc": 0.6870748299319728,
+      "archived_main_setting": "parsed_p2_close0.75_far1.6",
+      "claim_status": "same-protocol archived reference"
+    },
+    {
+      "room": "diningroom",
+      "official_instructscene_baseline_acc": 0.5947955390334573,
+      "direct_repair_acc": 0.7843866171003717,
+      "floor_prior_max1p8_mesh_p2_acc": 0.7286245353159851,
+      "collision_gated_acc": 0.7211895910780669,
+      "archived_main_setting": "parsed_p2_close0.75_far1.6",
+      "claim_status": "same-protocol archived reference"
+    }
+  ],
+  "feasibility_rows": [
+    {
+      "method": "InstructScene",
+      "role": "direct same-protocol baseline",
+      "code_status": "available and executed",
+      "data_status": "same official validation prompts/checkpoints",
+      "blocking_issue": "",
+      "fair_comparison_status": "fair",
+      "paper_claim": "Use as primary baseline: our repair improves explicit relation satisfaction over original InstructScene outputs under the same split."
+    },
+    {
+      "method": "Direct y-fixed repair",
+      "role": "strong internal relation-repair baseline",
+      "code_status": "available and executed",
+      "data_status": "same outputs and same FCL mesh evaluator",
+      "blocking_issue": "Higher relation gain can come with larger movement and small mesh-pair increases in some rooms.",
+      "fair_comparison_status": "fair internal ablation",
+      "paper_claim": "Use as ablation showing why floor-prior and collision gating are needed."
+    },
+    {
+      "method": "Collision-gated direct/floor-prior repair",
+      "role": "verifier-selection baseline/variant",
+      "code_status": "available and executed",
+      "data_status": "same output JSON and same FCL mesh evaluator",
+      "blocking_issue": "Post-hoc verifier fallback should be described explicitly, not hidden as pure generation.",
+      "fair_comparison_status": "fair internal variant",
+      "paper_claim": "Use for mesh-validity claim: relation gains remain positive while mesh collision pair rate does not increase."
+    },
+    {
+      "method": "ReSpace",
+      "role": "close external text-driven 3D scene baseline",
+      "code_status": "repo cloned on remote; no runnable same-split result",
+      "data_status": "official SSR-3DFRONT protocol differs from InstructScene validation prompts",
+      "blocking_issue": "Requires separate environment, SSR-3DFRONT assets/cache, vLLM, and HuggingFace access for released model; remote has no HF token and low /root/autodl-tmp free space.",
+      "fair_comparison_status": "not fair yet",
+      "paper_claim": "Discuss as close related work only unless a shared protocol is built and executed."
+    },
+    {
+      "method": "SDGScenes",
+      "role": "close semantic-dependency/constraint baseline",
+      "code_status": "no verified runnable same-split implementation on this server",
+      "data_status": "reported protocol differs and no same InstructScene split numbers are available locally",
+      "blocking_issue": "No shared-protocol reproduction or official same-split result.",
+      "fair_comparison_status": "not fair yet",
+      "paper_claim": "Discuss as close related work; do not claim superiority."
+    },
+    {
+      "method": "CommonScenes",
+      "role": "scene-graph diffusion baseline family",
+      "code_status": "repo cloned on remote; not executed as same text-instruction baseline",
+      "data_status": "requires SG-FRONT/CommonScenes preprocessing/checkpoints; not same prompt-conditioned InstructScene protocol",
+      "blocking_issue": "Different input modality and benchmark target; full setup requires additional processed data/checkpoints.",
+      "fair_comparison_status": "not same-protocol",
+      "paper_claim": "Cite as related scene-graph generation family, not as direct text-instruction baseline."
+    }
+  ],
+  "files": {
+    "machine_bundle": {
+      "role": "complete compressed machine-readable bundle",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/sdgscenes_results_machine_20260720.tar.gz",
+      "bytes": 535346,
+      "sha256": "38305b2ed512b84cf8bd4b8f829a517e99808b85a69f59d4a18698d9b8836134"
+    },
+    "source_manifest_csv": {
+      "role": "machine-readable hash manifest",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/source_files_manifest.csv",
+      "bytes": 5962,
+      "sha256": "1ca0a7485f7ffbeb9461fa6c8f62d36f4405f7fc7b6a30c22d0dbf93260835c4"
+    },
+    "source_manifest_json": {
+      "role": "machine-readable hash manifest",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/source_files_manifest.json",
+      "bytes": 7981,
+      "sha256": "7a31479d2f267eb762f8e2f80fe8ccfbfa6778ccfb4d5b3b4c9f92c04ba5e05b"
+    },
+    "index.html": {
+      "role": "export:index.html",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/human/index.html",
+      "bytes": 16042,
+      "sha256": "5231e82ae09b34a7de96da608b378eaceec6b8824d4d7edeed2799a741ca0d71"
+    },
+    "sdgscenes_results_human_20260720.html": {
+      "role": "export:sdgscenes_results_human_20260720.html",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/sdgscenes_results_human_20260720.html",
+      "bytes": 16042,
+      "sha256": "5231e82ae09b34a7de96da608b378eaceec6b8824d4d7edeed2799a741ca0d71"
+    },
+    "artifact.json": {
+      "role": "export:artifact.json",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/artifact.json",
+      "bytes": 12978,
+      "sha256": "11a9992e6a9fb73f2dc91d1acc69950f8de63833b9df5f5e1056172e80b2a6d2"
+    },
+    "summary.csv": {
+      "role": "export:summary.csv",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/summary.csv",
+      "bytes": 1336,
+      "sha256": "a0d35eaf934e922acfc0a4ebb1b0bb21379376a5ab38684d8c47b5cf7f72a608"
+    },
+    "per_scene.csv": {
+      "role": "export:per_scene.csv",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/per_scene.csv",
+      "bytes": 163002,
+      "sha256": "13b352f59776b427b5edc454ec41335f2964ea907dd3bf1cbbfb2ad82986a9cb"
+    },
+    "README.md": {
+      "role": "export:README.md",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/README.md",
+      "bytes": 692,
+      "sha256": "ab197369e99941856a4d4921a7000d325f2d5ce63f441c59aa393f1678200042"
+    },
+    "sdgscenes_results_machine_20260720.tar.gz": {
+      "role": "export:sdgscenes_results_machine_20260720.tar.gz",
+      "path": "experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/sdgscenes_results_machine_20260720.tar.gz",
+      "bytes": 535346,
+      "sha256": "38305b2ed512b84cf8bd4b8f829a517e99808b85a69f59d4a18698d9b8836134"
+    }
+  }
+}

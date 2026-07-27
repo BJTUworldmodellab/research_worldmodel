@@ -1,0 +1,59 @@
+% Paper-ready LaTeX tables for SDGScenes defensive baseline.
+% Requires: \usepackage{booktabs}, \usepackage{tabularx}, \usepackage{makecell}
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Same-protocol relation grounding and mesh-validity results under the official InstructScene validation setup. Floor-Prior refers to \texttt{floor\_prior\_max1.8\_mesh\_p2\_close0.75\_far1.6}. The collision-gated variant is used for the mesh-validity claim and falls back to the original layout when repair would worsen mesh collision. Overall relation accuracy is relation-weighted; movement and mesh rates are scene-weighted.}
+\label{tab:same_protocol_main}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+Room & Scenes & Rel. & \makecell{Official\\acc.} & \makecell{Floor-Prior\\acc.} & Gain & Move & \makecell{Gated\\acc.} & \makecell{Gated\\pair coll.} & \makecell{Gated\\scene coll.} \\
+\midrule
+Bedroom & 162 & 245 & 73.9 & 84.1 & +10.2 & 0.78 & 84.5 & 6.5 & 51.9 \\
+Living room & 192 & 294 & 55.1 & 69.4 & +14.3 & 0.88 & 68.7 & 3.1 & 83.3 \\
+Dining room & 177 & 269 & 59.5 & 72.9 & +13.4 & 0.73 & 72.1 & 3.3 & 74.6 \\
+\midrule
+Overall & 531 & 808 & 62.3 & 75.0 & +12.7 & 0.80 & 74.6 & 4.2 & 70.8 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\caption{Protocol comparability of SOTA and related systems. Only methods with aligned input split, output representation, object taxonomy, relation thresholds, and evaluator enter the direct numeric table. Methods under different protocols are reported as references or feasibility-bounded controls.}
+\label{tab:sota_protocol_comparison}
+\begin{tabularx}{\textwidth}{p{2.4cm}X X X p{1.3cm} p{1.4cm} X}
+\toprule
+Method & Input / protocol & Output representation & Relation supervision / constraints & Same split? & Local? & Fair numeric status / claim role \\
+\midrule
+Official InstructScene & Text prompt under existing InstructScene protocol & Object layout with category, translation, size, orientation & Implicit from prompt/protocol; limited original evaluator & Yes & Yes & Direct numerical baseline; main baseline. \\
+Ours Floor-Prior & Official InstructScene output + parsed relations & Final repaired object layout & Deterministic verifier/parser or oracle upper bound; floor prior and movement constraints & Yes & Yes & Direct numerical method; main claim method. \\
+Ours collision-gated repair & Official InstructScene output + parsed relations & Final repaired object layout & Verifier/parser plus collision gate and movement constraints & Yes & Yes & Direct numerical method for mesh-validity claim; safety-aware variant. \\
+SDGScenes official & User intent / semantic dependency graph / VLM constraints & Broader generated or optimized scene layout & Semantic dependency graph, VLM constraints, nonlinear constrained optimization & Not verified & No & Protocol analysis or reported-results context only; strong related system, no outperform claim. \\
+SDGScenes-inspired strong baseline & Our relation spec + official InstructScene output & Repaired layout compatible with our evaluator & Explicit graph constraints from our parser/oracle; transparent constrained optimization & Yes & Yes & Defensive baseline/control, non-official; tests stronger optimization under our evaluator. \\
+ReSpace & Text-driven autoregressive scene synthesis/editing & ReSpace/SSR-3DFRONT pipeline output & Model-specific text-driven relation handling and physical plausibility & Not by default & Unknown & Feasibility/protocol table unless aligned; strong SOTA reference, no direct ranking by default. \\
+RelScene / relation benchmark & Text-driven relation benchmark & Benchmark/evaluation representation & Explicit relation labels/evaluation & Not direct & Reference & Relation-evaluation reference; helps justify metrics, not a direct generator baseline. \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\begin{table*}[t]
+\centering
+\small
+\caption{SDGScenes-inspired defensive constrained-optimization smoke baseline on H800. This is not an official SDGScenes reproduction. It uses our relation specification and InstructScene output layouts, then evaluates with the saved relation/geometry checks. Missing object-pair cases were logged separately (\texttt{missing\_pair\_total}=92) and should be disclosed in the appendix.}
+\label{tab:sdgscenes_defensive_smoke}
+\begin{tabular}{lrrrrrrrrr}
+\toprule
+Room & Scenes & Targets & \makecell{Before\\all acc.} & \makecell{After\\all acc.} & Gain & \makecell{After\\horiz. acc.} & Edits & Move & \makecell{Overlap pairs\\before$\rightarrow$after} \\
+\midrule
+Bedroom & 162 & 243 & 58.8 & 87.7 & +28.8 & 87.6 & 72 & 0.92 & 150$\rightarrow$142 \\
+Living room & 192 & 229 & 33.2 & 76.9 & +43.7 & 77.5 & 101 & 0.97 & 412$\rightarrow$381 \\
+Dining room & 177 & 236 & 33.1 & 72.9 & +39.8 & 71.7 & 120 & 0.93 & 332$\rightarrow$310 \\
+\midrule
+Overall & 531 & 708 & 41.9 & 79.2 & +37.3 & 79.0 & 293 & 0.94 & 894$\rightarrow$833 \\
+\bottomrule
+\end{tabular}
+\end{table*}
+

@@ -1,0 +1,37 @@
+{
+  "timestamp_utc": "2026-07-20T08:25:24Z",
+  "cwd": "/root/autodl-tmp/rg-sota-cloud/repos/research_worldmodel",
+  "python": "3.10.8 (main, Nov 24 2022, 14:13:03) [GCC 11.2.0]",
+  "platform": "Linux-5.15.0-140-generic-x86_64-with-glibc2.35",
+  "argv": [
+    "experiments/sdgscenes_baseline/scripts/run_sdgscenes_defensive_smoke.py"
+  ],
+  "git_commit": "0e809f01775499b423c62c2666b25d023f55ba31",
+  "git_branch": "exp/sdgscenes-defensive-baseline-20260711",
+  "nvidia_smi": "NVIDIA H800 PCIe, 81559 MiB, 570.124.04",
+  "torch_cuda": {
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "device_count": 1,
+    "device_0": "NVIDIA H800 PCIe",
+    "capability_0": [
+      9,
+      0
+    ]
+  },
+  "input_files": {
+    "bedroom": {
+      "path": "experiment_archive/relation_aware_instructscene_20260530/local_results/full/bedroom/relation_aware_parsed_p2_close0.75_far1.6_eval.json",
+      "sha256": "df9951e81d4eff4940af7f20fb7670ed0744e21d3448cc8c6f12b564b7a67154"
+    },
+    "livingroom": {
+      "path": "experiment_archive/relation_aware_instructscene_20260530/local_results/full/livingroom/relation_aware_parsed_p2_close0.75_far1.6_eval.json",
+      "sha256": "6471b562934c552f067576dcf0c1c5bedd38aed58aa3f3ebbf692577bdf3faad"
+    },
+    "diningroom": {
+      "path": "experiment_archive/relation_aware_instructscene_20260530/local_results/full/diningroom/relation_aware_parsed_p2_close0.75_far1.6_eval.json",
+      "sha256": "0e18bef82bef9eba3fa568a12ccbd30ead609edd7a8b42ceb8eab14108c81e3c"
+    }
+  },
+  "source_note": "Non-official SDGScenes-inspired optimizer; no official SDGScenes reproduction claim."
+}
