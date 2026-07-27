@@ -1,0 +1,213 @@
+version: "2026-07-27-t05-freeze-v1"
+status: "T05 draft freeze for submission readiness"
+owner_track: "A-method-and-evaluation"
+
+paper_scope:
+  project_name: "3D Indoor Scene Constraint Projection"
+  target_venues:
+    primary:
+      - "Eurographics / Computer Graphics Forum"
+    backup:
+      - "3DV"
+  central_claim: >
+    Without retraining the generator, Relation-Aware Constraint Projection can
+    improve explicit spatial-relation satisfaction in generated 3D indoor
+    layouts through bounded floor-plane edits and safety gating, while
+    controlling movement, overlap, and collision side effects.
+  no_go_reason_until_p0_complete: >
+    Submission claims must not mix metrics from different method variants or
+    evaluators. T01-T04 must rerun from this frozen method configuration before
+    final paper numbers are used.
+
+frozen_method_variants:
+  main_method:
+    id: "collision_gated_floor_prior"
+    display_name: "Collision-gated Floor-Prior"
+    role: "paper main method for InstructScene"
+    generator: "InstructScene"
+    training: "no retraining; post-generation repair"
+    relation_source: "parsed explicit relation triples from instruction"
+    edit_space: "bounded XZ floor-plane translation"
+    safety_gate:
+      enabled: true
+      purpose:
+        - "reject repairs that increase mesh-collision pair rate"
+        - "retain substantial relation gains under safer geometry"
+    default_hyperparameters:
+      repair_passes: 2
+      close_distance: 0.75
+      far_distance: 1.6
+      max_repair_move: 1.8
+      repair_overlap_weight: 1.0
+    allowed_claim: >
+      Improves selected-relation accuracy on bedroom, livingroom, and
+      diningroom InstructScene validation splits while reducing mesh-collision
+      pair rate relative to baseline.
+    forbidden_claims:
+      - "All gains come from the graph-to-layout decoder."
+      - "The method solves all language constraints or implicit commonsense."
+      - "Direct Repair gains are main-method gains."
+
+  ablation_direct_repair:
+    id: "direct_repair"
+    display_name: "Direct Repair"
+    role: "aggressive ablation / upper-bound style comparison"
+    generator: "InstructScene"
+    training: "no retraining; post-generation repair"
+    relation_source: "parsed explicit relation triples from instruction"
+    edit_space: "direct relation-satisfaction movement"
+    safety_gate:
+      enabled: false
+    allowed_claim: >
+      Shows the larger relation-satisfaction gain available when collision
+      safety is not enforced.
+    forbidden_claims:
+      - "Direct Repair is the paper main method."
+      - "Direct Repair lowers mesh collision across all rooms."
+
+  cross_generator_commonscenes:
+    id: "commonscenes_generic_gate"
+    display_name: "CommonScenes Generic-Gate"
+    role: "cross-generator external-support experiment"
+    generator: "CommonScenes"
+    training: "no retraining; post-generation repair"
+    relation_source: "generic geometric relations from CommonScenes outputs"
+    edit_space: "bounded box edits with movement/collision/boundary gate"
+    default_hyperparameters:
+      max_move: 1.5
+      passes: 2
+      official_search: false
+    allowed_claim: >
+      Gives small but consistent generic geometric relation gains across
+      bedroom, livingroom, diningroom, and library, and lowers collision
+      penalty under a no-official-search setting.
+    mandatory_disclosure:
+      - "Bedroom official CommonScenes Total decreases from 0.9732 to 0.9696."
+    forbidden_claims:
+      - "The method improves the official CommonScenes metric."
+      - "The method is fully better than CommonScenes."
+      - "CommonScenes Generic-Gate numbers are the same metric as InstructScene selected-relation accuracy."
+
+  safety_ablation_sg_guarded:
+    id: "sg_guarded_overlap_repair"
+    display_name: "SG-Guarded Overlap Repair"
+    role: "layout-only safety ablation"
+    generator: "InstructScene"
+    training: "no retraining; post-generation repair"
+    relation_source: "generated scene graph self-consistency"
+    edit_space: "bbox-level XZ overlap reduction"
+    allowed_claim: >
+      Reduces oriented-box overlap on 162 bedroom layout-only scenes while
+      preserving protected SG-layout consistency.
+    forbidden_claims:
+      - "This is ground-truth relation accuracy."
+      - "This is 3D mesh collision."
+      - "This proves human visual quality."
+
+datasets:
+  instructscene:
+    rooms:
+      bedroom:
+        scene_count_main: 162
+      livingroom:
+        scene_count_main: 192
+      diningroom:
+        scene_count_main: 177
+    current_evidence_source:
+      - "docs/relation_aware_claim_validation_matrix.md"
+      - "docs/relation_aware_instructscene_experiment_report.md"
+    final_submission_requirement:
+      - "rerun with independent evaluator from T01"
+      - "rerun all main and multi-seed experiments from frozen commit"
+
+  commonscenes:
+    rooms:
+      bedroom:
+        scene_count: 162
+      livingroom:
+        scene_count: 52
+      diningroom:
+        scene_count: 69
+      library:
+        scene_count: 56
+    current_evidence_source:
+      - "docs/commonscenes_experiment_pack_20260713/commonscenes_generic_repair_experiment_report.md"
+      - "docs/commonscenes_generic_no_official_search/"
+    final_submission_requirement:
+      - "keep official CommonScenes metric separate from generic geometric relation score"
+      - "do not use official-search data in main claim"
+
+seeds:
+  policy: "All final reported experiments must declare seed(s) in table captions and manifests."
+  instructscene_current:
+    main_seed: "existing main validation seed from prior experiment package"
+    multiseed: [0, 1, 2]
+  commonscenes_current:
+    note: "Current CommonScenes Generic-Gate evidence is primarily deterministic post-processing over exported scenes; reruns must record export seed/config when available."
+
+metrics:
+  main_instructscene:
+    primary:
+      - id: "selected_relation_accuracy"
+        description: "Explicit target relation satisfaction under the frozen independent evaluator."
+    safety:
+      - id: "mesh_collision_pair_rate"
+        description: "FCL mesh collision pair rate for retrieved/generated mesh layouts."
+      - id: "movement_distance"
+        description: "Per-object and per-scene bounded translation movement."
+      - id: "footprint_overlap"
+        description: "Coarse box/footprint overlap proxy; auxiliary only."
+
+  commonscenes_external:
+    primary:
+      - id: "generic_geometric_relation_total"
+        description: "Generic geometric relation satisfaction; not official CommonScenes Total."
+    safety:
+      - id: "collision_penalty"
+      - id: "changed_box_ratio"
+      - id: "mean_center_movement"
+      - id: "rendered_ssim"
+      - id: "glb_chamfer"
+    diagnostic_only:
+      - id: "official_commonscenes_total"
+        description: "External diagnostic metric; not optimized and not the main claim."
+
+claim_policy:
+  abstract_may_use:
+    - "Collision-gated Floor-Prior"
+    - "selected-relation accuracy"
+    - "mesh-collision pair rate"
+  abstract_must_not_use:
+    - "Direct Repair best numbers as main method"
+    - "CommonScenes official score improvement"
+    - "human visual preference without T06"
+  visual_quality_policy: >
+    Before T06 human preference/failure-rate evidence is completed, use only
+    low-disturbance wording such as average rendered/geometric perturbation is
+    small. Do not claim that human-perceived visual quality is better.
+
+required_t05_outputs:
+  - "configs/paper_main.yaml"
+  - "docs/method_variant_matrix.md"
+  - "docs/claim_to_table_map.md"
+  - "docs/t05_submission_freeze_handoff_20260727.md"
+
+downstream_interfaces:
+  for_t01_independent_evaluator:
+    must_read:
+      - "configs/paper_main.yaml"
+      - "docs/method_variant_matrix.md"
+    deliverable_expected:
+      - "evaluation/independent_protocol.md"
+      - "evaluation/independent_relation_evaluator.py"
+      - "results/independent_eval/summary.csv"
+  for_t02_control_baselines:
+    must_read:
+      - "configs/paper_main.yaml"
+      - "docs/method_variant_matrix.md"
+      - "docs/claim_to_table_map.md"
+  for_t03_rerun:
+    must_read:
+      - "configs/paper_main.yaml"
+      - "docs/claim_to_table_map.md"
+    rule: "Only final rerun results generated from this config, or a versioned successor, may enter paper tables."
