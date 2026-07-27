@@ -1,0 +1,347 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "SDGScenes Defensive Baseline Results",
+    "description": "Human-readable technical report backed by machine-readable H800 smoke-run artifacts.",
+    "generatedAt": "2026-07-20T08:55:31Z",
+    "blocks": [
+      {
+        "id": "technical_summary",
+        "type": "markdown",
+        "body": "# SDGScenes Defensive Baseline Results\n\n## Technical summary\n\nThe H800 smoke run completed a non-official SDGScenes-inspired constrained-optimization baseline on the archived InstructScene validation layouts. The optimizer improved simplified all-target relation satisfaction across bedroom, livingroom, and diningroom while keeping out-of-bounds center delta at zero.\n\nThese rows must be treated as an internal defensive baseline, not an official SDGScenes reproduction and not a direct SOTA ranking.\n"
+      },
+      {
+        "id": "accuracy_chart_note",
+        "type": "markdown",
+        "body": "## Key finding: relation accuracy improves after constrained optimization\n\nThe grouped bar chart compares simplified all-target relation accuracy before and after the SDGScenes-inspired optimizer for each room split. The chart is descriptive evidence for the defensive smoke baseline only; it is not an official SDGScenes result."
+      },
+      {
+        "id": "accuracy_chart_block",
+        "type": "chart",
+        "chartId": "accuracy_before_after_chart"
+      },
+      {
+        "id": "smoke_summary_table",
+        "type": "table",
+        "tableId": "smoke_summary"
+      },
+      {
+        "id": "same_protocol_table",
+        "type": "table",
+        "tableId": "same_protocol_refs"
+      },
+      {
+        "id": "claim_boundary",
+        "type": "markdown",
+        "body": "## Scope and claim boundary\n\n- Input: archived `layout_boxes` and `repair_target_relations` from the InstructScene relation-aware experiment archive.\n- Optimized variables: object x/z translations only; class, size, y translation, and yaw are preserved.\n- Unsupported vertical relations are passed through rather than optimized.\n- Collision proxy in this export is AABB footprint overlap, not the FCL mesh evaluator.\n- Safe wording: `SDGScenes-inspired constrained optimizer (ours-run defensive smoke)`.\n"
+      },
+      {
+        "id": "next_steps",
+        "type": "markdown",
+        "body": "## Recommended next steps\n\n1. Keep official SDGScenes in the protocol comparison / related-work section unless a shared-protocol reproduction succeeds.\n2. Use the same-protocol InstructScene / Floor-Prior / collision-gated rows as the main paper numbers.\n3. If stronger defensive evidence is needed, rerun the optimized layouts through the full mesh/FCL evaluator.\n"
+      }
+    ],
+    "charts": [
+      {
+        "id": "accuracy_before_after_chart",
+        "title": "Before vs after relation accuracy by room",
+        "type": "bar",
+        "dataset": "smoke_accuracy_long",
+        "sourceId": "h800_summary_csv",
+        "source": {
+          "query": {
+            "engine": "file",
+            "language": "sql",
+            "sql": "SELECT room, 'before' AS series, before_all_acc_simple AS accuracy FROM summary_csv UNION ALL SELECT room, 'after' AS series, after_all_acc_simple AS accuracy FROM summary_csv",
+            "description": "Unpivots summary.csv before/after relation accuracy columns into a chart-ready long table.",
+            "tables_used": [
+              "experiments/sdgscenes_baseline/results/sdgscenes_inspired_smoke_20260720/summary.csv"
+            ]
+          }
+        },
+        "encodings": {
+          "x": {
+            "field": "room",
+            "type": "nominal"
+          },
+          "y": {
+            "field": "accuracy",
+            "type": "quantitative"
+          },
+          "color": {
+            "field": "series",
+            "type": "nominal"
+          }
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "smoke_summary",
+        "title": "H800 SDGScenes-inspired smoke summary",
+        "dataset": "smoke_summary",
+        "sourceId": "h800_summary_csv",
+        "source": {
+          "query": {
+            "engine": "file",
+            "language": "sql",
+            "sql": "SELECT room, scenes, target_total, before_all_acc_simple, after_all_acc_simple, all_acc_gain_simple, avg_final_movement_per_scene, oob_delta FROM summary_csv",
+            "description": "Loads room-level smoke-run metrics from summary.csv.",
+            "tables_used": [
+              "experiments/sdgscenes_baseline/results/sdgscenes_inspired_smoke_20260720/summary.csv"
+            ]
+          }
+        },
+        "columns": [
+          {
+            "field": "room",
+            "label": "Room"
+          },
+          {
+            "field": "scenes",
+            "label": "Scenes",
+            "type": "number"
+          },
+          {
+            "field": "targets",
+            "label": "Targets",
+            "type": "number"
+          },
+          {
+            "field": "before_all_acc_simple",
+            "label": "Before all acc",
+            "format": "number"
+          },
+          {
+            "field": "after_all_acc_simple",
+            "label": "After all acc",
+            "format": "number"
+          },
+          {
+            "field": "all_acc_gain_simple",
+            "label": "Gain",
+            "format": "number"
+          },
+          {
+            "field": "avg_final_movement_per_scene",
+            "label": "Move / scene",
+            "format": "number"
+          },
+          {
+            "field": "oob_delta",
+            "label": "OOB Δ",
+            "type": "number"
+          }
+        ],
+        "defaultSort": {
+          "field": "room",
+          "direction": "asc"
+        }
+      },
+      {
+        "id": "same_protocol_refs",
+        "title": "Archived same-protocol references",
+        "dataset": "same_protocol_refs",
+        "sourceId": "archived_tables",
+        "source": {
+          "query": {
+            "engine": "file",
+            "language": "sql",
+            "sql": "SELECT room, baseline_acc, repaired_acc FROM main_results_csv JOIN floor_prior_results_csv USING (room) JOIN collision_gated_results_csv USING (room)",
+            "description": "Joins archived same-protocol result tables into the reference table.",
+            "tables_used": [
+              "experiment_archive/relation_aware_instructscene_20260530/local_results/tables/main_results.csv",
+              "experiment_archive/relation_aware_instructscene_20260530/local_results/tables/floor_prior_results.csv",
+              "experiment_archive/relation_aware_instructscene_20260530/local_results/tables/collision_gated_results.csv"
+            ]
+          }
+        },
+        "columns": [
+          {
+            "field": "room",
+            "label": "Room"
+          },
+          {
+            "field": "official_instructscene_baseline_acc",
+            "label": "InstructScene baseline"
+          },
+          {
+            "field": "direct_repair_acc",
+            "label": "Direct repair"
+          },
+          {
+            "field": "floor_prior_max1p8_mesh_p2_acc",
+            "label": "Floor-Prior"
+          },
+          {
+            "field": "collision_gated_acc",
+            "label": "Collision-gated"
+          },
+          {
+            "field": "claim_status",
+            "label": "Status"
+          }
+        ],
+        "defaultSort": {
+          "field": "room",
+          "direction": "asc"
+        }
+      }
+    ],
+    "sources": [
+      {
+        "id": "h800_summary_csv",
+        "label": "H800 smoke summary CSV",
+        "path": "experiments/sdgscenes_baseline/results/sdgscenes_inspired_smoke_20260720/summary.csv"
+      },
+      {
+        "id": "archived_tables",
+        "label": "Archived InstructScene relation-aware tables",
+        "path": "experiment_archive/relation_aware_instructscene_20260530/local_results/tables/"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-07-20T08:55:31Z",
+    "status": "ready",
+    "datasets": {
+      "smoke_summary": [
+        {
+          "room": "bedroom",
+          "scenes": 162,
+          "targets": 243,
+          "before_all_acc_simple": 0.588477366255144,
+          "after_all_acc_simple": 0.8765432098765432,
+          "all_acc_gain_simple": 0.2880658436213992,
+          "before_horizontal_acc_simple": 0.5406698564593302,
+          "after_horizontal_acc_simple": 0.8755980861244019,
+          "horizontal_acc_gain_simple": 0.33492822966507174,
+          "optimizer_edits": 72,
+          "avg_final_movement_per_scene": 0.922389422046778,
+          "overlap_area_delta": -1.6297924016685386,
+          "oob_delta": 0
+        },
+        {
+          "room": "livingroom",
+          "scenes": 192,
+          "targets": 229,
+          "before_all_acc_simple": 0.3318777292576419,
+          "after_all_acc_simple": 0.7685589519650655,
+          "all_acc_gain_simple": 0.4366812227074236,
+          "before_horizontal_acc_simple": 0.2966507177033493,
+          "after_horizontal_acc_simple": 0.7751196172248804,
+          "horizontal_acc_gain_simple": 0.47846889952153115,
+          "optimizer_edits": 101,
+          "avg_final_movement_per_scene": 0.9685213763812852,
+          "overlap_area_delta": -2.868814531717323,
+          "oob_delta": 0
+        },
+        {
+          "room": "diningroom",
+          "scenes": 177,
+          "targets": 236,
+          "before_all_acc_simple": 0.3305084745762712,
+          "after_all_acc_simple": 0.7288135593220338,
+          "all_acc_gain_simple": 0.39830508474576265,
+          "before_horizontal_acc_simple": 0.29596412556053814,
+          "after_horizontal_acc_simple": 0.7174887892376681,
+          "horizontal_acc_gain_simple": 0.42152466367713,
+          "optimizer_edits": 120,
+          "avg_final_movement_per_scene": 0.9328259089063986,
+          "overlap_area_delta": -2.322678751199817,
+          "oob_delta": 0
+        }
+      ],
+      "smoke_accuracy_long": [
+        {
+          "room": "bedroom",
+          "series": "before",
+          "accuracy": 0.588477366255144
+        },
+        {
+          "room": "bedroom",
+          "series": "after",
+          "accuracy": 0.8765432098765432
+        },
+        {
+          "room": "livingroom",
+          "series": "before",
+          "accuracy": 0.3318777292576419
+        },
+        {
+          "room": "livingroom",
+          "series": "after",
+          "accuracy": 0.7685589519650655
+        },
+        {
+          "room": "diningroom",
+          "series": "before",
+          "accuracy": 0.3305084745762712
+        },
+        {
+          "room": "diningroom",
+          "series": "after",
+          "accuracy": 0.7288135593220338
+        }
+      ],
+      "same_protocol_refs": [
+        {
+          "room": "bedroom",
+          "official_instructscene_baseline_acc": 0.7387755102040816,
+          "direct_repair_acc": 0.8734693877551021,
+          "floor_prior_max1p8_mesh_p2_acc": 0.8408163265306122,
+          "collision_gated_acc": 0.8448979591836735,
+          "archived_main_setting": "parsed_p2_close0.75_far1.6",
+          "claim_status": "same-protocol archived reference"
+        },
+        {
+          "room": "livingroom",
+          "official_instructscene_baseline_acc": 0.5510204081632653,
+          "direct_repair_acc": 0.7414965986394558,
+          "floor_prior_max1p8_mesh_p2_acc": 0.6938775510204082,
+          "collision_gated_acc": 0.6870748299319728,
+          "archived_main_setting": "parsed_p2_close0.75_far1.6",
+          "claim_status": "same-protocol archived reference"
+        },
+        {
+          "room": "diningroom",
+          "official_instructscene_baseline_acc": 0.5947955390334573,
+          "direct_repair_acc": 0.7843866171003717,
+          "floor_prior_max1p8_mesh_p2_acc": 0.7286245353159851,
+          "collision_gated_acc": 0.7211895910780669,
+          "archived_main_setting": "parsed_p2_close0.75_far1.6",
+          "claim_status": "same-protocol archived reference"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "h800_summary_csv",
+      "query": {
+        "engine": "file",
+        "language": "csv",
+        "description": "Generated by run_sdgscenes_defensive_smoke.py on AutoDL H800.",
+        "tables_used": [
+          "experiments/sdgscenes_baseline/results/sdgscenes_inspired_smoke_20260720/summary.csv"
+        ]
+      }
+    },
+    {
+      "id": "archived_tables",
+      "query": {
+        "engine": "file",
+        "language": "csv",
+        "description": "Archived same-protocol relation-grounding experiment tables.",
+        "tables_used": [
+          "experiment_archive/relation_aware_instructscene_20260530/local_results/tables/main_results.csv",
+          "experiment_archive/relation_aware_instructscene_20260530/local_results/tables/floor_prior_results.csv",
+          "experiment_archive/relation_aware_instructscene_20260530/local_results/tables/collision_gated_results.csv"
+        ]
+      }
+    }
+  ]
+}

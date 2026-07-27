@@ -1,0 +1,60 @@
+# Non-official SDGScenes-inspired constrained-optimization baseline.
+# This config is only for a defensive local control. It must not be labeled
+# as an official SDGScenes reproduction.
+
+baseline_name: sdgscenes_inspired_strong_baseline
+official_reproduction: false
+direct_comparison_allowed: false
+
+input:
+  source_layout: official_instructscene_output
+  relation_source: deterministic_parser
+  oracle_parser_allowed_for_upper_bound: true
+  required_same_split: true
+  required_same_seed: true
+
+graph:
+  nodes:
+    - objects
+    - pairwise_relations
+    - room_boundary
+    - physical_constraints
+  edges:
+    - near
+    - far
+    - left
+    - right
+    - front
+    - behind
+    - support_optional
+    - collision
+    - boundary
+
+optimizer:
+  backend: scipy.optimize.minimize
+  max_iterations: 500
+  movement_radius_m: 1.8
+  preserve_height: true
+  random_restarts: 4
+  weights:
+    relation_violation: 10.0
+    movement: 1.0
+    overlap: 8.0
+    out_of_boundary: 20.0
+    collision: 20.0
+    optional_support: 2.0
+
+metrics:
+  relation_accuracy: true
+  movement: true
+  mesh_collision: true
+  aabb_overlap: true
+  out_of_boundary: true
+  runtime: true
+  failure_reason: true
+
+claim_policy:
+  allowed_label: SDGScenes-inspired strong baseline
+  forbidden_label: official SDGScenes reproduction
+  table_placement: control_or_protocol_table_only
+

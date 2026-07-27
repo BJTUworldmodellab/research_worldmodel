@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SDGScenes Defensive Baseline Results</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #f7f8fb;
+      --card: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d8dee9;
+      --blue: #1f4d78;
+      --blue2: #2e74b5;
+      --ok: #146c43;
+      --warn-bg: #fff7e6;
+      --warn: #7a5a00;
+      --code-bg: #f2f4f7;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101418;
+        --card: #161c24;
+        --ink: #e8eef7;
+        --muted: #aab4c2;
+        --line: #2c3542;
+        --blue: #8ec5ff;
+        --blue2: #b7d8ff;
+        --ok: #65d99c;
+        --warn-bg: #302511;
+        --warn: #ffd27a;
+        --code-bg: #202733;
+      }
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 36px 24px 72px; }
+    header { margin-bottom: 24px; }
+    h1 { font-size: 34px; line-height: 1.15; margin: 0 0 8px; color: var(--blue); }
+    h2 { margin-top: 32px; color: var(--blue); }
+    h3 { margin-top: 22px; color: var(--blue2); }
+    .subtitle { color: var(--muted); margin: 0; }
+    .grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .card, section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 20px rgba(18, 38, 63, 0.06);
+      margin: 16px 0;
+    }
+    .metric .label { color: var(--muted); font-size: 13px; }
+    .metric .value { font-size: 26px; font-weight: 750; margin-top: 4px; }
+    .ok { color: var(--ok); }
+    .callout {
+      border-left: 5px solid var(--warn);
+      background: var(--warn-bg);
+      color: var(--ink);
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin: 16px 0;
+    }
+    table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 14px; }
+    th, td { border: 1px solid var(--line); padding: 9px 10px; vertical-align: top; }
+    th { background: rgba(46,116,181,0.12); text-align: left; }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    code, pre { background: var(--code-bg); border-radius: 6px; padding: 2px 5px; }
+    pre { overflow-x: auto; padding: 12px; }
+    .small { color: var(--muted); font-size: 13px; }
+    .path { overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    @media (max-width: 840px) { .grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } .wrap { padding: 24px 14px; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>SDGScenes Defensive Baseline Results</h1>
+      <p class="subtitle">H800 smoke run export · generated 2026-07-20T08:55:31Z · human-readable companion to machine package</p>
+    </header>
+
+    <section>
+      <h2>Technical summary</h2>
+      <p>The SDGScenes defensive smoke baseline has been saved in two forms: this human-readable HTML report and a machine-readable package under <code>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine</code>.</p>
+      <p>The run is a <strong>non-official SDGScenes-inspired constrained-optimization baseline</strong> over archived InstructScene final layouts. It improves simplified relation satisfaction across all three room splits while preserving the explicit claim boundary: this is not an official SDGScenes reproduction and must not be used as a direct SOTA ranking.</p>
+      <div class="callout"><strong>Claim boundary:</strong> report as “SDGScenes-inspired constrained optimizer (ours-run defensive smoke)”. Keep official SDGScenes in protocol comparison / related work unless shared-protocol reproduction succeeds.</div>
+    </section>
+
+    <div class="grid">
+      <div class="card metric"><div class="label">Rooms exported</div><div class="value">3</div></div>
+      <div class="card metric"><div class="label">Per-scene rows</div><div class="value">531</div></div>
+      <div class="card metric"><div class="label">GPU</div><div class="value">H800</div></div>
+      <div class="card metric"><div class="label">OOB delta</div><div class="value ok">0</div></div>
+    </div>
+
+    <section>
+      <h2>H800 SDGScenes-inspired smoke summary</h2>
+      <p>Accuracy values below use the smoke exporter’s simplified relation evaluator. They are useful for defensive baseline analysis, not for official SDGScenes ranking.</p>
+      <table>
+<thead><tr>
+<th>Room</th>
+<th>Scenes</th>
+<th>Targets</th>
+<th>Before all acc</th>
+<th>After all acc</th>
+<th>Gain</th>
+<th>Before horiz acc</th>
+<th>After horiz acc</th>
+<th>Move / scene</th>
+<th>AABB overlap Δ</th>
+<th>OOB Δ</th>
+</tr></thead><tbody>
+<tr>
+<td>bedroom</td>
+<td class="num">162</td>
+<td class="num">243</td>
+<td class="num">0.5885</td>
+<td class="num">0.8765</td>
+<td class="num">0.2881</td>
+<td class="num">0.5407</td>
+<td class="num">0.8756</td>
+<td class="num">0.9224</td>
+<td class="num">-1.6298</td>
+<td class="num">0</td>
+</tr>
+<tr>
+<td>livingroom</td>
+<td class="num">192</td>
+<td class="num">229</td>
+<td class="num">0.3319</td>
+<td class="num">0.7686</td>
+<td class="num">0.4367</td>
+<td class="num">0.2967</td>
+<td class="num">0.7751</td>
+<td class="num">0.9685</td>
+<td class="num">-2.8688</td>
+<td class="num">0</td>
+</tr>
+<tr>
+<td>diningroom</td>
+<td class="num">177</td>
+<td class="num">236</td>
+<td class="num">0.3305</td>
+<td class="num">0.7288</td>
+<td class="num">0.3983</td>
+<td class="num">0.2960</td>
+<td class="num">0.7175</td>
+<td class="num">0.9328</td>
+<td class="num">-2.3227</td>
+<td class="num">0</td>
+</tr>
+</tbody></table>
+    </section>
+
+    <section>
+      <h2>Archived same-protocol references</h2>
+      <p>These rows come from the archived InstructScene relation-aware experiment tables and remain the safer basis for the main same-protocol claim.</p>
+      <table>
+<thead><tr>
+<th>Room</th>
+<th>InstructScene baseline</th>
+<th>Direct repair</th>
+<th>Floor-Prior max1.8 mesh p2</th>
+<th>Collision-gated</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>bedroom</td>
+<td class="num">0.7388</td>
+<td class="num">0.8735</td>
+<td class="num">0.8408</td>
+<td class="num">0.8449</td>
+<td>same-protocol archived reference</td>
+</tr>
+<tr>
+<td>livingroom</td>
+<td class="num">0.5510</td>
+<td class="num">0.7415</td>
+<td class="num">0.6939</td>
+<td class="num">0.6871</td>
+<td>same-protocol archived reference</td>
+</tr>
+<tr>
+<td>diningroom</td>
+<td class="num">0.5948</td>
+<td class="num">0.7844</td>
+<td class="num">0.7286</td>
+<td class="num">0.7212</td>
+<td>same-protocol archived reference</td>
+</tr>
+</tbody></table>
+    </section>
+
+    <section>
+      <h2>Machine-readable package</h2>
+      <p>Primary machine entry point: <code>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/results_package.json</code>.</p>
+      <pre>{&quot;export_id&quot;: &quot;20260720_h800_sdgscenes_results&quot;, &quot;generated_at_utc&quot;: &quot;2026-07-20T08:55:31Z&quot;, &quot;machine_root&quot;: &quot;experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine&quot;, &quot;primary_machine_file&quot;: &quot;experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/results_package.json&quot;}</pre>
+      <h3>Included file manifest</h3>
+      <table>
+<thead><tr>
+<th>Role</th>
+<th>Path</th>
+<th>Bytes</th>
+<th>SHA256</th>
+</tr></thead><tbody>
+<tr>
+<td>source:summary_csv</td>
+<td>experiments/sdgscenes_baseline/results/sdgscenes_inspired_smoke_20260720/summary.csv</td>
+<td class="num">1336</td>
+<td>a0d35eaf934e922acfc0a4ebb1b0bb21379376a5ab38684d8c47b5cf7f72a608</td>
+</tr>
+<tr>
+<td>source:per_scene_csv</td>
+<td>experiments/sdgscenes_baseline/results/sdgscenes_inspired_smoke_20260720/per_scene.csv</td>
+<td class="num">163002</td>
+<td>13b352f59776b427b5edc454ec41335f2964ea907dd3bf1cbbfb2ad82986a9cb</td>
+</tr>
+<tr>
+<td>source:run_metadata_json</td>
+<td>experiments/sdgscenes_baseline/results/sdgscenes_inspired_smoke_20260720/run_metadata.json</td>
+<td class="num">1623</td>
+<td>02620d5e2f2e6e5495cbe5aa2cb0e175c38bafd680646d271912c2c44132a20f</td>
+</tr>
+<tr>
+<td>source:optimized_layouts_json</td>
+<td>experiments/sdgscenes_baseline/results/sdgscenes_inspired_smoke_20260720/optimized_layouts.json</td>
+<td class="num">3199812</td>
+<td>909d6330a43631e80b57f2f1c59477a60fe23e974b3c4be6879bc2c4f08b20f4</td>
+</tr>
+<tr>
+<td>source:smoke_report_md</td>
+<td>experiments/sdgscenes_baseline/reports/sdgscenes_inspired_smoke_report.md</td>
+<td class="num">5082</td>
+<td>9d2b2479cfce22fd7c270cee76e51a7de874ef040d9428197c78981088ef92fb</td>
+</tr>
+<tr>
+<td>source:protocol_boundary_md</td>
+<td>experiments/sdgscenes_baseline/reports/protocol_boundary.md</td>
+<td class="num">2113</td>
+<td>1adf20b5e551fb0023f340ab0ccf195c21c85b4b7d0747af2d9bdc7df469f425</td>
+</tr>
+<tr>
+<td>source:sota_protocol_comparison_csv</td>
+<td>experiments/sdgscenes_baseline/reports/sota_protocol_comparison.csv</td>
+<td class="num">2566</td>
+<td>b02a157937918a611711ae65a7b5a7f86fd76131e96ae121b0dc8a1b6e501675</td>
+</tr>
+<tr>
+<td>source:related_work_wording_md</td>
+<td>experiments/sdgscenes_baseline/reports/related_work_wording.md</td>
+<td class="num">2009</td>
+<td>80f4d160b75fd769eba03e98d302571a8c0f313c8abba8a458fbf574d9665c97</td>
+</tr>
+<tr>
+<td>source:reported_results_context_md</td>
+<td>experiments/sdgscenes_baseline/reports/reported_results_context.md</td>
+<td class="num">1274</td>
+<td>938da9228000b5db2313509af3f85ea1a27352edd61ed3ae87a2305da18bc3ab</td>
+</tr>
+<tr>
+<td>source:official_feasibility_md</td>
+<td>experiments/sdgscenes_baseline/reports/official_feasibility.md</td>
+<td class="num">1963</td>
+<td>45b5dbdf49352e0d767380249b8fb01c41f29d8f3ae9800540e2da0bb4b1ba3f</td>
+</tr>
+<tr>
+<td>source:main_results_csv</td>
+<td>experiment_archive/relation_aware_instructscene_20260530/local_results/tables/main_results.csv</td>
+<td class="num">1052</td>
+<td>2ff70d883a837ef7878760b2d7328747162adb41fd8779e11cb510c305054b46</td>
+</tr>
+<tr>
+<td>source:floor_prior_results_csv</td>
+<td>experiment_archive/relation_aware_instructscene_20260530/local_results/tables/floor_prior_results.csv</td>
+<td class="num">14857</td>
+<td>a9bd33b7512158d7b75faf3b00ef6f2e22c25e4007986b298c753f61c8e4195c</td>
+</tr>
+<tr>
+<td>source:collision_gated_results_csv</td>
+<td>experiment_archive/relation_aware_instructscene_20260530/local_results/tables/collision_gated_results.csv</td>
+<td class="num">1009</td>
+<td>7fe0aaa61d1ad02f54ad4c8b03dbda68c085ebbaf7fd9b9a3450304364a019a8</td>
+</tr>
+<tr>
+<td>source:strong_baseline_feasibility_csv</td>
+<td>experiment_archive/relation_aware_instructscene_20260530/local_results/tables/strong_baseline_feasibility.csv</td>
+<td class="num">2256</td>
+<td>e04d7a4856d567b33a80543c7ce2021f341ca10484ac1fec06ce5337a3801f94</td>
+</tr>
+<tr>
+<td>generated:README.md</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/README.md</td>
+<td class="num">692</td>
+<td>bf18189ef7bd0d5965b099d873daa9fd0c5825d206fe9543d3770655e294a669</td>
+</tr>
+<tr>
+<td>generated:archived_collision_gated_results.csv</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/archived_collision_gated_results.csv</td>
+<td class="num">1009</td>
+<td>7fe0aaa61d1ad02f54ad4c8b03dbda68c085ebbaf7fd9b9a3450304364a019a8</td>
+</tr>
+<tr>
+<td>generated:archived_floor_prior_results.csv</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/archived_floor_prior_results.csv</td>
+<td class="num">14857</td>
+<td>a9bd33b7512158d7b75faf3b00ef6f2e22c25e4007986b298c753f61c8e4195c</td>
+</tr>
+<tr>
+<td>generated:archived_main_results.csv</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/archived_main_results.csv</td>
+<td class="num">1052</td>
+<td>2ff70d883a837ef7878760b2d7328747162adb41fd8779e11cb510c305054b46</td>
+</tr>
+<tr>
+<td>generated:artifact.json</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/artifact.json</td>
+<td class="num">12978</td>
+<td>11a9992e6a9fb73f2dc91d1acc69950f8de63833b9df5f5e1056172e80b2a6d2</td>
+</tr>
+<tr>
+<td>generated:official_feasibility.md</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/official_feasibility.md</td>
+<td class="num">1963</td>
+<td>45b5dbdf49352e0d767380249b8fb01c41f29d8f3ae9800540e2da0bb4b1ba3f</td>
+</tr>
+<tr>
+<td>generated:per_scene.csv</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/per_scene.csv</td>
+<td class="num">163002</td>
+<td>13b352f59776b427b5edc454ec41335f2964ea907dd3bf1cbbfb2ad82986a9cb</td>
+</tr>
+<tr>
+<td>generated:protocol_boundary.md</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/protocol_boundary.md</td>
+<td class="num">2113</td>
+<td>1adf20b5e551fb0023f340ab0ccf195c21c85b4b7d0747af2d9bdc7df469f425</td>
+</tr>
+<tr>
+<td>generated:related_work_wording.md</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/related_work_wording.md</td>
+<td class="num">2009</td>
+<td>80f4d160b75fd769eba03e98d302571a8c0f313c8abba8a458fbf574d9665c97</td>
+</tr>
+<tr>
+<td>generated:reported_results_context.md</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/reported_results_context.md</td>
+<td class="num">1274</td>
+<td>938da9228000b5db2313509af3f85ea1a27352edd61ed3ae87a2305da18bc3ab</td>
+</tr>
+<tr>
+<td>generated:run_metadata.json</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/run_metadata.json</td>
+<td class="num">1623</td>
+<td>02620d5e2f2e6e5495cbe5aa2cb0e175c38bafd680646d271912c2c44132a20f</td>
+</tr>
+<tr>
+<td>generated:sdgscenes_inspired_smoke_report.md</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/sdgscenes_inspired_smoke_report.md</td>
+<td class="num">5082</td>
+<td>9d2b2479cfce22fd7c270cee76e51a7de874ef040d9428197c78981088ef92fb</td>
+</tr>
+<tr>
+<td>generated:sdgscenes_results_machine_20260720.tar.gz</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/sdgscenes_results_machine_20260720.tar.gz</td>
+<td class="num">535346</td>
+<td>38305b2ed512b84cf8bd4b8f829a517e99808b85a69f59d4a18698d9b8836134</td>
+</tr>
+<tr>
+<td>generated:sota_protocol_comparison.csv</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/sota_protocol_comparison.csv</td>
+<td class="num">2566</td>
+<td>b02a157937918a611711ae65a7b5a7f86fd76131e96ae121b0dc8a1b6e501675</td>
+</tr>
+<tr>
+<td>generated:strong_baseline_feasibility.csv</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/strong_baseline_feasibility.csv</td>
+<td class="num">2256</td>
+<td>e04d7a4856d567b33a80543c7ce2021f341ca10484ac1fec06ce5337a3801f94</td>
+</tr>
+<tr>
+<td>generated:summary.csv</td>
+<td>experiments/sdgscenes_baseline/exports/20260720_h800_sdgscenes_results/machine/summary.csv</td>
+<td class="num">1336</td>
+<td>a0d35eaf934e922acfc0a4ebb1b0bb21379376a5ab38684d8c47b5cf7f72a608</td>
+</tr>
+</tbody></table>
+    </section>
+
+    <section>
+      <h2>Environment and provenance</h2>
+      <ul>
+        <li>Cloud repo branch: <code>exp/sdgscenes-defensive-baseline-20260711</code></li>
+        <li>Smoke commit: <code>b7f1aab</code> / <code>Add SDGScenes-inspired defensive smoke baseline</code></li>
+        <li>Runtime: <code>{&#x27;torch&#x27;: &#x27;2.11.0+cu128&#x27;, &#x27;cuda_available&#x27;: True, &#x27;device_count&#x27;: 1, &#x27;device_0&#x27;: &#x27;NVIDIA H800 PCIe&#x27;, &#x27;capability_0&#x27;: [9, 0]}</code></li>
+        <li>Source note: no AutoDL password, API key, or GitHub token is stored in this report.</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
