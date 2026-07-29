@@ -736,6 +736,28 @@ def solve_projection(
         external_safety_fn,
     )
     anchor_metrics["candidate_source"] = rollback_source
+    if anchor_centers is not None:
+        anchor_budget_violations = []
+        if (
+            float(anchor_metrics["max_movement"])
+            > config.per_object_budget + 1e-6
+        ):
+            anchor_budget_violations.append("per_object_budget")
+        if (
+            float(anchor_metrics["total_movement"])
+            > config.total_movement_budget + 1e-6
+        ):
+            anchor_budget_violations.append("total_movement_budget")
+        if (
+            int(anchor_metrics["edited_object_count"])
+            > config.max_edited_objects
+        ):
+            anchor_budget_violations.append("max_edited_objects")
+        if anchor_budget_violations:
+            raise ValueError(
+                "anchor_centers exceed configured budget(s): "
+                + ", ".join(anchor_budget_violations)
+            )
     n_objects = len(objects)
     n_relations = len(relations)
     if n_relations == 0 or config.total_movement_budget <= 0:

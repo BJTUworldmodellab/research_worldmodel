@@ -53,6 +53,7 @@ CANONICAL_PATTERN = (
 )
 
 REPRODUCIBILITY_PATHS = (
+    "configs/cwgcp_v03_protocol.yaml",
     "scripts/run_cwgcp_pilot.py",
     "src/relation_schema.py",
     "src/cwgcp",
@@ -101,7 +102,7 @@ def _split_for_scene(
     scene_uid: str, salt: str, development_fraction: float
 ) -> str:
     digest = hashlib.sha256(f"{salt}:{scene_uid}".encode("utf-8")).digest()
-    fraction = int.from_bytes(digest[:4], "big") / float(0xFFFFFFFF)
+    fraction = int.from_bytes(digest[:4], "big") / float(2**32)
     return "dev" if fraction < development_fraction else "validation"
 
 
@@ -646,6 +647,7 @@ def main() -> None:
         default="auto",
     )
     parser.add_argument("--include-generic", action="store_true")
+    parser.add_argument("--include-nudge-ablation", action="store_true")
     args = parser.parse_args()
 
     inputs = args.input or sorted(glob.glob(CANONICAL_PATTERN))
@@ -854,6 +856,7 @@ def main() -> None:
                 "cwgcp": cwgcp_boxes,
             }
             generic_certificate = None
+            no_nudge_certificate = None
             if args.include_generic:
                 generic_config = replace(
                     scene_config,
@@ -879,7 +882,7 @@ def main() -> None:
                         else None
                     ),
                     external_safety_metadata={
-                        "mode": "obb_only_generic_control",
+                        "mode": f"{args.safety_mode}_generic_control",
                         "evaluator_version": EVALUATOR_VERSION,
                     },
                     provenance={
@@ -894,6 +897,40 @@ def main() -> None:
                     original_boxes, generic_result.centers_xz
                 )
                 generic_certificate = generic_result.certificate
+            if args.include_nudge_ablation:
+                no_nudge_config = replace(
+                    scene_config,
+                    enable_proposal_nudge=False,
+                )
+                no_nudge_result = repair_layout_cwgcp(
+                    objects,
+                    proposals,
+                    room_bounds=None,
+                    config=no_nudge_config,
+                    external_safety_fn=mesh_safety_callback,
+                    warm_start_centers=[floor_centers],
+                    anchor_centers=(
+                        floor_centers
+                        if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                        else None
+                    ),
+                    external_safety_metadata={
+                        "mode": f"{args.safety_mode}_no_nudge_ablation",
+                        "evaluator_version": EVALUATOR_VERSION,
+                    },
+                    provenance={
+                        "input_file": str(Path(input_path)),
+                        "input_file_sha256": input_hashes[input_path],
+                        "scene_uid": scene_uid,
+                        "code_commit": code_commit,
+                        "source_tree": source_tree,
+                        "variant": "no_nudge",
+                    },
+                )
+                variants["no_nudge"] = apply_centers_to_exported_boxes(
+                    original_boxes, no_nudge_result.centers_xz
+                )
+                no_nudge_certificate = no_nudge_result.certificate
 
             selected_external = cwgcp_result.certificate["solver"][
                 "selected_metrics"
@@ -965,6 +1002,7 @@ def main() -> None:
                     "cwgcp": cwgcp_result.certificate,
                     "cwgcp_boxes": cwgcp_boxes,
                     "generic": generic_certificate,
+                    "no_nudge": no_nudge_certificate,
                 }
             )
             if (scene_index + 1) % 25 == 0:
@@ -973,6 +1011,8 @@ def main() -> None:
     methods = ["baseline", "floor_prior", "random", "cwgcp"]
     if args.include_generic:
         methods.append("generic")
+    if args.include_nudge_ablation:
+        methods.append("no_nudge")
     aggregate = {method: _aggregate(rows, method) for method in methods}
     comparisons = {
         "cwgcp_minus_baseline": _bootstrap_delta(
@@ -988,6 +1028,10 @@ def main() -> None:
     if args.include_generic:
         comparisons["cwgcp_minus_generic"] = _bootstrap_delta(
             rows, "cwgcp", "generic", args.bootstrap_samples, args.seed + 14
+        )
+    if args.include_nudge_ablation:
+        comparisons["cwgcp_minus_no_nudge"] = _bootstrap_delta(
+            rows, "cwgcp", "no_nudge", args.bootstrap_samples, args.seed + 15
         )
 
     room_deltas_vs_floor_prior = {
@@ -1023,14 +1067,19 @@ def main() -> None:
         if source not in {"anchor_rollback", "baseline_rollback"}
     )
     generic_signal = (
-        not args.include_generic
-        or comparisons["cwgcp_minus_generic"]["low"] > 0
+        args.include_generic
+        and comparisons["cwgcp_minus_generic"]["low"] > 0
+    )
+    nudge_ablation_signal = (
+        args.include_nudge_ablation
+        and comparisons["cwgcp_minus_no_nudge"]["low"] > 0
     )
     cpu_method_signal = bool(
         comparisons["cwgcp_minus_baseline"]["low"] > 0
         and comparisons["cwgcp_minus_random"]["low"] > 0
         and comparisons["cwgcp_minus_floor_prior"]["low"] > 0
         and generic_signal
+        and nudge_ablation_signal
         and all(
             interval["mean"] > 0
             for interval in room_deltas_vs_floor_prior.values()
@@ -1086,6 +1135,14 @@ def main() -> None:
                 "proposal_nudge_candidates": False,
             }
             if args.include_generic
+            else None
+        ),
+        "no_nudge_ablation": (
+            {
+                "same_fapsp_configuration": True,
+                "only_change": "enable_proposal_nudge=False",
+            }
+            if args.include_nudge_ablation
             else None
         ),
         "methods": aggregate,

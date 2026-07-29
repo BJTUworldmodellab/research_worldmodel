@@ -94,13 +94,28 @@ class FAPSPV03Tests(unittest.TestCase):
         result = repair_layout_cwgcp(
             objects,
             [RelationProposal(1, "left of", 2)],
-            config=_config(max_edited_objects=0),
+            config=_config(max_edited_objects=1),
             anchor_centers=anchor,
         )
         self.assertFalse(result.accepted)
         np.testing.assert_allclose(result.centers_xz, anchor, atol=1e-10)
         selected = result.certificate["solver"]["selected_metrics"]
         self.assertEqual(selected["candidate_source"], "anchor_rollback")
+
+    def test_anchor_outside_declared_budget_is_rejected(self):
+        objects = [_object(0, 1, 1.0, 0.0), _object(1, 2, 0.0, 0.0)]
+        anchor = np.array([[-0.5, 0.0], [0.0, 0.0]], dtype=np.float64)
+        with self.assertRaisesRegex(ValueError, "anchor_centers exceed"):
+            repair_layout_cwgcp(
+                objects,
+                [RelationProposal(1, "left of", 2)],
+                config=_config(
+                    per_object_budget=1.0,
+                    total_movement_budget=1.0,
+                    max_edited_objects=0,
+                ),
+                anchor_centers=anchor,
+            )
 
     def test_warm_start_refine_runs_from_warm_displacement(self):
         objects = [_object(0, 1, 0.6, 0.0), _object(1, 2, 0.0, 0.0)]
