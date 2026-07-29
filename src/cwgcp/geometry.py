@@ -107,8 +107,14 @@ def collision_metrics(
 
 def exact_overlap_metrics(
     centers: np.ndarray, objects: Sequence[LayoutObject]
-) -> Dict[str, float]:
-    """Exact oriented-footprint intersection used only by the safety gate."""
+) -> Dict[str, object]:
+    """Return aggregate and contact-level exact OBB overlap metrics.
+
+    Pair identifiers use stable positions in the immutable object sequence.
+    Keeping the per-pair areas prevents a candidate from exchanging one
+    collision for another while leaving aggregate pair count and area
+    unchanged.
+    """
 
     polygons = [
         Polygon(rectangle_corners(center, obj.half_size_xz, obj.yaw))
@@ -116,6 +122,7 @@ def exact_overlap_metrics(
     ]
     collision_pairs = 0
     overlap_area = 0.0
+    pair_overlaps: Dict[str, float] = {}
     for i in range(len(polygons)):
         polygon_i = polygons[i] if polygons[i].is_valid else polygons[i].buffer(0)
         for j in range(i + 1, len(polygons)):
@@ -126,9 +133,11 @@ def exact_overlap_metrics(
             if area > 1e-9:
                 collision_pairs += 1
                 overlap_area += area
+                pair_overlaps[f"{i}:{j}"] = area
     return {
         "exact_obb_collision_pairs": int(collision_pairs),
         "exact_obb_overlap_area": float(overlap_area),
+        "exact_obb_pair_overlaps": pair_overlaps,
     }
 
 

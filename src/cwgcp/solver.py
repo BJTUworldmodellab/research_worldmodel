@@ -448,6 +448,412 @@ def _external_safety_not_worse(
     return True
 
 
+def _constraint_certificate(
+    anchor: Dict[str, object],
+    candidate: Dict[str, object],
+    config: CWGCPConfig,
+) -> Dict[str, object]:
+    """Certify the hard feasible-set constraints relative to an anchor.
+
+    Relation improvement is intentionally excluded here: it is the
+    lexicographic objective, not a safety constraint.  Separating feasibility
+    from dominance makes the anchor a first-class feasible solution instead
+    of a post-hoc fallback.
+    """
+
+    constraints: Dict[str, Dict[str, object]] = {}
+    violations: List[str] = []
+
+    coverage_key = (
+        "proposal_satisfied_relations"
+        if "proposal_satisfied_relations" in anchor
+        else None
+    )
+    if config.coverage_first_selection and coverage_key is not None:
+        anchor_coverage = int(anchor[coverage_key])
+        candidate_coverage = int(candidate[coverage_key])
+        satisfied = candidate_coverage >= anchor_coverage
+        constraints["proposal_coverage_non_regression"] = {
+            "applicable": True,
+            "anchor_value": anchor_coverage,
+            "candidate_value": candidate_coverage,
+            "residual": candidate_coverage - anchor_coverage,
+            "satisfied": satisfied,
+        }
+        if not satisfied:
+            violations.append("proposal_coverage_drop")
+    else:
+        constraints["proposal_coverage_non_regression"] = {
+            "applicable": False,
+            "satisfied": True,
+        }
+
+    violation_key = (
+        "proposal_relation_violations"
+        if "proposal_relation_violations" in anchor
+        else "relation_violations"
+    )
+    protected = 0
+    broken = 0
+    maximum_candidate_violation = 0.0
+    for anchor_violation, candidate_violation in zip(
+        anchor[violation_key], candidate[violation_key]
+    ):
+        if float(anchor_violation) <= config.improvement_epsilon:
+            protected += 1
+            maximum_candidate_violation = max(
+                maximum_candidate_violation,
+                float(candidate_violation),
+            )
+            if (
+                float(candidate_violation)
+                > config.relation_preservation_tolerance
+            ):
+                broken += 1
+    constraints["previously_satisfied_relations_preserved"] = {
+        "applicable": protected > 0,
+        "protected_count": protected,
+        "broken_count": broken,
+        "max_candidate_violation": maximum_candidate_violation,
+        "tolerance": float(config.relation_preservation_tolerance),
+        "satisfied": broken == 0,
+    }
+    if broken:
+        violations.append("previously_satisfied_relation_broken")
+
+    anchor_pairs = int(anchor["exact_obb_collision_pairs"])
+    candidate_pairs = int(candidate["exact_obb_collision_pairs"])
+    pair_residual = anchor_pairs - candidate_pairs
+    pair_satisfied = pair_residual >= 0
+    constraints["exact_obb_collision_pairs_non_regression"] = {
+        "applicable": True,
+        "anchor_value": anchor_pairs,
+        "candidate_value": candidate_pairs,
+        "residual": pair_residual,
+        "satisfied": pair_satisfied,
+    }
+    if not pair_satisfied:
+        violations.append("exact_obb_collision_pair_increase")
+
+    anchor_area = float(anchor["exact_obb_overlap_area"])
+    candidate_area = float(candidate["exact_obb_overlap_area"])
+    area_limit = anchor_area + config.collision_tolerance
+    area_residual = area_limit - candidate_area
+    area_satisfied = area_residual >= 0.0
+    constraints["exact_obb_overlap_area_non_regression"] = {
+        "applicable": True,
+        "anchor_value": anchor_area,
+        "candidate_value": candidate_area,
+        "tolerance": float(config.collision_tolerance),
+        "residual": float(area_residual),
+        "satisfied": area_satisfied,
+    }
+    if not area_satisfied:
+        violations.append("exact_obb_overlap_area_increase")
+
+    anchor_pair_overlaps = {
+        str(pair): float(area)
+        for pair, area in dict(
+            anchor.get("exact_obb_pair_overlaps", {})
+        ).items()
+    }
+    candidate_pair_overlaps = {
+        str(pair): float(area)
+        for pair, area in dict(
+            candidate.get("exact_obb_pair_overlaps", {})
+        ).items()
+    }
+    new_pairs = sorted(
+        set(candidate_pair_overlaps) - set(anchor_pair_overlaps)
+    )
+    increased_pairs = {
+        pair: {
+            "anchor_area": anchor_pair_overlaps[pair],
+            "candidate_area": candidate_pair_overlaps[pair],
+            "increase": (
+                candidate_pair_overlaps[pair] - anchor_pair_overlaps[pair]
+            ),
+        }
+        for pair in sorted(
+            set(candidate_pair_overlaps) & set(anchor_pair_overlaps)
+        )
+        if candidate_pair_overlaps[pair]
+        > anchor_pair_overlaps[pair] + config.collision_tolerance
+    }
+    contact_monotone = not new_pairs and not increased_pairs
+    constraints["pairwise_obb_contact_monotonicity"] = {
+        "applicable": True,
+        "anchor_pair_overlaps": anchor_pair_overlaps,
+        "candidate_pair_overlaps": candidate_pair_overlaps,
+        "new_collision_pairs": new_pairs,
+        "increased_collision_pairs": increased_pairs,
+        "tolerance": float(config.collision_tolerance),
+        "satisfied": contact_monotone,
+    }
+    if new_pairs:
+        violations.append("exact_obb_new_collision_pair")
+    if increased_pairs:
+        violations.append("exact_obb_pair_overlap_increase")
+
+    boundary_available = bool(anchor["boundary_available"])
+    if boundary_available:
+        anchor_penalty = float(anchor["boundary_penalty"])
+        candidate_penalty = float(candidate["boundary_penalty"])
+        penalty_limit = anchor_penalty + config.boundary_tolerance
+        penalty_residual = penalty_limit - candidate_penalty
+        penalty_satisfied = penalty_residual >= 0.0
+        constraints["boundary_penalty_non_regression"] = {
+            "applicable": True,
+            "anchor_value": anchor_penalty,
+            "candidate_value": candidate_penalty,
+            "tolerance": float(config.boundary_tolerance),
+            "residual": float(penalty_residual),
+            "satisfied": penalty_satisfied,
+        }
+        if not penalty_satisfied:
+            violations.append("boundary_penalty_increase")
+
+        anchor_boundary_count = int(anchor["boundary_violations"])
+        candidate_boundary_count = int(candidate["boundary_violations"])
+        count_residual = anchor_boundary_count - candidate_boundary_count
+        count_satisfied = count_residual >= 0
+        constraints["boundary_violation_count_non_regression"] = {
+            "applicable": True,
+            "anchor_value": anchor_boundary_count,
+            "candidate_value": candidate_boundary_count,
+            "residual": count_residual,
+            "satisfied": count_satisfied,
+        }
+        if not count_satisfied:
+            violations.append("boundary_violation_count_increase")
+    else:
+        constraints["boundary_penalty_non_regression"] = {
+            "applicable": False,
+            "satisfied": True,
+        }
+        constraints["boundary_violation_count_non_regression"] = {
+            "applicable": False,
+            "satisfied": True,
+        }
+
+    maximum_movement = float(candidate["max_movement"])
+    per_object_residual = config.per_object_budget + 1e-6 - maximum_movement
+    per_object_satisfied = per_object_residual >= 0.0
+    constraints["per_object_movement_budget"] = {
+        "applicable": True,
+        "candidate_value": maximum_movement,
+        "limit": float(config.per_object_budget),
+        "residual": float(per_object_residual),
+        "satisfied": per_object_satisfied,
+    }
+    if not per_object_satisfied:
+        violations.append("per_object_budget_exceeded")
+
+    total_movement = float(candidate["total_movement"])
+    total_residual = config.total_movement_budget + 1e-6 - total_movement
+    total_satisfied = total_residual >= 0.0
+    constraints["total_movement_budget"] = {
+        "applicable": True,
+        "candidate_value": total_movement,
+        "limit": float(config.total_movement_budget),
+        "residual": float(total_residual),
+        "satisfied": total_satisfied,
+    }
+    if not total_satisfied:
+        violations.append("total_movement_budget_exceeded")
+
+    edited_count = int(candidate["edited_object_count"])
+    edit_residual = int(config.max_edited_objects) - edited_count
+    edit_satisfied = edit_residual >= 0
+    constraints["edited_object_budget"] = {
+        "applicable": True,
+        "candidate_value": edited_count,
+        "limit": int(config.max_edited_objects),
+        "residual": edit_residual,
+        "satisfied": edit_satisfied,
+    }
+    if not edit_satisfied:
+        violations.append("edited_object_budget_exceeded")
+
+    external_expected = (
+        "external_safety" in anchor or "external_safety_error" in anchor
+    )
+    if external_expected:
+        anchor_available = bool(anchor.get("external_safety_available"))
+        candidate_available = bool(candidate.get("external_safety_available"))
+        available = anchor_available and candidate_available
+        non_regression = (
+            available and _external_safety_not_worse(anchor, candidate)
+        )
+        constraints["external_safety_non_regression"] = {
+            "applicable": True,
+            "anchor_available": anchor_available,
+            "candidate_available": candidate_available,
+            "anchor_value": anchor.get("external_safety"),
+            "candidate_value": candidate.get("external_safety"),
+            "satisfied": bool(non_regression),
+        }
+        if not available:
+            violations.append("external_safety_unavailable")
+        elif not non_regression:
+            violations.append("external_safety_increase")
+    else:
+        constraints["external_safety_non_regression"] = {
+            "applicable": False,
+            "satisfied": True,
+        }
+
+    return {
+        "feasible": not violations,
+        "violations": violations,
+        "constraints": constraints,
+    }
+
+
+def _dominance_certificate(
+    anchor: Dict[str, object],
+    candidate: Dict[str, object],
+    config: CWGCPConfig,
+) -> Dict[str, object]:
+    """Report whether a feasible candidate lexicographically improves anchor."""
+
+    relation_key = (
+        "proposal_weighted_relation_violation"
+        if "proposal_weighted_relation_violation" in anchor
+        else "weighted_relation_violation"
+    )
+    anchor_violation = float(anchor[relation_key])
+    candidate_violation = float(candidate[relation_key])
+    violation_improvement = anchor_violation - candidate_violation
+
+    coverage_key = (
+        "proposal_satisfied_relations"
+        if "proposal_satisfied_relations" in anchor
+        else None
+    )
+    anchor_coverage = (
+        int(anchor[coverage_key]) if coverage_key is not None else None
+    )
+    candidate_coverage = (
+        int(candidate[coverage_key]) if coverage_key is not None else None
+    )
+    coverage_improved = bool(
+        coverage_key is not None and candidate_coverage > anchor_coverage
+    )
+    equal_coverage = bool(
+        coverage_key is None or candidate_coverage == anchor_coverage
+    )
+    coverage_dropped = bool(
+        coverage_key is not None and candidate_coverage < anchor_coverage
+    )
+    violation_improved = (
+        violation_improvement >= config.improvement_epsilon
+    )
+
+    if coverage_improved:
+        dominates = True
+        mode = "coverage_gain"
+    elif equal_coverage and violation_improved:
+        dominates = True
+        mode = "violation_reduction"
+    else:
+        dominates = False
+        mode = "none"
+
+    reasons = []
+    if coverage_dropped:
+        reasons.append("proposal_coverage_drop")
+    if config.require_coverage_gain and not coverage_improved:
+        reasons.append("proposal_coverage_gain_required")
+    if not dominates and "proposal_coverage_gain_required" not in reasons:
+        reasons.append("no_relation_improvement")
+    return {
+        "dominates_anchor": bool(dominates),
+        "mode": mode,
+        "relation_metric": relation_key,
+        "anchor_relation_violation": anchor_violation,
+        "candidate_relation_violation": candidate_violation,
+        "violation_improvement": float(violation_improvement),
+        "required_improvement": float(config.improvement_epsilon),
+        "anchor_coverage": anchor_coverage,
+        "candidate_coverage": candidate_coverage,
+        "coverage_improved": coverage_improved,
+        "rejection_reasons": reasons,
+    }
+
+
+def _objective_terms(metrics: Dict[str, object]) -> Dict[str, object]:
+    """Return the reader-facing lexicographic terms for one solution."""
+
+    return {
+        "proposal_coverage": metrics.get("proposal_satisfied_relations"),
+        "proposal_total": metrics.get("proposal_total_relations"),
+        "weighted_relation_violation": metrics.get(
+            "proposal_weighted_relation_violation",
+            metrics.get("weighted_relation_violation"),
+        ),
+        "exact_obb_collision_pairs": int(
+            metrics["exact_obb_collision_pairs"]
+        ),
+        "exact_obb_overlap_area": float(metrics["exact_obb_overlap_area"]),
+        "boundary_violations": int(metrics["boundary_violations"]),
+        "boundary_penalty": float(metrics["boundary_penalty"]),
+        "total_movement": float(metrics["total_movement"]),
+        "edited_object_count": int(metrics["edited_object_count"]),
+    }
+
+
+def _scfp_certificate(
+    anchor: Dict[str, object],
+    selected: Dict[str, object],
+    config: CWGCPConfig,
+    accepted: bool,
+) -> Dict[str, object]:
+    """Build the SCFP proof obligations for the returned projection."""
+
+    anchor_constraints = _constraint_certificate(anchor, anchor, config)
+    selected_constraints = _constraint_certificate(anchor, selected, config)
+    dominance = _dominance_certificate(anchor, selected, config)
+    preservation = selected_constraints["constraints"][
+        "previously_satisfied_relations_preserved"
+    ]
+    safety_constraint_names = (
+        "exact_obb_collision_pairs_non_regression",
+        "exact_obb_overlap_area_non_regression",
+        "pairwise_obb_contact_monotonicity",
+        "boundary_penalty_non_regression",
+        "boundary_violation_count_non_regression",
+        "external_safety_non_regression",
+    )
+    safety_not_worse = all(
+        bool(selected_constraints["constraints"][name]["satisfied"])
+        for name in safety_constraint_names
+    )
+    return {
+        "method_semantics": "safety_certified_feasible_projection",
+        "anchor_constraint_certificate": anchor_constraints,
+        "constraint_certificate": selected_constraints,
+        "dominance_certificate": dominance,
+        "objective_terms": _objective_terms(selected),
+        "selected_solution": {
+            "source": selected.get("candidate_source", "anchor_rollback"),
+            "feasible": bool(selected_constraints["feasible"]),
+            "dominates_anchor": bool(accepted and dominance["dominates_anchor"]),
+        },
+        "proof_obligations": {
+            "anchor_feasible": bool(anchor_constraints["feasible"]),
+            "selected_feasible": bool(selected_constraints["feasible"]),
+            "safety_not_worse_than_anchor": bool(safety_not_worse),
+            "previously_satisfied_relations_preserved": bool(
+                preservation["satisfied"]
+            ),
+            "selected_dominates_anchor": bool(
+                accepted and dominance["dominates_anchor"]
+            ),
+        },
+    }
+
+
 def _passes_gate(
     baseline: Dict[str, object],
     candidate: Dict[str, object],
@@ -901,6 +1307,10 @@ def solve_projection(
     """Solve CW-GCP and return centers plus a detailed solver certificate."""
 
     original = np.stack([obj.center_xz for obj in objects], axis=0)
+    if config.certified_feasible_projection and anchor_centers is None:
+        raise ValueError(
+            "certified feasible projection requires anchor_centers"
+        )
     if anchor_centers is None:
         anchor = original
         rollback_source = "baseline_rollback"
@@ -954,11 +1364,22 @@ def solve_projection(
                 "anchor_centers exceed configured budget(s): "
                 + ", ".join(anchor_budget_violations)
             )
+    if config.certified_feasible_projection:
+        anchor_certificate = _constraint_certificate(
+            anchor_metrics,
+            anchor_metrics,
+            config,
+        )
+        if not anchor_certificate["feasible"]:
+            raise ValueError(
+                "anchor_centers are not certifiably feasible: "
+                + ", ".join(anchor_certificate["violations"])
+            )
     n_objects = len(objects)
     n_relations = len(relations)
     if n_relations == 0 or config.total_movement_budget <= 0:
         reason = "no_resolved_relations" if n_relations == 0 else "zero_budget"
-        return anchor.copy(), {
+        certificate = {
             "accepted": False,
             "rollback_reason": reason,
             "baseline_metrics": anchor_metrics,
@@ -968,13 +1389,23 @@ def solve_projection(
             "selected_metrics": anchor_metrics,
             "solver_runs": [],
         }
+        if config.certified_feasible_projection:
+            certificate.update(
+                _scfp_certificate(
+                    anchor_metrics,
+                    anchor_metrics,
+                    config,
+                    accepted=False,
+                )
+            )
+        return anchor.copy(), certificate
     if (
         config.require_coverage_gain
         and int(anchor_metrics.get("proposal_total_relations", 0)) > 0
         and int(anchor_metrics["proposal_satisfied_relations"])
         >= int(anchor_metrics["proposal_total_relations"])
     ):
-        return anchor.copy(), {
+        certificate = {
             "accepted": False,
             "rollback_reason": "anchor_already_full_coverage",
             "baseline_metrics": anchor_metrics,
@@ -984,6 +1415,16 @@ def solve_projection(
             "selected_metrics": anchor_metrics,
             "solver_runs": [],
         }
+        if config.certified_feasible_projection:
+            certificate.update(
+                _scfp_certificate(
+                    anchor_metrics,
+                    anchor_metrics,
+                    config,
+                    accepted=False,
+                )
+            )
+        return anchor.copy(), certificate
 
     objective = _objective_factory(
         original, objects, relations, room_bounds, config
@@ -1120,8 +1561,39 @@ def solve_projection(
     feasible = []
     candidate_records = []
     for centers, vector, metrics in candidates:
-        passes, rejection_reasons = _passes_gate(anchor_metrics, metrics, config)
         record = dict(metrics)
+        if config.certified_feasible_projection:
+            constraint_certificate = _constraint_certificate(
+                anchor_metrics,
+                metrics,
+                config,
+            )
+            dominance_certificate = _dominance_certificate(
+                anchor_metrics,
+                metrics,
+                config,
+            )
+            passes = bool(
+                constraint_certificate["feasible"]
+                and dominance_certificate["dominates_anchor"]
+            )
+            rejection_reasons = list(
+                constraint_certificate["violations"]
+            ) + list(dominance_certificate["rejection_reasons"])
+            record["feasible"] = bool(
+                constraint_certificate["feasible"]
+            )
+            record["dominates_anchor"] = bool(
+                dominance_certificate["dominates_anchor"]
+            )
+            record["constraint_certificate"] = constraint_certificate
+            record["dominance_certificate"] = dominance_certificate
+        else:
+            passes, rejection_reasons = _passes_gate(
+                anchor_metrics,
+                metrics,
+                config,
+            )
         record["gate_passed"] = passes
         record["rejection_reasons"] = rejection_reasons
         candidate_records.append(record)
@@ -1129,9 +1601,13 @@ def solve_projection(
             feasible.append((centers, vector, metrics))
 
     if not feasible:
-        return anchor.copy(), {
+        certificate = {
             "accepted": False,
-            "rollback_reason": "no_candidate_passed_gate",
+            "rollback_reason": (
+                "no_dominating_feasible_projection"
+                if config.certified_feasible_projection
+                else "no_candidate_passed_gate"
+            ),
             "baseline_metrics": anchor_metrics,
             "original_metrics": original_metrics,
             "anchor_metrics": anchor_metrics,
@@ -1139,10 +1615,20 @@ def solve_projection(
             "selected_metrics": anchor_metrics,
             "solver_runs": solver_runs,
         }
+        if config.certified_feasible_projection:
+            certificate.update(
+                _scfp_certificate(
+                    anchor_metrics,
+                    anchor_metrics,
+                    config,
+                    accepted=False,
+                )
+            )
+        return anchor.copy(), certificate
 
     selected = min(feasible, key=lambda item: _selection_key(item[2], config))
     selected_centers, _selected_vector, selected_metrics = selected
-    return selected_centers, {
+    certificate = {
         "accepted": True,
         "rollback_reason": None,
         "baseline_metrics": anchor_metrics,
@@ -1152,3 +1638,13 @@ def solve_projection(
         "selected_metrics": selected_metrics,
         "solver_runs": solver_runs,
     }
+    if config.certified_feasible_projection:
+        certificate.update(
+            _scfp_certificate(
+                anchor_metrics,
+                selected_metrics,
+                config,
+                accepted=True,
+            )
+        )
+    return selected_centers, certificate

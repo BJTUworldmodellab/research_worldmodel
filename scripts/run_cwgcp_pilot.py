@@ -270,9 +270,8 @@ def _collision_gated_floor_prior(scene: dict) -> Tuple[List[dict], dict]:
             baseline_mesh["collision_pairs"]
         )
     else:
-        # Preserve the historical Floor-Prior output, but make the absence of
-        # mesh gating explicit in the record.
-        accepted = True
+        # A collision-gated method cannot accept an unverified repair.
+        accepted = False
     boxes = scene["repair_boxes"] if accepted else scene["layout_boxes"]
     return copy.deepcopy(boxes), {
         "mesh_gate_available": mesh_available,
@@ -283,6 +282,7 @@ def _collision_gated_floor_prior(scene: dict) -> Tuple[List[dict], dict]:
         "repair_mesh_collision_pairs": (
             int(repair_mesh["collision_pairs"]) if mesh_available else None
         ),
+        "fail_closed_reason": None if mesh_available else "mesh_unavailable",
     }
 
 
@@ -623,7 +623,13 @@ def main() -> None:
     )
     parser.add_argument(
         "--method-profile",
-        choices=("cwgcp_v021", "fapsp_v03", "fapsp_v031", "agrp_v04"),
+        choices=(
+            "cwgcp_v021",
+            "fapsp_v03",
+            "fapsp_v031",
+            "agrp_v04",
+            "scfp_v04",
+        ),
         default="cwgcp_v021",
     )
     parser.add_argument(
@@ -697,6 +703,18 @@ def main() -> None:
             "coverage_first_selection": False,
             "require_coverage_gain": False,
             "enable_proposal_nudge": False,
+        }
+    elif args.method_profile == "scfp_v04":
+        profile_config = {
+            "relation_margin": args.semantic_margin,
+            "min_confidence": 1.0,
+            "max_slack": 0.0,
+            "refine_warm_starts": True,
+            "coverage_first_selection": True,
+            "require_coverage_gain": False,
+            "enable_proposal_nudge": True,
+            "enable_cone_ball_close_projection": True,
+            "certified_feasible_projection": True,
         }
     base_config = CWGCPConfig(
         restarts=args.restarts,
@@ -792,6 +810,14 @@ def main() -> None:
             mesh_safety_callback = None
             if (
                 args.safety_mode == "cached_fcl"
+                and not floor_gate["mesh_gate_available"]
+            ):
+                raise ValueError(
+                    f"{evaluation_uid}: cached_fcl requested but archived "
+                    "baseline/Floor-Prior mesh safety is unavailable"
+                )
+            if (
+                args.safety_mode == "cached_fcl"
                 and floor_gate["mesh_gate_available"]
             ):
                 baseline_mesh_pairs = float(
@@ -829,7 +855,12 @@ def main() -> None:
                 anchor_centers=(
                     floor_centers
                     if args.method_profile
-                    in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
+                    in {
+                        "fapsp_v03",
+                        "fapsp_v031",
+                        "agrp_v04",
+                        "scfp_v04",
+                    }
                     else None
                 ),
                 external_safety_metadata={
@@ -859,7 +890,12 @@ def main() -> None:
                 random_match = (
                     "candidate"
                     if args.method_profile
-                    in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
+                    in {
+                        "fapsp_v03",
+                        "fapsp_v031",
+                        "agrp_v04",
+                        "scfp_v04",
+                    }
                     else "floor"
                 )
             random_target = (
@@ -905,7 +941,12 @@ def main() -> None:
                     anchor_centers=(
                         floor_centers
                         if args.method_profile
-                        in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
+                        in {
+                            "fapsp_v03",
+                            "fapsp_v031",
+                            "agrp_v04",
+                            "scfp_v04",
+                        }
                         else None
                     ),
                     external_safety_metadata={
@@ -939,7 +980,12 @@ def main() -> None:
                     anchor_centers=(
                         floor_centers
                         if args.method_profile
-                        in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
+                        in {
+                            "fapsp_v03",
+                            "fapsp_v031",
+                            "agrp_v04",
+                            "scfp_v04",
+                        }
                         else None
                     ),
                     external_safety_metadata={
@@ -1038,7 +1084,12 @@ def main() -> None:
                         (
                             "anchor_rollback"
                             if args.method_profile
-                            in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
+                            in {
+                                "fapsp_v03",
+                                "fapsp_v031",
+                                "agrp_v04",
+                                "scfp_v04",
+                            }
                             else "baseline_rollback"
                         ),
                     )
@@ -1310,6 +1361,10 @@ def main() -> None:
                     "exploratory pilot"
                 ),
                 "agrp_v04": "AGRP 0.4 exploratory pilot",
+                "scfp_v04": (
+                    "SCFP 0.4 safety-certified feasible projection "
+                    "development-only pilot"
+                ),
             }.get(args.method_profile, "CW-GCP 0.2.1 CPU pilot")
         ),
         "code_commit": code_commit,
@@ -1326,6 +1381,7 @@ def main() -> None:
         "rooms": sorted(set(row["room"] for row in rows)),
         "safety_mode": args.safety_mode,
         "method_profile": args.method_profile,
+        "development_only": args.method_profile == "scfp_v04",
         "budget_policy": {
             "name": args.budget_policy,
             "total_movement_cap": args.total_movement_cap,

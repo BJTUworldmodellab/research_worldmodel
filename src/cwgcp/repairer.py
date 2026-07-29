@@ -69,6 +69,10 @@ def repair_layout_cwgcp(
         config = CWGCPConfig()
     if not objects:
         raise ValueError("objects must not be empty")
+    if config.certified_feasible_projection and anchor_centers is None:
+        raise ValueError(
+            "certified feasible projection requires anchor_centers"
+        )
     if (
         config.enable_cone_ball_close_projection
         and anchor_centers is None
@@ -118,7 +122,10 @@ def repair_layout_cwgcp(
         "provenance": dict(provenance or {}),
     }
     config_record = asdict(config)
+    is_scfp = bool(config.certified_feasible_projection)
     is_fapsp = bool(
+        not is_scfp
+        and
         anchor_centers is not None
         and (
             config.coverage_first_selection
@@ -127,22 +134,28 @@ def repair_layout_cwgcp(
         )
     )
     certificate = {
-        "algorithm": "FA-PSP" if is_fapsp else "CW-GCP",
+        "algorithm": (
+            "SCFP" if is_scfp else ("FA-PSP" if is_fapsp else "CW-GCP")
+        ),
         "algorithm_version": (
-            (
-                "0.3.1-fa-psp-cone-ball"
-                if (
-                    config.enable_cone_ball_close_projection
-                    and config.enable_proposal_nudge
+            "0.4.0-safety-certified-feasible-projection"
+            if is_scfp
+            else (
+                (
+                    "0.3.1-fa-psp-cone-ball"
+                    if (
+                        config.enable_cone_ball_close_projection
+                        and config.enable_proposal_nudge
+                    )
+                    else (
+                        "0.3.1-fa-psp-no-nudge"
+                        if config.enable_cone_ball_close_projection
+                        else "0.3.0-fa-psp"
+                    )
                 )
-                else (
-                    "0.3.1-fa-psp-no-nudge"
-                    if config.enable_cone_ball_close_projection
-                    else "0.3.0-fa-psp"
-                )
+                if is_fapsp
+                else "0.2.1-cpu-pilot"
             )
-            if is_fapsp
-            else "0.2.1-cpu-pilot"
         ),
         "accepted": bool(solver_certificate["accepted"]),
         "rollback_reason": solver_certificate["rollback_reason"],
@@ -168,8 +181,10 @@ def repair_layout_cwgcp(
         },
         "safety_scope": {
             "obb_gate": True,
+            "pairwise_obb_contact_monotonicity": is_scfp,
             "rectangular_boundary_gate": room_bounds is not None,
             "external_mesh_gate": external_safety_fn is not None,
+            "certified_feasible_projection": is_scfp,
         },
         "warm_start_count": (
             0 if warm_start_centers is None else len(warm_start_centers)

@@ -101,6 +101,7 @@ class CWGCPConfig:
     require_coverage_gain: bool = False
     enable_proposal_nudge: bool = False
     enable_cone_ball_close_projection: bool = False
+    certified_feasible_projection: bool = False
     seed: int = 0
 
     def __post_init__(self) -> None:
@@ -197,6 +198,9 @@ class CWGCPConfig:
             "enable_proposal_nudge": self.enable_proposal_nudge,
             "enable_cone_ball_close_projection": (
                 self.enable_cone_ball_close_projection
+            ),
+            "certified_feasible_projection": (
+                self.certified_feasible_projection
             ),
         }
         for name, value in boolean_fields.items():
