@@ -3,6 +3,7 @@ import unittest
 import numpy as np
 
 from src.cwgcp import CWGCPConfig, LayoutObject, RelationProposal
+from src.cwgcp import solver as cwgcp_solver
 from src.cwgcp.repairer import repair_layout_cwgcp
 
 
@@ -211,6 +212,239 @@ class FAPSPV03Tests(unittest.TestCase):
         self.assertIn(
             "proposal_coverage_gain_required", rejected["rejection_reasons"]
         )
+
+
+class FAPSPV031CloseProjectionTests(unittest.TestCase):
+    def _project(self, delta, predicate, config):
+        helper = getattr(
+            cwgcp_solver,
+            "_project_close_directional_delta",
+            None,
+        )
+        if helper is None:
+            self.fail("solver._project_close_directional_delta is not implemented")
+        projected = helper(np.asarray(delta, dtype=np.float64), predicate, config)
+        self.assertIsNotNone(projected)
+        return np.asarray(projected, dtype=np.float64)
+
+    def _assert_close_directional_feasible(self, delta, predicate, config):
+        if predicate == "closely left of":
+            signed_axis = -float(delta[0])
+            orthogonal = abs(float(delta[1]))
+        elif predicate == "closely right of":
+            signed_axis = float(delta[0])
+            orthogonal = abs(float(delta[1]))
+        elif predicate == "closely in front of":
+            signed_axis = float(delta[1])
+            orthogonal = abs(float(delta[0]))
+        elif predicate == "closely behind":
+            signed_axis = -float(delta[1])
+            orthogonal = abs(float(delta[0]))
+        else:
+            raise AssertionError(f"unexpected predicate: {predicate}")
+
+        self.assertGreaterEqual(
+            signed_axis + 1e-10,
+            orthogonal + config.relation_margin,
+        )
+        self.assertLessEqual(
+            float(np.linalg.norm(delta)),
+            config.close_distance + 1e-10,
+        )
+
+    def test_close_directional_projection_satisfies_all_four_cones(self):
+        config = _config(close_distance=0.75, relation_margin=0.2)
+        cases = {
+            "closely left of": np.array([1.0, 0.6], dtype=np.float64),
+            "closely right of": np.array([-1.0, 0.6], dtype=np.float64),
+            "closely in front of": np.array([0.6, -1.0], dtype=np.float64),
+            "closely behind": np.array([0.6, 1.0], dtype=np.float64),
+        }
+
+        for predicate, delta in cases.items():
+            with self.subTest(predicate=predicate):
+                projected = self._project(delta, predicate, config)
+                self._assert_close_directional_feasible(
+                    projected,
+                    predicate,
+                    config,
+                )
+
+    def test_projection_matches_closed_form_axis_and_interior_cases(self):
+        config = _config(close_distance=0.75, relation_margin=0.2)
+        interior = max(config.improvement_epsilon * 10.0, 1e-5)
+
+        unchanged = self._project(
+            [0.4, 0.1],
+            "closely right of",
+            config,
+        )
+        opposite = self._project(
+            [-1.0, 0.0],
+            "closely right of",
+            config,
+        )
+        outside_ball = self._project(
+            [2.0, 0.0],
+            "closely right of",
+            config,
+        )
+
+        np.testing.assert_allclose(unchanged, [0.4, 0.1], atol=1e-12)
+        np.testing.assert_allclose(
+            opposite,
+            [config.relation_margin + interior, 0.0],
+            atol=1e-12,
+        )
+        np.testing.assert_allclose(
+            outside_ball,
+            [config.close_distance - interior, 0.0],
+            atol=1e-12,
+        )
+
+    def test_close_projection_regression_preserves_margin_after_ball_projection(self):
+        config = _config(close_distance=0.75, relation_margin=0.2)
+        delta = np.array([0.5, 0.8], dtype=np.float64)
+
+        margin = config.relation_margin + max(config.improvement_epsilon * 10.0, 1e-5)
+        legacy = delta.copy()
+        required = abs(float(legacy[1])) + margin
+        legacy[0] = -required
+        distance = float(np.linalg.norm(legacy))
+        legacy *= (config.close_distance - margin) / distance
+
+        self.assertLess(
+            -float(legacy[0]),
+            abs(float(legacy[1])) + config.relation_margin,
+        )
+
+        projected = self._project(delta, "closely left of", config)
+        self._assert_close_directional_feasible(
+            projected,
+            "closely left of",
+            config,
+        )
+
+    def test_budget_step_preserves_anchor_instead_of_rescaling_it(self):
+        config = _config(
+            per_object_budget=0.2,
+            total_movement_budget=0.13,
+        )
+        original = np.zeros((2, 2), dtype=np.float64)
+        anchor = np.array([[0.08, 0.0], [0.02, 0.0]], dtype=np.float64)
+        proposed = np.array([[0.14, 0.0], [0.02, 0.0]], dtype=np.float64)
+
+        budgeted = cwgcp_solver._anchor_preserving_budget_step(
+            original,
+            anchor,
+            proposed,
+            config,
+        )
+
+        self.assertLessEqual(
+            float(np.linalg.norm(budgeted - original, axis=1).sum()),
+            config.total_movement_budget + 1e-10,
+        )
+        self.assertGreater(float(budgeted[0, 0]), float(anchor[0, 0]))
+        self.assertAlmostEqual(float(budgeted[1, 0]), 0.02, places=12)
+
+    def test_no_nudge_ablation_has_an_explicit_v031_variant_label(self):
+        objects = [_object(0, 1, -0.5, 0.0), _object(1, 2, 0.0, 0.0)]
+        anchor = np.array([[-0.5, 0.0], [0.0, 0.0]], dtype=np.float64)
+        result = repair_layout_cwgcp(
+            objects,
+            [RelationProposal(1, "left of", 2)],
+            config=_config(
+                coverage_first_selection=True,
+                require_coverage_gain=True,
+                enable_proposal_nudge=False,
+                enable_cone_ball_close_projection=True,
+            ),
+            anchor_centers=anchor,
+        )
+        self.assertEqual(
+            result.certificate["algorithm_version"],
+            "0.3.1-fa-psp-no-nudge",
+        )
+
+    def test_cone_ball_flag_activates_the_close_projection_end_to_end(self):
+        objects = [
+            _object(0, 1, 0.5, 0.8, half_x=0.005, half_z=0.005),
+            _object(1, 2, 0.0, 0.0, half_x=0.005, half_z=0.005),
+        ]
+        anchor = np.array([[0.5, 0.8], [0.0, 0.0]], dtype=np.float64)
+        common = dict(
+            relation_margin=0.02,
+            total_movement_budget=3.0,
+            max_edited_objects=2,
+            coverage_first_selection=True,
+            require_coverage_gain=True,
+            enable_proposal_nudge=True,
+            restarts=1,
+            outer_iterations=1,
+            solver_max_iterations=1,
+        )
+        legacy = repair_layout_cwgcp(
+            objects,
+            [RelationProposal(1, "closely left of", 2)],
+            config=_config(
+                enable_cone_ball_close_projection=False,
+                **common,
+            ),
+            anchor_centers=anchor,
+        )
+        projected = repair_layout_cwgcp(
+            objects,
+            [RelationProposal(1, "closely left of", 2)],
+            config=_config(
+                enable_cone_ball_close_projection=True,
+                **common,
+            ),
+            anchor_centers=anchor,
+        )
+        budget_limited = repair_layout_cwgcp(
+            objects,
+            [RelationProposal(1, "closely left of", 2)],
+            config=_config(
+                enable_cone_ball_close_projection=True,
+                **{**common, "total_movement_budget": 0.5},
+            ),
+            anchor_centers=anchor,
+        )
+
+        self.assertFalse(legacy.accepted)
+        self.assertTrue(projected.accepted)
+        self.assertFalse(budget_limited.accepted)
+        self.assertFalse(
+            any(
+                metric.get("candidate_source") == "proposal_nudge"
+                for metric in budget_limited.certificate["solver"][
+                    "candidate_metrics"
+                ]
+            )
+        )
+        self.assertEqual(
+            projected.certificate["solver"]["selected_metrics"][
+                "candidate_source"
+            ],
+            "proposal_nudge",
+        )
+        self.assertEqual(
+            projected.certificate["algorithm_version"],
+            "0.3.1-fa-psp-cone-ball",
+        )
+
+    def test_cone_ball_profile_requires_an_anchor(self):
+        objects = [_object(0, 1, 0.5, 0.8), _object(1, 2, 0.0, 0.0)]
+        with self.assertRaisesRegex(ValueError, "requires anchor_centers"):
+            repair_layout_cwgcp(
+                objects,
+                [RelationProposal(1, "closely left of", 2)],
+                config=_config(
+                    enable_proposal_nudge=True,
+                    enable_cone_ball_close_projection=True,
+                ),
+            )
 
 
 if __name__ == "__main__":

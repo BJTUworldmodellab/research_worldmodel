@@ -69,6 +69,13 @@ def repair_layout_cwgcp(
         config = CWGCPConfig()
     if not objects:
         raise ValueError("objects must not be empty")
+    if (
+        config.enable_cone_ball_close_projection
+        and anchor_centers is None
+    ):
+        raise ValueError(
+            "cone-ball close projection requires anchor_centers"
+        )
 
     started = time.perf_counter()
     resolved, unresolved = resolve_relations(objects, relations, config)
@@ -122,7 +129,20 @@ def repair_layout_cwgcp(
     certificate = {
         "algorithm": "FA-PSP" if is_fapsp else "CW-GCP",
         "algorithm_version": (
-            "0.3.0-fa-psp" if is_fapsp else "0.2.1-cpu-pilot"
+            (
+                "0.3.1-fa-psp-cone-ball"
+                if (
+                    config.enable_cone_ball_close_projection
+                    and config.enable_proposal_nudge
+                )
+                else (
+                    "0.3.1-fa-psp-no-nudge"
+                    if config.enable_cone_ball_close_projection
+                    else "0.3.0-fa-psp"
+                )
+            )
+            if is_fapsp
+            else "0.2.1-cpu-pilot"
         ),
         "accepted": bool(solver_certificate["accepted"]),
         "rollback_reason": solver_certificate["rollback_reason"],

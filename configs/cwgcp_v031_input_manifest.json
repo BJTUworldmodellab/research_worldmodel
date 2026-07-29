@@ -1,0 +1,35 @@
+{
+  "schema_version": "cwgcp-v031-frozen-input-manifest-v1",
+  "split": {
+    "name": "dev",
+    "salt": "cwgcp-v03-main-method-20260729",
+    "development_fraction": 0.4
+  },
+  "expected": {
+    "generated_records": 222,
+    "source_clusters": 209,
+    "target_relations": 296,
+    "records_by_room": {
+      "bedroom": 66,
+      "diningroom": 80,
+      "livingroom": 76
+    }
+  },
+  "inputs": [
+    {
+      "path": "results/floor_prior_remote/bedroom_sgdiffusion_vq_objfeat_epoch_01999_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+      "sha256": "83849efa7f2c29e4f8603cedfb21233b88d0d000ce5c900622bd6213c29c58e1",
+      "bytes": 1737761
+    },
+    {
+      "path": "results/floor_prior_remote/diningroom_sgdiffusion_vq_objfeat_epoch_01239_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+      "sha256": "20f7a40c60ca4a6e6b4ab7035e838efd86de440eda7e1b0888dc6df3d7dd54fb",
+      "bytes": 5107694
+    },
+    {
+      "path": "results/floor_prior_remote/livingroom_sgdiffusion_vq_objfeat_epoch_01459_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+      "sha256": "ed9d9974d3a2112a13132ff1afae696a3b569c0ce0c10e4626d7ccbfc94ebc42",
+      "bytes": 5949085
+    }
+  ]
+}

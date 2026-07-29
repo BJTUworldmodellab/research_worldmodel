@@ -262,6 +262,138 @@ development_policy:
       - "The independent evaluator lacks the predeclared stratified human audit."
     promotion_status: "exploratory main-method candidate; final paper promotion remains NO-GO"
 
+third_round_development_amendment:
+  version: "2026-07-29-v0.3.1-final-bounded-development"
+  status: "predeclared before implementation and before third-round results"
+  purpose: >
+    Permit one final bounded development attempt after the frozen FA-PSP v0.3
+    result. The attempt tests whether the low-activation failure can be repaired
+    by making the close-directional proposal projector consistent with its
+    internal feasible set. This is development evidence, not confirmatory
+    validation; every record in the existing 531-record pool is already seen.
+  frozen_baseline_to_keep_by_default:
+    method: "FA-PSP v0.3 / E_residual_010_margin002"
+    commit: "078f0c99ab157339bdce47d40edbfd81932c6690"
+    artifact: "results/cwgcp_dev/20260729_E_selected_commit078f0c9_controls"
+    relation_accuracy: "202/296 (68.243%)"
+    floor_prior_accuracy: "195/296 (65.878%)"
+    movement_ratio_vs_floor_prior: 1.0252
+    selected_non_anchor_candidates: "6/222 (2.703%)"
+  preimplementation_failure_evidence:
+    eligible_anchor_failure_records: 55
+    eligible_by_room:
+      bedroom: 11
+      diningroom: 19
+      livingroom: 25
+    records_with_any_nudge_coverage_gain: 13
+    records_with_any_nudge_passing_all_gates: 6
+    proposal_nudge_candidates: 113
+    close_directional_candidates: 78
+    interpretation: >
+      Close-directional proposals dominate the attempted nudges. The v0.3
+      implementation first places a pair on the directional-cone boundary and
+      then radially shrinks it into the close-distance ball. Radial shrinkage
+      also shrinks the additive direction margin, so the result can leave the
+      very cone that the first step satisfied.
+  single_algorithm_family:
+    name: "FA-PSP v0.3.1 Cone-Ball Close Projection"
+    only_change: >
+      For closely-left, closely-right, closely-in-front-of, and
+      closely-behind proposals, replace the sequential cone-then-ball update
+      with one deterministic Euclidean projection of the pair delta onto the
+      intersection of the frozen 45-degree directional cone, additive semantic
+      margin, and close-distance ball. If that target exceeds a continuous
+      movement budget, retain the Floor anchor and take the largest feasible
+      step on the anchor-to-target residual ray; never rescale the anchor
+      displacement itself.
+    frozen_unchanged_components:
+      - "Floor-Prior anchor and fail-closed rollback."
+      - "0.10 m anchor-residual total-movement cap and 3-object edit cap."
+      - "0.02 semantic margin and all evaluator thresholds."
+      - "Coverage-first selection with strict coverage gain."
+      - "Previously-satisfied-relation preservation."
+      - "Exact OBB pair and overlap-area non-regression gates."
+      - "Boundary and external-safety gates."
+      - "Candidate ranking, editable-object selection, and solver settings."
+      - "Independent evaluator remains post-hoc and is never queried by optimization."
+    forbidden_extensions:
+      - "No relation-specific edit sets."
+      - "No multi-proposal composed nudges."
+      - "No room-specific parameters or rules."
+      - "No additional thresholds, weights, budgets, or ranking terms."
+  anti_tuning_limits:
+    max_new_algorithm_families: 1
+    max_total_new_configurations: 1
+    room_hyperparameters: "shared across bedroom, diningroom, and livingroom"
+    frozen_input_manifest: "configs/cwgcp_v031_input_manifest.json"
+    configuration:
+      id: "H_cone_ball_residual010_margin002"
+      method_profile: "fapsp_v031"
+      budget_policy: "anchor_plus_residual"
+      anchor_residual_cap: 0.10
+      semantic_margin: 0.02
+      total_movement_cap: 3.6
+      max_edited_objects: 3
+      restarts: 2
+      outer_iterations: 2
+      solver_max_iterations: 80
+      bootstrap_samples: 20000
+      seed: 0
+    controls:
+      - "Frozen FA-PSP v0.3 sequential close projection under the identical budget."
+      - "Same-budget generic continuous optimizer."
+      - "Same-budget no-proposal-nudge ablation."
+      - "Collision-gated Floor-Prior anchor."
+      - "Candidate-movement-matched random perturbation."
+    forbidden_after_results:
+      - "No second v0.3.1 configuration after any H summary is inspected."
+      - "No fourth algorithm family on the existing seen data."
+      - "No manual per-scene failure mining to define another rule."
+      - "No validation or holdout language for the existing 531-record pool."
+  prefreeze_smoke_correction:
+    status: "implementation bug found before the frozen H run"
+    issue: >
+      The first smoke implementation applied the legacy whole-layout budget
+      scaling after the cone-ball projection. That scaling could shrink the
+      Floor anchor and invalidate the additive direction margin.
+    resolution: >
+      Replace only that post-projection step with the predeclared
+      anchor-preserving residual-ray budget step. Discard the precommit smoke
+      for evidence; it is not an H result and cannot enter selection.
+  primary_selection_gate:
+    all_required:
+      - "Relation gain versus Floor-Prior is positive overall, with paired source-cluster bootstrap 95% CI lower bound > 0."
+      - "Relation point estimate versus Floor-Prior is positive in bedroom, diningroom, and livingroom."
+      - "Record-level relation losses versus Floor-Prior are exactly 0."
+      - "Mean movement ratio versus Floor-Prior is <= 1.05."
+      - "Exact OBB collision pairs are non-worse than Floor-Prior for every scene."
+      - "Exact OBB overlap area is non-worse than Floor-Prior for every scene."
+      - "Paired gain versus same-budget generic control has 95% CI lower bound > 0."
+      - "Paired gain versus the direct v0.3 mechanism ablation has 95% CI lower bound > 0."
+      - "Selected non-anchor candidates that pass every gate are >=10% of all generated records overall."
+      - "Selected non-anchor candidates are >=5% of all generated records in each room."
+      - "Relation gain is not lower than the frozen v0.3 point estimate."
+  diagnostic_only_metrics:
+    - "Activation among the 55 anchor-failure-eligible records."
+    - "Rejection reasons and predicate mix."
+    - "Median and p95 CPU runtime."
+    - "Projection displacement and edited-object counts."
+  stop_and_replacement_rules:
+    default: "Keep frozen FA-PSP v0.3."
+    if_h_passes_every_gate: >
+      FA-PSP v0.3.1 may supersede v0.3 as the exploratory local preferred
+      candidate. It is still not a final paper main method until zero-overlap
+      confirmatory data, remote FCL recomputation, and a human evaluator audit
+      pass.
+    if_h_fails_any_gate: >
+      Stop development on the existing seen data, retain FA-PSP v0.3, and
+      report v0.3.1 as a negative or diagnostic ablation. Do not add another
+      family or tune by room.
+    invalid_run_exception: >
+      If and only if a code or evaluator bug invalidates H, discard the affected
+      output, fix that bug without changing the predeclared method, and rerun H
+      once.
+
 validation_go_gates:
   exploratory_promotion_signal:
     - "CW-GCP/FA-PSP/AGRP minus Floor-Prior relation-accuracy cluster-bootstrap 95% CI lower bound is strictly greater than zero."

@@ -269,6 +269,51 @@ def _clip_displacement_to_budgets(
     return clipped
 
 
+def _anchor_preserving_budget_step(
+    original: np.ndarray,
+    anchor: np.ndarray,
+    proposed: np.ndarray,
+    config: CWGCPConfig,
+) -> np.ndarray:
+    """Take the largest anchor-to-proposal step within continuous budgets."""
+
+    original = np.asarray(original, dtype=np.float64)
+    anchor = np.asarray(anchor, dtype=np.float64)
+    proposed = np.asarray(proposed, dtype=np.float64)
+    if (
+        original.shape != anchor.shape
+        or anchor.shape != proposed.shape
+        or not np.all(np.isfinite(original))
+        or not np.all(np.isfinite(anchor))
+        or not np.all(np.isfinite(proposed))
+    ):
+        raise ValueError("original, anchor, and proposed layouts must align")
+
+    def within_continuous_budgets(centers: np.ndarray) -> bool:
+        movement = np.linalg.norm(centers - original, axis=1)
+        return bool(
+            np.all(movement <= config.per_object_budget + 1e-12)
+            and float(movement.sum())
+            <= config.total_movement_budget + 1e-12
+        )
+
+    if not within_continuous_budgets(anchor):
+        raise ValueError("anchor layout exceeds continuous movement budgets")
+    if within_continuous_budgets(proposed):
+        return proposed.copy()
+
+    residual = proposed - anchor
+    lower, upper = 0.0, 1.0
+    for _ in range(64):
+        midpoint = 0.5 * (lower + upper)
+        candidate = anchor + midpoint * residual
+        if within_continuous_budgets(candidate):
+            lower = midpoint
+        else:
+            upper = midpoint
+    return anchor + lower * residual
+
+
 def _optimize_from_vector(
     initial_vector: np.ndarray,
     initial_radius: float,
@@ -553,9 +598,121 @@ def _proposal_pairs(
     ]
 
 
+def _project_close_directional_delta(
+    delta: np.ndarray,
+    predicate: str,
+    config: CWGCPConfig,
+) -> Optional[np.ndarray]:
+    """Project a pair delta onto the frozen close-direction feasible set."""
+
+    normalized = normalize_predicate(predicate)
+    if not normalized.startswith("closely "):
+        return None
+    base = normalized.replace("closely ", "", 1)
+    value = np.asarray(delta, dtype=np.float64)
+    if value.shape != (2,) or not np.all(np.isfinite(value)):
+        return None
+
+    if base == "left of":
+        axis, orthogonal = -float(value[0]), float(value[1])
+
+        def from_axes(a: float, b: float) -> np.ndarray:
+            return np.array([-a, b], dtype=np.float64)
+
+    elif base == "right of":
+        axis, orthogonal = float(value[0]), float(value[1])
+
+        def from_axes(a: float, b: float) -> np.ndarray:
+            return np.array([a, b], dtype=np.float64)
+
+    elif base == "in front of":
+        axis, orthogonal = float(value[1]), float(value[0])
+
+        def from_axes(a: float, b: float) -> np.ndarray:
+            return np.array([b, a], dtype=np.float64)
+
+    elif base == "behind":
+        axis, orthogonal = -float(value[1]), float(value[0])
+
+        def from_axes(a: float, b: float) -> np.ndarray:
+            return np.array([b, -a], dtype=np.float64)
+
+    else:
+        return None
+
+    interior = max(config.improvement_epsilon * 10.0, 1e-5)
+    margin = config.relation_margin + interior
+    radius = config.close_distance - interior
+    if radius < margin:
+        return None
+
+    candidates: List[np.ndarray] = []
+    tolerance = 1e-10
+
+    def add_candidate(a: float, b: float) -> None:
+        if a + tolerance < abs(b) + margin:
+            return
+        if float(np.hypot(a, b)) > radius + tolerance:
+            return
+        candidates.append(from_axes(a, b))
+
+    # Projection onto the shifted 2-D second-order cone
+    # {a - margin >= |b|}. It is exact when the projected point is also
+    # inside the close-distance ball.
+    shifted_axis = axis - margin
+    abs_orthogonal = abs(orthogonal)
+    if shifted_axis >= abs_orthogonal:
+        add_candidate(axis, orthogonal)
+    elif shifted_axis <= -abs_orthogonal:
+        add_candidate(margin, 0.0)
+    else:
+        cone_axis = 0.5 * (shifted_axis + abs_orthogonal)
+        cone_orthogonal = np.copysign(cone_axis, orthogonal)
+        add_candidate(margin + cone_axis, cone_orthogonal)
+
+    # Projection onto the ball is exact when it remains inside the shifted
+    # cone. The feasibility check rejects the otherwise-invalid radial case.
+    distance = float(np.hypot(axis, orthogonal))
+    if distance <= radius:
+        add_candidate(axis, orthogonal)
+    elif distance > 0.0:
+        scale = radius / distance
+        add_candidate(axis * scale, orthogonal * scale)
+
+    # The remaining optimum must lie on one of the two cone-boundary
+    # segments b = +/- (a - margin), clipped by the ball.
+    boundary_discriminant = max(0.0, 2.0 * radius * radius - margin * margin)
+    max_boundary_axis = 0.5 * (
+        margin + float(np.sqrt(boundary_discriminant))
+    )
+    for side in (-1.0, 1.0):
+        boundary_axis = 0.5 * (
+            axis + margin + side * orthogonal
+        )
+        boundary_axis = float(
+            np.clip(boundary_axis, margin, max_boundary_axis)
+        )
+        add_candidate(
+            boundary_axis,
+            side * (boundary_axis - margin),
+        )
+
+    if not candidates:
+        return None
+    return min(
+        candidates,
+        key=lambda candidate: (
+            float(np.dot(candidate - value, candidate - value)),
+            float(candidate[0]),
+            float(candidate[1]),
+        ),
+    )
+
+
 def _nudge_pair_for_relation(
     original: np.ndarray,
     centers: np.ndarray,
+    objects: Sequence[LayoutObject],
     relation: ResolvedRelation,
     editable_indices: Sequence[int],
     config: CWGCPConfig,
@@ -574,7 +731,20 @@ def _nudge_pair_for_relation(
     margin = config.relation_margin + max(config.improvement_epsilon * 10.0, 1e-5)
     correction = np.zeros(2, dtype=np.float64)
 
-    if base == "left of":
+    if (
+        close
+        and base not in {"near", "far"}
+        and config.enable_cone_ball_close_projection
+    ):
+        projected = _project_close_directional_delta(
+            delta,
+            predicate,
+            config,
+        )
+        if projected is None:
+            return None
+        correction = projected - delta
+    elif base == "left of":
         required = abs(float(delta[1])) + margin
         correction[0] = -required - float(delta[0])
     elif base == "right of":
@@ -602,7 +772,11 @@ def _nudge_pair_for_relation(
     else:
         return None
 
-    if close and base not in {"near", "far"}:
+    if (
+        close
+        and base not in {"near", "far"}
+        and not config.enable_cone_ball_close_projection
+    ):
         vector = delta + correction
         distance = float(np.linalg.norm(vector))
         if distance > config.close_distance:
@@ -616,6 +790,23 @@ def _nudge_pair_for_relation(
     else:
         updated[target] -= correction
 
+    if (
+        close
+        and base not in {"near", "far"}
+        and config.enable_cone_ball_close_projection
+    ):
+        budgeted = _anchor_preserving_budget_step(
+            original,
+            centers,
+            updated,
+            config,
+        )
+        if (
+            relation_violation(budgeted, objects, relation, config)
+            > config.improvement_epsilon
+        ):
+            return None
+        return budgeted
     displacement = _clip_displacement_to_budgets(updated - original, config)
     return original + displacement
 
@@ -668,7 +859,12 @@ def _proposal_nudge_candidates(
             )
         for _violation, _subject, _object, relation in sorted(ranked_pairs)[:3]:
             nudged = _nudge_pair_for_relation(
-                original, anchor, relation, editable_indices, config
+                original,
+                anchor,
+                objects,
+                relation,
+                editable_indices,
+                config,
             )
             if nudged is None:
                 continue

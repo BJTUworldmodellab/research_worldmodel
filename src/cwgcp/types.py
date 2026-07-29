@@ -100,6 +100,7 @@ class CWGCPConfig:
     coverage_first_selection: bool = False
     require_coverage_gain: bool = False
     enable_proposal_nudge: bool = False
+    enable_cone_ball_close_projection: bool = False
     seed: int = 0
 
     def __post_init__(self) -> None:
@@ -194,6 +195,9 @@ class CWGCPConfig:
             "coverage_first_selection": self.coverage_first_selection,
             "require_coverage_gain": self.require_coverage_gain,
             "enable_proposal_nudge": self.enable_proposal_nudge,
+            "enable_cone_ball_close_projection": (
+                self.enable_cone_ball_close_projection
+            ),
         }
         for name, value in boolean_fields.items():
             if not isinstance(value, bool):

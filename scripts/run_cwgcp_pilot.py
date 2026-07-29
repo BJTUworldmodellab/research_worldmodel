@@ -51,9 +51,11 @@ CANONICAL_PATTERN = (
     "*_relation_aware_parsed_floor_prior_max1.8_mesh_p2_"
     "close0.75_far1.6_eval_cfg1.0_1.0.json"
 )
+FROZEN_INPUT_MANIFEST = Path("configs/cwgcp_v031_input_manifest.json")
 
 REPRODUCIBILITY_PATHS = (
     "configs/cwgcp_v03_protocol.yaml",
+    "configs/cwgcp_v031_input_manifest.json",
     "scripts/run_cwgcp_pilot.py",
     "src/relation_schema.py",
     "src/cwgcp",
@@ -529,6 +531,14 @@ def _write_outputs(
         f"- Cached FCL available for every selected layout: "
         f"**{summary['selected_layout_cached_fcl_available']}**",
         f"- CPU method signal: **{summary['cpu_method_signal']}**",
+        f"- Frozen third-round protocol run: "
+        f"**{summary['hard_gate_diagnostics']['frozen_protocol_run']}**",
+        f"- Third-round local gate: "
+        f"**{summary['hard_gate_diagnostics']['third_round_local_gate']}**",
+        f"- All-record activation: "
+        f"{summary['activation']['selected_non_anchor_candidates']}/"
+        f"{summary['activation']['generated_records']} "
+        f"({summary['activation']['all_record_rate']:.2%})",
         f"- Paper-method upgrade GO: **{summary['method_upgrade_go']}**",
         "",
         "## Aggregate comparison",
@@ -613,7 +623,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--method-profile",
-        choices=("cwgcp_v021", "fapsp_v03", "agrp_v04"),
+        choices=("cwgcp_v021", "fapsp_v03", "fapsp_v031", "agrp_v04"),
         default="cwgcp_v021",
     )
     parser.add_argument(
@@ -648,14 +658,24 @@ def main() -> None:
     )
     parser.add_argument("--include-generic", action="store_true")
     parser.add_argument("--include-nudge-ablation", action="store_true")
+    parser.add_argument("--include-v03-ablation", action="store_true")
     args = parser.parse_args()
+    if args.include_v03_ablation and args.method_profile != "fapsp_v031":
+        parser.error("--include-v03-ablation requires --method-profile=fapsp_v031")
 
     inputs = args.input or sorted(glob.glob(CANONICAL_PATTERN))
     if not inputs:
         raise SystemExit("No canonical Floor-Prior JSON inputs found")
+    with FROZEN_INPUT_MANIFEST.open(encoding="utf-8") as handle:
+        frozen_input_manifest = json.load(handle)
+    if (
+        frozen_input_manifest.get("schema_version")
+        != "cwgcp-v031-frozen-input-manifest-v1"
+    ):
+        raise ValueError("unsupported frozen input manifest schema")
 
     profile_config = {}
-    if args.method_profile == "fapsp_v03":
+    if args.method_profile in {"fapsp_v03", "fapsp_v031"}:
         profile_config = {
             "relation_margin": args.semantic_margin,
             "min_confidence": 1.0,
@@ -664,6 +684,9 @@ def main() -> None:
             "coverage_first_selection": True,
             "require_coverage_gain": True,
             "enable_proposal_nudge": True,
+            "enable_cone_ball_close_projection": (
+                args.method_profile == "fapsp_v031"
+            ),
         }
     elif args.method_profile == "agrp_v04":
         profile_config = {
@@ -805,7 +828,8 @@ def main() -> None:
                 warm_start_centers=[floor_centers],
                 anchor_centers=(
                     floor_centers
-                    if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                    if args.method_profile
+                    in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
                     else None
                 ),
                 external_safety_metadata={
@@ -834,7 +858,8 @@ def main() -> None:
             if random_match == "auto":
                 random_match = (
                     "candidate"
-                    if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                    if args.method_profile
+                    in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
                     else "floor"
                 )
             random_target = (
@@ -857,6 +882,7 @@ def main() -> None:
             }
             generic_certificate = None
             no_nudge_certificate = None
+            v03_certificate = None
             if args.include_generic:
                 generic_config = replace(
                     scene_config,
@@ -878,7 +904,8 @@ def main() -> None:
                     warm_start_centers=[floor_centers],
                     anchor_centers=(
                         floor_centers
-                        if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                        if args.method_profile
+                        in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
                         else None
                     ),
                     external_safety_metadata={
@@ -911,7 +938,8 @@ def main() -> None:
                     warm_start_centers=[floor_centers],
                     anchor_centers=(
                         floor_centers
-                        if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                        if args.method_profile
+                        in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
                         else None
                     ),
                     external_safety_metadata={
@@ -931,6 +959,36 @@ def main() -> None:
                     original_boxes, no_nudge_result.centers_xz
                 )
                 no_nudge_certificate = no_nudge_result.certificate
+            if args.include_v03_ablation:
+                v03_config = replace(
+                    scene_config,
+                    enable_cone_ball_close_projection=False,
+                )
+                v03_result = repair_layout_cwgcp(
+                    objects,
+                    proposals,
+                    room_bounds=None,
+                    config=v03_config,
+                    external_safety_fn=mesh_safety_callback,
+                    warm_start_centers=[floor_centers],
+                    anchor_centers=floor_centers,
+                    external_safety_metadata={
+                        "mode": f"{args.safety_mode}_v03_ablation",
+                        "evaluator_version": EVALUATOR_VERSION,
+                    },
+                    provenance={
+                        "input_file": str(Path(input_path)),
+                        "input_file_sha256": input_hashes[input_path],
+                        "scene_uid": scene_uid,
+                        "code_commit": code_commit,
+                        "source_tree": source_tree,
+                        "variant": "fapsp_v03",
+                    },
+                )
+                variants["fapsp_v03"] = apply_centers_to_exported_boxes(
+                    original_boxes, v03_result.centers_xz
+                )
+                v03_certificate = v03_result.certificate
 
             selected_external = cwgcp_result.certificate["solver"][
                 "selected_metrics"
@@ -979,9 +1037,22 @@ def main() -> None:
                         "candidate_source",
                         (
                             "anchor_rollback"
-                            if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                            if args.method_profile
+                            in {"fapsp_v03", "fapsp_v031", "agrp_v04"}
                             else "baseline_rollback"
                         ),
+                    )
+                ),
+                "cwgcp_anchor_failure_eligible": (
+                    int(
+                        cwgcp_result.certificate["solver"]["anchor_metrics"].get(
+                            "proposal_satisfied_relations", 0
+                        )
+                    )
+                    < int(
+                        cwgcp_result.certificate["solver"]["anchor_metrics"].get(
+                            "proposal_total_relations", 0
+                        )
                     )
                 ),
                 "baseline_mesh_collision_pairs": baseline_mesh_value,
@@ -1003,6 +1074,7 @@ def main() -> None:
                     "cwgcp_boxes": cwgcp_boxes,
                     "generic": generic_certificate,
                     "no_nudge": no_nudge_certificate,
+                    "fapsp_v03": v03_certificate,
                 }
             )
             if (scene_index + 1) % 25 == 0:
@@ -1013,6 +1085,8 @@ def main() -> None:
         methods.append("generic")
     if args.include_nudge_ablation:
         methods.append("no_nudge")
+    if args.include_v03_ablation:
+        methods.append("fapsp_v03")
     aggregate = {method: _aggregate(rows, method) for method in methods}
     comparisons = {
         "cwgcp_minus_baseline": _bootstrap_delta(
@@ -1032,6 +1106,10 @@ def main() -> None:
     if args.include_nudge_ablation:
         comparisons["cwgcp_minus_no_nudge"] = _bootstrap_delta(
             rows, "cwgcp", "no_nudge", args.bootstrap_samples, args.seed + 15
+        )
+    if args.include_v03_ablation:
+        comparisons["cwgcp_minus_fapsp_v03"] = _bootstrap_delta(
+            rows, "cwgcp", "fapsp_v03", args.bootstrap_samples, args.seed + 16
         )
 
     room_deltas_vs_floor_prior = {
@@ -1066,6 +1144,54 @@ def main() -> None:
         for source, count in selected_source_counts.items()
         if source not in {"anchor_rollback", "baseline_rollback"}
     )
+    activation_rate = (
+        float(selected_method_candidate_count / len(rows)) if rows else 0.0
+    )
+    activation_by_room = {}
+    for room in sorted(set(row["room"] for row in rows)):
+        room_rows = [row for row in rows if row["room"] == room]
+        room_selected = sum(
+            row["cwgcp_selected_source"]
+            not in {"anchor_rollback", "baseline_rollback"}
+            for row in room_rows
+        )
+        room_eligible = sum(
+            bool(row["cwgcp_anchor_failure_eligible"]) for row in room_rows
+        )
+        activation_by_room[room] = {
+            "selected_non_anchor_candidates": int(room_selected),
+            "generated_records": len(room_rows),
+            "all_record_rate": (
+                float(room_selected / len(room_rows)) if room_rows else 0.0
+            ),
+            "anchor_failure_eligible_records": int(room_eligible),
+            "eligible_rate": (
+                float(room_selected / room_eligible)
+                if room_eligible
+                else 0.0
+            ),
+        }
+    relation_loss_records_vs_floor = int(
+        sum(
+            int(row["cwgcp_satisfied"])
+            < int(row["floor_prior_satisfied"])
+            for row in rows
+        )
+    )
+    obb_pair_worse_records_vs_floor = int(
+        sum(
+            int(row["cwgcp_obb_collision_pairs"])
+            > int(row["floor_prior_obb_collision_pairs"])
+            for row in rows
+        )
+    )
+    obb_area_worse_records_vs_floor = int(
+        sum(
+            float(row["cwgcp_obb_overlap_area"])
+            > float(row["floor_prior_obb_overlap_area"]) + 1e-7
+            for row in rows
+        )
+    )
     generic_signal = (
         args.include_generic
         and comparisons["cwgcp_minus_generic"]["low"] > 0
@@ -1074,27 +1200,115 @@ def main() -> None:
         args.include_nudge_ablation
         and comparisons["cwgcp_minus_no_nudge"]["low"] > 0
     )
+    v03_ablation_signal = (
+        args.include_v03_ablation
+        and comparisons["cwgcp_minus_fapsp_v03"]["low"] > 0
+    )
+    v03_signal_required = (
+        args.method_profile != "fapsp_v031" or v03_ablation_signal
+    )
     cpu_method_signal = bool(
         comparisons["cwgcp_minus_baseline"]["low"] > 0
         and comparisons["cwgcp_minus_random"]["low"] > 0
         and comparisons["cwgcp_minus_floor_prior"]["low"] > 0
         and generic_signal
         and nudge_ablation_signal
+        and v03_signal_required
         and all(
             interval["mean"] > 0
             for interval in room_deltas_vs_floor_prior.values()
         )
-        and 0.95 <= movement_ratio <= 1.05
+        and movement_ratio <= 1.05
         and selected_method_candidate_count > 0
         and aggregate["cwgcp"]["mean_obb_collision_pairs"]
         <= aggregate["floor_prior"]["mean_obb_collision_pairs"] + 1e-9
         and aggregate["cwgcp"]["mean_obb_overlap_area"]
         <= aggregate["floor_prior"]["mean_obb_overlap_area"] + 1e-9
     )
+    manifest_split = frozen_input_manifest["split"]
+    manifest_expected = frozen_input_manifest["expected"]
+    manifest_room_counts = {
+        str(room): int(count)
+        for room, count in manifest_expected["records_by_room"].items()
+    }
+    manifest_input_hashes = {
+        str(Path(entry["path"]).resolve()).casefold(): str(entry["sha256"])
+        for entry in frozen_input_manifest["inputs"]
+    }
+    actual_input_hashes = {
+        str(Path(path).resolve()).casefold(): digest
+        for path, digest in input_hashes.items()
+    }
+    frozen_input_manifest_matches = (
+        actual_input_hashes == manifest_input_hashes
+    )
+    frozen_v03_delta_vs_floor = (
+        7.0 / int(manifest_expected["target_relations"])
+    )
+    frozen_protocol_run = bool(
+        args.method_profile == "fapsp_v031"
+        and args.budget_policy == "anchor_plus_residual"
+        and np.isclose(args.anchor_residual_cap, 0.10)
+        and np.isclose(args.total_movement_cap, 3.6)
+        and args.edit_cap == 3
+        and np.isclose(args.semantic_margin, 0.02)
+        and args.restarts == 2
+        and args.outer_iterations == 2
+        and args.solver_max_iterations == 80
+        and args.seed == 0
+        and args.safety_mode == "obb_only"
+        and args.split == manifest_split["name"]
+        and args.split_salt == manifest_split["salt"]
+        and np.isclose(
+            args.development_fraction,
+            float(manifest_split["development_fraction"]),
+        )
+        and args.limit_per_room == 0
+        and args.bootstrap_samples == 20000
+        and args.random_match == "candidate"
+        and args.include_generic
+        and args.include_nudge_ablation
+        and args.include_v03_ablation
+        and len(rows) == int(manifest_expected["generated_records"])
+        and len(seen_evaluation_uids)
+        == int(manifest_expected["generated_records"])
+        and len(set(row["scene_uid"] for row in rows))
+        == int(manifest_expected["source_clusters"])
+        and {
+            room: sum(row["room"] == room for row in rows)
+            for room in manifest_room_counts
+        }
+        == manifest_room_counts
+        and set(row["room"] for row in rows) == set(manifest_room_counts)
+        and aggregate["baseline"]["total"]
+        == int(manifest_expected["target_relations"])
+        and frozen_input_manifest_matches
+        and code_commit != "unavailable"
+        and bool(source_tree["relevant_tree_clean"])
+    )
+    third_round_local_gate = bool(
+        frozen_protocol_run
+        and cpu_method_signal
+        and relation_loss_records_vs_floor == 0
+        and obb_pair_worse_records_vs_floor == 0
+        and obb_area_worse_records_vs_floor == 0
+        and movement_ratio <= 1.05
+        and activation_rate >= 0.10
+        and all(
+            values["all_record_rate"] >= 0.05
+            for values in activation_by_room.values()
+        )
+        and comparisons["cwgcp_minus_floor_prior"]["mean"]
+        >= frozen_v03_delta_vs_floor - 1e-12
+    )
     summary = {
         "algorithm": (
             {
                 "fapsp_v03": "FA-PSP 0.3 exploratory pilot",
+                "fapsp_v031": (
+                    "FA-PSP 0.3.1 Cone-Ball Close Projection "
+                    "exploratory pilot"
+                ),
                 "agrp_v04": "AGRP 0.4 exploratory pilot",
             }.get(args.method_profile, "CW-GCP 0.2.1 CPU pilot")
         ),
@@ -1124,6 +1338,11 @@ def main() -> None:
             "salt": args.split_salt,
             "development_fraction": args.development_fraction,
         },
+        "frozen_input_manifest": {
+            "path": str(FROZEN_INPUT_MANIFEST),
+            "sha256": _file_sha256(str(FROZEN_INPUT_MANIFEST)),
+            "inputs_match": frozen_input_manifest_matches,
+        },
         "config": asdict(base_config),
         "generic_control": (
             {
@@ -1145,6 +1364,14 @@ def main() -> None:
             if args.include_nudge_ablation
             else None
         ),
+        "v03_mechanism_ablation": (
+            {
+                "same_fapsp_configuration": True,
+                "only_change": "enable_cone_ball_close_projection=False",
+            }
+            if args.include_v03_ablation
+            else None
+        ),
         "methods": aggregate,
         "paired_deltas": comparisons,
         "room_deltas_vs_floor_prior": room_deltas_vs_floor_prior,
@@ -1154,6 +1381,36 @@ def main() -> None:
         ),
         "selected_source_counts": selected_source_counts,
         "selected_method_candidate_count": selected_method_candidate_count,
+        "activation": {
+            "selected_non_anchor_candidates": int(
+                selected_method_candidate_count
+            ),
+            "generated_records": len(rows),
+            "all_record_rate": activation_rate,
+            "anchor_failure_eligible_records": int(
+                sum(
+                    bool(row["cwgcp_anchor_failure_eligible"])
+                    for row in rows
+                )
+            ),
+            "by_room": activation_by_room,
+        },
+        "hard_gate_diagnostics": {
+            "relation_loss_records_vs_floor_prior": (
+                relation_loss_records_vs_floor
+            ),
+            "obb_pair_worse_records_vs_floor_prior": (
+                obb_pair_worse_records_vs_floor
+            ),
+            "obb_area_worse_records_vs_floor_prior": (
+                obb_area_worse_records_vs_floor
+            ),
+            "frozen_v03_relation_delta_vs_floor_prior": (
+                frozen_v03_delta_vs_floor
+            ),
+            "frozen_protocol_run": frozen_protocol_run,
+            "third_round_local_gate": third_round_local_gate,
+        },
         "movement_ratio_vs_floor_prior": float(movement_ratio),
         "runtime_median_seconds": float(statistics.median(runtimes))
         if runtimes
