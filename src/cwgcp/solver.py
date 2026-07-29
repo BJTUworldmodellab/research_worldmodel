@@ -469,7 +469,10 @@ def _constraint_certificate(
         if "proposal_satisfied_relations" in anchor
         else None
     )
-    if config.coverage_first_selection and coverage_key is not None:
+    coverage_active = bool(
+        config.coverage_first_selection or config.require_coverage_gain
+    )
+    if coverage_active and coverage_key is not None:
         anchor_coverage = int(anchor[coverage_key])
         candidate_coverage = int(candidate[coverage_key])
         satisfied = candidate_coverage >= anchor_coverage
@@ -643,6 +646,8 @@ def _constraint_certificate(
         "applicable": True,
         "candidate_value": maximum_movement,
         "limit": float(config.per_object_budget),
+        "tolerance": 1e-6,
+        "effective_limit": float(config.per_object_budget + 1e-6),
         "residual": float(per_object_residual),
         "satisfied": per_object_satisfied,
     }
@@ -656,6 +661,8 @@ def _constraint_certificate(
         "applicable": True,
         "candidate_value": total_movement,
         "limit": float(config.total_movement_budget),
+        "tolerance": 1e-6,
+        "effective_limit": float(config.total_movement_budget + 1e-6),
         "residual": float(total_residual),
         "satisfied": total_satisfied,
     }
@@ -738,19 +745,28 @@ def _dominance_certificate(
         int(candidate[coverage_key]) if coverage_key is not None else None
     )
     coverage_improved = bool(
-        coverage_key is not None and candidate_coverage > anchor_coverage
+        (config.coverage_first_selection or config.require_coverage_gain)
+        and coverage_key is not None
+        and candidate_coverage > anchor_coverage
     )
     equal_coverage = bool(
-        coverage_key is None or candidate_coverage == anchor_coverage
+        not (config.coverage_first_selection or config.require_coverage_gain)
+        or coverage_key is None
+        or candidate_coverage == anchor_coverage
     )
     coverage_dropped = bool(
-        coverage_key is not None and candidate_coverage < anchor_coverage
+        (config.coverage_first_selection or config.require_coverage_gain)
+        and coverage_key is not None
+        and candidate_coverage < anchor_coverage
     )
     violation_improved = (
-        violation_improvement >= config.improvement_epsilon
+        violation_improvement > config.improvement_epsilon
     )
 
-    if coverage_improved:
+    if config.require_coverage_gain and coverage_key is not None:
+        dominates = coverage_improved
+        mode = "coverage_gain" if dominates else "none"
+    elif coverage_improved:
         dominates = True
         mode = "coverage_gain"
     elif equal_coverage and violation_improved:
@@ -796,8 +812,13 @@ def _objective_terms(metrics: Dict[str, object]) -> Dict[str, object]:
             metrics["exact_obb_collision_pairs"]
         ),
         "exact_obb_overlap_area": float(metrics["exact_obb_overlap_area"]),
+        "boundary_available": bool(metrics["boundary_available"]),
         "boundary_violations": int(metrics["boundary_violations"]),
         "boundary_penalty": float(metrics["boundary_penalty"]),
+        "external_safety_available": bool(
+            metrics.get("external_safety_available")
+        ),
+        "external_safety_score": _external_safety_score(metrics),
         "total_movement": float(metrics["total_movement"]),
         "edited_object_count": int(metrics["edited_object_count"]),
     }
@@ -831,12 +852,24 @@ def _scfp_certificate(
     )
     return {
         "method_semantics": "safety_certified_feasible_projection",
+        "projection_status": (
+            "dominating_candidate_selected"
+            if accepted
+            else "anchor_identity_selected"
+        ),
+        "projection_succeeded": bool(selected_constraints["feasible"]),
+        "layout_modified": bool(accepted),
         "anchor_constraint_certificate": anchor_constraints,
         "constraint_certificate": selected_constraints,
         "dominance_certificate": dominance,
         "objective_terms": _objective_terms(selected),
         "selected_solution": {
             "source": selected.get("candidate_source", "anchor_rollback"),
+            "role": (
+                "dominating_feasible_candidate"
+                if accepted
+                else "anchor_identity_projection"
+            ),
             "feasible": bool(selected_constraints["feasible"]),
             "dominates_anchor": bool(accepted and dominance["dominates_anchor"]),
         },
@@ -958,12 +991,16 @@ def _selection_key(metrics: Dict[str, object], config: CWGCPConfig) -> tuple:
         config.coverage_first_selection
         and "proposal_satisfied_relations" in metrics
     ):
-        return (
+        key = (
             -int(metrics["proposal_satisfied_relations"]),
             float(metrics["proposal_weighted_relation_violation"]),
             int(metrics["exact_obb_collision_pairs"]),
             float(metrics["exact_obb_overlap_area"]),
             int(metrics["boundary_violations"]),
+        )
+        if config.certified_feasible_projection:
+            key += (float(metrics["boundary_penalty"]),)
+        return key + (
             _external_safety_score(metrics),
             float(metrics["total_movement"]),
             int(metrics["edited_object_count"]),

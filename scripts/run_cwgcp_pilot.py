@@ -274,6 +274,7 @@ def _collision_gated_floor_prior(scene: dict) -> Tuple[List[dict], dict]:
         accepted = False
     boxes = scene["repair_boxes"] if accepted else scene["layout_boxes"]
     return copy.deepcopy(boxes), {
+        "gate_policy_version": "collision-gated-floor-prior-v2-fail-closed",
         "mesh_gate_available": mesh_available,
         "repair_accepted": bool(accepted),
         "baseline_mesh_collision_pairs": (

@@ -1,7 +1,7 @@
-version: "2026-07-29-scfp-v04-draft-1"
+version: "2026-07-29-scfp-v04-implementation-1"
 status: >
-  Draft protocol for Safety-Certified Feasible Projection (SCFP) v0.4.
-  This is a pre-registration style spec, not a validated result.
+  Implemented protocol for Safety-Certified Feasible Projection (SCFP) v0.4.
+  Synthetic contract tests pass, but this is not a validated paper result.
 objective: >
   Evaluate whether a safety-certified feasible projection layer can improve
   class-level spatial relation repair over Collision-gated Floor-Prior
@@ -9,22 +9,26 @@ objective: >
 
 anchor:
   method: "Collision-gated Floor-Prior"
+  gate_policy_version: "collision-gated-floor-prior-v2-fail-closed"
   roles:
     - anchor
-    - fallback
+    - identity_projection_result
     - comparison_baseline
   behavior: >
     If no candidate is strictly better under the frozen lexicographic
     objective and feasibility gates, return the anchor unchanged.
+  missing_cached_mesh_behavior: >
+    Return the original layout. The historical 531-record canonical inputs
+    all contain both cached mesh results, so v2 changes no canonical choice.
 
 candidate_generation:
   role: "numerical initialization only"
   allowed:
-    - "floor_anchored_residual_projection"
-    - "constrained_continuous_solver_warm_start"
-    - "controlled_random_residual_perturbation"
+    - "collision_gated_floor_prior_anchor_and_warm_start"
+    - "deterministic_single_proposal_pair_projection"
+    - "cone_ball_close_direction_projection"
+    - "fixed_seed_slsqp_local_restarts"
   forbidden:
-    - "relation_specific_edit_sets"
     - "room_specific_heuristics"
     - "multi_proposal_composed_nudges"
     - "evaluator_in_the_loop_search"
@@ -41,10 +45,14 @@ feasible_region:
     non_regression: true
     collision_pairs_non_worse: true
     overlap_area_non_worse: true
+    no_new_collision_pair: true
+    no_existing_pair_overlap_increase: true
   boundary:
-    mode: "optional_fail_closed"
+    mode: "optional_declared_scope"
+    missing_behavior: >
+      Mark boundary safety unavailable and forbid a true-room-boundary claim.
   external_safety:
-    mode: "optional_fail_closed"
+    mode: "fail_closed_when_requested"
     examples:
       - "remote_fcl"
 
@@ -54,15 +62,25 @@ objective:
     - coverage
     - weighted_violation
     - exact_obb
+    - boundary_and_external_safety_when_available
     - movement
     - edit_count
   notes:
     - "coverage is evaluated before all other terms"
     - "exact OBB outranks movement because safety non-regression is a hard gate"
-    - "anchor wins when no candidate strictly improves the objective prefix"
+    - "a candidate must strictly improve coverage or equal-coverage weighted violation"
+    - "lower safety or movement cost alone cannot trigger an edit"
+    - "anchor wins when no candidate strictly improves the relation prefix"
 
 optimization:
-  method: "deterministic_frozen_projection"
+  method: "deterministic_candidate_set_projection_with_post_solve_certification"
+  guarantee_scope: >
+    The returned layout is certified against every declared constraint.
+    No global optimality claim is made for the continuous feasible region.
+  solver_boundary: >
+    SLSQP directly handles continuous movement constraints; relation
+    preservation, exact OBB, optional boundary, and black-box external safety
+    are certified after each local candidate solve.
   independent_evaluator:
     in_loop: false
     frozen_version_required: true
@@ -98,6 +116,7 @@ forbidden_claims:
   - "paper main method before promotion gates pass"
   - "claiming improvement by changing only the evaluator or selection rule"
   - "room-specific tuning hidden behind a single pooled summary"
+  - "global optimality over the continuous non-convex feasible region"
 
 output_contract:
   required_artifacts:
@@ -108,14 +127,19 @@ output_contract:
   provenance_fields:
     - "input_hash"
     - "config_hash"
-    - "commit"
+    - "provenance.code_commit"
     - "seed"
     - "evaluator_version"
-    - "fcl_receipt"
+    - "external_safety_metadata.fcl_receipt_for_confirmatory_runs"
   selection_rule: >
     Choose the candidate with the best lexicographic prefix among strictly
     feasible candidates. If none exists, return the anchor and record a
-    rollback certificate.
+    certified anchor identity-projection result.
+  semantic_status_fields:
+    - "projection_succeeded"
+    - "layout_modified"
+    - "projection_status"
+    - "selected_solution.role"
 
 seen_data_policy:
   status: "frozen-development-only"

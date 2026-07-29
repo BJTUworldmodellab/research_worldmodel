@@ -125,8 +125,7 @@ def repair_layout_cwgcp(
     is_scfp = bool(config.certified_feasible_projection)
     is_fapsp = bool(
         not is_scfp
-        and
-        anchor_centers is not None
+        and anchor_centers is not None
         and (
             config.coverage_first_selection
             or config.require_coverage_gain

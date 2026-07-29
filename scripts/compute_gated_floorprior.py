@@ -82,6 +82,7 @@ def summarize(path):
         repair_total_pairs += repair_mesh.get("total_pairs", 0)
         gated_total_pairs += gated_mesh.get("total_pairs", 0)
     return {
+        "gate_policy_version": "collision-gated-floor-prior-v2-fail-closed",
         "room": room,
         "variant": variant,
         "rel_total": rel_total,
@@ -112,6 +113,7 @@ def main():
         mesh_rows = []
         for row in rows:
             mesh_rows.append({
+                "gate_policy_version": row["gate_policy_version"],
                 "room": row["room"],
                 "variant": row["variant"],
                 "baseline_mesh_pair_rate": row["baseline_mesh_pair_rate"],

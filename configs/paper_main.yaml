@@ -1,4 +1,4 @@
-version: "2026-07-29-b-track-v3"
+version: "2026-07-29-b-track-v4"
 status: "CCF-B submission-oriented provisional freeze"
 owner_track: "A-method-and-evaluation"
 
@@ -22,7 +22,7 @@ paper_scope:
     controlling movement, overlap, and collision side effects.
   b_track_strategy:
     default_main_method: "collision_gated_floor_prior"
-    method_upgrade_candidate: "FA-PSP v0.3"
+    method_upgrade_candidate: "SCFP v0.4 (implementation candidate)"
     method_upgrade_cutoff: "2026-08-01"
     method_upgrade_status_2026_07_29: >
       NO-GO after the 531-record local CPU/OBB pilot. CW-GCP v0.2.1 reaches
@@ -69,6 +69,17 @@ paper_scope:
       the preferred local exploratory candidate and keep Collision-gated
       Floor-Prior as the paper default until the zero-overlap cohort, remote
       FCL recomputation, and human evaluator audit pass.
+    method_upgrade_status_2026_07_29_v07: >
+      SCFP v0.4 replaces further seen-data tuning with a frozen,
+      safety-certified feasible-projection definition. It makes the
+      Collision-gated Floor-Prior output a required feasible anchor, reports
+      constraint residuals and proof obligations, and strengthens exact OBB
+      safety from aggregate non-regression to pairwise contact monotonicity:
+      no new collision pair and no per-pair overlap increase. Synthetic
+      contract tests pass, but this is implementation evidence only. Keep
+      Collision-gated Floor-Prior as the paper default until a zero-overlap
+      confirmatory cohort, independent evaluator, remote FCL recomputation,
+      and human audit all pass.
     upgrade_rule: >
       Upgrade the paper main method only if the time-boxed pilot passes the
       predeclared independent-evaluator, movement-budget, and FCL safety gates.
@@ -121,6 +132,45 @@ frozen_method_variants:
       - "Mention-level instance grounding."
       - "State of the art."
 
+  next_candidate_scfp:
+    id: "scfp_v04"
+    display_name: "Safety-Certified Feasible Projection"
+    role: "next paper-main candidate; implementation-complete, not promoted"
+    generator: "InstructScene"
+    training: "no retraining; post-generation certified projection"
+    relation_source: "class-level explicit relation proposals"
+    edit_space: "bounded XZ floor-plane translation"
+    anchor: "Collision-gated Floor-Prior"
+    frozen_development_hyperparameters:
+      relation_margin: 0.02
+      anchor_residual_cap: 0.10
+      total_movement_cap: 3.6
+      max_edited_objects: 3
+      proposal_nudge: true
+      cone_ball_close_projection: true
+      coverage_first_selection: true
+      strict_coverage_gain: false
+    certified_constraints:
+      - "per-object and total movement budgets"
+      - "edited-object budget"
+      - "previously satisfied relation preservation"
+      - "aggregate exact OBB non-regression"
+      - "pairwise exact OBB contact monotonicity"
+      - "optional boundary non-regression when real bounds are supplied"
+      - "optional external mesh safety, fail closed when requested"
+    allowed_claim: >
+      SCFP returns either a lexicographically improving projection that
+      satisfies every declared constraint or the certified Floor-Prior anchor;
+      synthetic tests verify the certificate contract and contact-level OBB
+      non-regression.
+    forbidden_claims:
+      - "Confirmed relation improvement on an untouched source cohort."
+      - "Mesh-safe without per-candidate remote FCL recomputation."
+      - "True room-boundary or support-aware without those inputs."
+      - "Human-perceived visual improvement."
+      - "Globally optimal solution of the continuous feasible region."
+      - "Final paper main method before all promotion gates pass."
+
   main_method:
     id: "collision_gated_floor_prior"
     display_name: "Collision-gated Floor-Prior"
@@ -131,8 +181,10 @@ frozen_method_variants:
     edit_space: "bounded XZ floor-plane translation"
     safety_gate:
       enabled: true
+      policy_version: "collision-gated-floor-prior-v2-fail-closed"
       purpose:
         - "reject repairs that increase mesh-collision pair rate"
+        - "retain the original layout when either cached mesh result is unavailable"
         - "retain substantial relation gains under safer geometry"
     default_hyperparameters:
       repair_passes: 2
