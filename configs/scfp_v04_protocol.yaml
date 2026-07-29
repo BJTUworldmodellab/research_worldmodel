@@ -1,0 +1,129 @@
+version: "2026-07-29-scfp-v04-draft-1"
+status: >
+  Draft protocol for Safety-Certified Feasible Projection (SCFP) v0.4.
+  This is a pre-registration style spec, not a validated result.
+objective: >
+  Evaluate whether a safety-certified feasible projection layer can improve
+  class-level spatial relation repair over Collision-gated Floor-Prior
+  without degrading exact OBB proxies or external safety checks.
+
+anchor:
+  method: "Collision-gated Floor-Prior"
+  roles:
+    - anchor
+    - fallback
+    - comparison_baseline
+  behavior: >
+    If no candidate is strictly better under the frozen lexicographic
+    objective and feasibility gates, return the anchor unchanged.
+
+candidate_generation:
+  role: "numerical initialization only"
+  allowed:
+    - "floor_anchored_residual_projection"
+    - "constrained_continuous_solver_warm_start"
+    - "controlled_random_residual_perturbation"
+  forbidden:
+    - "relation_specific_edit_sets"
+    - "room_specific_heuristics"
+    - "multi_proposal_composed_nudges"
+    - "evaluator_in_the_loop_search"
+
+feasible_region:
+  movement:
+    total_cap: 3.6
+    per_object_cap: 1.8
+    anchor_residual_cap: 0.10
+    max_edited_objects: 3
+  relation_preservation:
+    preserve_anchor_satisfied_relations: true
+  exact_obb:
+    non_regression: true
+    collision_pairs_non_worse: true
+    overlap_area_non_worse: true
+  boundary:
+    mode: "optional_fail_closed"
+  external_safety:
+    mode: "optional_fail_closed"
+    examples:
+      - "remote_fcl"
+
+objective:
+  type: "lexicographic"
+  order:
+    - coverage
+    - weighted_violation
+    - exact_obb
+    - movement
+    - edit_count
+  notes:
+    - "coverage is evaluated before all other terms"
+    - "exact OBB outranks movement because safety non-regression is a hard gate"
+    - "anchor wins when no candidate strictly improves the objective prefix"
+
+optimization:
+  method: "deterministic_frozen_projection"
+  independent_evaluator:
+    in_loop: false
+    frozen_version_required: true
+  fail_closed_rules:
+    - "any NaN or Inf invalidates the candidate"
+    - "any gate failure invalidates the candidate"
+    - "any external-safety failure invalidates the candidate"
+    - "any cached safety result must match a frozen provenance receipt"
+
+implementation_gates:
+  - "config file is frozen before the first pilot run"
+  - "input manifest is frozen before the first pilot run"
+  - "code commit is frozen before the first pilot run"
+  - "independent evaluator version is frozen before the first pilot run"
+  - "all certificates record input hash, config hash, and commit hash"
+  - "no candidate may bypass a failed gate"
+  - "no tuning is allowed on the already seen 531-record pool"
+
+paper_promotion_gates:
+  - "confirmatory cohort has zero overlap with the current 500 seen source clusters"
+  - "remote FCL is recomputed for every selected candidate"
+  - "independent evaluator passes a stratified human audit"
+  - "pooled paired improvement over Collision-gated Floor-Prior is positive"
+  - "paired 95% CI lower bound is strictly above zero"
+  - "all three room types have positive point estimates"
+  - "movement ratio remains within the frozen interval"
+  - "exact OBB and external safety are non-worse"
+  - "no result file reuses the 531-record exploratory development pool as validation"
+
+forbidden_claims:
+  - "validated on the existing 531-record pool"
+  - "mesh-safe without remote FCL recomputation"
+  - "paper main method before promotion gates pass"
+  - "claiming improvement by changing only the evaluator or selection rule"
+  - "room-specific tuning hidden behind a single pooled summary"
+
+output_contract:
+  required_artifacts:
+    - "summary.json"
+    - "summary.md"
+    - "paired_scene_metrics.csv"
+    - "certificates.jsonl"
+  provenance_fields:
+    - "input_hash"
+    - "config_hash"
+    - "commit"
+    - "seed"
+    - "evaluator_version"
+    - "fcl_receipt"
+  selection_rule: >
+    Choose the candidate with the best lexicographic prefix among strictly
+    feasible candidates. If none exists, return the anchor and record a
+    rollback certificate.
+
+seen_data_policy:
+  status: "frozen-development-only"
+  notes:
+    - "The current 531-record pool may be used only for failure analysis and development calibration."
+    - "It may not be relabeled as confirmatory validation."
+    - "No additional room-specific tuning may be introduced after inspecting an H-style summary."
+
+promotion_policy: >
+  Until every paper promotion gate passes, SCFP v0.4 remains an exploratory
+  design and Collision-gated Floor-Prior remains the paper default.
