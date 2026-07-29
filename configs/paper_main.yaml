@@ -1,25 +1,176 @@
-version: "2026-07-27-t05-freeze-v1"
-status: "T05 draft freeze for submission readiness"
+version: "2026-07-29-b-track-v4"
+status: "CCF-B submission-oriented provisional freeze"
 owner_track: "A-method-and-evaluation"
 
 paper_scope:
   project_name: "3D Indoor Scene Constraint Projection"
   target_venues:
     primary:
-      - "Eurographics / Computer Graphics Forum"
+      - "Eurographics 2027 Full Papers / Computer Graphics Forum (CCF-B)"
     backup:
-      - "3DV"
+      - "Pacific Graphics full or technical papers (CCF-B)"
+  submission_schedule:
+    abstract_deadline_utc: "2026-09-25T23:59:00Z"
+    full_paper_deadline_utc: "2026-10-01T23:59:00Z"
+    recommended_main_pages_excluding_references: 10
+    review: "double-blind, two-step"
+    template: "EGauthorGuidelines-conf-sub.tex from the EG2027 SRMv2 package"
   central_claim: >
     Without retraining the generator, Relation-Aware Constraint Projection can
     improve explicit spatial-relation satisfaction in generated 3D indoor
     layouts through bounded floor-plane edits and safety gating, while
     controlling movement, overlap, and collision side effects.
-  no_go_reason_until_p0_complete: >
-    Submission claims must not mix metrics from different method variants or
-    evaluators. T01-T04 must rerun from this frozen method configuration before
-    final paper numbers are used.
+  b_track_strategy:
+    default_main_method: "collision_gated_floor_prior"
+    method_upgrade_candidate: "SCFP v0.4 (implementation candidate)"
+    method_upgrade_cutoff: "2026-08-01"
+    method_upgrade_status_2026_07_29: >
+      NO-GO after the 531-record local CPU/OBB pilot. CW-GCP v0.2.1 reaches
+      67.09% independent-code class-level relation accuracy versus 67.66% for
+      Collision-gated Floor-Prior; the paired delta is -0.56 pp with 95% CI
+      [-1.41, +0.14] pp under source-scene cluster bootstrap. The cached-FCL
+      selector is also worse (66.81% and
+      2.0829 mean mesh-collision pairs versus 67.66% and 2.0640). New solver
+      candidates cannot be re-evaluated with FCL locally. Keep
+      Collision-gated Floor-Prior as the paper main method.
+    method_upgrade_status_2026_07_29_v04: >
+      AGRP v0.4 is the strongest current main-method candidate but is not yet
+      frozen as the final paper main method. On the 209-cluster development
+      split it improves independent class-level relation accuracy over
+      Collision-gated Floor-Prior by +3.04 pp with 95% cluster-bootstrap CI
+      [+1.35, +5.05] pp. On the locked 291-cluster validation split it improves
+      over Floor-Prior by +3.40 pp with CI [+1.75, +5.19] pp and over
+      candidate-matched random by +7.77 pp with CI [+5.00, +11.03] pp. The
+      method is a Pareto candidate: mean movement is 0.268m on validation
+      versus 0.087m for Floor-Prior, while OBB collision pairs and OBB overlap
+      decrease. Do not promote to final main method until a zero-overlap
+      confirmatory source cohort, remote FCL recomputation, and human-audited
+      evaluator subset pass.
+    method_upgrade_status_2026_07_29_v05: >
+      FA-PSP v0.3 supersedes AGRP v0.4 as the preferred local candidate, but
+      remains NO-GO for final paper promotion. On the 209-cluster development
+      partition it reaches 202/296 relations (68.24%) versus 195/296 (65.88%)
+      for Collision-gated Floor-Prior, the same-budget continuous generic
+      optimizer, and the clean no-proposal-nudge ablation. The paired gain is
+      +2.37 pp with 95% source-cluster bootstrap CI [+0.67, +4.55] pp versus
+      Floor-Prior; mean movement is only 1.025x Floor-Prior, all three room
+      point estimates are positive, and no evaluated record worsens exact OBB
+      pairs or overlap. Do not promote until a zero-overlap source cohort,
+      remote FCL recomputation, and human-audited evaluator subset pass.
+    method_upgrade_status_2026_07_29_v06: >
+      The predeclared FA-PSP v0.3.1 Cone-Ball Close Projection successor is
+      rejected. On the frozen 222-record, 209-cluster development protocol it
+      remains at 202/296 relations (68.24%), exactly tied with FA-PSP v0.3;
+      the paired difference versus v0.3 is 0.00 pp with 95% cluster-bootstrap
+      CI [-1.00, +1.00] pp. Activation remains 6/222 (2.70%), with 0/66 in
+      bedroom, 5/80 in diningroom, and 1/76 in livingroom. Mean movement is
+      1.014x Floor-Prior and no record worsens exact OBB pairs or overlap, but
+      the mechanism-specific and activation gates fail. Keep FA-PSP v0.3 as
+      the preferred local exploratory candidate and keep Collision-gated
+      Floor-Prior as the paper default until the zero-overlap cohort, remote
+      FCL recomputation, and human evaluator audit pass.
+    method_upgrade_status_2026_07_29_v07: >
+      SCFP v0.4 replaces further seen-data tuning with a frozen,
+      safety-certified feasible-projection definition. It makes the
+      Collision-gated Floor-Prior output a required feasible anchor, reports
+      constraint residuals and proof obligations, and strengthens exact OBB
+      safety from aggregate non-regression to pairwise contact monotonicity:
+      no new collision pair and no per-pair overlap increase. Synthetic
+      contract tests pass, but this is implementation evidence only. Keep
+      Collision-gated Floor-Prior as the paper default until a zero-overlap
+      confirmatory cohort, independent evaluator, remote FCL recomputation,
+      and human audit all pass.
+    upgrade_rule: >
+      Upgrade the paper main method only if the time-boxed pilot passes the
+      predeclared independent-evaluator, movement-budget, and FCL safety gates.
+      Otherwise retain Collision-gated Floor-Prior and use CW-GCP or the
+      generic optimizer as a control.
+    required_before_submission:
+      - "independent relation evaluator with a human-audited subset"
+      - "movement-matched random and generic-optimizer controls"
+      - "scene-level paired confidence intervals"
+      - "one frozen-commit rerun with automatically generated paper tables"
+      - "anonymous clean-environment artifact smoke test"
+    optional_if_claim_removed:
+      - "human visual-preference study"
+      - "full same-protocol ReSpace reproduction"
+      - "official SDGScenes reproduction"
+  no_go_reason_until_b_core_complete: >
+    Submission claims currently mix historical Direct Repair gating with
+    Collision-gated Floor-Prior in some derived documents, and the final
+    independent evaluator, movement-matched controls, paired statistics, and
+    frozen rerun are incomplete. These issues must be closed before final paper
+    numbers are used.
 
 frozen_method_variants:
+  upgrade_candidate_fapsp:
+    id: "fapsp_v03"
+    display_name: "Floor-Anchored Proposal-Set Projection"
+    role: "preferred exploratory upgrade candidate for InstructScene"
+    generator: "InstructScene"
+    training: "no retraining; post-generation guarded projection"
+    relation_source: "class-level explicit relation proposals"
+    edit_space: "bounded XZ floor-plane translation"
+    anchor: "Collision-gated Floor-Prior"
+    frozen_development_hyperparameters:
+      relation_margin: 0.02
+      anchor_residual_cap: 0.10
+      total_movement_cap: 3.6
+      max_edited_objects: 3
+      proposal_nudge: true
+      coverage_first_selection: true
+      strict_coverage_gain: true
+    allowed_claim: >
+      On the already seen development cohort, FA-PSP improves frozen
+      class-level relation-evaluator accuracy over Floor-Prior and matched
+      continuous/no-nudge controls while keeping mean movement within 1.05x
+      Floor-Prior and preserving exact OBB safety proxies.
+    forbidden_claims:
+      - "Confirmed improvement on an untouched source cohort."
+      - "Mesh-safe without remote FCL recomputation."
+      - "Human-perceived visual improvement."
+      - "Mention-level instance grounding."
+      - "State of the art."
+
+  next_candidate_scfp:
+    id: "scfp_v04"
+    display_name: "Safety-Certified Feasible Projection"
+    role: "next paper-main candidate; implementation-complete, not promoted"
+    generator: "InstructScene"
+    training: "no retraining; post-generation certified projection"
+    relation_source: "class-level explicit relation proposals"
+    edit_space: "bounded XZ floor-plane translation"
+    anchor: "Collision-gated Floor-Prior"
+    frozen_development_hyperparameters:
+      relation_margin: 0.02
+      anchor_residual_cap: 0.10
+      total_movement_cap: 3.6
+      max_edited_objects: 3
+      proposal_nudge: true
+      cone_ball_close_projection: true
+      coverage_first_selection: true
+      strict_coverage_gain: false
+    certified_constraints:
+      - "per-object and total movement budgets"
+      - "edited-object budget"
+      - "previously satisfied relation preservation"
+      - "aggregate exact OBB non-regression"
+      - "pairwise exact OBB contact monotonicity"
+      - "optional boundary non-regression when real bounds are supplied"
+      - "optional external mesh safety, fail closed when requested"
+    allowed_claim: >
+      SCFP returns either a lexicographically improving projection that
+      satisfies every declared constraint or the certified Floor-Prior anchor;
+      synthetic tests verify the certificate contract and contact-level OBB
+      non-regression.
+    forbidden_claims:
+      - "Confirmed relation improvement on an untouched source cohort."
+      - "Mesh-safe without per-candidate remote FCL recomputation."
+      - "True room-boundary or support-aware without those inputs."
+      - "Human-perceived visual improvement."
+      - "Globally optimal solution of the continuous feasible region."
+      - "Final paper main method before all promotion gates pass."
+
   main_method:
     id: "collision_gated_floor_prior"
     display_name: "Collision-gated Floor-Prior"
@@ -30,8 +181,10 @@ frozen_method_variants:
     edit_space: "bounded XZ floor-plane translation"
     safety_gate:
       enabled: true
+      policy_version: "collision-gated-floor-prior-v2-fail-closed"
       purpose:
         - "reject repairs that increase mesh-collision pair rate"
+        - "retain the original layout when either cached mesh result is unavailable"
         - "retain substantial relation gains under safer geometry"
     default_hyperparameters:
       repair_passes: 2

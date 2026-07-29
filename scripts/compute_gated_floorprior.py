@@ -47,6 +47,7 @@ def summarize(path):
     repair_total_pairs = 0
     gated_total_pairs = 0
     fallback_scenes = 0
+    mesh_unavailable_scenes = 0
     evaluated = 0
     for scene in data["per_scene"]:
         selected = scene["selected_relations"]
@@ -58,8 +59,12 @@ def summarize(path):
         layout_mesh = scene.get("layout_mesh_collision") or {}
         repair_mesh = scene.get("repair_mesh_collision") or {}
         if not (layout_mesh.get("available") and repair_mesh.get("available")):
-            gated_rel = repair_rel
-            gated_mesh = repair_mesh
+            # Collision-gated means fail closed: an unverified repair cannot
+            # replace the original layout when either mesh result is missing.
+            gated_rel = base_rel
+            gated_mesh = layout_mesh
+            fallback_scenes += 1
+            mesh_unavailable_scenes += 1
         elif repair_mesh["collision_pairs"] <= layout_mesh["collision_pairs"]:
             gated_rel = repair_rel
             gated_mesh = repair_mesh
@@ -77,6 +82,7 @@ def summarize(path):
         repair_total_pairs += repair_mesh.get("total_pairs", 0)
         gated_total_pairs += gated_mesh.get("total_pairs", 0)
     return {
+        "gate_policy_version": "collision-gated-floor-prior-v2-fail-closed",
         "room": room,
         "variant": variant,
         "rel_total": rel_total,
@@ -89,6 +95,7 @@ def summarize(path):
         "repair_mesh_pair_rate": repair_pairs / max(repair_total_pairs, 1),
         "gated_mesh_pair_rate": gated_pairs / max(gated_total_pairs, 1),
         "fallback_scenes": fallback_scenes,
+        "mesh_unavailable_scenes": mesh_unavailable_scenes,
         "mesh_scenes_evaluated": evaluated,
         "source": str(path),
     }
@@ -106,6 +113,7 @@ def main():
         mesh_rows = []
         for row in rows:
             mesh_rows.append({
+                "gate_policy_version": row["gate_policy_version"],
                 "room": row["room"],
                 "variant": row["variant"],
                 "baseline_mesh_pair_rate": row["baseline_mesh_pair_rate"],
@@ -116,6 +124,7 @@ def main():
                 "repair_gain": row["repair_gain"],
                 "gated_gain": row["gated_gain"],
                 "fallback_scenes": row["fallback_scenes"],
+                "mesh_unavailable_scenes": row["mesh_unavailable_scenes"],
                 "mesh_scenes_evaluated": row["mesh_scenes_evaluated"],
             })
         with MESH_OUT.open("w", newline="", encoding="utf-8") as f:

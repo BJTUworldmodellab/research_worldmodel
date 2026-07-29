@@ -1,0 +1,472 @@
+version: "2026-07-29-v0.3-dev-amendment-1"
+status: >
+  The first exploratory sweep was frozen before v0.3 implementation. This
+  amendment records its result and freezes a bounded residual-budget sweep
+  before that second sweep is run. The existing 531 records are previously
+  seen development evidence, not untouched validation.
+objective: >
+  Evaluate whether a Floor-Prior-anchored global residual projection can
+  become the paper main method under a leakage-resistant protocol.
+
+split:
+  unit: "source scene_uid cluster"
+  purpose: "exploratory development partition only"
+  hash: "sha256"
+  salt: "cwgcp-v03-main-method-20260729"
+  development_fraction: 0.4
+  assignment: >
+    Convert the first eight SHA-256 hex digits of
+    "<salt>:<scene_uid>" to an unsigned 32-bit fraction. Values below 0.4
+    are development; all others are validation.
+  frozen_counts:
+    unique_source_clusters:
+      development: 209
+      validation: 291
+    generated_records:
+      development: 222
+      validation: 309
+    development_records_by_room:
+      bedroom: 66
+      diningroom: 80
+      livingroom: 76
+    validation_records_by_room:
+      bedroom: 96
+      diningroom: 97
+      livingroom: 116
+  leakage_policy:
+    - "All records sharing a source scene_uid stay in the same split."
+    - "Fine-grained failure analysis and parameter selection use development only."
+    - "The locked partition may test implementation generalization but is not called confirmatory validation."
+    - "The previously observed v0.2.1 full-set aggregate and later agent diagnostics are disclosed as prior information."
+    - "All 531 existing records become development evidence after any result is viewed."
+  confirmatory_holdout:
+    requirement: >
+      A new source cohort with zero source-UID, normalized-instruction, and
+      source-graph/content-hash overlap with these 500 clusters.
+    minimum_unique_source_clusters: 500
+    target_relations: "at least 700 total and approximately balanced by room"
+    rule: >
+      Freeze code, config, evaluator, input manifest, and FCL environment
+      before one run. Any post-result algorithm change requires another cohort.
+
+candidate_method:
+  working_name: "FA-PSP"
+  expansion: "Floor-Anchored Proposal-Set Projection"
+  required_properties:
+    - "Collision-gated Floor-Prior is the anchor, fallback, and comparison baseline."
+    - "New candidates refine the anchor under the same per-scene movement and edit budget."
+    - "Optimization follows class-level proposal-set semantics rather than claiming unavailable mention-level supervision."
+    - "Deterministic proposal nudges cross the frozen internal relation margin and are only candidate generators; the independent evaluator is never queried."
+    - "No candidate may break a relation satisfied by the anchor under the frozen internal guard."
+    - "Exact OBB collision pairs and overlap area may not increase per record."
+    - "External FCL is conjunctive and fail-closed whenever it is requested."
+
+development_policy:
+  allowed:
+    - "At most three predeclared algorithm families."
+    - "One coarse parameter sweep per family on development clusters."
+    - "Failure analysis and ablations on development clusters."
+  forbidden:
+    - "Per-scene rules keyed to validation identities."
+    - "Choosing thresholds from validation results."
+    - "Using the independent paper evaluator inside optimization or candidate selection."
+    - "Describing any subset of the already observed 531 records as untouched validation."
+  predeclared_first_sweep:
+    common:
+      method_profile: "fapsp_v03"
+      safety_mode: "obb_only"
+      restarts: 2
+      outer_iterations: 2
+      solver_max_iterations: 80
+      seed: 0
+      max_edited_objects_fixed_cap: 3
+      total_movement_fixed_cap: 3.6
+    configurations:
+      - id: "A_anchor_realized_margin002"
+        budget_policy: "floor_realized"
+        semantic_margin: 0.02
+      - id: "B_fixed_margin000"
+        budget_policy: "fixed_cap"
+        semantic_margin: 0.00
+      - id: "C_fixed_margin002"
+        budget_policy: "fixed_cap"
+        semantic_margin: 0.02
+      - id: "D_fixed_margin005"
+        budget_policy: "fixed_cap"
+        semantic_margin: 0.05
+    selection_rule: >
+      Select one configuration by development relation gain versus
+      Floor-Prior, then by zero relation-loss records, OBB non-regression,
+      lower movement, and lower runtime in that order. Do not choose different
+      configurations by room.
+  first_sweep_checkpoint:
+    recorded_before_second_sweep: true
+    result: >
+      The fixed-cap configurations improved relation accuracy by 1.689 to
+      2.027 percentage points versus Floor-Prior on the exploratory
+      development partition, but increased mean movement by 27.0% to 49.4%.
+      The floor-realized anchor configuration changed only one relation and
+      stayed within the movement gate.
+    decision: >
+      Do not promote the fixed-cap result. Test one bounded residual-budget
+      family intended to retain gains while limiting movement beyond the
+      Floor-Prior anchor.
+  predeclared_second_sweep:
+    method_change: >
+      Set each scene's total budget to min(3.6 m, Floor-Prior realized
+      movement plus delta), measured from the original layout. Keep the fixed
+      edit cap at three objects and candidate-matched random control. Enable
+      deterministic proposal-set nudges to address the first-sweep failure in
+      which continuous violation decreased without crossing the discrete
+      relation boundary; every nudge remains subject to the same coverage,
+      movement, edit, and OBB gates as solver candidates.
+    amendment_timing: >
+      This combined residual-budget and proposal-nudge definition was written
+      before any second-sweep summary or metric was inspected.
+    common:
+      method_profile: "fapsp_v03"
+      enable_proposal_nudge: true
+      budget_policy: "anchor_plus_residual"
+      safety_mode: "obb_only"
+      semantic_margin: 0.02
+      total_movement_cap: 3.6
+      max_edited_objects: 3
+      restarts: 2
+      outer_iterations: 2
+      solver_max_iterations: 80
+      seed: 0
+    configurations:
+      - id: "E_residual_010_margin002"
+        anchor_residual_cap: 0.10
+      - id: "F_residual_025_margin002"
+        anchor_residual_cap: 0.25
+      - id: "G_residual_050_margin002"
+        anchor_residual_cap: 0.50
+    selection_rule: >
+      Select by relation gain versus Floor-Prior, then zero relation-loss
+      records, mean movement no greater than 1.05 times Floor-Prior, exact OBB
+      non-regression, and runtime. If no configuration meets the movement
+      gate, keep FA-PSP exploratory and do not promote it as the main method.
+  second_sweep_checkpoint:
+    selected_configuration: "E_residual_010_margin002"
+    selection_evidence:
+      relation_accuracy: "202/296 (68.243%)"
+      floor_prior_accuracy: "195/296 (65.878%)"
+      paired_delta: "+2.365 percentage points"
+      paired_cluster_bootstrap_95_ci: "[+0.667, +4.530] percentage points"
+      movement_ratio_vs_floor_prior: 1.0252
+      room_point_estimates:
+        bedroom: "+1.010 percentage points"
+        diningroom: "+4.587 percentage points"
+        livingroom: "+1.136 percentage points"
+      selected_candidate_sources:
+        proposal_nudge: 6
+        other_solver_sources: 0
+    interpretation: >
+      The strict 0.10 m residual cap is the only swept configuration that
+      combines a positive pooled confidence interval, positive point estimates
+      in all rooms, and the predeclared 1.05 movement-ratio gate. All gains
+      come from deterministic proposal nudges, so the main-method claim is
+      narrowed to guarded proposal-set projection; generic SLSQP refinement is
+      retained as a fallback candidate generator, not credited as the measured
+      source of gain.
+    next_frozen_checks:
+      - "Re-run the selected configuration with the same-budget generic continuous optimizer and proposal-nudge ablation."
+      - "Use a behavior-preserving fast return when the anchor already has full proposal coverage."
+      - "Freeze and commit code before generating provenance-bearing development artifacts."
+  v04_checkpoint:
+    selected_configuration: "AGRP_v04_fixed_cap"
+    note: >
+      This supersedes the residual-cap second-sweep checkpoint as the strongest
+      current local main-method candidate. The residual-cap variants preserve
+      movement ratio but lose relation gain; the fixed-cap AGRP variant is a
+      Pareto candidate with candidate-matched random support.
+    method_profile: "agrp_v04"
+    budget_policy: "fixed_cap"
+    controls:
+      - "Collision-gated Floor-Prior anchor"
+      - "candidate-matched random"
+      - "OBB collision and overlap non-regression gate"
+    development_split:
+      generated_records: 222
+      source_clusters: 209
+      agrp_accuracy: "204/296 (68.919%)"
+      floor_prior_accuracy: "195/296 (65.878%)"
+      paired_delta_vs_floor_prior: "+3.041 percentage points"
+      paired_cluster_bootstrap_95_ci: "[+1.351, +5.051] percentage points"
+      paired_delta_vs_candidate_matched_random: "+7.095 percentage points"
+      movement_ratio_vs_floor_prior: 2.3599
+    validation_split:
+      generated_records: 309
+      source_clusters: 291
+      agrp_accuracy: "298/412 (72.330%)"
+      floor_prior_accuracy: "284/412 (68.932%)"
+      paired_delta_vs_floor_prior: "+3.398 percentage points"
+      paired_cluster_bootstrap_95_ci: "[+1.746, +5.189] percentage points"
+      paired_delta_vs_candidate_matched_random: "+7.767 percentage points"
+      random_cluster_bootstrap_95_ci: "[+5.000, +11.028] percentage points"
+      movement_ratio_vs_floor_prior: 3.0711
+      mean_obb_collision_pairs: "6.003 vs 6.107 for Floor-Prior"
+      mean_obb_overlap_area: "1.068 vs 1.122 for Floor-Prior"
+    interpretation: >
+      AGRP v0.4 should be treated as an exploratory main-method candidate,
+      not the final paper main method. Its claim must be Pareto-framed: higher
+      relation accuracy and lower OBB overlap/collision proxy at larger mean
+      movement. Final promotion still requires a zero-overlap confirmatory
+      source cohort, remote FCL recomputation, and human-audited evaluator
+      subset.
+  final_local_decision_checkpoint:
+    preferred_candidate: "FA-PSP v0.3 / E_residual_010_margin002"
+    frozen_implementation_commit: "078f0c99ab157339bdce47d40edbfd81932c6690"
+    frozen_source_tree_sha256: "9d6e764c782e039c27c3ba3a2b2dfc32cfee9bd52b36ca41ee801bdcb1d632ec"
+    artifact_path: "results/cwgcp_dev/20260729_E_selected_commit078f0c9_controls"
+    development_evidence:
+      generated_records: 222
+      source_clusters: 209
+      target_relations: 296
+      fapsp_accuracy: "202/296 (68.243%)"
+      floor_prior_accuracy: "195/296 (65.878%)"
+      generic_continuous_accuracy: "195/296 (65.878%)"
+      no_proposal_nudge_accuracy: "195/296 (65.878%)"
+      paired_delta_vs_floor_prior: "+2.365 percentage points"
+      paired_cluster_bootstrap_95_ci_vs_floor: "[+0.671, +4.545] percentage points"
+      paired_cluster_bootstrap_95_ci_vs_generic: "[+0.671, +4.498] percentage points"
+      paired_cluster_bootstrap_95_ci_vs_no_nudge: "[+0.671, +4.467] percentage points"
+      paired_delta_vs_candidate_matched_random: "+6.419 percentage points"
+      movement_ratio_vs_floor_prior: 1.0252
+      record_wins_losses_ties_vs_floor: "6/0/216"
+      selected_candidate_sources:
+        proposal_nudge: 6
+        anchor_rollback: 216
+      room_point_estimates:
+        bedroom: "+1.010 percentage points"
+        diningroom: "+4.587 percentage points"
+        livingroom: "+1.136 percentage points"
+      mean_obb_collision_pairs: "6.2703 vs 6.2793 for Floor-Prior"
+      mean_obb_overlap_area: "1.0554 vs 1.0569 for Floor-Prior"
+      runtime_seconds:
+        median: 0.0056
+        p95: 2.2047
+    decision: >
+      FA-PSP supersedes AGRP v0.4 as the preferred local main-method
+      candidate because it passes the predeclared 1.05 movement-ratio gate
+      and shows a method-specific gain over both the same-budget continuous
+      generic optimizer and the clean no-nudge ablation. AGRP remains an
+      exploratory accuracy-movement Pareto ablation: its raw relation gain is
+      larger, but it ties its generic control and uses 2.36x to 3.07x the
+      Floor-Prior mean movement.
+    remaining_no_go_reasons:
+      - "Only 6/222 records select a new proposal-nudge candidate, below the predeclared 10% overall activation gate; describe the method as a guarded projector, not an effective global solver."
+      - "All repository InstructScene-style inputs overlap the already seen 500 source clusters; no zero-overlap confirmatory cohort exists locally."
+      - "Selected new candidates lack frozen remote FCL mesh recomputation."
+      - "The independent evaluator lacks the predeclared stratified human audit."
+    promotion_status: "exploratory main-method candidate; final paper promotion remains NO-GO"
+
+third_round_development_amendment:
+  version: "2026-07-29-v0.3.1-final-bounded-development"
+  status: "predeclared before implementation and before third-round results"
+  purpose: >
+    Permit one final bounded development attempt after the frozen FA-PSP v0.3
+    result. The attempt tests whether the low-activation failure can be repaired
+    by making the close-directional proposal projector consistent with its
+    internal feasible set. This is development evidence, not confirmatory
+    validation; every record in the existing 531-record pool is already seen.
+  frozen_baseline_to_keep_by_default:
+    method: "FA-PSP v0.3 / E_residual_010_margin002"
+    commit: "078f0c99ab157339bdce47d40edbfd81932c6690"
+    artifact: "results/cwgcp_dev/20260729_E_selected_commit078f0c9_controls"
+    relation_accuracy: "202/296 (68.243%)"
+    floor_prior_accuracy: "195/296 (65.878%)"
+    movement_ratio_vs_floor_prior: 1.0252
+    selected_non_anchor_candidates: "6/222 (2.703%)"
+  preimplementation_failure_evidence:
+    eligible_anchor_failure_records: 55
+    eligible_by_room:
+      bedroom: 11
+      diningroom: 19
+      livingroom: 25
+    records_with_any_nudge_coverage_gain: 13
+    records_with_any_nudge_passing_all_gates: 6
+    proposal_nudge_candidates: 113
+    close_directional_candidates: 78
+    interpretation: >
+      Close-directional proposals dominate the attempted nudges. The v0.3
+      implementation first places a pair on the directional-cone boundary and
+      then radially shrinks it into the close-distance ball. Radial shrinkage
+      also shrinks the additive direction margin, so the result can leave the
+      very cone that the first step satisfied.
+  single_algorithm_family:
+    name: "FA-PSP v0.3.1 Cone-Ball Close Projection"
+    only_change: >
+      For closely-left, closely-right, closely-in-front-of, and
+      closely-behind proposals, replace the sequential cone-then-ball update
+      with one deterministic Euclidean projection of the pair delta onto the
+      intersection of the frozen 45-degree directional cone, additive semantic
+      margin, and close-distance ball. If that target exceeds a continuous
+      movement budget, retain the Floor anchor and take the largest feasible
+      step on the anchor-to-target residual ray; never rescale the anchor
+      displacement itself.
+    frozen_unchanged_components:
+      - "Floor-Prior anchor and fail-closed rollback."
+      - "0.10 m anchor-residual total-movement cap and 3-object edit cap."
+      - "0.02 semantic margin and all evaluator thresholds."
+      - "Coverage-first selection with strict coverage gain."
+      - "Previously-satisfied-relation preservation."
+      - "Exact OBB pair and overlap-area non-regression gates."
+      - "Boundary and external-safety gates."
+      - "Candidate ranking, editable-object selection, and solver settings."
+      - "Independent evaluator remains post-hoc and is never queried by optimization."
+    forbidden_extensions:
+      - "No relation-specific edit sets."
+      - "No multi-proposal composed nudges."
+      - "No room-specific parameters or rules."
+      - "No additional thresholds, weights, budgets, or ranking terms."
+  anti_tuning_limits:
+    max_new_algorithm_families: 1
+    max_total_new_configurations: 1
+    room_hyperparameters: "shared across bedroom, diningroom, and livingroom"
+    frozen_input_manifest: "configs/cwgcp_v031_input_manifest.json"
+    configuration:
+      id: "H_cone_ball_residual010_margin002"
+      method_profile: "fapsp_v031"
+      budget_policy: "anchor_plus_residual"
+      anchor_residual_cap: 0.10
+      semantic_margin: 0.02
+      total_movement_cap: 3.6
+      max_edited_objects: 3
+      restarts: 2
+      outer_iterations: 2
+      solver_max_iterations: 80
+      bootstrap_samples: 20000
+      seed: 0
+    controls:
+      - "Frozen FA-PSP v0.3 sequential close projection under the identical budget."
+      - "Same-budget generic continuous optimizer."
+      - "Same-budget no-proposal-nudge ablation."
+      - "Collision-gated Floor-Prior anchor."
+      - "Candidate-movement-matched random perturbation."
+    forbidden_after_results:
+      - "No second v0.3.1 configuration after any H summary is inspected."
+      - "No fourth algorithm family on the existing seen data."
+      - "No manual per-scene failure mining to define another rule."
+      - "No validation or holdout language for the existing 531-record pool."
+  prefreeze_smoke_correction:
+    status: "implementation bug found before the frozen H run"
+    issue: >
+      The first smoke implementation applied the legacy whole-layout budget
+      scaling after the cone-ball projection. That scaling could shrink the
+      Floor anchor and invalidate the additive direction margin.
+    resolution: >
+      Replace only that post-projection step with the predeclared
+      anchor-preserving residual-ray budget step. Discard the precommit smoke
+      for evidence; it is not an H result and cannot enter selection.
+  primary_selection_gate:
+    all_required:
+      - "Relation gain versus Floor-Prior is positive overall, with paired source-cluster bootstrap 95% CI lower bound > 0."
+      - "Relation point estimate versus Floor-Prior is positive in bedroom, diningroom, and livingroom."
+      - "Record-level relation losses versus Floor-Prior are exactly 0."
+      - "Mean movement ratio versus Floor-Prior is <= 1.05."
+      - "Exact OBB collision pairs are non-worse than Floor-Prior for every scene."
+      - "Exact OBB overlap area is non-worse than Floor-Prior for every scene."
+      - "Paired gain versus same-budget generic control has 95% CI lower bound > 0."
+      - "Paired gain versus the direct v0.3 mechanism ablation has 95% CI lower bound > 0."
+      - "Selected non-anchor candidates that pass every gate are >=10% of all generated records overall."
+      - "Selected non-anchor candidates are >=5% of all generated records in each room."
+      - "Relation gain is not lower than the frozen v0.3 point estimate."
+  diagnostic_only_metrics:
+    - "Activation among the 55 anchor-failure-eligible records."
+    - "Rejection reasons and predicate mix."
+    - "Median and p95 CPU runtime."
+    - "Projection displacement and edited-object counts."
+  stop_and_replacement_rules:
+    default: "Keep frozen FA-PSP v0.3."
+    if_h_passes_every_gate: >
+      FA-PSP v0.3.1 may supersede v0.3 as the exploratory local preferred
+      candidate. It is still not a final paper main method until zero-overlap
+      confirmatory data, remote FCL recomputation, and a human evaluator audit
+      pass.
+    if_h_fails_any_gate: >
+      Stop development on the existing seen data, retain FA-PSP v0.3, and
+      report v0.3.1 as a negative or diagnostic ablation. Do not add another
+      family or tune by room.
+    invalid_run_exception: >
+      If and only if a code or evaluator bug invalidates H, discard the affected
+      output, fix that bug without changing the predeclared method, and rerun H
+      once.
+  third_round_checkpoint:
+    status: "completed; successor rejected; development closed on seen data"
+    implementation_commit: "837272ebfe0555b3d92276ae4e73a70bdd9b33d1"
+    source_tree_sha256: "3a1d8938f093b0314e184cd8d78bd7429ac5229a92fe68f45dc91859af536bd5"
+    artifact: "results/cwgcp_dev/20260729_H_cone_ball_commit837272e_controls"
+    provenance:
+      relevant_tree_clean: true
+      frozen_input_manifest_matches: true
+      generated_records: 222
+      source_clusters: 209
+      target_relations: 296
+      bootstrap_samples: 20000
+    result:
+      fapsp_v031_accuracy: "202/296 (68.243%)"
+      floor_prior_accuracy: "195/296 (65.878%)"
+      frozen_fapsp_v03_accuracy: "202/296 (68.243%)"
+      generic_accuracy: "195/296 (65.878%)"
+      no_nudge_accuracy: "195/296 (65.878%)"
+      paired_delta_vs_floor_prior: "+2.365 percentage points"
+      paired_cluster_bootstrap_95_ci_vs_floor: "[+0.669, +4.531] percentage points"
+      paired_delta_vs_fapsp_v03: "0.000 percentage points"
+      paired_cluster_bootstrap_95_ci_vs_fapsp_v03: "[-1.003, +1.003] percentage points"
+      paired_delta_vs_generic: "+2.365 percentage points"
+      paired_cluster_bootstrap_95_ci_vs_generic: "[+0.671, +4.502] percentage points"
+      movement_ratio_vs_floor_prior: 1.0139
+      record_wins_losses_ties_vs_floor: "6/0/216"
+      record_wins_losses_ties_vs_fapsp_v03: "1/1/220"
+      per_record_obb_pair_worse_vs_floor: 0
+      per_record_obb_area_worse_vs_floor: 0
+      activation:
+        overall: "6/222 (2.703%)"
+        bedroom: "0/66 (0.000%)"
+        diningroom: "5/80 (6.250%)"
+        livingroom: "1/76 (1.316%)"
+      room_point_estimates_vs_floor:
+        bedroom: "0.000 percentage points"
+        diningroom: "+5.505 percentage points"
+        livingroom: "+1.136 percentage points"
+    failed_primary_gates:
+      - "No positive bedroom point estimate versus Floor-Prior."
+      - "No positive confidence-interval separation from the direct frozen v0.3 mechanism ablation."
+      - "Overall activation is 2.703%, below 10%."
+      - "Bedroom and livingroom activation are below 5%."
+    decision: >
+      Reject FA-PSP v0.3.1 as a successor. It changes which records are
+      repaired and reduces mean movement slightly, but it does not improve
+      pooled relation accuracy or activation over frozen v0.3. Retain
+      FA-PSP v0.3 as the preferred local exploratory candidate, close further
+      algorithm development on the existing seen data, and treat v0.3.1 as a
+      negative mechanism ablation.
+
+validation_go_gates:
+  exploratory_promotion_signal:
+    - "CW-GCP/FA-PSP/AGRP minus Floor-Prior relation-accuracy cluster-bootstrap 95% CI lower bound is strictly greater than zero."
+    - "Point estimate versus Floor-Prior is positive in bedroom, diningroom, and livingroom."
+    - "Point estimate versus movement-matched random is positive with cluster-bootstrap 95% CI lower bound greater than zero."
+    - "No per-record increase in exact OBB collision pairs or exact OBB overlap area beyond frozen tolerance."
+    - "Mean movement is no greater than 1.05 times Floor-Prior, or the accuracy-movement Pareto result is separately supported by a candidate-movement-matched random control."
+    - "At least one new method candidate is selected."
+    - "Median CPU runtime is at most one second per generated record."
+  paper_main_method:
+    - "All exploratory-promotion-signal gates pass."
+    - "A new confirmatory holdout shows at least +1.5 percentage points versus Floor-Prior with paired cluster-bootstrap 95% CI lower bound strictly above zero."
+    - "The confirmatory holdout uses 20,000 paired source-cluster bootstrap samples and fixed method seeds 0, 1, and 2."
+    - "Remote FCL recomputation for every selected new candidate is no worse than Floor-Prior."
+    - "The frozen independent evaluator passes a stratified human audit of at least 90 relations."
+    - "Claims are restricted to explicit class-level spatial-relation repair unless mention-to-instance annotations are added."
+
+decision_policy:
+  if_local_gate_fails: >
+    Keep Collision-gated Floor-Prior as the paper main method and retain
+    FA-PSP/AGRP as a negative, diagnostic, or exploratory Pareto ablation.
+  if_local_gate_passes_but_external_gates_pending: >
+    Label FA-PSP/AGRP an exploratory main-method candidate, not the final paper main.
+  if_all_gates_pass: >
+    Promote FA-PSP/AGRP to the frozen paper main method and regenerate every paper
+    table from the promoted commit.
