@@ -2,7 +2,9 @@
 
 **日期：** 2026-07-29  
 **目标：** 为 CCF-B 投稿寻找可替代 Collision-gated Floor-Prior 的主方法候选。  
-**当前结论：** AGRP v0.4 是目前最强的本地 CPU/OBB 主方法候选，但尚不能冻结为最终主方法。
+**当前结论：** 这是历史探索记录。后续同预算控制实验表明，FA-PSP v0.3 在移动公平性和方法特异性上更适合作为主方法候选；AGRP v0.4 降级为 accuracy-movement Pareto ablation。
+
+> 2026-07-29 更新：AGRP 的开发/locked-split 原始提升更大，但平均移动分别为 Floor-Prior 的 2.36 倍和 3.07 倍，且与其 generic control 持平。最终本地主方法决策见 `docs/fapsp_v03_main_method_candidate_20260729.md`。
 
 ## 方法定义
 

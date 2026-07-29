@@ -22,7 +22,7 @@ paper_scope:
     controlling movement, overlap, and collision side effects.
   b_track_strategy:
     default_main_method: "collision_gated_floor_prior"
-    method_upgrade_candidate: "AGRP v0.4"
+    method_upgrade_candidate: "FA-PSP v0.3"
     method_upgrade_cutoff: "2026-08-01"
     method_upgrade_status_2026_07_29: >
       NO-GO after the 531-record local CPU/OBB pilot. CW-GCP v0.2.1 reaches
@@ -46,6 +46,17 @@ paper_scope:
       decrease. Do not promote to final main method until a zero-overlap
       confirmatory source cohort, remote FCL recomputation, and human-audited
       evaluator subset pass.
+    method_upgrade_status_2026_07_29_v05: >
+      FA-PSP v0.3 supersedes AGRP v0.4 as the preferred local candidate, but
+      remains NO-GO for final paper promotion. On the 209-cluster development
+      partition it reaches 202/296 relations (68.24%) versus 195/296 (65.88%)
+      for Collision-gated Floor-Prior, the same-budget continuous generic
+      optimizer, and the clean no-proposal-nudge ablation. The paired gain is
+      +2.37 pp with 95% source-cluster bootstrap CI [+0.67, +4.55] pp versus
+      Floor-Prior; mean movement is only 1.025x Floor-Prior, all three room
+      point estimates are positive, and no evaluated record worsens exact OBB
+      pairs or overlap. Do not promote until a zero-overlap source cohort,
+      remote FCL recomputation, and human-audited evaluator subset pass.
     upgrade_rule: >
       Upgrade the paper main method only if the time-boxed pilot passes the
       predeclared independent-evaluator, movement-budget, and FCL safety gates.
@@ -69,6 +80,35 @@ paper_scope:
     numbers are used.
 
 frozen_method_variants:
+  upgrade_candidate_fapsp:
+    id: "fapsp_v03"
+    display_name: "Floor-Anchored Proposal-Set Projection"
+    role: "preferred exploratory upgrade candidate for InstructScene"
+    generator: "InstructScene"
+    training: "no retraining; post-generation guarded projection"
+    relation_source: "class-level explicit relation proposals"
+    edit_space: "bounded XZ floor-plane translation"
+    anchor: "Collision-gated Floor-Prior"
+    frozen_development_hyperparameters:
+      relation_margin: 0.02
+      anchor_residual_cap: 0.10
+      total_movement_cap: 3.6
+      max_edited_objects: 3
+      proposal_nudge: true
+      coverage_first_selection: true
+      strict_coverage_gain: true
+    allowed_claim: >
+      On the already seen development cohort, FA-PSP improves frozen
+      class-level relation-evaluator accuracy over Floor-Prior and matched
+      continuous/no-nudge controls while keeping mean movement within 1.05x
+      Floor-Prior and preserving exact OBB safety proxies.
+    forbidden_claims:
+      - "Confirmed improvement on an untouched source cohort."
+      - "Mesh-safe without remote FCL recomputation."
+      - "Human-perceived visual improvement."
+      - "Mention-level instance grounding."
+      - "State of the art."
+
   main_method:
     id: "collision_gated_floor_prior"
     display_name: "Collision-gated Floor-Prior"

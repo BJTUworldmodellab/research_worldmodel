@@ -516,19 +516,19 @@ def _write_outputs(
         )
 
     lines = [
-        f"# CW-GCP Pilot ({summary['safety_mode']})",
+        f"# {summary['algorithm']} ({summary['safety_mode']})",
         "",
         f"- Scenes: {summary['scene_count']}",
         f"- Random-control eligible scenes: "
         f"{summary['random_available_scenes']}",
         f"- Relations: {summary['methods']['baseline']['total']}",
-        f"- CW-GCP accepted scenes: {summary['accepted_scenes']}",
+        f"- Accepted method candidates: {summary['accepted_scenes']}",
         f"- Selected sources: `{summary['selected_source_counts']}`",
         f"- New-candidate FCL recomputation available: "
         f"**{summary['new_candidate_fcl_recomputation_available']}**",
         f"- Cached FCL available for every selected layout: "
         f"**{summary['selected_layout_cached_fcl_available']}**",
-        f"- CPU solver signal: **{summary['cpu_solver_signal']}**",
+        f"- CPU method signal: **{summary['cpu_method_signal']}**",
         f"- Paper-method upgrade GO: **{summary['method_upgrade_go']}**",
         "",
         "## Aggregate comparison",
@@ -546,7 +546,7 @@ def _write_outputs(
         )
     lines += [
         "",
-        "## Paired scene-bootstrap deltas",
+        "## Paired source-cluster bootstrap deltas",
         "",
         "| Comparison | Mean | 95% CI |",
         "|---|---:|---:|",

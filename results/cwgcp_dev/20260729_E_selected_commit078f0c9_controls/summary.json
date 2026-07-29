@@ -1,0 +1,243 @@
+{
+  "algorithm": "FA-PSP 0.3 exploratory pilot",
+  "code_commit": "078f0c99ab157339bdce47d40edbfd81932c6690",
+  "source_tree": {
+    "sha256": "9d6e764c782e039c27c3ba3a2b2dfc32cfee9bd52b36ca41ee801bdcb1d632ec",
+    "files": [
+      "configs/cwgcp_v03_protocol.yaml",
+      "scripts/run_cwgcp_pilot.py",
+      "src/relation_schema.py",
+      "src/cwgcp/__init__.py",
+      "src/cwgcp/adapters.py",
+      "src/cwgcp/assignment.py",
+      "src/cwgcp/constraints.py",
+      "src/cwgcp/geometry.py",
+      "src/cwgcp/repairer.py",
+      "src/cwgcp/solver.py",
+      "src/cwgcp/types.py",
+      "src/independent_eval/__init__.py",
+      "src/independent_eval/cwgcp_layout_evaluator.py"
+    ],
+    "relevant_tree_clean": true
+  },
+  "evaluator": {
+    "version": "independent-layout-evaluator-v1",
+    "close_distance": 0.75
+  },
+  "scene_count": 222,
+  "unique_evaluation_uid_count": 222,
+  "unique_source_scene_uid_count": 209,
+  "rooms": [
+    "bedroom",
+    "diningroom",
+    "livingroom"
+  ],
+  "safety_mode": "obb_only",
+  "method_profile": "fapsp_v03",
+  "budget_policy": {
+    "name": "anchor_plus_residual",
+    "total_movement_cap": 3.6,
+    "edit_cap": 3,
+    "anchor_residual_cap": 0.1,
+    "random_match": "candidate"
+  },
+  "split": {
+    "name": "dev",
+    "salt": "cwgcp-v03-main-method-20260729",
+    "development_fraction": 0.4
+  },
+  "config": {
+    "close_distance": 0.75,
+    "far_distance": 1.6,
+    "relation_margin": 0.02,
+    "per_object_budget": 1.8,
+    "total_movement_budget": 3.6,
+    "max_edited_objects": 3,
+    "ambiguity_scale": 0.5,
+    "min_confidence": 1.0,
+    "max_slack": 0.0,
+    "relation_weight": 10.0,
+    "slack_weight": 4.0,
+    "collision_weight": 20.0,
+    "boundary_weight": 20.0,
+    "movement_weight": 1.0,
+    "edit_weight": 0.1,
+    "edit_threshold": 0.001,
+    "huber_delta": 0.25,
+    "restarts": 2,
+    "outer_iterations": 2,
+    "solver_max_iterations": 80,
+    "initial_trust_radius": 0.45,
+    "max_trust_radius": 1.8,
+    "min_trust_radius": 0.03,
+    "improvement_epsilon": 1e-06,
+    "relation_preservation_tolerance": 1e-06,
+    "collision_tolerance": 1e-07,
+    "boundary_tolerance": 1e-07,
+    "refine_warm_starts": true,
+    "coverage_first_selection": true,
+    "require_coverage_gain": true,
+    "enable_proposal_nudge": true,
+    "seed": 0
+  },
+  "generic_control": {
+    "same_anchor_budget_warm_starts_and_safety": true,
+    "confidence_weighting": false,
+    "slack": false,
+    "coverage_first_selection": false,
+    "strict_coverage_gain_gate": false,
+    "proposal_nudge_candidates": false
+  },
+  "no_nudge_ablation": {
+    "same_fapsp_configuration": true,
+    "only_change": "enable_proposal_nudge=False"
+  },
+  "methods": {
+    "baseline": {
+      "scene_count": 222,
+      "satisfied": 181,
+      "total": 296,
+      "accuracy": 0.6114864864864865,
+      "mean_obb_collision_pairs": 6.346846846846847,
+      "mean_obb_overlap_area": 1.0737870763656865,
+      "mean_total_movement": 0.0,
+      "mean_mesh_collision_pairs": 2.22972972972973
+    },
+    "floor_prior": {
+      "scene_count": 222,
+      "satisfied": 195,
+      "total": 296,
+      "accuracy": 0.6587837837837838,
+      "mean_obb_collision_pairs": 6.2792792792792795,
+      "mean_obb_overlap_area": 1.0568560945135417,
+      "mean_total_movement": 0.10732452884943772,
+      "mean_mesh_collision_pairs": 2.1981981981981984
+    },
+    "random": {
+      "scene_count": 222,
+      "satisfied": 183,
+      "total": 296,
+      "accuracy": 0.6182432432432432,
+      "mean_obb_collision_pairs": 6.256756756756757,
+      "mean_obb_overlap_area": 1.0533317859453828,
+      "mean_total_movement": 0.11002723155214042,
+      "mean_mesh_collision_pairs": null
+    },
+    "cwgcp": {
+      "scene_count": 222,
+      "satisfied": 202,
+      "total": 296,
+      "accuracy": 0.6824324324324325,
+      "mean_obb_collision_pairs": 6.27027027027027,
+      "mean_obb_overlap_area": 1.0554086597808283,
+      "mean_total_movement": 0.11002723155214042,
+      "mean_mesh_collision_pairs": null
+    },
+    "generic": {
+      "scene_count": 222,
+      "satisfied": 195,
+      "total": 296,
+      "accuracy": 0.6587837837837838,
+      "mean_obb_collision_pairs": 6.252252252252252,
+      "mean_obb_overlap_area": 1.0489187502614012,
+      "mean_total_movement": 0.11903624532341325,
+      "mean_mesh_collision_pairs": null
+    },
+    "no_nudge": {
+      "scene_count": 222,
+      "satisfied": 195,
+      "total": 296,
+      "accuracy": 0.6587837837837838,
+      "mean_obb_collision_pairs": 6.2792792792792795,
+      "mean_obb_overlap_area": 1.0568560945135417,
+      "mean_total_movement": 0.10732452884943772,
+      "mean_mesh_collision_pairs": null
+    }
+  },
+  "paired_deltas": {
+    "cwgcp_minus_baseline": {
+      "mean": 0.07094594594594594,
+      "low": 0.04290311173974537,
+      "high": 0.10204081632653061,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_floor_prior": {
+      "mean": 0.023648648648648685,
+      "low": 0.006711409395973145,
+      "high": 0.045454545454545414,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_random": {
+      "mean": 0.06418918918918926,
+      "low": 0.03716216216216206,
+      "high": 0.09396183543371685,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_generic": {
+      "mean": 0.023648648648648685,
+      "low": 0.006711409395973145,
+      "high": 0.04498269896193774,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_no_nudge": {
+      "mean": 0.023648648648648685,
+      "low": 0.006711409395973145,
+      "high": 0.04467491189354759,
+      "scene_count": 222,
+      "cluster_count": 209
+    }
+  },
+  "room_deltas_vs_floor_prior": {
+    "bedroom": {
+      "mean": 0.010101010101010055,
+      "low": 0.0,
+      "high": 0.03157894736842104,
+      "scene_count": 66,
+      "cluster_count": 66
+    },
+    "diningroom": {
+      "mean": 0.04587155963302747,
+      "low": 0.008849557522123908,
+      "high": 0.09708737864077677,
+      "scene_count": 80,
+      "cluster_count": 80
+    },
+    "livingroom": {
+      "mean": 0.011363636363636354,
+      "low": 0.0,
+      "high": 0.03749999999999998,
+      "scene_count": 76,
+      "cluster_count": 76
+    }
+  },
+  "accepted_scenes": 6,
+  "random_available_scenes": 222,
+  "selected_source_counts": {
+    "anchor_rollback": 216,
+    "proposal_nudge": 6
+  },
+  "selected_method_candidate_count": 6,
+  "movement_ratio_vs_floor_prior": 1.0251825256693579,
+  "runtime_median_seconds": 0.005640899998979876,
+  "runtime_p95_seconds": 2.204695300000818,
+  "external_fcl_available": false,
+  "archived_warm_start_fcl_scenes": 222,
+  "selected_layout_cached_fcl_available": false,
+  "new_candidate_fcl_recomputation_available": false,
+  "human_audit_available": false,
+  "true_room_boundary_available": false,
+  "cpu_method_signal": true,
+  "cpu_solver_signal": true,
+  "cpu_pilot_go": true,
+  "method_upgrade_go": false,
+  "duration_seconds": 448.8700917000024,
+  "inputs": [
+    "results/floor_prior_remote\\bedroom_sgdiffusion_vq_objfeat_epoch_01999_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+    "results/floor_prior_remote\\diningroom_sgdiffusion_vq_objfeat_epoch_01239_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+    "results/floor_prior_remote\\livingroom_sgdiffusion_vq_objfeat_epoch_01459_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json"
+  ]
+}

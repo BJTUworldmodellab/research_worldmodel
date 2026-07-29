@@ -215,6 +215,52 @@ development_policy:
       movement. Final promotion still requires a zero-overlap confirmatory
       source cohort, remote FCL recomputation, and human-audited evaluator
       subset.
+  final_local_decision_checkpoint:
+    preferred_candidate: "FA-PSP v0.3 / E_residual_010_margin002"
+    frozen_implementation_commit: "078f0c99ab157339bdce47d40edbfd81932c6690"
+    frozen_source_tree_sha256: "9d6e764c782e039c27c3ba3a2b2dfc32cfee9bd52b36ca41ee801bdcb1d632ec"
+    artifact_path: "results/cwgcp_dev/20260729_E_selected_commit078f0c9_controls"
+    development_evidence:
+      generated_records: 222
+      source_clusters: 209
+      target_relations: 296
+      fapsp_accuracy: "202/296 (68.243%)"
+      floor_prior_accuracy: "195/296 (65.878%)"
+      generic_continuous_accuracy: "195/296 (65.878%)"
+      no_proposal_nudge_accuracy: "195/296 (65.878%)"
+      paired_delta_vs_floor_prior: "+2.365 percentage points"
+      paired_cluster_bootstrap_95_ci_vs_floor: "[+0.671, +4.545] percentage points"
+      paired_cluster_bootstrap_95_ci_vs_generic: "[+0.671, +4.498] percentage points"
+      paired_cluster_bootstrap_95_ci_vs_no_nudge: "[+0.671, +4.467] percentage points"
+      paired_delta_vs_candidate_matched_random: "+6.419 percentage points"
+      movement_ratio_vs_floor_prior: 1.0252
+      record_wins_losses_ties_vs_floor: "6/0/216"
+      selected_candidate_sources:
+        proposal_nudge: 6
+        anchor_rollback: 216
+      room_point_estimates:
+        bedroom: "+1.010 percentage points"
+        diningroom: "+4.587 percentage points"
+        livingroom: "+1.136 percentage points"
+      mean_obb_collision_pairs: "6.2703 vs 6.2793 for Floor-Prior"
+      mean_obb_overlap_area: "1.0554 vs 1.0569 for Floor-Prior"
+      runtime_seconds:
+        median: 0.0056
+        p95: 2.2047
+    decision: >
+      FA-PSP supersedes AGRP v0.4 as the preferred local main-method
+      candidate because it passes the predeclared 1.05 movement-ratio gate
+      and shows a method-specific gain over both the same-budget continuous
+      generic optimizer and the clean no-nudge ablation. AGRP remains an
+      exploratory accuracy-movement Pareto ablation: its raw relation gain is
+      larger, but it ties its generic control and uses 2.36x to 3.07x the
+      Floor-Prior mean movement.
+    remaining_no_go_reasons:
+      - "Only 6/222 records select a new proposal-nudge candidate, below the predeclared 10% overall activation gate; describe the method as a guarded projector, not an effective global solver."
+      - "All repository InstructScene-style inputs overlap the already seen 500 source clusters; no zero-overlap confirmatory cohort exists locally."
+      - "Selected new candidates lack frozen remote FCL mesh recomputation."
+      - "The independent evaluator lacks the predeclared stratified human audit."
+    promotion_status: "exploratory main-method candidate; final paper promotion remains NO-GO"
 
 validation_go_gates:
   exploratory_promotion_signal:
@@ -223,7 +269,7 @@ validation_go_gates:
     - "Point estimate versus movement-matched random is positive with cluster-bootstrap 95% CI lower bound greater than zero."
     - "No per-record increase in exact OBB collision pairs or exact OBB overlap area beyond frozen tolerance."
     - "Mean movement is no greater than 1.05 times Floor-Prior, or the accuracy-movement Pareto result is separately supported by a candidate-movement-matched random control."
-    - "At least one new solver candidate is selected."
+    - "At least one new method candidate is selected."
     - "Median CPU runtime is at most one second per generated record."
   paper_main_method:
     - "All exploratory-promotion-signal gates pass."
