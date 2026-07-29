@@ -96,6 +96,10 @@ class CWGCPConfig:
     relation_preservation_tolerance: float = 1e-6
     collision_tolerance: float = 1e-7
     boundary_tolerance: float = 1e-7
+    refine_warm_starts: bool = False
+    coverage_first_selection: bool = False
+    require_coverage_gain: bool = False
+    enable_proposal_nudge: bool = False
     seed: int = 0
 
     def __post_init__(self) -> None:
@@ -185,6 +189,15 @@ class CWGCPConfig:
             raise ValueError(
                 "restarts, outer_iterations, and solver_max_iterations must be >= 1"
             )
+        boolean_fields = {
+            "refine_warm_starts": self.refine_warm_starts,
+            "coverage_first_selection": self.coverage_first_selection,
+            "require_coverage_gain": self.require_coverage_gain,
+            "enable_proposal_nudge": self.enable_proposal_nudge,
+        }
+        for name, value in boolean_fields.items():
+            if not isinstance(value, bool):
+                raise ValueError(f"{name} must be a boolean")
 
 
 @dataclass

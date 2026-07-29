@@ -6,7 +6,7 @@ The runner compares four methods on identical exported scenes:
 * original generator layout;
 * collision-gated Floor-Prior from the archived result;
 * movement-matched random displacement;
-* CW-GCP under the Floor-Prior realized movement/edit budget.
+* CW-GCP/FA-PSP under a declared movement/edit budget policy.
 
 An optional generic projection control disables confidence and slack.  The
 local machine has no FCL/assets, so this runner never labels its output
@@ -26,7 +26,7 @@ import sys
 import time
 from dataclasses import asdict, replace
 from pathlib import Path
-from typing import Dict, List, Sequence, Tuple
+from typing import Dict, List, Mapping, Sequence, Tuple
 
 import numpy as np
 
@@ -72,6 +72,37 @@ def _non_negative_int(value: str) -> int:
     if parsed < 0:
         raise argparse.ArgumentTypeError("value must be >= 0")
     return parsed
+
+
+def _fraction(value: str) -> float:
+    parsed = float(value)
+    if not 0.0 < parsed < 1.0:
+        raise argparse.ArgumentTypeError("value must be strictly between 0 and 1")
+    return parsed
+
+
+def _positive_float(value: str) -> float:
+    parsed = float(value)
+    if not np.isfinite(parsed) or parsed <= 0.0:
+        raise argparse.ArgumentTypeError("value must be finite and positive")
+    return parsed
+
+
+def _non_negative_float(value: str) -> float:
+    parsed = float(value)
+    if not np.isfinite(parsed) or parsed < 0.0:
+        raise argparse.ArgumentTypeError(
+            "value must be finite and non-negative"
+        )
+    return parsed
+
+
+def _split_for_scene(
+    scene_uid: str, salt: str, development_fraction: float
+) -> str:
+    digest = hashlib.sha256(f"{salt}:{scene_uid}".encode("utf-8")).digest()
+    fraction = int.from_bytes(digest[:4], "big") / float(0xFFFFFFFF)
+    return "dev" if fraction < development_fraction else "validation"
 
 
 def _validate_scene_record(scene: dict, input_path: str) -> None:
@@ -195,6 +226,31 @@ def _movement(original: Sequence[dict], candidate: Sequence[dict]) -> Dict[str, 
         "maximum": float(max(values)) if values else 0.0,
         "edited": int(sum(value > 1e-3 for value in values)),
     }
+
+
+def _method_budget(
+    floor_movement: Mapping[str, object],
+    policy: str,
+    total_movement_cap: float,
+    edit_cap: int,
+    anchor_residual_cap: float,
+) -> Tuple[float, int]:
+    """Return an input-determined budget that always contains the anchor."""
+
+    floor_total = float(floor_movement["total"])
+    floor_edited = int(floor_movement["edited"])
+    if policy == "floor_realized":
+        return floor_total, floor_edited
+    if floor_total > total_movement_cap + 1e-9 or floor_edited > edit_cap:
+        raise ValueError("method cap does not contain the Floor-Prior anchor")
+    if policy == "fixed_cap":
+        return total_movement_cap, edit_cap
+    if policy == "anchor_plus_residual":
+        return (
+            min(total_movement_cap, floor_total + anchor_residual_cap),
+            edit_cap,
+        )
+    raise ValueError(f"unsupported budget policy {policy!r}")
 
 
 def _collision_gated_floor_prior(scene: dict) -> Tuple[List[dict], dict]:
@@ -539,6 +595,56 @@ def main() -> None:
             "baseline/Floor-Prior layouts"
         ),
     )
+    parser.add_argument(
+        "--split",
+        choices=("all", "dev", "validation"),
+        default="all",
+        help="source-scene hash split to evaluate",
+    )
+    parser.add_argument(
+        "--split-salt",
+        default="cwgcp-v03-main-method-20260729",
+    )
+    parser.add_argument(
+        "--development-fraction",
+        type=_fraction,
+        default=0.4,
+    )
+    parser.add_argument(
+        "--method-profile",
+        choices=("cwgcp_v021", "fapsp_v03", "agrp_v04"),
+        default="cwgcp_v021",
+    )
+    parser.add_argument(
+        "--budget-policy",
+        choices=("floor_realized", "fixed_cap", "anchor_plus_residual"),
+        default="floor_realized",
+    )
+    parser.add_argument(
+        "--total-movement-cap",
+        type=_positive_float,
+        default=3.6,
+    )
+    parser.add_argument("--edit-cap", type=_positive_int, default=3)
+    parser.add_argument(
+        "--anchor-residual-cap",
+        type=_non_negative_float,
+        default=0.25,
+        help=(
+            "maximum movement beyond the collision-gated Floor-Prior anchor "
+            "when --budget-policy=anchor_plus_residual"
+        ),
+    )
+    parser.add_argument(
+        "--semantic-margin",
+        type=_non_negative_float,
+        default=0.02,
+    )
+    parser.add_argument(
+        "--random-match",
+        choices=("auto", "floor", "candidate"),
+        default="auto",
+    )
     parser.add_argument("--include-generic", action="store_true")
     args = parser.parse_args()
 
@@ -546,11 +652,33 @@ def main() -> None:
     if not inputs:
         raise SystemExit("No canonical Floor-Prior JSON inputs found")
 
+    profile_config = {}
+    if args.method_profile == "fapsp_v03":
+        profile_config = {
+            "relation_margin": args.semantic_margin,
+            "min_confidence": 1.0,
+            "max_slack": 0.0,
+            "refine_warm_starts": True,
+            "coverage_first_selection": True,
+            "require_coverage_gain": True,
+            "enable_proposal_nudge": True,
+        }
+    elif args.method_profile == "agrp_v04":
+        profile_config = {
+            "relation_margin": args.semantic_margin,
+            "min_confidence": 1.0,
+            "max_slack": 0.0,
+            "refine_warm_starts": True,
+            "coverage_first_selection": False,
+            "require_coverage_gain": False,
+            "enable_proposal_nudge": False,
+        }
     base_config = CWGCPConfig(
         restarts=args.restarts,
         outer_iterations=args.outer_iterations,
         solver_max_iterations=args.solver_max_iterations,
         seed=args.seed,
+        **profile_config,
     )
     rows: List[dict] = []
     certificates: List[dict] = []
@@ -569,6 +697,17 @@ def main() -> None:
         ):
             raise ValueError(f"{input_path}: per_scene must be a list")
         scenes = payload["per_scene"]
+        if args.split != "all":
+            scenes = [
+                scene
+                for scene in scenes
+                if _split_for_scene(
+                    str(scene.get("scene_uid", "")),
+                    args.split_salt,
+                    args.development_fraction,
+                )
+                == args.split
+            ]
         seen_source_uids_in_input = set()
         if args.limit_per_room > 0:
             scenes = scenes[: args.limit_per_room]
@@ -595,10 +734,20 @@ def main() -> None:
             objects = objects_from_exported_boxes(original_boxes)
             proposals = proposals_from_exported_relations(relations)
             floor_movement = _movement(original_boxes, floor_boxes)
+            try:
+                total_movement_budget, max_edited_objects = _method_budget(
+                    floor_movement,
+                    args.budget_policy,
+                    args.total_movement_cap,
+                    args.edit_cap,
+                    args.anchor_residual_cap,
+                )
+            except ValueError as error:
+                raise ValueError(f"{evaluation_uid}: {error}") from error
             scene_config = replace(
                 base_config,
-                total_movement_budget=float(floor_movement["total"]),
-                max_edited_objects=int(floor_movement["edited"]),
+                total_movement_budget=total_movement_budget,
+                max_edited_objects=max_edited_objects,
             )
             original_centers = np.asarray(
                 [
@@ -652,6 +801,11 @@ def main() -> None:
                 config=scene_config,
                 external_safety_fn=mesh_safety_callback,
                 warm_start_centers=[floor_centers],
+                anchor_centers=(
+                    floor_centers
+                    if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                    else None
+                ),
                 external_safety_metadata={
                     "mode": args.safety_mode,
                     "archived_baseline_mesh_collision_pairs": (
@@ -673,10 +827,21 @@ def main() -> None:
             cwgcp_boxes = apply_centers_to_exported_boxes(
                 original_boxes, cwgcp_result.centers_xz
             )
+            cwgcp_movement = _movement(original_boxes, cwgcp_boxes)
+            random_match = args.random_match
+            if random_match == "auto":
+                random_match = (
+                    "candidate"
+                    if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                    else "floor"
+                )
+            random_target = (
+                cwgcp_movement if random_match == "candidate" else floor_movement
+            )
             random_boxes, random_log = _movement_matched_random(
                 original_boxes,
-                total_budget=float(floor_movement["total"]),
-                edit_budget=int(floor_movement["edited"]),
+                total_budget=float(random_target["total"]),
+                edit_budget=int(random_target["edited"]),
                 per_object_budget=scene_config.per_object_budget,
                 scene_uid=scene_uid,
                 seed=args.seed,
@@ -694,6 +859,9 @@ def main() -> None:
                     scene_config,
                     min_confidence=1.0,
                     max_slack=0.0,
+                    coverage_first_selection=False,
+                    require_coverage_gain=False,
+                    enable_proposal_nudge=False,
                 )
                 generic_result = repair_layout_cwgcp(
                     objects,
@@ -705,6 +873,11 @@ def main() -> None:
                     config=generic_config,
                     external_safety_fn=mesh_safety_callback,
                     warm_start_centers=[floor_centers],
+                    anchor_centers=(
+                        floor_centers
+                        if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                        else None
+                    ),
                     external_safety_metadata={
                         "mode": "obb_only_generic_control",
                         "evaluator_version": EVALUATOR_VERSION,
@@ -750,6 +923,9 @@ def main() -> None:
                 "scene_uid": scene_uid,
                 "evaluation_uid": evaluation_uid,
                 "target_relation_count": len(relations),
+                "method_total_movement_budget": total_movement_budget,
+                "method_max_edited_objects": max_edited_objects,
+                "random_match_target": random_match,
                 "floor_mesh_gate_available": floor_gate["mesh_gate_available"],
                 "floor_repair_accepted": floor_gate["repair_accepted"],
                 "random_accepted": random_log["accepted"],
@@ -763,7 +939,12 @@ def main() -> None:
                 ),
                 "cwgcp_selected_source": (
                     cwgcp_result.certificate["solver"]["selected_metrics"].get(
-                        "candidate_source", "baseline_rollback"
+                        "candidate_source",
+                        (
+                            "anchor_rollback"
+                            if args.method_profile in {"fapsp_v03", "agrp_v04"}
+                            else "baseline_rollback"
+                        ),
                     )
                 ),
                 "baseline_mesh_collision_pairs": baseline_mesh_value,
@@ -836,23 +1017,38 @@ def main() -> None:
             set(row["cwgcp_selected_source"] for row in rows)
         )
     }
-    cpu_solver_signal = bool(
+    selected_method_candidate_count = sum(
+        count
+        for source, count in selected_source_counts.items()
+        if source not in {"anchor_rollback", "baseline_rollback"}
+    )
+    generic_signal = (
+        not args.include_generic
+        or comparisons["cwgcp_minus_generic"]["low"] > 0
+    )
+    cpu_method_signal = bool(
         comparisons["cwgcp_minus_baseline"]["low"] > 0
         and comparisons["cwgcp_minus_random"]["low"] > 0
         and comparisons["cwgcp_minus_floor_prior"]["low"] > 0
+        and generic_signal
         and all(
             interval["mean"] > 0
             for interval in room_deltas_vs_floor_prior.values()
         )
         and 0.95 <= movement_ratio <= 1.05
-        and selected_source_counts.get("solver", 0) > 0
+        and selected_method_candidate_count > 0
         and aggregate["cwgcp"]["mean_obb_collision_pairs"]
         <= aggregate["floor_prior"]["mean_obb_collision_pairs"] + 1e-9
         and aggregate["cwgcp"]["mean_obb_overlap_area"]
         <= aggregate["floor_prior"]["mean_obb_overlap_area"] + 1e-9
     )
     summary = {
-        "algorithm": "CW-GCP 0.2.1 CPU pilot",
+        "algorithm": (
+            {
+                "fapsp_v03": "FA-PSP 0.3 exploratory pilot",
+                "agrp_v04": "AGRP 0.4 exploratory pilot",
+            }.get(args.method_profile, "CW-GCP 0.2.1 CPU pilot")
+        ),
         "code_commit": code_commit,
         "source_tree": source_tree,
         "evaluator": {
@@ -866,7 +1062,32 @@ def main() -> None:
         ),
         "rooms": sorted(set(row["room"] for row in rows)),
         "safety_mode": args.safety_mode,
+        "method_profile": args.method_profile,
+        "budget_policy": {
+            "name": args.budget_policy,
+            "total_movement_cap": args.total_movement_cap,
+            "edit_cap": args.edit_cap,
+            "anchor_residual_cap": args.anchor_residual_cap,
+            "random_match": args.random_match,
+        },
+        "split": {
+            "name": args.split,
+            "salt": args.split_salt,
+            "development_fraction": args.development_fraction,
+        },
         "config": asdict(base_config),
+        "generic_control": (
+            {
+                "same_anchor_budget_warm_starts_and_safety": True,
+                "confidence_weighting": False,
+                "slack": False,
+                "coverage_first_selection": False,
+                "strict_coverage_gain_gate": False,
+                "proposal_nudge_candidates": False,
+            }
+            if args.include_generic
+            else None
+        ),
         "methods": aggregate,
         "paired_deltas": comparisons,
         "room_deltas_vs_floor_prior": room_deltas_vs_floor_prior,
@@ -875,6 +1096,7 @@ def main() -> None:
             sum(row["random_available"] for row in rows)
         ),
         "selected_source_counts": selected_source_counts,
+        "selected_method_candidate_count": selected_method_candidate_count,
         "movement_ratio_vs_floor_prior": float(movement_ratio),
         "runtime_median_seconds": float(statistics.median(runtimes))
         if runtimes
@@ -893,8 +1115,9 @@ def main() -> None:
         "new_candidate_fcl_recomputation_available": False,
         "human_audit_available": False,
         "true_room_boundary_available": False,
-        "cpu_solver_signal": cpu_solver_signal,
-        "cpu_pilot_go": cpu_solver_signal,
+        "cpu_method_signal": cpu_method_signal,
+        "cpu_solver_signal": cpu_method_signal,
+        "cpu_pilot_go": cpu_method_signal,
         # Deliberately fail closed: local OBB evidence cannot promote the paper
         # method without the predeclared mesh and human-audit gates.
         "method_upgrade_go": False,

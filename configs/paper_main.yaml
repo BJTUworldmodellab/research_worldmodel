@@ -22,7 +22,7 @@ paper_scope:
     controlling movement, overlap, and collision side effects.
   b_track_strategy:
     default_main_method: "collision_gated_floor_prior"
-    method_upgrade_candidate: "CW-GCP"
+    method_upgrade_candidate: "AGRP v0.4"
     method_upgrade_cutoff: "2026-08-01"
     method_upgrade_status_2026_07_29: >
       NO-GO after the 531-record local CPU/OBB pilot. CW-GCP v0.2.1 reaches
@@ -33,6 +33,19 @@ paper_scope:
       2.0829 mean mesh-collision pairs versus 67.66% and 2.0640). New solver
       candidates cannot be re-evaluated with FCL locally. Keep
       Collision-gated Floor-Prior as the paper main method.
+    method_upgrade_status_2026_07_29_v04: >
+      AGRP v0.4 is the strongest current main-method candidate but is not yet
+      frozen as the final paper main method. On the 209-cluster development
+      split it improves independent class-level relation accuracy over
+      Collision-gated Floor-Prior by +3.04 pp with 95% cluster-bootstrap CI
+      [+1.35, +5.05] pp. On the locked 291-cluster validation split it improves
+      over Floor-Prior by +3.40 pp with CI [+1.75, +5.19] pp and over
+      candidate-matched random by +7.77 pp with CI [+5.00, +11.03] pp. The
+      method is a Pareto candidate: mean movement is 0.268m on validation
+      versus 0.087m for Floor-Prior, while OBB collision pairs and OBB overlap
+      decrease. Do not promote to final main method until a zero-overlap
+      confirmatory source cohort, remote FCL recomputation, and human-audited
+      evaluator subset pass.
     upgrade_rule: >
       Upgrade the paper main method only if the time-boxed pilot passes the
       predeclared independent-evaluator, movement-budget, and FCL safety gates.

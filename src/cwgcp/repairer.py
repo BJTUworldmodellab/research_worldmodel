@@ -54,6 +54,7 @@ def repair_layout_cwgcp(
     config: Optional[CWGCPConfig] = None,
     external_safety_fn: Optional[Callable[[np.ndarray], Dict[str, float]]] = None,
     warm_start_centers: Optional[Sequence[np.ndarray]] = None,
+    anchor_centers: Optional[np.ndarray] = None,
     external_safety_metadata: Optional[Mapping[str, Any]] = None,
     provenance: Optional[Mapping[str, Any]] = None,
 ) -> RepairResult:
@@ -79,6 +80,7 @@ def repair_layout_cwgcp(
         external_safety_fn,
         warm_start_centers,
         relations,
+        anchor_centers,
     )
     duration = time.perf_counter() - started
     layout_relation_record = _input_record(objects, relations)
@@ -100,13 +102,28 @@ def repair_layout_cwgcp(
         "layout_and_relations": layout_relation_record,
         "room_bounds": room_bounds_record,
         "warm_start_centers": warm_start_record,
+        "anchor_centers": (
+            None
+            if anchor_centers is None
+            else np.asarray(anchor_centers, dtype=np.float64).tolist()
+        ),
         "external_safety_metadata": dict(external_safety_metadata or {}),
         "provenance": dict(provenance or {}),
     }
     config_record = asdict(config)
+    is_fapsp = bool(
+        anchor_centers is not None
+        and (
+            config.coverage_first_selection
+            or config.require_coverage_gain
+            or config.enable_proposal_nudge
+        )
+    )
     certificate = {
-        "algorithm": "CW-GCP",
-        "algorithm_version": "0.2.1-cpu-pilot",
+        "algorithm": "FA-PSP" if is_fapsp else "CW-GCP",
+        "algorithm_version": (
+            "0.3.0-fa-psp" if is_fapsp else "0.2.1-cpu-pilot"
+        ),
         "accepted": bool(solver_certificate["accepted"]),
         "rollback_reason": solver_certificate["rollback_reason"],
         "input_hash": _stable_hash(execution_input_record),

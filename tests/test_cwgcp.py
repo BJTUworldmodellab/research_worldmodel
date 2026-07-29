@@ -13,7 +13,11 @@ from src.cwgcp.assignment import resolve_relations
 from src.cwgcp.geometry import collision_metrics, exact_overlap_metrics
 from src.cwgcp.constraints import relation_violation
 from src.cwgcp.types import ResolvedRelation
-from scripts.run_cwgcp_pilot import _bootstrap_delta
+from scripts.run_cwgcp_pilot import (
+    _bootstrap_delta,
+    _method_budget,
+    _split_for_scene,
+)
 
 
 def _object(index, class_id, x, z, half_x=0.2, half_z=0.2):
@@ -43,6 +47,53 @@ def _config(**overrides):
 
 
 class CWGCPTests(unittest.TestCase):
+    def test_anchor_residual_budget_contains_anchor_and_bounds_extra_movement(self):
+        floor_movement = {"total": 0.4, "edited": 1}
+        self.assertEqual(
+            _method_budget(
+                floor_movement,
+                "anchor_plus_residual",
+                total_movement_cap=3.6,
+                edit_cap=3,
+                anchor_residual_cap=0.25,
+            ),
+            (0.65, 3),
+        )
+        self.assertEqual(
+            _method_budget(
+                {"total": 3.5, "edited": 2},
+                "anchor_plus_residual",
+                total_movement_cap=3.6,
+                edit_cap=3,
+                anchor_residual_cap=0.25,
+            ),
+            (3.6, 3),
+        )
+
+    def test_method_budget_rejects_cap_smaller_than_anchor(self):
+        with self.assertRaises(ValueError):
+            _method_budget(
+                {"total": 1.0, "edited": 2},
+                "anchor_plus_residual",
+                total_movement_cap=0.9,
+                edit_cap=3,
+                anchor_residual_cap=0.25,
+            )
+        with self.assertRaises(ValueError):
+            _method_budget(
+                {"total": 1.0, "edited": 2},
+                "fixed_cap",
+                total_movement_cap=3.6,
+                edit_cap=1,
+                anchor_residual_cap=0.25,
+            )
+
+    def test_source_scene_split_is_deterministic_and_cluster_safe(self):
+        first = _split_for_scene("shared-scene", "frozen-salt", 0.4)
+        second = _split_for_scene("shared-scene", "frozen-salt", 0.4)
+        self.assertEqual(first, second)
+        self.assertIn(first, {"dev", "validation"})
+
     def test_bootstrap_clusters_records_by_source_scene(self):
         rows = [
             {

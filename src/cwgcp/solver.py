@@ -7,6 +7,7 @@ import numpy as np
 from scipy.optimize import minimize
 
 from src.cwgcp.constraints import (
+    normalize_predicate,
     proposal_relation_metrics,
     relation_metrics,
     relation_violation,
@@ -168,16 +169,7 @@ def _editable_indices(
 
     if max_edited_objects <= 0:
         return []
-    scores = np.zeros(n_objects, dtype=np.float64)
-    for relation in relations:
-        scores[relation.subject_index] += relation.confidence + 1e-6
-        scores[relation.object_index] += relation.confidence
-    ranked = sorted(range(n_objects), key=lambda index: (-scores[index], index))
-    return [
-        index
-        for index in ranked
-        if scores[index] > 0
-    ][:max_edited_objects]
+    return _relation_ranked_indices(relations, n_objects)[:max_edited_objects]
 
 
 def _initial_vector(
@@ -207,6 +199,186 @@ def _initial_vector(
     return np.concatenate(
         [displacement.reshape(-1), np.zeros(n_relations, dtype=np.float64)]
     )
+
+
+def _vector_from_displacement(
+    displacement: np.ndarray,
+    n_relations: int,
+) -> np.ndarray:
+    return np.concatenate(
+        [
+            np.asarray(displacement, dtype=np.float64).reshape(-1),
+            np.zeros(n_relations, dtype=np.float64),
+        ]
+    )
+
+
+def _relation_ranked_indices(
+    relations: Sequence[ResolvedRelation],
+    n_objects: int,
+    excluded: Optional[set] = None,
+) -> List[int]:
+    excluded = set() if excluded is None else excluded
+    scores = np.zeros(n_objects, dtype=np.float64)
+    for relation in relations:
+        scores[relation.subject_index] += relation.confidence + 1e-6
+        scores[relation.object_index] += relation.confidence
+    return [
+        index
+        for index in sorted(range(n_objects), key=lambda index: (-scores[index], index))
+        if scores[index] > 0 and index not in excluded
+    ]
+
+
+def _editable_indices_for_warm_start(
+    warm_displacement: np.ndarray,
+    relations: Sequence[ResolvedRelation],
+    n_objects: int,
+    config: CWGCPConfig,
+) -> List[int]:
+    if config.max_edited_objects <= 0:
+        return []
+    moved = [
+        index
+        for index in range(n_objects)
+        if float(np.linalg.norm(warm_displacement[index])) > config.edit_threshold
+    ]
+    moved = sorted(
+        moved,
+        key=lambda index: (-float(np.linalg.norm(warm_displacement[index])), index),
+    )[: config.max_edited_objects]
+    if len(moved) >= config.max_edited_objects:
+        return moved
+    fill = _relation_ranked_indices(relations, n_objects, set(moved))
+    return (moved + fill)[: config.max_edited_objects]
+
+
+def _clip_displacement_to_budgets(
+    displacement: np.ndarray, config: CWGCPConfig
+) -> np.ndarray:
+    clipped = np.asarray(displacement, dtype=np.float64).copy()
+    norms = np.linalg.norm(clipped, axis=1)
+    over = norms > config.per_object_budget
+    if np.any(over):
+        clipped[over] *= (
+            config.per_object_budget / np.maximum(norms[over], 1e-12)
+        )[:, None]
+    total = float(np.linalg.norm(clipped, axis=1).sum())
+    if total > config.total_movement_budget and total > 0.0:
+        clipped *= config.total_movement_budget / total
+    return clipped
+
+
+def _optimize_from_vector(
+    initial_vector: np.ndarray,
+    initial_radius: float,
+    editable_indices: Sequence[int],
+    objective,
+    constraints,
+    original: np.ndarray,
+    objects: Sequence[LayoutObject],
+    relations: Sequence[ResolvedRelation],
+    proposals: Optional[Sequence[RelationProposal]],
+    room_bounds: Optional[Tuple[np.ndarray, np.ndarray]],
+    config: CWGCPConfig,
+    external_safety_fn: Optional[Callable[[np.ndarray], Dict[str, float]]],
+    source: str,
+    trust_around_current: bool,
+    restart: Optional[int] = None,
+    warm_start_index: Optional[int] = None,
+) -> Tuple[np.ndarray, np.ndarray, Dict[str, object], List[dict]]:
+    n_objects = len(objects)
+    n_relations = len(relations)
+    editable_set = set(editable_indices)
+    vector = np.asarray(initial_vector, dtype=np.float64).copy()
+    best_vector = vector.copy()
+    best_objective = float(objective(vector))
+    radius = float(initial_radius)
+    solver_runs: List[dict] = []
+
+    for outer in range(config.outer_iterations):
+        delta_bound = min(radius, config.per_object_budget, config.max_trust_radius)
+        current_displacement = vector[: 2 * n_objects].reshape(n_objects, 2)
+        displacement_bounds = []
+        for object_index in range(n_objects):
+            for axis in range(2):
+                if object_index not in editable_set:
+                    fixed = float(current_displacement[object_index, axis])
+                    displacement_bounds.append((fixed, fixed))
+                elif trust_around_current:
+                    center = float(current_displacement[object_index, axis])
+                    displacement_bounds.append(
+                        (
+                            max(-config.per_object_budget, center - delta_bound),
+                            min(config.per_object_budget, center + delta_bound),
+                        )
+                    )
+                else:
+                    displacement_bounds.append((-delta_bound, delta_bound))
+        bounds = displacement_bounds + [(0.0, config.max_slack)] * n_relations
+        with warnings.catch_warnings():
+            warnings.filterwarnings(
+                "ignore",
+                message="Values in x were outside bounds during a minimize step",
+                category=RuntimeWarning,
+            )
+            result = minimize(
+                objective,
+                vector,
+                method="SLSQP",
+                bounds=bounds,
+                constraints=constraints,
+                options={
+                    "maxiter": config.solver_max_iterations,
+                    "ftol": 1e-8,
+                    "disp": False,
+                },
+            )
+        value = float(objective(result.x))
+        improved = np.isfinite(value) and value < best_objective - 1e-10
+        run: dict = {
+            "source": source,
+            "outer_iteration": outer,
+            "success": bool(result.success),
+            "status": int(result.status),
+            "message": str(result.message),
+            "objective": value,
+            "trust_radius": float(radius),
+            "iterations": int(getattr(result, "nit", 0)),
+            "editable_object_indices": list(editable_indices),
+        }
+        if restart is not None:
+            run["restart"] = restart
+        if warm_start_index is not None:
+            run["warm_start_index"] = warm_start_index
+        solver_runs.append(run)
+        if improved:
+            best_vector = result.x.copy()
+            best_objective = value
+            vector = result.x.copy()
+            radius = min(radius * 1.25, config.max_trust_radius)
+        else:
+            radius *= 0.5
+            vector = best_vector.copy()
+        if radius < config.min_trust_radius:
+            break
+
+    displacement = best_vector[: 2 * n_objects].reshape(n_objects, 2)
+    centers = original + displacement
+    metrics = _candidate_metrics(
+        original,
+        centers,
+        objects,
+        relations,
+        proposals,
+        room_bounds,
+        config,
+        external_safety_fn,
+    )
+    metrics["objective"] = best_objective
+    metrics["slack"] = best_vector[2 * n_objects :].tolist()
+    metrics["candidate_source"] = source
+    return centers, best_vector, metrics, solver_runs
 
 
 def _external_safety_not_worse(
@@ -247,8 +419,24 @@ def _passes_gate(
         if "proposal_relation_violations" in baseline
         else "relation_violations"
     )
+    coverage_key = (
+        "proposal_satisfied_relations"
+        if "proposal_satisfied_relations" in baseline
+        else None
+    )
     improvement = float(baseline[relation_key]) - float(candidate[relation_key])
-    if improvement < config.improvement_epsilon:
+    coverage_improved = False
+    if config.coverage_first_selection and coverage_key is not None:
+        baseline_coverage = int(baseline[coverage_key])
+        candidate_coverage = int(candidate[coverage_key])
+        coverage_improved = candidate_coverage > baseline_coverage
+        if candidate_coverage < baseline_coverage:
+            reasons.append("proposal_coverage_drop")
+        if config.require_coverage_gain and not coverage_improved:
+            reasons.append("proposal_coverage_gain_required")
+    if improvement < config.improvement_epsilon and not (
+        config.coverage_first_selection and coverage_improved
+    ):
         reasons.append("no_relation_improvement")
     for baseline_violation, candidate_violation in zip(
         baseline[violation_key], candidate[violation_key]
@@ -305,6 +493,205 @@ def _passes_gate(
     return not reasons, reasons
 
 
+def _external_safety_score(metrics: Dict[str, object]) -> float:
+    if not metrics.get("external_safety_available"):
+        return 0.0
+    external = metrics.get("external_safety", {})
+    if not isinstance(external, dict):
+        return float("inf")
+    return float(sum(float(value) for value in external.values()))
+
+
+def _selection_key(metrics: Dict[str, object], config: CWGCPConfig) -> tuple:
+    if (
+        config.coverage_first_selection
+        and "proposal_satisfied_relations" in metrics
+    ):
+        return (
+            -int(metrics["proposal_satisfied_relations"]),
+            float(metrics["proposal_weighted_relation_violation"]),
+            int(metrics["exact_obb_collision_pairs"]),
+            float(metrics["exact_obb_overlap_area"]),
+            int(metrics["boundary_violations"]),
+            _external_safety_score(metrics),
+            float(metrics["total_movement"]),
+            int(metrics["edited_object_count"]),
+        )
+    return (
+        float(
+            metrics.get(
+                "proposal_weighted_relation_violation",
+                metrics["weighted_relation_violation"],
+            )
+        ),
+        int(metrics["collision_pairs"]),
+        int(metrics["boundary_violations"]),
+        float(metrics["total_movement"]),
+        int(metrics["edited_object_count"]),
+    )
+
+
+def _proposal_pairs(
+    objects: Sequence[LayoutObject],
+    proposal: RelationProposal,
+) -> List[Tuple[int, int]]:
+    subjects = [
+        index
+        for index, obj in enumerate(objects)
+        if obj.class_id == proposal.subject_class_id
+    ]
+    targets = [
+        index
+        for index, obj in enumerate(objects)
+        if obj.class_id == proposal.object_class_id
+    ]
+    return [
+        (subject_index, object_index)
+        for subject_index in subjects
+        for object_index in targets
+        if subject_index != object_index
+    ]
+
+
+def _nudge_pair_for_relation(
+    original: np.ndarray,
+    centers: np.ndarray,
+    relation: ResolvedRelation,
+    editable_indices: Sequence[int],
+    config: CWGCPConfig,
+) -> Optional[np.ndarray]:
+    predicate = normalize_predicate(relation.predicate)
+    close = predicate.startswith("closely ")
+    base = predicate.replace("closely ", "", 1) if close else predicate
+    subject = relation.subject_index
+    target = relation.object_index
+    editable = set(editable_indices)
+    if subject not in editable and target not in editable:
+        return None
+
+    updated = np.asarray(centers, dtype=np.float64).copy()
+    delta = updated[subject] - updated[target]
+    margin = config.relation_margin + max(config.improvement_epsilon * 10.0, 1e-5)
+    correction = np.zeros(2, dtype=np.float64)
+
+    if base == "left of":
+        required = abs(float(delta[1])) + margin
+        correction[0] = -required - float(delta[0])
+    elif base == "right of":
+        required = abs(float(delta[1])) + margin
+        correction[0] = required - float(delta[0])
+    elif base == "in front of":
+        required = abs(float(delta[0])) + margin
+        correction[1] = required - float(delta[1])
+    elif base == "behind":
+        required = abs(float(delta[0])) + margin
+        correction[1] = -required - float(delta[1])
+    elif base in {"near", "far"}:
+        vector = delta.copy()
+        distance = float(np.linalg.norm(vector))
+        if distance <= 1e-9:
+            vector = np.array([1.0, 0.0], dtype=np.float64)
+            distance = 1.0
+        direction = vector / distance
+        if base == "near":
+            desired = max(0.0, config.close_distance - margin)
+            correction = direction * (desired - distance)
+        else:
+            desired = config.far_distance + margin
+            correction = direction * (desired - distance)
+    else:
+        return None
+
+    if close and base not in {"near", "far"}:
+        vector = delta + correction
+        distance = float(np.linalg.norm(vector))
+        if distance > config.close_distance:
+            correction += vector * ((config.close_distance - margin) / distance - 1.0)
+
+    if subject in editable and target in editable:
+        updated[subject] += 0.5 * correction
+        updated[target] -= 0.5 * correction
+    elif subject in editable:
+        updated[subject] += correction
+    else:
+        updated[target] -= correction
+
+    displacement = _clip_displacement_to_budgets(updated - original, config)
+    return original + displacement
+
+
+def _proposal_nudge_candidates(
+    original: np.ndarray,
+    anchor: np.ndarray,
+    objects: Sequence[LayoutObject],
+    relations: Sequence[ResolvedRelation],
+    proposals: Sequence[RelationProposal],
+    editable_indices: Sequence[int],
+    room_bounds: Optional[Tuple[np.ndarray, np.ndarray]],
+    config: CWGCPConfig,
+    external_safety_fn: Optional[Callable[[np.ndarray], Dict[str, float]]],
+) -> List[Tuple[np.ndarray, np.ndarray, Dict[str, object]]]:
+    candidates = []
+    anchor_proposal_metrics = proposal_relation_metrics(
+        anchor, objects, proposals, config
+    )
+    source_to_violation = dict(
+        zip(
+            anchor_proposal_metrics["proposal_relation_source_indices"],
+            anchor_proposal_metrics["proposal_relation_violations"],
+        )
+    )
+    for source_index, proposal in enumerate(proposals):
+        if source_to_violation.get(source_index, 0.0) <= config.improvement_epsilon:
+            continue
+        predicate = normalize_predicate(proposal.predicate)
+        pairs = _proposal_pairs(objects, proposal)
+        if not pairs:
+            continue
+        ranked_pairs = []
+        for subject_index, object_index in pairs:
+            relation = ResolvedRelation(
+                subject_index=subject_index,
+                predicate=predicate,
+                object_index=object_index,
+                confidence=proposal.confidence,
+                source_index=source_index,
+                ambiguity_margin=0.0,
+            )
+            ranked_pairs.append(
+                (
+                    relation_violation(anchor, objects, relation, config),
+                    subject_index,
+                    object_index,
+                    relation,
+                )
+            )
+        for _violation, _subject, _object, relation in sorted(ranked_pairs)[:3]:
+            nudged = _nudge_pair_for_relation(
+                original, anchor, relation, editable_indices, config
+            )
+            if nudged is None:
+                continue
+            vector = _vector_from_displacement(nudged - original, len(relations))
+            metrics = _candidate_metrics(
+                original,
+                nudged,
+                objects,
+                relations,
+                proposals,
+                room_bounds,
+                config,
+                external_safety_fn,
+            )
+            metrics["objective"] = 0.0
+            metrics["slack"] = []
+            metrics["candidate_source"] = "proposal_nudge"
+            metrics["proposal_source_index"] = source_index
+            metrics["proposal_pair"] = [relation.subject_index, relation.object_index]
+            candidates.append((nudged, vector, metrics))
+    return candidates
+
+
 def solve_projection(
     objects: Sequence[LayoutObject],
     relations: Sequence[ResolvedRelation],
@@ -313,11 +700,21 @@ def solve_projection(
     external_safety_fn: Optional[Callable[[np.ndarray], Dict[str, float]]] = None,
     warm_start_centers: Optional[Sequence[np.ndarray]] = None,
     proposals: Optional[Sequence[RelationProposal]] = None,
+    anchor_centers: Optional[np.ndarray] = None,
 ) -> Tuple[np.ndarray, Dict[str, object]]:
     """Solve CW-GCP and return centers plus a detailed solver certificate."""
 
     original = np.stack([obj.center_xz for obj in objects], axis=0)
-    baseline = _candidate_metrics(
+    if anchor_centers is None:
+        anchor = original
+        rollback_source = "baseline_rollback"
+    else:
+        anchor = np.asarray(anchor_centers, dtype=np.float64)
+        if anchor.shape != original.shape or not np.all(np.isfinite(anchor)):
+            raise ValueError("anchor_centers must match object centers and be finite")
+        rollback_source = "anchor_rollback"
+
+    original_metrics = _candidate_metrics(
         original,
         original,
         objects,
@@ -327,16 +724,46 @@ def solve_projection(
         config,
         external_safety_fn,
     )
+    original_metrics["candidate_source"] = "baseline"
+    anchor_metrics = _candidate_metrics(
+        original,
+        anchor,
+        objects,
+        relations,
+        proposals,
+        room_bounds,
+        config,
+        external_safety_fn,
+    )
+    anchor_metrics["candidate_source"] = rollback_source
     n_objects = len(objects)
     n_relations = len(relations)
     if n_relations == 0 or config.total_movement_budget <= 0:
         reason = "no_resolved_relations" if n_relations == 0 else "zero_budget"
-        return original.copy(), {
+        return anchor.copy(), {
             "accepted": False,
             "rollback_reason": reason,
-            "baseline_metrics": baseline,
+            "baseline_metrics": anchor_metrics,
+            "original_metrics": original_metrics,
+            "anchor_metrics": anchor_metrics,
             "candidate_metrics": [],
-            "selected_metrics": baseline,
+            "selected_metrics": anchor_metrics,
+            "solver_runs": [],
+        }
+    if (
+        config.require_coverage_gain
+        and int(anchor_metrics.get("proposal_total_relations", 0)) > 0
+        and int(anchor_metrics["proposal_satisfied_relations"])
+        >= int(anchor_metrics["proposal_total_relations"])
+    ):
+        return anchor.copy(), {
+            "accepted": False,
+            "rollback_reason": "anchor_already_full_coverage",
+            "baseline_metrics": anchor_metrics,
+            "original_metrics": original_metrics,
+            "anchor_metrics": anchor_metrics,
+            "candidate_metrics": [],
+            "selected_metrics": anchor_metrics,
             "solver_runs": [],
         }
 
@@ -348,7 +775,6 @@ def solve_projection(
     editable_indices = _editable_indices(
         relations, n_objects, config.max_edited_objects
     )
-    editable_set = set(editable_indices)
     candidates: List[Tuple[np.ndarray, np.ndarray, Dict[str, object]]] = []
     solver_runs: List[dict] = []
 
@@ -368,12 +794,7 @@ def solve_projection(
             )
             continue
         displacement = warm - original
-        vector = np.concatenate(
-            [
-                displacement.reshape(-1),
-                np.zeros(n_relations, dtype=np.float64),
-            ]
-        )
+        vector = _vector_from_displacement(displacement, n_relations)
         metrics = _candidate_metrics(
             original,
             warm,
@@ -396,6 +817,56 @@ def solve_projection(
                 "objective": metrics["objective"],
             }
         )
+        if config.refine_warm_starts:
+            bounded_displacement = _clip_displacement_to_budgets(
+                displacement, config
+            )
+            warm_editable_indices = _editable_indices_for_warm_start(
+                bounded_displacement, relations, n_objects, config
+            )
+            warm_vector = _vector_from_displacement(
+                bounded_displacement, n_relations
+            )
+            centers, refined_vector, refined_metrics, runs = _optimize_from_vector(
+                warm_vector,
+                min(config.initial_trust_radius, config.per_object_budget),
+                warm_editable_indices,
+                objective,
+                constraints,
+                original,
+                objects,
+                relations,
+                proposals,
+                room_bounds,
+                config,
+                external_safety_fn,
+                "warm_refine",
+                True,
+                warm_start_index=warm_index,
+            )
+            candidates.append((centers, refined_vector, refined_metrics))
+            solver_runs.extend(runs)
+
+    if config.enable_proposal_nudge and proposals:
+        nudge_candidates = _proposal_nudge_candidates(
+            original,
+            anchor,
+            objects,
+            relations,
+            proposals,
+            editable_indices,
+            room_bounds,
+            config,
+            external_safety_fn,
+        )
+        candidates.extend(nudge_candidates)
+        solver_runs.append(
+            {
+                "source": "proposal_nudge",
+                "success": True,
+                "candidate_count": len(nudge_candidates),
+            }
+        )
 
     for restart in range(config.restarts):
         radius = min(config.initial_trust_radius, config.per_object_budget)
@@ -408,89 +879,30 @@ def solve_projection(
             config,
             editable_indices,
         )
-        best_vector = vector.copy()
-        best_objective = float(objective(vector))
-
-        for outer in range(config.outer_iterations):
-            delta_bound = min(
-                radius, config.per_object_budget, config.max_trust_radius
-            )
-            displacement_bounds = []
-            for object_index in range(n_objects):
-                bound = (
-                    (-delta_bound, delta_bound)
-                    if object_index in editable_set
-                    else (0.0, 0.0)
-                )
-                displacement_bounds.extend([bound, bound])
-            bounds = displacement_bounds + [
-                (0.0, config.max_slack)
-            ] * n_relations
-            with warnings.catch_warnings():
-                warnings.filterwarnings(
-                    "ignore",
-                    message="Values in x were outside bounds during a minimize step",
-                    category=RuntimeWarning,
-                )
-                result = minimize(
-                    objective,
-                    vector,
-                    method="SLSQP",
-                    bounds=bounds,
-                    constraints=constraints,
-                    options={
-                        "maxiter": config.solver_max_iterations,
-                        "ftol": 1e-8,
-                        "disp": False,
-                    },
-                )
-            value = float(objective(result.x))
-            improved = np.isfinite(value) and value < best_objective - 1e-10
-            solver_runs.append(
-                {
-                    "restart": restart,
-                    "outer_iteration": outer,
-                    "success": bool(result.success),
-                    "status": int(result.status),
-                    "message": str(result.message),
-                    "objective": value,
-                    "trust_radius": float(radius),
-                    "iterations": int(getattr(result, "nit", 0)),
-                    "editable_object_indices": editable_indices,
-                }
-            )
-            if improved:
-                best_vector = result.x.copy()
-                best_objective = value
-                vector = result.x.copy()
-                radius = min(radius * 1.25, config.max_trust_radius)
-            else:
-                radius *= 0.5
-                vector = best_vector.copy()
-            if radius < config.min_trust_radius:
-                break
-
-        displacement = best_vector[: 2 * n_objects].reshape(n_objects, 2)
-        centers = original + displacement
-        metrics = _candidate_metrics(
+        centers, best_vector, metrics, runs = _optimize_from_vector(
+            vector,
+            radius,
+            editable_indices,
+            objective,
+            constraints,
             original,
-            centers,
             objects,
             relations,
             proposals,
             room_bounds,
             config,
             external_safety_fn,
+            "solver",
+            False,
+            restart=restart,
         )
-        metrics["objective"] = best_objective
-        metrics["slack"] = best_vector[2 * n_objects :].tolist()
-        metrics["candidate_source"] = "solver"
         candidates.append((centers, best_vector, metrics))
+        solver_runs.extend(runs)
 
     feasible = []
     candidate_records = []
     for centers, vector, metrics in candidates:
-        passes, rejection_reasons = _passes_gate(baseline, metrics, config)
+        passes, rejection_reasons = _passes_gate(anchor_metrics, metrics, config)
         record = dict(metrics)
         record["gate_passed"] = passes
         record["rejection_reasons"] = rejection_reasons
@@ -499,35 +911,25 @@ def solve_projection(
             feasible.append((centers, vector, metrics))
 
     if not feasible:
-        return original.copy(), {
+        return anchor.copy(), {
             "accepted": False,
             "rollback_reason": "no_candidate_passed_gate",
-            "baseline_metrics": baseline,
+            "baseline_metrics": anchor_metrics,
+            "original_metrics": original_metrics,
+            "anchor_metrics": anchor_metrics,
             "candidate_metrics": candidate_records,
-            "selected_metrics": baseline,
+            "selected_metrics": anchor_metrics,
             "solver_runs": solver_runs,
         }
 
-    selected = min(
-        feasible,
-        key=lambda item: (
-            float(
-                item[2].get(
-                    "proposal_weighted_relation_violation",
-                    item[2]["weighted_relation_violation"],
-                )
-            ),
-            int(item[2]["collision_pairs"]),
-            int(item[2]["boundary_violations"]),
-            float(item[2]["total_movement"]),
-            int(item[2]["edited_object_count"]),
-        ),
-    )
+    selected = min(feasible, key=lambda item: _selection_key(item[2], config))
     selected_centers, _selected_vector, selected_metrics = selected
     return selected_centers, {
         "accepted": True,
         "rollback_reason": None,
-        "baseline_metrics": baseline,
+        "baseline_metrics": anchor_metrics,
+        "original_metrics": original_metrics,
+        "anchor_metrics": anchor_metrics,
         "candidate_metrics": candidate_records,
         "selected_metrics": selected_metrics,
         "solver_runs": solver_runs,
