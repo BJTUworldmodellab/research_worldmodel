@@ -1,7 +1,9 @@
 # FA-PSP v0.3.1 最后一轮有界优化结果
 
-**日期：** 2026-07-29  
-**投稿目标：** CCF-B，优先 Eurographics 2027 Full Papers / CGF  
+**日期：** 2026-07-29
+
+**投稿目标：** CCF-B，优先 Eurographics 2027 Full Papers / CGF
+
 **结论：** 不升级。保留 FA-PSP v0.3 作为首选本地探索性候选；论文默认主方法仍为 Collision-gated Floor-Prior。
 
 ## 1. 本轮改了什么

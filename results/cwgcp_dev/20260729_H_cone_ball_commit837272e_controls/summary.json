@@ -1,0 +1,308 @@
+{
+  "algorithm": "FA-PSP 0.3.1 Cone-Ball Close Projection exploratory pilot",
+  "code_commit": "837272ebfe0555b3d92276ae4e73a70bdd9b33d1",
+  "source_tree": {
+    "sha256": "3a1d8938f093b0314e184cd8d78bd7429ac5229a92fe68f45dc91859af536bd5",
+    "files": [
+      "configs/cwgcp_v03_protocol.yaml",
+      "configs/cwgcp_v031_input_manifest.json",
+      "scripts/run_cwgcp_pilot.py",
+      "src/relation_schema.py",
+      "src/cwgcp/__init__.py",
+      "src/cwgcp/adapters.py",
+      "src/cwgcp/assignment.py",
+      "src/cwgcp/constraints.py",
+      "src/cwgcp/geometry.py",
+      "src/cwgcp/repairer.py",
+      "src/cwgcp/solver.py",
+      "src/cwgcp/types.py",
+      "src/independent_eval/__init__.py",
+      "src/independent_eval/cwgcp_layout_evaluator.py"
+    ],
+    "relevant_tree_clean": true
+  },
+  "evaluator": {
+    "version": "independent-layout-evaluator-v1",
+    "close_distance": 0.75
+  },
+  "scene_count": 222,
+  "unique_evaluation_uid_count": 222,
+  "unique_source_scene_uid_count": 209,
+  "rooms": [
+    "bedroom",
+    "diningroom",
+    "livingroom"
+  ],
+  "safety_mode": "obb_only",
+  "method_profile": "fapsp_v031",
+  "budget_policy": {
+    "name": "anchor_plus_residual",
+    "total_movement_cap": 3.6,
+    "edit_cap": 3,
+    "anchor_residual_cap": 0.1,
+    "random_match": "candidate"
+  },
+  "split": {
+    "name": "dev",
+    "salt": "cwgcp-v03-main-method-20260729",
+    "development_fraction": 0.4
+  },
+  "frozen_input_manifest": {
+    "path": "configs\\cwgcp_v031_input_manifest.json",
+    "sha256": "2960b0cee643e3f73d9c2be6adff7abef9a0e7f1277cb0560461849f18821f22",
+    "inputs_match": true
+  },
+  "config": {
+    "close_distance": 0.75,
+    "far_distance": 1.6,
+    "relation_margin": 0.02,
+    "per_object_budget": 1.8,
+    "total_movement_budget": 3.6,
+    "max_edited_objects": 3,
+    "ambiguity_scale": 0.5,
+    "min_confidence": 1.0,
+    "max_slack": 0.0,
+    "relation_weight": 10.0,
+    "slack_weight": 4.0,
+    "collision_weight": 20.0,
+    "boundary_weight": 20.0,
+    "movement_weight": 1.0,
+    "edit_weight": 0.1,
+    "edit_threshold": 0.001,
+    "huber_delta": 0.25,
+    "restarts": 2,
+    "outer_iterations": 2,
+    "solver_max_iterations": 80,
+    "initial_trust_radius": 0.45,
+    "max_trust_radius": 1.8,
+    "min_trust_radius": 0.03,
+    "improvement_epsilon": 1e-06,
+    "relation_preservation_tolerance": 1e-06,
+    "collision_tolerance": 1e-07,
+    "boundary_tolerance": 1e-07,
+    "refine_warm_starts": true,
+    "coverage_first_selection": true,
+    "require_coverage_gain": true,
+    "enable_proposal_nudge": true,
+    "enable_cone_ball_close_projection": true,
+    "seed": 0
+  },
+  "generic_control": {
+    "same_anchor_budget_warm_starts_and_safety": true,
+    "confidence_weighting": false,
+    "slack": false,
+    "coverage_first_selection": false,
+    "strict_coverage_gain_gate": false,
+    "proposal_nudge_candidates": false
+  },
+  "no_nudge_ablation": {
+    "same_fapsp_configuration": true,
+    "only_change": "enable_proposal_nudge=False"
+  },
+  "v03_mechanism_ablation": {
+    "same_fapsp_configuration": true,
+    "only_change": "enable_cone_ball_close_projection=False"
+  },
+  "methods": {
+    "baseline": {
+      "scene_count": 222,
+      "satisfied": 181,
+      "total": 296,
+      "accuracy": 0.6114864864864865,
+      "mean_obb_collision_pairs": 6.346846846846847,
+      "mean_obb_overlap_area": 1.0737870763656865,
+      "mean_total_movement": 0.0,
+      "mean_mesh_collision_pairs": 2.22972972972973
+    },
+    "floor_prior": {
+      "scene_count": 222,
+      "satisfied": 195,
+      "total": 296,
+      "accuracy": 0.6587837837837838,
+      "mean_obb_collision_pairs": 6.2792792792792795,
+      "mean_obb_overlap_area": 1.0568560945135417,
+      "mean_total_movement": 0.10732452884943772,
+      "mean_mesh_collision_pairs": 2.1981981981981984
+    },
+    "random": {
+      "scene_count": 222,
+      "satisfied": 183,
+      "total": 296,
+      "accuracy": 0.6182432432432432,
+      "mean_obb_collision_pairs": 6.252252252252252,
+      "mean_obb_overlap_area": 1.0535036888339786,
+      "mean_total_movement": 0.10881977737973833,
+      "mean_mesh_collision_pairs": null
+    },
+    "cwgcp": {
+      "scene_count": 222,
+      "satisfied": 202,
+      "total": 296,
+      "accuracy": 0.6824324324324325,
+      "mean_obb_collision_pairs": 6.27027027027027,
+      "mean_obb_overlap_area": 1.0555342209202638,
+      "mean_total_movement": 0.10881977737973833,
+      "mean_mesh_collision_pairs": null
+    },
+    "generic": {
+      "scene_count": 222,
+      "satisfied": 195,
+      "total": 296,
+      "accuracy": 0.6587837837837838,
+      "mean_obb_collision_pairs": 6.252252252252252,
+      "mean_obb_overlap_area": 1.0489187502614012,
+      "mean_total_movement": 0.11903624532341325,
+      "mean_mesh_collision_pairs": null
+    },
+    "no_nudge": {
+      "scene_count": 222,
+      "satisfied": 195,
+      "total": 296,
+      "accuracy": 0.6587837837837838,
+      "mean_obb_collision_pairs": 6.2792792792792795,
+      "mean_obb_overlap_area": 1.0568560945135417,
+      "mean_total_movement": 0.10732452884943772,
+      "mean_mesh_collision_pairs": null
+    },
+    "fapsp_v03": {
+      "scene_count": 222,
+      "satisfied": 202,
+      "total": 296,
+      "accuracy": 0.6824324324324325,
+      "mean_obb_collision_pairs": 6.27027027027027,
+      "mean_obb_overlap_area": 1.0554086597808283,
+      "mean_total_movement": 0.11002723155214042,
+      "mean_mesh_collision_pairs": null
+    }
+  },
+  "paired_deltas": {
+    "cwgcp_minus_baseline": {
+      "mean": 0.07094594594594594,
+      "low": 0.042704626334519546,
+      "high": 0.10238907849829348,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_floor_prior": {
+      "mean": 0.023648648648648685,
+      "low": 0.006688963210702337,
+      "high": 0.04530744336569581,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_random": {
+      "mean": 0.06418918918918926,
+      "low": 0.03691275167785235,
+      "high": 0.09375,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_generic": {
+      "mean": 0.023648648648648685,
+      "low": 0.006711409395973145,
+      "high": 0.045016077170418,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_no_nudge": {
+      "mean": 0.023648648648648685,
+      "low": 0.006711409395973145,
+      "high": 0.04513888888888884,
+      "scene_count": 222,
+      "cluster_count": 209
+    },
+    "cwgcp_minus_fapsp_v03": {
+      "mean": 0.0,
+      "low": -0.010033444816053505,
+      "high": 0.010033444816053505,
+      "scene_count": 222,
+      "cluster_count": 209
+    }
+  },
+  "room_deltas_vs_floor_prior": {
+    "bedroom": {
+      "mean": 0.0,
+      "low": 0.0,
+      "high": 0.0,
+      "scene_count": 66,
+      "cluster_count": 66
+    },
+    "diningroom": {
+      "mean": 0.05504587155963303,
+      "low": 0.009615384615384692,
+      "high": 0.10909090909090902,
+      "scene_count": 80,
+      "cluster_count": 80
+    },
+    "livingroom": {
+      "mean": 0.011363636363636354,
+      "low": 0.0,
+      "high": 0.03749999999999998,
+      "scene_count": 76,
+      "cluster_count": 76
+    }
+  },
+  "accepted_scenes": 6,
+  "random_available_scenes": 222,
+  "selected_source_counts": {
+    "anchor_rollback": 216,
+    "proposal_nudge": 6
+  },
+  "selected_method_candidate_count": 6,
+  "activation": {
+    "selected_non_anchor_candidates": 6,
+    "generated_records": 222,
+    "all_record_rate": 0.02702702702702703,
+    "anchor_failure_eligible_records": 55,
+    "by_room": {
+      "bedroom": {
+        "selected_non_anchor_candidates": 0,
+        "generated_records": 66,
+        "all_record_rate": 0.0,
+        "anchor_failure_eligible_records": 11,
+        "eligible_rate": 0.0
+      },
+      "diningroom": {
+        "selected_non_anchor_candidates": 5,
+        "generated_records": 80,
+        "all_record_rate": 0.0625,
+        "anchor_failure_eligible_records": 19,
+        "eligible_rate": 0.2631578947368421
+      },
+      "livingroom": {
+        "selected_non_anchor_candidates": 1,
+        "generated_records": 76,
+        "all_record_rate": 0.013157894736842105,
+        "anchor_failure_eligible_records": 25,
+        "eligible_rate": 0.04
+      }
+    }
+  },
+  "hard_gate_diagnostics": {
+    "relation_loss_records_vs_floor_prior": 0,
+    "obb_pair_worse_records_vs_floor_prior": 0,
+    "obb_area_worse_records_vs_floor_prior": 0,
+    "frozen_v03_relation_delta_vs_floor_prior": 0.02364864864864865,
+    "frozen_protocol_run": true,
+    "third_round_local_gate": false
+  },
+  "movement_ratio_vs_floor_prior": 1.013932029763655,
+  "runtime_median_seconds": 0.005112650000228314,
+  "runtime_p95_seconds": 1.806762505002916,
+  "external_fcl_available": false,
+  "archived_warm_start_fcl_scenes": 222,
+  "selected_layout_cached_fcl_available": false,
+  "new_candidate_fcl_recomputation_available": false,
+  "human_audit_available": false,
+  "true_room_boundary_available": false,
+  "cpu_method_signal": false,
+  "cpu_solver_signal": false,
+  "cpu_pilot_go": false,
+  "method_upgrade_go": false,
+  "duration_seconds": 475.92674329999863,
+  "inputs": [
+    "results/floor_prior_remote\\bedroom_sgdiffusion_vq_objfeat_epoch_01999_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+    "results/floor_prior_remote\\diningroom_sgdiffusion_vq_objfeat_epoch_01239_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+    "results/floor_prior_remote\\livingroom_sgdiffusion_vq_objfeat_epoch_01459_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json"
+  ]
+}
