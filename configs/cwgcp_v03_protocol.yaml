@@ -393,6 +393,56 @@ third_round_development_amendment:
       If and only if a code or evaluator bug invalidates H, discard the affected
       output, fix that bug without changing the predeclared method, and rerun H
       once.
+  third_round_checkpoint:
+    status: "completed; successor rejected; development closed on seen data"
+    implementation_commit: "837272ebfe0555b3d92276ae4e73a70bdd9b33d1"
+    source_tree_sha256: "3a1d8938f093b0314e184cd8d78bd7429ac5229a92fe68f45dc91859af536bd5"
+    artifact: "results/cwgcp_dev/20260729_H_cone_ball_commit837272e_controls"
+    provenance:
+      relevant_tree_clean: true
+      frozen_input_manifest_matches: true
+      generated_records: 222
+      source_clusters: 209
+      target_relations: 296
+      bootstrap_samples: 20000
+    result:
+      fapsp_v031_accuracy: "202/296 (68.243%)"
+      floor_prior_accuracy: "195/296 (65.878%)"
+      frozen_fapsp_v03_accuracy: "202/296 (68.243%)"
+      generic_accuracy: "195/296 (65.878%)"
+      no_nudge_accuracy: "195/296 (65.878%)"
+      paired_delta_vs_floor_prior: "+2.365 percentage points"
+      paired_cluster_bootstrap_95_ci_vs_floor: "[+0.669, +4.531] percentage points"
+      paired_delta_vs_fapsp_v03: "0.000 percentage points"
+      paired_cluster_bootstrap_95_ci_vs_fapsp_v03: "[-1.003, +1.003] percentage points"
+      paired_delta_vs_generic: "+2.365 percentage points"
+      paired_cluster_bootstrap_95_ci_vs_generic: "[+0.671, +4.502] percentage points"
+      movement_ratio_vs_floor_prior: 1.0139
+      record_wins_losses_ties_vs_floor: "6/0/216"
+      record_wins_losses_ties_vs_fapsp_v03: "1/1/220"
+      per_record_obb_pair_worse_vs_floor: 0
+      per_record_obb_area_worse_vs_floor: 0
+      activation:
+        overall: "6/222 (2.703%)"
+        bedroom: "0/66 (0.000%)"
+        diningroom: "5/80 (6.250%)"
+        livingroom: "1/76 (1.316%)"
+      room_point_estimates_vs_floor:
+        bedroom: "0.000 percentage points"
+        diningroom: "+5.505 percentage points"
+        livingroom: "+1.136 percentage points"
+    failed_primary_gates:
+      - "No positive bedroom point estimate versus Floor-Prior."
+      - "No positive confidence-interval separation from the direct frozen v0.3 mechanism ablation."
+      - "Overall activation is 2.703%, below 10%."
+      - "Bedroom and livingroom activation are below 5%."
+    decision: >
+      Reject FA-PSP v0.3.1 as a successor. It changes which records are
+      repaired and reduces mean movement slightly, but it does not improve
+      pooled relation accuracy or activation over frozen v0.3. Retain
+      FA-PSP v0.3 as the preferred local exploratory candidate, close further
+      algorithm development on the existing seen data, and treat v0.3.1 as a
+      negative mechanism ablation.
 
 validation_go_gates:
   exploratory_promotion_signal:

@@ -97,3 +97,11 @@ AGRP 的 raw accuracy 更高，但它没有证明特定机制优于同构 generi
 最终论文主方法升级：**NO-GO**。
 
 只有 P0 四项全部通过后，才能把 `configs/paper_main.yaml` 中的默认主方法从 Collision-gated Floor-Prior 切换为 FA-PSP。
+
+## 7. v0.3.1 后续有界尝试
+
+预注册的 Cone-Ball Close Projection 已完成，详见
+`docs/fapsp_v031_final_bounded_result_20260729.md`。它在相同 222-record
+冻结协议上仍为 202/296，与 v0.3 完全持平；相对 v0.3 的 paired 95% CI
+为 `[-1.003,+1.003] pp`，activation 仍为 6/222。该 successor 未通过
+机制特异和 activation gates，因此不替换本文件冻结的 FA-PSP v0.3。

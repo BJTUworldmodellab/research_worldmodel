@@ -1,4 +1,4 @@
-version: "2026-07-28-b-track-v2"
+version: "2026-07-29-b-track-v3"
 status: "CCF-B submission-oriented provisional freeze"
 owner_track: "A-method-and-evaluation"
 
@@ -57,6 +57,18 @@ paper_scope:
       point estimates are positive, and no evaluated record worsens exact OBB
       pairs or overlap. Do not promote until a zero-overlap source cohort,
       remote FCL recomputation, and human-audited evaluator subset pass.
+    method_upgrade_status_2026_07_29_v06: >
+      The predeclared FA-PSP v0.3.1 Cone-Ball Close Projection successor is
+      rejected. On the frozen 222-record, 209-cluster development protocol it
+      remains at 202/296 relations (68.24%), exactly tied with FA-PSP v0.3;
+      the paired difference versus v0.3 is 0.00 pp with 95% cluster-bootstrap
+      CI [-1.00, +1.00] pp. Activation remains 6/222 (2.70%), with 0/66 in
+      bedroom, 5/80 in diningroom, and 1/76 in livingroom. Mean movement is
+      1.014x Floor-Prior and no record worsens exact OBB pairs or overlap, but
+      the mechanism-specific and activation gates fail. Keep FA-PSP v0.3 as
+      the preferred local exploratory candidate and keep Collision-gated
+      Floor-Prior as the paper default until the zero-overlap cohort, remote
+      FCL recomputation, and human evaluator audit pass.
     upgrade_rule: >
       Upgrade the paper main method only if the time-boxed pilot passes the
       predeclared independent-evaluator, movement-budget, and FCL safety gates.
