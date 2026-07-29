@@ -1,0 +1,195 @@
+{
+  "algorithm": "CW-GCP 0.2.1 CPU pilot",
+  "code_commit": "6c9b15a6dc80359d958799e50b736a99cd8b020b",
+  "source_tree": {
+    "sha256": "c3f4ed01990854a494fe308a5c41eb39fa6d4eb5f2c8eb55ba402b11cc49432d",
+    "files": [
+      "scripts/run_cwgcp_pilot.py",
+      "src/relation_schema.py",
+      "src/cwgcp/__init__.py",
+      "src/cwgcp/adapters.py",
+      "src/cwgcp/assignment.py",
+      "src/cwgcp/constraints.py",
+      "src/cwgcp/geometry.py",
+      "src/cwgcp/repairer.py",
+      "src/cwgcp/solver.py",
+      "src/cwgcp/types.py",
+      "src/independent_eval/__init__.py",
+      "src/independent_eval/cwgcp_layout_evaluator.py"
+    ],
+    "relevant_tree_clean": true
+  },
+  "evaluator": {
+    "version": "independent-layout-evaluator-v1",
+    "close_distance": 0.75
+  },
+  "scene_count": 531,
+  "unique_evaluation_uid_count": 531,
+  "unique_source_scene_uid_count": 500,
+  "rooms": [
+    "bedroom",
+    "diningroom",
+    "livingroom"
+  ],
+  "safety_mode": "obb_only",
+  "config": {
+    "close_distance": 0.75,
+    "far_distance": 1.6,
+    "relation_margin": 0.0,
+    "per_object_budget": 1.8,
+    "total_movement_budget": 3.6,
+    "max_edited_objects": 3,
+    "ambiguity_scale": 0.5,
+    "min_confidence": 0.05,
+    "max_slack": 1.0,
+    "relation_weight": 10.0,
+    "slack_weight": 4.0,
+    "collision_weight": 20.0,
+    "boundary_weight": 20.0,
+    "movement_weight": 1.0,
+    "edit_weight": 0.1,
+    "edit_threshold": 0.001,
+    "huber_delta": 0.25,
+    "restarts": 2,
+    "outer_iterations": 2,
+    "solver_max_iterations": 80,
+    "initial_trust_radius": 0.45,
+    "max_trust_radius": 1.8,
+    "min_trust_radius": 0.03,
+    "improvement_epsilon": 1e-06,
+    "relation_preservation_tolerance": 1e-06,
+    "collision_tolerance": 1e-07,
+    "boundary_tolerance": 1e-07,
+    "seed": 0
+  },
+  "methods": {
+    "baseline": {
+      "scene_count": 531,
+      "satisfied": 445,
+      "total": 708,
+      "accuracy": 0.6285310734463276,
+      "mean_obb_collision_pairs": 6.250470809792843,
+      "mean_obb_overlap_area": 1.1115211735268933,
+      "mean_total_movement": 0.0,
+      "mean_mesh_collision_pairs": 2.096045197740113
+    },
+    "floor_prior": {
+      "scene_count": 531,
+      "satisfied": 479,
+      "total": 708,
+      "accuracy": 0.6765536723163842,
+      "mean_obb_collision_pairs": 6.178907721280603,
+      "mean_obb_overlap_area": 1.0949592042973761,
+      "mean_total_movement": 0.09569516936653173,
+      "mean_mesh_collision_pairs": 2.0640301318267418
+    },
+    "random": {
+      "scene_count": 531,
+      "satisfied": 449,
+      "total": 708,
+      "accuracy": 0.634180790960452,
+      "mean_obb_collision_pairs": 6.171374764595104,
+      "mean_obb_overlap_area": 1.0973967071511606,
+      "mean_total_movement": 0.09569516936653173,
+      "mean_mesh_collision_pairs": null
+    },
+    "cwgcp": {
+      "scene_count": 531,
+      "satisfied": 475,
+      "total": 708,
+      "accuracy": 0.6709039548022598,
+      "mean_obb_collision_pairs": 6.188323917137477,
+      "mean_obb_overlap_area": 1.0942031005344806,
+      "mean_total_movement": 0.05518532412307636,
+      "mean_mesh_collision_pairs": null
+    },
+    "generic": {
+      "scene_count": 531,
+      "satisfied": 475,
+      "total": 708,
+      "accuracy": 0.6709039548022598,
+      "mean_obb_collision_pairs": 6.190207156308851,
+      "mean_obb_overlap_area": 1.0940872027908146,
+      "mean_total_movement": 0.053397109977387246,
+      "mean_mesh_collision_pairs": null
+    }
+  },
+  "paired_deltas": {
+    "cwgcp_minus_baseline": {
+      "mean": 0.0423728813559322,
+      "low": 0.02757549768698998,
+      "high": 0.05906607896323087,
+      "scene_count": 531,
+      "cluster_count": 500
+    },
+    "cwgcp_minus_floor_prior": {
+      "mean": -0.005649717514124353,
+      "low": -0.014144271570014078,
+      "high": 0.0014430014430014682,
+      "scene_count": 531,
+      "cluster_count": 500
+    },
+    "cwgcp_minus_random": {
+      "mean": 0.03672316384180785,
+      "low": 0.02265711676651815,
+      "high": 0.05167718166056636,
+      "scene_count": 531,
+      "cluster_count": 500
+    },
+    "cwgcp_minus_generic": {
+      "mean": 0.0,
+      "low": 0.0,
+      "high": 0.0,
+      "scene_count": 531,
+      "cluster_count": 500
+    }
+  },
+  "room_deltas_vs_floor_prior": {
+    "bedroom": {
+      "mean": -0.008230452674897193,
+      "low": -0.021097046413502185,
+      "high": 0.0,
+      "scene_count": 162,
+      "cluster_count": 162
+    },
+    "diningroom": {
+      "mean": -0.004237288135593209,
+      "low": -0.022737794612794588,
+      "high": 0.01304347826086949,
+      "scene_count": 177,
+      "cluster_count": 177
+    },
+    "livingroom": {
+      "mean": -0.004366812227074246,
+      "low": -0.014084507042253502,
+      "high": 0.0,
+      "scene_count": 192,
+      "cluster_count": 192
+    }
+  },
+  "accepted_scenes": 35,
+  "random_available_scenes": 531,
+  "selected_source_counts": {
+    "baseline_rollback": 496,
+    "solver": 9,
+    "warm_start": 26
+  },
+  "movement_ratio_vs_floor_prior": 0.5766782637868112,
+  "runtime_median_seconds": 0.00263759999506874,
+  "runtime_p95_seconds": 0.11770699999760836,
+  "external_fcl_available": false,
+  "archived_warm_start_fcl_scenes": 531,
+  "selected_layout_cached_fcl_available": false,
+  "new_candidate_fcl_recomputation_available": false,
+  "human_audit_available": false,
+  "true_room_boundary_available": false,
+  "cpu_solver_signal": false,
+  "cpu_pilot_go": false,
+  "method_upgrade_go": false,
+  "duration_seconds": 32.152028299999074,
+  "inputs": [
+    "results/floor_prior_remote\\bedroom_sgdiffusion_vq_objfeat_epoch_01999_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+    "results/floor_prior_remote\\diningroom_sgdiffusion_vq_objfeat_epoch_01239_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json",
+    "results/floor_prior_remote\\livingroom_sgdiffusion_vq_objfeat_epoch_01459_relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json"
+  ]
+}

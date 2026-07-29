@@ -1,23 +1,59 @@
-version: "2026-07-27-t05-freeze-v1"
-status: "T05 draft freeze for submission readiness"
+version: "2026-07-28-b-track-v2"
+status: "CCF-B submission-oriented provisional freeze"
 owner_track: "A-method-and-evaluation"
 
 paper_scope:
   project_name: "3D Indoor Scene Constraint Projection"
   target_venues:
     primary:
-      - "Eurographics / Computer Graphics Forum"
+      - "Eurographics 2027 Full Papers / Computer Graphics Forum (CCF-B)"
     backup:
-      - "3DV"
+      - "Pacific Graphics full or technical papers (CCF-B)"
+  submission_schedule:
+    abstract_deadline_utc: "2026-09-25T23:59:00Z"
+    full_paper_deadline_utc: "2026-10-01T23:59:00Z"
+    recommended_main_pages_excluding_references: 10
+    review: "double-blind, two-step"
+    template: "EGauthorGuidelines-conf-sub.tex from the EG2027 SRMv2 package"
   central_claim: >
     Without retraining the generator, Relation-Aware Constraint Projection can
     improve explicit spatial-relation satisfaction in generated 3D indoor
     layouts through bounded floor-plane edits and safety gating, while
     controlling movement, overlap, and collision side effects.
-  no_go_reason_until_p0_complete: >
-    Submission claims must not mix metrics from different method variants or
-    evaluators. T01-T04 must rerun from this frozen method configuration before
-    final paper numbers are used.
+  b_track_strategy:
+    default_main_method: "collision_gated_floor_prior"
+    method_upgrade_candidate: "CW-GCP"
+    method_upgrade_cutoff: "2026-08-01"
+    method_upgrade_status_2026_07_29: >
+      NO-GO after the 531-record local CPU/OBB pilot. CW-GCP v0.2.1 reaches
+      67.09% independent-code class-level relation accuracy versus 67.66% for
+      Collision-gated Floor-Prior; the paired delta is -0.56 pp with 95% CI
+      [-1.41, +0.14] pp under source-scene cluster bootstrap. The cached-FCL
+      selector is also worse (66.81% and
+      2.0829 mean mesh-collision pairs versus 67.66% and 2.0640). New solver
+      candidates cannot be re-evaluated with FCL locally. Keep
+      Collision-gated Floor-Prior as the paper main method.
+    upgrade_rule: >
+      Upgrade the paper main method only if the time-boxed pilot passes the
+      predeclared independent-evaluator, movement-budget, and FCL safety gates.
+      Otherwise retain Collision-gated Floor-Prior and use CW-GCP or the
+      generic optimizer as a control.
+    required_before_submission:
+      - "independent relation evaluator with a human-audited subset"
+      - "movement-matched random and generic-optimizer controls"
+      - "scene-level paired confidence intervals"
+      - "one frozen-commit rerun with automatically generated paper tables"
+      - "anonymous clean-environment artifact smoke test"
+    optional_if_claim_removed:
+      - "human visual-preference study"
+      - "full same-protocol ReSpace reproduction"
+      - "official SDGScenes reproduction"
+  no_go_reason_until_b_core_complete: >
+    Submission claims currently mix historical Direct Repair gating with
+    Collision-gated Floor-Prior in some derived documents, and the final
+    independent evaluator, movement-matched controls, paired statistics, and
+    frozen rerun are incomplete. These issues must be closed before final paper
+    numbers are used.
 
 frozen_method_variants:
   main_method:
