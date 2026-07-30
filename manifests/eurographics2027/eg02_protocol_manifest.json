@@ -4,17 +4,20 @@
   "evaluator_commit_hash": "PENDING_EG05_IMPLEMENTATION",
   "evaluator_independence": "must not import repair optimizer relation logic",
   "files": {
+    "annotations/eurographics2027/eg02_human_review_sample.csv": "0e29441850c10269d39d1fb062044a3dbe9b02f50e8fcfa094185d7020d1db66",
     "annotations/eurographics2027/eg02_relation_annotation_template.csv": "78692864210586e45ebf1076dafc1ecc3f2683b1908ca01036621aac7bc051c3",
-    "annotations/eurographics2027/eg02_sampling_plan.csv": "02c354fd93eca68653cbc23492496e98e1c774ea7ad6835529dff90bbf88e607",
+    "annotations/eurographics2027/eg02_sampling_plan.csv": "85bf089b5f0fcfd70e33d8ea5b651ac91f63a43eee6d1e05c0e07f0dcb5eff25",
     "docs/eurographics2027/eg02_human_review_protocol.md": "c4f85f5c3eb4ad5b7dd902017d0d964d7bd7b216627735d95f23dfd6e3f60a17",
-    "docs/eurographics2027/eg02_protocol_freeze_handoff_20260730.md": "6832351f1719b7ff9bedd401294cb920772092662f38e97769fc90b2d09bf555",
+    "docs/eurographics2027/eg02_protocol_freeze_handoff_20260730.md": "554ba7b45b2db808cab3637ba5ad7269db04d5fef1ec2b2b047ad18fe1654de6",
     "evaluation/independent_protocol.md": "d8cfcc76fef8ce64fb48e6bfdb7c829f60a9ba51a4e0f616431f614e34fa562b",
-    "scripts/check_eg02_protocol_files.py": "90c69ab1a3271b06b6b6267ff91ab7b67fb016853425428f2a8a3b7fdeeccdac",
+    "scripts/build_eg02_human_review_sample.py": "0110162f72252705d3d45c9303460185626546ffcfdea07f93cbdafda6bd44c9",
+    "scripts/check_eg02_protocol_files.py": "15ca1346484381368066bf4d57342d74dc0c68c87f26611b1395602344536a6d",
     "scripts/compute_eg02_kappa.py": "e72dfad535e7c19a7d75ec92debf3bf7e88935365bd7e95e6d2d1cd148e669ef",
+    "scripts/validate_eg02_human_review_sample.py": "7201d33dd2f01b6e257198b877c13a48e0848d5bf2f32c0a9447c8bfd29f8a64",
     "scripts/validate_eg02_sampling_plan.py": "4fc9b29090debc09955f22cb4d60f932a9fb886b397bd7b6cc944bec6c7e23c7",
-    "scripts/write_eg02_protocol_manifest.py": "ac737a821996acd8e7820ac1a1f61538786ec478342d0817fa9f87ecedcb7279"
+    "scripts/write_eg02_protocol_manifest.py": "da4ffa40f4c2e05d2b7618067d18917c89296bc9059468cd8d69b346d5e255a1"
   },
-  "generated_at_utc": "2026-07-30T09:09:48+00:00",
+  "generated_at_utc": "2026-07-30T09:19:26+00:00",
   "human_review_min_relations": 90,
   "human_review_rooms": [
     "bedroom",

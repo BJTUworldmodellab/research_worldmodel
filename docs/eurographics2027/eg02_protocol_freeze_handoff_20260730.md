@@ -16,9 +16,12 @@ evaluation/independent_protocol.md
 docs/eurographics2027/eg02_human_review_protocol.md
 annotations/eurographics2027/eg02_relation_annotation_template.csv
 annotations/eurographics2027/eg02_sampling_plan.csv
+annotations/eurographics2027/eg02_human_review_sample.csv
 docs/eurographics2027/eg02_protocol_freeze_handoff_20260730.md
+scripts/build_eg02_human_review_sample.py
 scripts/check_eg02_protocol_files.py
 scripts/compute_eg02_kappa.py
+scripts/validate_eg02_human_review_sample.py
 scripts/validate_eg02_sampling_plan.py
 scripts/write_eg02_protocol_manifest.py
 manifests/eurographics2027/eg02_protocol_manifest.json
@@ -34,6 +37,9 @@ manifests/eurographics2027/eg02_protocol_manifest.json
 5. The conditional metric over evaluated-only triples is diagnostic.
 6. Human review requires at least 90 relations: 30 per room.
 7. Cohen's kappa must be at least 0.70 before final automatic numbers are used.
+8. The frozen human sample excludes unmapped predicate id `8` and does not
+   include `far from`, because the current main Floor-Prior JSONs do not expose
+   data-supported `far from` target triples.
 
 ## Status Against EG-02 Acceptance Criteria
 
@@ -41,7 +47,7 @@ manifests/eurographics2027/eg02_protocol_manifest.json
 |---|---|---|
 | Independent evaluator must not import optimizer relation functions | Protocol frozen | `evaluation/independent_protocol.md` |
 | Relation definitions, matching, thresholds, conflicts, missing objects | Protocol frozen | `evaluation/independent_protocol.md` |
-| Human set at least 90 relations across three rooms | Sampling template created | `annotations/eurographics2027/eg02_sampling_plan.csv` |
+| Human set at least 90 relations across three rooms | Frozen sample created | `annotations/eurographics2027/eg02_human_review_sample.csv` |
 | Cohen's kappa threshold at least 0.70 | Protocol and checker frozen | `docs/eurographics2027/eg02_human_review_protocol.md`, `scripts/compute_eg02_kappa.py` |
 | Protocol version, data hash, evaluator commit hash frozen | Partial | protocol version and protocol-file hashes frozen; data/evaluator hash pending EG-05 implementation |
 

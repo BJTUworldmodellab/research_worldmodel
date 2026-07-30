@@ -15,9 +15,12 @@ FILES = [
     "docs/eurographics2027/eg02_human_review_protocol.md",
     "annotations/eurographics2027/eg02_relation_annotation_template.csv",
     "annotations/eurographics2027/eg02_sampling_plan.csv",
+    "annotations/eurographics2027/eg02_human_review_sample.csv",
     "docs/eurographics2027/eg02_protocol_freeze_handoff_20260730.md",
+    "scripts/build_eg02_human_review_sample.py",
     "scripts/check_eg02_protocol_files.py",
     "scripts/compute_eg02_kappa.py",
+    "scripts/validate_eg02_human_review_sample.py",
     "scripts/validate_eg02_sampling_plan.py",
     "scripts/write_eg02_protocol_manifest.py",
 ]

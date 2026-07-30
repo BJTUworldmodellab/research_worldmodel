@@ -30,6 +30,11 @@ REQUIRED = {
         "livingroom,30",
         "diningroom,30",
     ],
+    "annotations/eurographics2027/eg02_human_review_sample.csv": [
+        "annotation_id,scene_id,room_type",
+        "collision_gated_floor_prior",
+        "source_text",
+    ],
     "docs/eurographics2027/eg02_protocol_freeze_handoff_20260730.md": [
         "EG-02 should remain `IN PROGRESS`",
         "Hand-off to EG-05",
@@ -45,6 +50,14 @@ REQUIRED = {
     "scripts/write_eg02_protocol_manifest.py": [
         "eg2027-eg02-v1",
         "PENDING_EG05_IMPLEMENTATION",
+    ],
+    "scripts/build_eg02_human_review_sample.py": [
+        "eg02_human_review_sample.csv",
+        "ROOM_FILES",
+    ],
+    "scripts/validate_eg02_human_review_sample.py": [
+        "EG-02 HUMAN SAMPLE: PASS",
+        "EXPECTED_ROOMS",
     ],
     "manifests/eurographics2027/eg02_protocol_manifest.json": [
         "eg2027-eg02-v1",
