@@ -34,6 +34,23 @@ REQUIRED = {
         "EG-02 should remain `IN PROGRESS`",
         "Hand-off to EG-05",
     ],
+    "scripts/compute_eg02_kappa.py": [
+        "cohens_kappa",
+        "threshold",
+    ],
+    "scripts/validate_eg02_sampling_plan.py": [
+        "min-per-room",
+        "EG-02 SAMPLING PLAN: PASS",
+    ],
+    "scripts/write_eg02_protocol_manifest.py": [
+        "eg2027-eg02-v1",
+        "PENDING_EG05_IMPLEMENTATION",
+    ],
+    "manifests/eurographics2027/eg02_protocol_manifest.json": [
+        "eg2027-eg02-v1",
+        "cohens_kappa_min",
+        "PENDING_EG05_ACTUAL_SAMPLE_EXPORT",
+    ],
 }
 
 

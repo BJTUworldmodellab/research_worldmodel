@@ -1,0 +1,27 @@
+{
+  "cohens_kappa_min": 0.7,
+  "data_hash": "PENDING_EG05_ACTUAL_SAMPLE_EXPORT",
+  "evaluator_commit_hash": "PENDING_EG05_IMPLEMENTATION",
+  "evaluator_independence": "must not import repair optimizer relation logic",
+  "files": {
+    "annotations/eurographics2027/eg02_relation_annotation_template.csv": "78692864210586e45ebf1076dafc1ecc3f2683b1908ca01036621aac7bc051c3",
+    "annotations/eurographics2027/eg02_sampling_plan.csv": "02c354fd93eca68653cbc23492496e98e1c774ea7ad6835529dff90bbf88e607",
+    "docs/eurographics2027/eg02_human_review_protocol.md": "c4f85f5c3eb4ad5b7dd902017d0d964d7bd7b216627735d95f23dfd6e3f60a17",
+    "docs/eurographics2027/eg02_protocol_freeze_handoff_20260730.md": "6832351f1719b7ff9bedd401294cb920772092662f38e97769fc90b2d09bf555",
+    "evaluation/independent_protocol.md": "d8cfcc76fef8ce64fb48e6bfdb7c829f60a9ba51a4e0f616431f614e34fa562b",
+    "scripts/check_eg02_protocol_files.py": "90c69ab1a3271b06b6b6267ff91ab7b67fb016853425428f2a8a3b7fdeeccdac",
+    "scripts/compute_eg02_kappa.py": "e72dfad535e7c19a7d75ec92debf3bf7e88935365bd7e95e6d2d1cd148e669ef",
+    "scripts/validate_eg02_sampling_plan.py": "4fc9b29090debc09955f22cb4d60f932a9fb886b397bd7b6cc944bec6c7e23c7",
+    "scripts/write_eg02_protocol_manifest.py": "ac737a821996acd8e7820ac1a1f61538786ec478342d0817fa9f87ecedcb7279"
+  },
+  "generated_at_utc": "2026-07-30T09:09:48+00:00",
+  "human_review_min_relations": 90,
+  "human_review_rooms": [
+    "bedroom",
+    "livingroom",
+    "diningroom"
+  ],
+  "protocol": "EG-02 independent relation evaluation protocol",
+  "status": "IN PROGRESS",
+  "version": "eg2027-eg02-v1"
+}

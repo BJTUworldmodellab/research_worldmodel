@@ -18,6 +18,10 @@ annotations/eurographics2027/eg02_relation_annotation_template.csv
 annotations/eurographics2027/eg02_sampling_plan.csv
 docs/eurographics2027/eg02_protocol_freeze_handoff_20260730.md
 scripts/check_eg02_protocol_files.py
+scripts/compute_eg02_kappa.py
+scripts/validate_eg02_sampling_plan.py
+scripts/write_eg02_protocol_manifest.py
+manifests/eurographics2027/eg02_protocol_manifest.json
 ```
 
 ## Frozen EG-02 Decisions
@@ -38,8 +42,8 @@ scripts/check_eg02_protocol_files.py
 | Independent evaluator must not import optimizer relation functions | Protocol frozen | `evaluation/independent_protocol.md` |
 | Relation definitions, matching, thresholds, conflicts, missing objects | Protocol frozen | `evaluation/independent_protocol.md` |
 | Human set at least 90 relations across three rooms | Sampling template created | `annotations/eurographics2027/eg02_sampling_plan.csv` |
-| Cohen's kappa threshold at least 0.70 | Protocol frozen | `docs/eurographics2027/eg02_human_review_protocol.md` |
-| Protocol version, data hash, evaluator commit hash frozen | Partial | protocol version frozen; data/evaluator hash pending EG-05 implementation |
+| Cohen's kappa threshold at least 0.70 | Protocol and checker frozen | `docs/eurographics2027/eg02_human_review_protocol.md`, `scripts/compute_eg02_kappa.py` |
+| Protocol version, data hash, evaluator commit hash frozen | Partial | protocol version and protocol-file hashes frozen; data/evaluator hash pending EG-05 implementation |
 
 EG-02 should remain `IN PROGRESS` until A and D review the protocol and the
 actual sampled relation rows are filled.
@@ -58,4 +62,3 @@ audit.json
 
 Do not tune relation thresholds after seeing final method results. Any change
 requires a new protocol version and rerun.
-
