@@ -70,6 +70,15 @@ docs/eurographics2027/eg02_human_review_v2_result_20260802.md
 results/eurographics2027/eg02_human_review_v2/summary.json
 ```
 
+2026-08-02 adjudication update: the 25 v2 disagreement rows were adjudicated,
+producing a complete final human label set. This is usable as adjudicated human
+review, but it does not retroactively pass the independent kappa gate. See:
+
+```text
+docs/eurographics2027/eg02_adjudicated_final_result_20260802.md
+results/eurographics2027/eg02_human_review_v2_final/summary.json
+```
+
 ## Hand-off to EG-05
 
 EG-05 implementers should build the independent evaluator to this protocol.
