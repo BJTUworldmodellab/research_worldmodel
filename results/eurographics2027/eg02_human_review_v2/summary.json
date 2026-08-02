@@ -1,0 +1,52 @@
+{
+  "all_label_expected_agreement": 0.43679,
+  "all_label_kappa": 0.506795,
+  "all_label_observed_agreement": 0.722222,
+  "binary_expected_agreement": 0.557528,
+  "binary_kappa": 0.304606,
+  "binary_n_relations": 78,
+  "binary_observed_agreement": 0.692308,
+  "coord_rule_agreement_a": {
+    "agreement": 0.871795,
+    "n": 78
+  },
+  "coord_rule_agreement_d": {
+    "agreement": 0.746835,
+    "n": 79
+  },
+  "disagreement_count": 25,
+  "label_counts_a": {
+    "not_judgable": 12,
+    "not_satisfied": 14,
+    "satisfied": 64
+  },
+  "label_counts_d": {
+    "not_judgable": 11,
+    "not_satisfied": 33,
+    "satisfied": 46
+  },
+  "n_relations": 90,
+  "room_stats": {
+    "bedroom": {
+      "agreement": 0.733333,
+      "binary_agreement": 0.740741,
+      "binary_total": 27,
+      "total": 30
+    },
+    "diningroom": {
+      "agreement": 0.633333,
+      "binary_agreement": 0.56,
+      "binary_total": 25,
+      "total": 30
+    },
+    "livingroom": {
+      "agreement": 0.8,
+      "binary_agreement": 0.769231,
+      "binary_total": 26,
+      "total": 30
+    }
+  },
+  "status": "FAIL_KAPPA_GATE",
+  "task": "EG-02 human review v2",
+  "threshold": 0.7
+}

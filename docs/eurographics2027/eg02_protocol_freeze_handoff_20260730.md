@@ -62,6 +62,14 @@ docs/eurographics2027/eg02_human_review_result_20260802.md
 results/eurographics2027/eg02_human_review/summary.json
 ```
 
+2026-08-02 v2 update: the real-mesh annotation v2 review improved agreement
+but still failed the kappa gate. See:
+
+```text
+docs/eurographics2027/eg02_human_review_v2_result_20260802.md
+results/eurographics2027/eg02_human_review_v2/summary.json
+```
+
 ## Hand-off to EG-05
 
 EG-05 implementers should build the independent evaluator to this protocol.
