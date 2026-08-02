@@ -1,0 +1,6 @@
+metric,value
+repair_auto_accuracy,0.848101
+baseline_auto_accuracy,0.721519
+coord_rule_accuracy,0.822785
+binary_evaluable_relations,79
+not_judgable_relations,11

@@ -79,6 +79,15 @@ docs/eurographics2027/eg02_adjudicated_final_result_20260802.md
 results/eurographics2027/eg02_human_review_v2_final/summary.json
 ```
 
+2026-08-02 alignment update: the automatic repair relation label agrees with
+the adjudicated final human label on 84.8% of binary-evaluable sampled
+relations. See:
+
+```text
+docs/eurographics2027/eg02_auto_human_alignment_20260802.md
+results/eurographics2027/eg02_auto_human_alignment/summary.json
+```
+
 ## Hand-off to EG-05
 
 EG-05 implementers should build the independent evaluator to this protocol.

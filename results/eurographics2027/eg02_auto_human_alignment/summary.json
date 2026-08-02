@@ -1,0 +1,46 @@
+{
+  "baseline_auto_vs_human": {
+    "accuracy": 0.721519,
+    "fn": 19,
+    "fp": 3,
+    "n": 79,
+    "precision_satisfied": 0.931818,
+    "recall_satisfied": 0.683333,
+    "specificity_not_satisfied": 0.842105,
+    "tn": 16,
+    "tp": 41
+  },
+  "binary_evaluable_relations": 79,
+  "coord_disagreement_count": 14,
+  "coord_rule_vs_human": {
+    "accuracy": 0.822785,
+    "fn": 8,
+    "fp": 6,
+    "n": 79,
+    "precision_satisfied": 0.896552,
+    "recall_satisfied": 0.866667,
+    "specificity_not_satisfied": 0.684211,
+    "tn": 13,
+    "tp": 52
+  },
+  "label_counts": {
+    "not_judgable": 11,
+    "not_satisfied": 19,
+    "satisfied": 60
+  },
+  "n_relations": 90,
+  "not_judgable_relations": 11,
+  "repair_auto_vs_human": {
+    "accuracy": 0.848101,
+    "fn": 3,
+    "fp": 9,
+    "n": 79,
+    "precision_satisfied": 0.863636,
+    "recall_satisfied": 0.95,
+    "specificity_not_satisfied": 0.526316,
+    "tn": 10,
+    "tp": 57
+  },
+  "repair_disagreement_count": 12,
+  "task": "EG-02 automatic vs adjudicated human alignment"
+}
