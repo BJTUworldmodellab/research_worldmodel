@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eurographics 2027 EG01 / EG02 Team Report</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d9dee7;
+      --blue: #1d4ed8;
+      --green: #0f766e;
+      --amber: #b45309;
+      --red: #b42318;
+      --soft-blue: #e8f0ff;
+      --soft-green: #e7f6f2;
+      --soft-amber: #fff3df;
+      --soft-red: #fee7e5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    header {
+      background: #111827;
+      color: #fff;
+      padding: 34px 42px 30px;
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+    header p { margin: 0; color: #cbd5e1; }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 26px 54px;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 18px 0;
+    }
+    h2 {
+      margin: 0 0 16px;
+      font-size: 22px;
+    }
+    h3 {
+      margin: 22px 0 10px;
+      font-size: 17px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fff;
+    }
+    .card strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
+    .muted { color: var(--muted); }
+    .tag {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .ok { background: var(--soft-green); color: var(--green); }
+    .warn { background: var(--soft-amber); color: var(--amber); }
+    .bad { background: var(--soft-red); color: var(--red); }
+    .info { background: var(--soft-blue); color: var(--blue); }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 12px 0 4px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f1f4f8; }
+    code {
+      background: #eef2f7;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+    .callout {
+      border-left: 4px solid var(--amber);
+      background: var(--soft-amber);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .callout.red {
+      border-left-color: var(--red);
+      background: var(--soft-red);
+    }
+    .callout.green {
+      border-left-color: var(--green);
+      background: var(--soft-green);
+    }
+    ul { margin-top: 8px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 18px;
+    }
+    @media (max-width: 860px) {
+      header { padding: 26px 22px; }
+      main { padding: 18px 14px 36px; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 18px; }
+      table { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Eurographics 2027: EG01 / EG02 成员同步报告</h1>
+    <p>生成日期：2026-08-02 · 分支：agent/eg01-eg02-eurographics2027 · 最新提交：80d71ee</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>一页结论</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="tag ok">EG01 可交付</span>
+          <strong>主结果身份已冻结</strong>
+          <span class="muted">主方法是 Collision-gated Floor-Prior，不要再混用 Direct Repair 旧数字。</span>
+        </div>
+        <div class="card">
+          <span class="tag warn">EG02 谨慎可用</span>
+          <strong>84.8%</strong>
+          <span class="muted">自动 repair 标签与最终人工标签在 79 条可判断关系上的一致率。</span>
+        </div>
+        <div class="card">
+          <span class="tag bad">不要误写</span>
+          <strong>kappa 未通过</strong>
+          <span class="muted">不能说独立 A/D 标注达到 kappa ≥ 0.70。</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>EG01：主结果身份冻结</h2>
+      <p>
+        EG01 的目的，是防止论文把多个相似实验变体混在一起。Eurographics 2027 当前主方法应写为：
+      </p>
+      <p><code>Collision-gated Floor-Prior</code>，配置为 <code>floor_prior_max1.8_mesh_p2_close0.75_far1.6</code>。</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>房间</th>
+            <th>Gated relation accuracy</th>
+            <th>相对 baseline 增益</th>
+            <th>Gated mesh pair collision</th>
+            <th>Fallback scenes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bedroom</td><td>81.63%</td><td>+7.76 pp</td><td>0.068293</td><td>6</td></tr>
+          <tr><td>Living room</td><td>63.95%</td><td>+8.84 pp</td><td>0.030959</td><td>14</td></tr>
+          <tr><td>Dining room</td><td>67.29%</td><td>+7.81 pp</td><td>0.033615</td><td>15</td></tr>
+          <tr><td><strong>Weighted summary</strong></td><td><strong>70.4%</strong></td><td><strong>+8.2 pp</strong></td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout red">
+        <strong>禁止误用：</strong>
+        <code>0.8449 / 0.6871 / 0.7212</code> 和
+        <code>10.2, 14.3, 13.4</code> 不是当前 EG2027 主方法的数字。
+        它们属于旧的 Direct Repair / aggressive ablation 语境。
+      </div>
+
+      <h3>EG01 相关文件</h3>
+      <ul>
+        <li><code>manifests/eurographics2027/eg01_main_method_manifest.json</code></li>
+        <li><code>docs/eurographics2027/eg01_result_identity_closure_20260730.md</code></li>
+        <li><code>docs/eurographics2027/claim_to_table_map_eg2027.md</code></li>
+        <li><code>scripts/check_eg01_result_identity.py</code></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>EG02：人工复核与自动指标对齐</h2>
+      <p>
+        EG02 原目标是用人工复核验证自动空间关系指标是否可信。过程经历了 SVG 俯视图、真实 mesh 图、v2 坐标规则表、A/D 标注和 25 条分歧裁决。
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>阶段</th>
+            <th>状态</th>
+            <th>结论</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>90 条样本</td>
+            <td><span class="tag ok">完成</span></td>
+            <td>Bedroom / Living room / Dining room 各 30 条。</td>
+          </tr>
+          <tr>
+            <td>A/D 独立标注</td>
+            <td><span class="tag bad">未过门槛</span></td>
+            <td>v2 all-label kappa = 0.5068，低于 0.70。</td>
+          </tr>
+          <tr>
+            <td>分歧裁决</td>
+            <td><span class="tag ok">完成</span></td>
+            <td>25 条分歧已裁决，生成最终人工标签集。</td>
+          </tr>
+          <tr>
+            <td>自动-人工对齐</td>
+            <td><span class="tag ok">完成</span></td>
+            <td>repair 自动标签与最终人工标签一致率 84.8%。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>最终人工标签集</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>指标</th>
+            <th>数值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>总关系数</td><td>90</td></tr>
+          <tr><td>A/D 原本一致</td><td>65</td></tr>
+          <tr><td>人工复核裁决</td><td>25</td></tr>
+          <tr><td>final satisfied</td><td>60</td></tr>
+          <tr><td>final not_satisfied</td><td>19</td></tr>
+          <tr><td>final not_judgable</td><td>11</td></tr>
+          <tr><td>binary evaluable relations</td><td>79</td></tr>
+        </tbody>
+      </table>
+
+      <h3>自动指标与最终人工标签对齐</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>对齐对象</th>
+            <th>Accuracy</th>
+            <th>备注</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Repair automatic label vs final human</td><td><strong>0.8481</strong></td><td>论文可谨慎使用。</td></tr>
+          <tr><td>Baseline automatic label vs final human</td><td>0.7215</td><td>作为对照。</td></tr>
+          <tr><td>Coordinate rule vs final human</td><td>0.8228</td><td>说明 v2 坐标规则总体合理。</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout green">
+        <strong>推荐论文表述：</strong>
+        On the adjudicated EG-02 human subset, the automatic repair relation label matches final human judgment on 84.8% of binary-evaluable relations.
+      </div>
+
+      <div class="callout red">
+        <strong>禁止论文表述：</strong>
+        Independent annotator agreement passed kappa ≥ 0.70.
+        这个说法不成立，因为 A/D 独立一致性没有过线。
+      </div>
+    </section>
+
+    <section>
+      <h2>成员需要知道什么</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>成员/角色</th>
+            <th>需要做什么</th>
+            <th>注意事项</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A / 主写作</td>
+            <td>论文主结果使用 EG01 的 Collision-gated Floor-Prior 数字；EG02 写成 adjudicated diagnostic human review。</td>
+            <td>不要写 kappa 通过。</td>
+          </tr>
+          <tr>
+            <td>B / 表格与附录</td>
+            <td>检查主表、claim map、附录是否仍残留旧 Direct Repair 数字。</td>
+            <td>重点搜 <code>0.8449</code>、<code>0.6871</code>、<code>0.7212</code>、<code>10.2</code>、<code>14.3</code>、<code>13.4</code>。</td>
+          </tr>
+          <tr>
+            <td>C / 实验记录</td>
+            <td>保留 EG02 final labels 和 auto-human alignment 结果；后续 EG05/EG07 复跑时不要覆盖。</td>
+            <td>如果改 evaluator，需要重新跑 EG02 alignment。</td>
+          </tr>
+          <tr>
+            <td>D / 人工复核</td>
+            <td>当前标注和裁决已完成；如后续重做，应使用真实 mesh v2 包和坐标规则。</td>
+            <td>图片不用于判断屏幕左右，前后左右以 v2 坐标规则为准。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>文件索引</h2>
+      <ul>
+        <li><code>docs/eurographics2027/eg01_result_identity_closure_20260730.md</code></li>
+        <li><code>docs/eurographics2027/eg02_adjudicated_final_result_20260802.md</code></li>
+        <li><code>docs/eurographics2027/eg02_auto_human_alignment_20260802.md</code></li>
+        <li><code>results/eurographics2027/eg02_human_review_v2_final/final_labels.csv</code></li>
+        <li><code>results/eurographics2027/eg02_auto_human_alignment/summary.json</code></li>
+        <li><code>results/eurographics2027/eg02_auto_human_alignment/repair_auto_disagreements.csv</code></li>
+      </ul>
+    </section>
+
+    <footer>
+      本报告用于团队同步 EG01/EG02 当前状态。它不是论文正文，论文中应使用更正式、谨慎的表述。
+    </footer>
+  </main>
+</body>
+</html>
