@@ -1,7 +1,7 @@
 # EG-02 Protocol Freeze Handoff
 
 Date: 2026-07-30  
-Status: IN PROGRESS  
+Status: IN PROGRESS; A/D review failed kappa gate on 2026-08-02
 Branch target: `agent/eg01-eg02-eurographics2027`
 
 ## What EG-02 Adds
@@ -53,6 +53,14 @@ manifests/eurographics2027/eg02_protocol_manifest.json
 
 EG-02 should remain `IN PROGRESS` until A and D review the protocol and the
 actual sampled relation rows are filled.
+
+2026-08-02 update: A/D labeled the 90-row sample, but agreement did not pass
+the frozen kappa gate. See:
+
+```text
+docs/eurographics2027/eg02_human_review_result_20260802.md
+results/eurographics2027/eg02_human_review/summary.json
+```
 
 ## Hand-off to EG-05
 
