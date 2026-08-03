@@ -1,6 +1,6 @@
 version: "2026-07-30-eg01-v1"
 track: "Eurographics 2027"
-status: "EG-01 result identity freeze draft"
+status: "EG-01 result identity frozen; final submission gates pending"
 
 main_method:
   id: "collision_gated_floor_prior"

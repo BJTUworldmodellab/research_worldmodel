@@ -44,7 +44,7 @@ This paper studies this failure mode in InstructScene~\citep{lin2024instructscen
 
 We propose \method, a plug-in final-layout relation grounding module. Given a generated layout and its source instruction, the module extracts explicit spatial relation triples, matches the triples to generated object categories, verifies whether the floor-plane geometry satisfies them, and repairs object translations when a relation is violated. The final design repairs only the horizontal floor plane, preserving the vertical coordinate of every object. This detail matters in practice: early 3D repair variants can improve relation metrics while producing visually implausible scenes with floating furniture. Our \fp{} variant selects among bounded candidate repairs using relation satisfaction and overlap-aware scoring, and a collision-gated verifier can fall back to the baseline layout whenever mesh collision increases.
 
-Our experiments use the original InstructScene bedroom, living-room, and dining-room validation splits. The main \fp{} repair improves realized relation accuracy from 0.739 to 0.841 in bedrooms, 0.551 to 0.694 in living rooms, and 0.595 to 0.729 in dining rooms. Across three seeds, relation gains remain positive for all room types. After collision gating, mean relation gains remain +0.080, +0.070, and +0.087 for bedrooms, living rooms, and dining rooms, respectively, while mean mesh-collision pair deltas become negative. Real 3D-FUTURE mesh render diagnostics show selected \fp{} examples improve relation counts without increasing mesh pairs and with high before/after structural similarity.
+Our experiments use the original InstructScene bedroom, living-room, and dining-room validation splits. The paper-facing collision-gated \fp{} repair improves realized relation accuracy from 0.739 to 0.816 in bedrooms, 0.551 to 0.639 in living rooms, and 0.595 to 0.673 in dining rooms, corresponding to gains of 7.8, 8.8, and 7.8 absolute points. Across three seeds, collision-gated relation gains remain positive for all room types, while mean mesh-collision pair deltas become negative. Real 3D-FUTURE mesh render diagnostics show selected \fp{} examples improve relation counts without increasing mesh pairs and with high before/after structural similarity.
 
 Our contribution is not a claim of first relation-aware 3D scene generation, nor a claim that a post-generation layer replaces stronger full generators. Strong related systems use scene graphs, semantic dependency graphs, language models, and optimization to reason about spatial constraints~\citep{feng2023layoutgpt,yang2024holodeck,zhai2023commonscenes,bucher2026respace,gao2026sdgscenes}. Instead, this paper makes a narrower and reproducible claim:
 \begin{itemize}[leftmargin=1.5em]
@@ -160,14 +160,34 @@ For mesh-aware evaluation, we load the retrieved 3D-FUTURE meshes and compute FC
 
 We evaluate on the existing InstructScene validation splits for bedrooms, living rooms, and dining rooms. We use the official pretrained SG diffusion VQ object-feature checkpoints: bedroom epoch 1999, living-room epoch 1459, and dining-room epoch 1239. We do not create a new benchmark or add new annotations. Metrics include realized relation accuracy, average repair movement in the floor plane, mesh collision pair rate, collision-gated relation accuracy, and height-change diagnostics. For visual diagnostics, we render real 3D-FUTURE meshes for selected examples and compute CLIP text-image similarity deltas and structural similarity (SSIM) between before/after renders.
 
-\subsection{Main Results}
+\subsection{Main Collision-Gated Results}
 
-Table~\ref{tab:main} compares the original InstructScene layout with \fp{} repair. The main repair improves relation realization in all three room categories, with gains from 10.2 to 14.3 absolute points. The non-gated mesh pair delta is small but positive, so mesh-improvement claims should use the gated results in Table~\ref{tab:gated}.
+Table~\ref{tab:main} reports the paper-facing collision-gated \fp{} method. The gate falls back to the baseline layout whenever repair would increase mesh collision. Gated relation gains remain positive in every room, and gated mesh pair rates remain below the baseline.
 
 \begin{table}[t]
 \centering
-\caption{Main \fp{} relation results. Accuracy is exact realized selected-relation accuracy. Movement is the average floor-plane movement for repaired pairs.}
+\caption{Main collision-gated \fp{} results. The gate keeps repaired layouts only when FCL mesh collision pairs do not increase.}
 \label{tab:main}
+\small
+\begin{tabular}{lccccccc}
+\toprule
+Room & Base & Repair & Gated & Gated gain & Base mesh & Gated mesh & Fallback \\
+\midrule
+Bedroom & 0.7388 & 0.8408 & 0.8163 & +0.0776 & 0.0702 & 0.0683 & 6 \\
+Dining room & 0.5948 & 0.7286 & 0.6729 & +0.0781 & 0.0342 & 0.0336 & 15 \\
+Living room & 0.5510 & 0.6939 & 0.6395 & +0.0884 & 0.0313 & 0.0310 & 14 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Ungated Floor-Prior Ablation}
+
+Table~\ref{tab:ungated} reports the ungated \fp{} ablation. It produces larger relation gains of 10.2--14.3 absolute points, but its mesh pair deltas are positive. These values characterize the effect of ungated repair and are not the Eurographics main result.
+
+\begin{table}[t]
+\centering
+\caption{Ungated \fp{} ablation. Accuracy is exact realized selected-relation accuracy. Movement is the average floor-plane movement for repaired pairs.}
+\label{tab:ungated}
 \begin{tabular}{lccccc}
 \toprule
 Room & Baseline & \fp{} & Gain & Move & Mesh $\Delta$ \\
@@ -198,29 +218,9 @@ Living room & 0.5510 & 0.7483 & +0.1973 & 2.2834 & +0.0004 \\
 \end{tabular}
 \end{table}
 
-\subsection{Collision-Gated Results}
-
-Table~\ref{tab:gated} reports the conservative collision-gated \fp{} variant. The gate reduces relation gains relative to ungated repair because it falls back on scenes where mesh collision would increase. Nevertheless, gated relation gains remain positive in every room, and gated mesh pair rates fall below baseline. This is the safest variant for mesh-validity claims.
-
-\begin{table}[t]
-\centering
-\caption{Collision-gated \fp{} results. The gate keeps repaired layouts only when FCL mesh collision pairs do not increase.}
-\label{tab:gated}
-\small
-\begin{tabular}{lccccccc}
-\toprule
-Room & Base & Repair & Gated & Gated gain & Base mesh & Gated mesh & Fallback \\
-\midrule
-Bedroom & 0.7388 & 0.8408 & 0.8163 & +0.0776 & 0.0702 & 0.0683 & 6 \\
-Dining room & 0.5948 & 0.7286 & 0.6729 & +0.0781 & 0.0342 & 0.0336 & 15 \\
-Living room & 0.5510 & 0.6939 & 0.6395 & +0.0884 & 0.0313 & 0.0310 & 14 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 \subsection{Multi-Seed Stability}
 
-Table~\ref{tab:multiseed} summarizes three-seed results for the main \fp{} configuration. Ungated relation gains are stable and positive across all rooms. After collision gating, relation gains remain positive, and the mean mesh delta is negative for every room.
+Table~\ref{tab:multiseed} summarizes three-seed results for the frozen \fp{} configuration. Ungated relation gains are stable and positive across all rooms. After collision gating, relation gains remain positive, and the mean mesh delta is negative for every room.
 
 \begin{table}[t]
 \centering
@@ -292,7 +292,7 @@ The current method targets explicit spatial relations. It does not handle all im
 
 \section{Conclusion}
 
-We presented \method, a training-free verifier-repair layer for instruction-guided 3D indoor scene generation. The method addresses a graph-to-layout grounding gap in InstructScene by parsing explicit spatial relations, verifying final layout geometry, and applying bounded floor-plane repairs that preserve object heights. On existing InstructScene validation splits, \fp{} repair consistently improves realized relation accuracy, while collision-gated variants retain positive gains and control FCL mesh collision. These results make relation-consistency repair a practical and reproducible direction for improving pretrained 3D scene generators.
+We presented \method, a training-free verifier-repair layer for instruction-guided 3D indoor scene generation. The method addresses a graph-to-layout grounding gap in InstructScene by parsing explicit spatial relations, verifying final layout geometry, and applying bounded floor-plane repairs that preserve object heights. On existing InstructScene validation splits, the paper-facing collision-gated \fp{} repair retains positive relation gains while controlling FCL mesh collision; ungated Floor-Prior and Direct Repair remain internal ablations. These results make relation-consistency repair a practical and reproducible direction for improving pretrained 3D scene generators.
 
 \section*{Reproducibility Notes}
 
