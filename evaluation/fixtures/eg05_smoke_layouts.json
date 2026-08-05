@@ -1,0 +1,47 @@
+{
+  "run_id": "eg05_smoke_fixture",
+  "layouts": [
+    {
+      "scene_id": "eg05_bedroom_001",
+      "room_type": "bedroom",
+      "layout_variant": "baseline",
+      "source_config_id": "eg05_smoke",
+      "objects": [
+        {"index": 0, "category": "bed", "center": [0.0, 0.0, 0.0], "size": [2.0, 1.0, 2.0], "yaw": 0.0},
+        {"index": 1, "category": "night stand", "center": [0.35, 0.0, 0.0], "size": [0.5, 0.5, 0.5], "yaw": 0.0},
+        {"index": 2, "category": "nightstand", "center": [4.0, 0.0, 0.0], "size": [0.5, 0.5, 0.5], "yaw": 0.0}
+      ],
+      "target_relations": [
+        {"relation_id": "r1", "subject_class": "nightstand", "predicate": "right", "object_class": "bed"},
+        {"relation_id": "r2", "subject_class": "lamp", "predicate": "near", "object_class": "bed"}
+      ]
+    },
+    {
+      "scene_id": "eg05_bedroom_001",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {"index": 0, "category": "bed", "center": [0.0, 0.0, 0.0], "size": [2.0, 1.0, 2.0], "yaw": 0.0},
+        {"index": 1, "category": "night stand", "center": [0.45, 0.0, 0.0], "size": [0.5, 0.5, 0.5], "yaw": 0.0},
+        {"index": 2, "category": "nightstand", "center": [-4.0, 0.0, 0.0], "size": [0.5, 0.5, 0.5], "yaw": 0.0}
+      ],
+      "target_relations": []
+    },
+    {
+      "scene_id": "eg05_livingroom_001",
+      "room_type": "livingroom",
+      "layout_variant": "baseline",
+      "source_config_id": "eg05_smoke",
+      "objects": [
+        {"index": 0, "category": "sofa", "center": [0.0, 0.0, 0.0], "size": [2.0, 1.0, 0.8], "yaw": 1.57},
+        {"index": 1, "category": "coffee table", "center": [0.04, 0.0, 0.0], "size": [1.0, 0.4, 0.6], "yaw": 0.5}
+      ],
+      "target_relations": [
+        {"relation_id": "r3", "subject_class": "sofa", "predicate": "left", "object_class": "coffee table"},
+        {"relation_id": "r4", "subject_class": "sofa", "predicate": "right", "object_class": "coffee table"},
+        {"relation_id": "r5", "subject_class": "sofa", "predicate": "touching", "object_class": "coffee table"}
+      ]
+    }
+  ]
+}

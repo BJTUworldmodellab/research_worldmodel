@@ -1,0 +1,59 @@
+{
+  "manifest_version": "2026-08-05-eg05-v1",
+  "task": "EG-05 implement and validate independent evaluator",
+  "status": "implementation_smoke_passed_human_subset_pending",
+  "repository": "BJTUworldmodellab/research_worldmodel",
+  "branch": "agent/eg01-eg02-eurographics2027",
+  "depends_on": {
+    "eg02_protocol": "evaluation/independent_protocol.md",
+    "eg04_freeze": "configs/eurographics2027/paper_main.yaml"
+  },
+  "evaluator": {
+    "path": "evaluation/independent_relation_evaluator.py",
+    "protocol": "eg2027-eg02-v1",
+    "imports_repair_or_optimizer_modules": false,
+    "output_schema": [
+      "per_relation.csv",
+      "per_scene.csv",
+      "summary.csv",
+      "audit.json"
+    ]
+  },
+  "tests": {
+    "path": "tests/test_independent_relation_evaluator.py",
+    "command": "python -m unittest discover -s tests -p \"test_independent_relation_evaluator.py\" -v",
+    "result": "Ran 3 tests; OK",
+    "covered_cases": [
+      "boundary distance",
+      "rotation object input",
+      "missing object",
+      "repeated instances with baseline-frozen pair",
+      "conflict relation handling",
+      "unsupported predicate",
+      "deterministic CLI outputs"
+    ]
+  },
+  "smoke_run": {
+    "input": "evaluation/fixtures/eg05_smoke_layouts.json",
+    "output_dir": "results/independent_eval/eg2027/eg05_smoke_fixture",
+    "generated_files": [
+      "results/independent_eval/eg2027/eg05_smoke_fixture/per_relation.csv",
+      "results/independent_eval/eg2027/eg05_smoke_fixture/per_scene.csv",
+      "results/independent_eval/eg2027/eg05_smoke_fixture/summary.csv",
+      "results/independent_eval/eg2027/eg05_smoke_fixture/audit.json"
+    ]
+  },
+  "acceptance_status": {
+    "independent_module": "pass",
+    "unit_tests": "pass",
+    "per_scene_csv_and_audit": "pass",
+    "human_subset_alignment": "pending",
+    "full_scene_outputs": "pending"
+  },
+  "next_required_steps": [
+    "Convert EG-02 adjudicated human subset scenes into evaluator input schema.",
+    "Run the independent evaluator on the human subset.",
+    "Compare evaluator per_relation output against final human labels.",
+    "Run the evaluator on EG-07 full frozen outputs before final paper claims."
+  ]
+}
