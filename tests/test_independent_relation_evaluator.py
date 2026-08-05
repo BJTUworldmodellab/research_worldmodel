@@ -92,6 +92,29 @@ class IndependentRelationEvaluatorTest(unittest.TestCase):
         self.assertAlmostEqual(summary[0]["missing_rate"], 0.25)
         self.assertAlmostEqual(summary[0]["unsupported_rate"], 0.25)
 
+    def test_front_behind_follow_eg02_annotation_coordinate_rule(self):
+        layouts = [
+            {
+                "scene_id": "s_front",
+                "room_type": "bedroom",
+                "layout_variant": "baseline",
+                "source_config_id": "fixture",
+                "objects": [
+                    obj(0, "chair", [0.0, 0.0, -0.2]),
+                    obj(1, "table", [0.0, 0.0, 0.0]),
+                    obj(2, "lamp", [0.0, 0.0, 0.2]),
+                ],
+                "target_relations": [
+                    {"relation_id": "behind", "subject_class": "chair", "predicate": "behind", "object_class": "table"},
+                    {"relation_id": "front", "subject_class": "lamp", "predicate": "in front of", "object_class": "table"},
+                ],
+            }
+        ]
+        per_relation, _, _, _ = evaluator.evaluate(layouts)
+        by_id = {row["relation_id"]: row for row in per_relation}
+        self.assertEqual(by_id["behind"]["is_satisfied"], 1)
+        self.assertEqual(by_id["front"]["is_satisfied"], 1)
+
     def test_cli_writes_required_outputs(self):
         layouts = [
             {

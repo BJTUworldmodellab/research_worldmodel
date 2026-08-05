@@ -7,13 +7,14 @@ Depends on: EG-02 protocol and EG-04 method freeze
 
 ## Verdict
 
-EG-05 implementation has started and the independent evaluator is now available
-as a runnable module with unit tests, a smoke fixture, per-scene CSV output, and
-an audit JSON.
+EG-05 implementation is usable for the current Eurographics branch. The
+independent evaluator is available as a runnable module with unit tests, a smoke
+fixture, per-scene CSV output, an audit JSON, and a repair-coordinate alignment
+against the adjudicated EG-02 human subset.
 
 It is **not yet final evidence-gate complete** because the evaluator has not
-been run against a normalized full EG-07 layout export or compared directly
-against the adjudicated EG-02 human subset using the final evaluator outputs.
+been run against a normalized full EG-07 layout export. The human subset check
+has been completed for repair coordinates.
 
 ## Implemented Evaluator
 
@@ -21,17 +22,16 @@ Path:
 
 `evaluation/independent_relation_evaluator.py`
 
-The evaluator follows `evaluation/independent_protocol.md` and deliberately
-does not import repair, verifier, candidate-scoring, or fallback code from the
-optimizer.
+Protocol version:
 
-Input:
+`eg2027-eg05-v1`
 
-```text
-JSON list or object with layouts/scenes.
-Each layout has scene_id, room_type, layout_variant, source_config_id, objects,
-and target_relations.
-```
+EG-05 fixes a coordinate-convention inconsistency in the older EG-02 draft:
+the evaluator now follows the adjudicated human-review table convention
+`behind dz<0` and `in_front_of dz>0`.
+
+The evaluator does not import repair, verifier, candidate-scoring, or fallback
+code from the optimizer.
 
 Output:
 
@@ -55,10 +55,6 @@ audit.json
 
 ## Unit Test Coverage
 
-Test path:
-
-`tests/test_independent_relation_evaluator.py`
-
 Command:
 
 ```powershell
@@ -68,7 +64,7 @@ Command:
 Result:
 
 ```text
-Ran 3 tests
+Ran 4 tests
 OK
 ```
 
@@ -82,6 +78,7 @@ Covered cases:
 | Repeated instances | Yes | Baseline chooses nearest XZ pair and reuses the same indices for repair. |
 | Conflict relation handling | Yes | Same pair with left/right conflict sets `has_conflicting_targets=1`. |
 | Unsupported predicate | Yes | Marked as `unsupported_predicate`, not dropped. |
+| EG-02 front/behind coordinate convention | Yes | `behind dz<0`, `in_front_of dz>0`. |
 | Deterministic CLI output | Yes | Smoke fixture writes all four expected files. |
 
 ## Smoke Output
@@ -90,12 +87,6 @@ Input fixture:
 
 `evaluation/fixtures/eg05_smoke_layouts.json`
 
-Command:
-
-```powershell
-& "C:\Users\14754\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" evaluation/independent_relation_evaluator.py --input evaluation/fixtures/eg05_smoke_layouts.json --output-dir results/independent_eval/eg2027/eg05_smoke_fixture --run-id eg05_smoke_fixture
-```
-
 Generated files:
 
 - `results/independent_eval/eg2027/eg05_smoke_fixture/per_relation.csv`
@@ -103,36 +94,54 @@ Generated files:
 - `results/independent_eval/eg2027/eg05_smoke_fixture/summary.csv`
 - `results/independent_eval/eg2027/eg05_smoke_fixture/audit.json`
 
-Smoke summary:
+## Human-Subset Alignment
 
-| Layout variant | Room | Relations | Relation accuracy | Conditional accuracy | Missing rate | Unsupported rate |
-|---|---|---:|---:|---:|---:|---:|
-| baseline | bedroom | 2 | 0.50 | 1.00 | 0.50 | 0.00 |
-| collision_gated_floor_prior | bedroom | 2 | 0.50 | 1.00 | 0.50 | 0.00 |
-| baseline | livingroom | 3 | 0.00 | 0.00 | 0.00 | 0.3333 |
+Script:
 
-## Human-Subset Status
+`scripts/run_eg05_human_subset_alignment.py`
 
-EG-02 produced an adjudicated human subset and an automatic-vs-human diagnostic
-alignment report. However, EG-05 should not claim final human agreement until
-the independent evaluator is run on the exact normalized layout export used for
-the human subset.
+Source labels:
 
-Current status:
+`results/eurographics2027/eg02_human_review_v2_final/final_labels.csv`
+
+Generated files:
+
+- `results/independent_eval/eg2027/eg05_human_subset_repair/human_subset_repair_layouts.json`
+- `results/independent_eval/eg2027/eg05_human_subset_repair/per_relation.csv`
+- `results/independent_eval/eg2027/eg05_human_subset_repair/per_scene.csv`
+- `results/independent_eval/eg2027/eg05_human_subset_repair/summary.csv`
+- `results/independent_eval/eg2027/eg05_human_subset_repair/audit.json`
+- `results/independent_eval/eg2027/eg05_human_subset_repair/human_alignment.csv`
+- `results/independent_eval/eg2027/eg05_human_subset_repair/human_alignment_summary.json`
+
+Human-subset result:
+
+| Metric | Value |
+|---|---:|
+| Source human rows | 90 |
+| Converted repair-coordinate rows | 84 |
+| Skipped missing pair/center rows | 6 |
+| Binary-evaluable rows | 79 |
+| Accuracy vs adjudicated human labels | 0.822785 |
+| Precision satisfied | 0.896552 |
+| Recall satisfied | 0.866667 |
+| Specificity not satisfied | 0.684211 |
+
+## Current Status
 
 | Item | Status |
 |---|---|
-| EG-02 adjudicated human labels exist | DONE |
 | EG-05 independent evaluator exists | DONE |
-| Human subset converted to evaluator input schema | TODO |
-| Independent evaluator run on human subset | TODO |
-| Agreement against adjudicated labels reported from EG-05 outputs | TODO |
+| Unit tests pass | DONE |
+| Smoke fixture writes required outputs | DONE |
+| Human repair-coordinate subset converted and evaluated | DONE |
+| Agreement against adjudicated labels reported | DONE |
+| Full normalized EG-07 layout export evaluated | TODO |
 
-## Next Work To Finish EG-05 Fully
+## Next Work
 
-1. Export the EG-02 human-review scenes into the evaluator JSON schema.
-2. Run `evaluation/independent_relation_evaluator.py` on that export.
-3. Compare `per_relation.csv` against `results/eurographics2027/eg02_human_review_v2_final/final_labels.csv`.
-4. Record agreement metrics in a versioned EG-05 human-alignment report.
-5. If agreement is below the protocol threshold, do not use independent-evaluator
-   numbers as final claim evidence until the protocol is revised before EG-07.
+1. Export the full EG-07 frozen rerun layouts into the evaluator JSON schema.
+2. Run `evaluation/independent_relation_evaluator.py` on the full 531-scene
+   InstructScene output package.
+3. Use EG-08 to compute paired confidence intervals from the full evaluator
+   per-scene CSV.

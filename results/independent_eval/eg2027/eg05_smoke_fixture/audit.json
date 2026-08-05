@@ -16,7 +16,7 @@
   "n_layouts": 3,
   "n_per_relation_rows": 7,
   "n_per_scene_rows": 3,
-  "protocol": "eg2027-eg02-v1",
+  "protocol": "eg2027-eg05-v1",
   "run_id": "eg05_smoke_fixture",
   "thresholds": {
     "close_distance": 0.75,

@@ -205,9 +205,9 @@ def relation_satisfied(predicate: str, subject: Obj, object_: Obj) -> tuple[bool
     if predicate == "right":
         return dx > DIRECTION_MARGIN, values
     if predicate == "in_front_of":
-        return dz < -DIRECTION_MARGIN, values
-    if predicate == "behind":
         return dz > DIRECTION_MARGIN, values
+    if predicate == "behind":
+        return dz < -DIRECTION_MARGIN, values
     if predicate == "close_to":
         return d_xz <= CLOSE_DISTANCE, values
     if predicate == "far_from":
@@ -348,7 +348,7 @@ def evaluate(layouts: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[
 
     summary = summarize(per_scene)
     audit = {
-        "protocol": "eg2027-eg02-v1",
+        "protocol": "eg2027-eg05-v1",
         "evaluator": "evaluation/independent_relation_evaluator.py",
         "independence_rule": {
             "imports_repair_or_optimizer_modules": False,

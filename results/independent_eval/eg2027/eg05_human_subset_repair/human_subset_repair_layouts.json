@@ -1,0 +1,3868 @@
+{
+  "layouts": [
+    {
+      "scene_id": "EG02-BED-0001",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "wardrobe",
+          "center": [
+            0.188535,
+            1.26446,
+            -1.859672
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            -0.531177,
+            0.348113,
+            -0.741779
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0001",
+          "subject_class": "wardrobe",
+          "predicate": "behind",
+          "object_class": "nightstand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0002",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            0.809987,
+            0.277235,
+            -1.101967
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 0,
+          "category": "pendant_lamp",
+          "center": [
+            0.859987,
+            2.461284,
+            0.498033
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0002",
+          "subject_class": "nightstand",
+          "predicate": "behind",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0003",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "double_bed",
+          "center": [
+            0.269294,
+            0.421506,
+            -0.202898
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "table",
+          "center": [
+            0.967656,
+            0.268123,
+            1.04536
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0003",
+          "subject_class": "double_bed",
+          "predicate": "behind",
+          "object_class": "table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0004",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            2.354744,
+            0.248817,
+            -1.236137
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "double_bed",
+          "center": [
+            1.414102,
+            0.591895,
+            0.202303
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0004",
+          "subject_class": "nightstand",
+          "predicate": "behind",
+          "object_class": "double_bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0005",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "double_bed",
+          "center": [
+            0.44943,
+            0.631017,
+            -0.360264
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "table",
+          "center": [
+            1.596843,
+            0.222925,
+            -1.58514
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0005",
+          "subject_class": "double_bed",
+          "predicate": "behind",
+          "object_class": "table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0006",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "double_bed",
+          "center": [
+            -0.31547,
+            0.888066,
+            0.379695
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 0,
+          "category": "wardrobe",
+          "center": [
+            -0.092697,
+            1.110389,
+            1.927391
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0006",
+          "subject_class": "double_bed",
+          "predicate": "behind",
+          "object_class": "wardrobe"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0007",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "chair",
+          "center": [
+            0.528866,
+            0.445686,
+            -0.987209
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "pendant_lamp",
+          "center": [
+            -0.180042,
+            2.436665,
+            0.009575
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0007",
+          "subject_class": "chair",
+          "predicate": "behind",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0008",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "double_bed",
+          "center": [
+            -0.221713,
+            1.138828,
+            -0.013198
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "pendant_lamp",
+          "center": [
+            0.031764,
+            1.813922,
+            -0.150846
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0008",
+          "subject_class": "double_bed",
+          "predicate": "below",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0009",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "double_bed",
+          "center": [
+            -0.263789,
+            0.549978,
+            0.30578
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "pendant_lamp",
+          "center": [
+            -0.192244,
+            2.370744,
+            -0.03626
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0009",
+          "subject_class": "double_bed",
+          "predicate": "below",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0010",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "double_bed",
+          "center": [
+            -0.224708,
+            0.442383,
+            0.952653
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "pendant_lamp",
+          "center": [
+            0.171079,
+            3.053193,
+            0.757848
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0010",
+          "subject_class": "double_bed",
+          "predicate": "below",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0011",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "double_bed",
+          "center": [
+            0.191083,
+            0.559582,
+            0.427758
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 0,
+          "category": "pendant_lamp",
+          "center": [
+            0.043547,
+            2.157245,
+            0.288684
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0011",
+          "subject_class": "double_bed",
+          "predicate": "below",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0012",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "ceiling_lamp",
+          "center": [
+            -0.281072,
+            2.625566,
+            -0.016242
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "chair",
+          "center": [
+            -0.789765,
+            0.401088,
+            -0.798929
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0012",
+          "subject_class": "ceiling_lamp",
+          "predicate": "close to",
+          "object_class": "chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0013",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "desk",
+          "center": [
+            1.18591,
+            0.406512,
+            -0.982424
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "chair",
+          "center": [
+            1.807368,
+            0.411782,
+            -0.386538
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0013",
+          "subject_class": "desk",
+          "predicate": "close to",
+          "object_class": "chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0015",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "wardrobe",
+          "center": [
+            -0.336106,
+            1.086917,
+            1.475174
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "nightstand",
+          "center": [
+            -1.19536,
+            0.287505,
+            -1.331225
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0015",
+          "subject_class": "wardrobe",
+          "predicate": "in front of",
+          "object_class": "nightstand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0016",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "pendant_lamp",
+          "center": [
+            0.035302,
+            2.178855,
+            0.199866
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 0,
+          "category": "wardrobe",
+          "center": [
+            0.248191,
+            1.254793,
+            -1.336635
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0016",
+          "subject_class": "pendant_lamp",
+          "predicate": "in front of",
+          "object_class": "wardrobe"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0017",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "wardrobe",
+          "center": [
+            -1.086411,
+            1.36327,
+            1.382432
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "cabinet",
+          "center": [
+            -0.358977,
+            0.313222,
+            1.42445
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0017",
+          "subject_class": "wardrobe",
+          "predicate": "in front of",
+          "object_class": "cabinet"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0018",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 5,
+          "category": "nightstand",
+          "center": [
+            1.153803,
+            0.336856,
+            1.451319
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "double_bed",
+          "center": [
+            0.87653,
+            0.469867,
+            0.008895
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0018",
+          "subject_class": "nightstand",
+          "predicate": "in front of",
+          "object_class": "double_bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0019",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "double_bed",
+          "center": [
+            0.146361,
+            1.138661,
+            -0.113591
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "nightstand",
+          "center": [
+            1.119475,
+            0.273468,
+            0.982776
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0019",
+          "subject_class": "double_bed",
+          "predicate": "in front of",
+          "object_class": "nightstand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0020",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 7,
+          "category": "wardrobe",
+          "center": [
+            -0.291113,
+            1.215174,
+            1.702968
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 8,
+          "category": "dressing_table",
+          "center": [
+            -1.423464,
+            0.814152,
+            -1.442153
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0020",
+          "subject_class": "wardrobe",
+          "predicate": "in front of",
+          "object_class": "dressing_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0021",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 6,
+          "category": "double_bed",
+          "center": [
+            0.341449,
+            0.646033,
+            0.780885
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "nightstand",
+          "center": [
+            1.311771,
+            0.291779,
+            1.369957
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0021",
+          "subject_class": "double_bed",
+          "predicate": "left",
+          "object_class": "nightstand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0022",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 6,
+          "category": "bookshelf",
+          "center": [
+            -0.820185,
+            0.919634,
+            1.936891
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "double_bed",
+          "center": [
+            -0.122478,
+            0.672671,
+            -0.948088
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0022",
+          "subject_class": "bookshelf",
+          "predicate": "left",
+          "object_class": "double_bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0023",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "table",
+          "center": [
+            1.133674,
+            0.166517,
+            -1.411883
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "pendant_lamp",
+          "center": [
+            -0.151283,
+            2.413206,
+            0.006341
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0023",
+          "subject_class": "table",
+          "predicate": "left",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0024",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "double_bed",
+          "center": [
+            -1.286099,
+            0.523339,
+            -0.016857
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "pendant_lamp",
+          "center": [
+            0.035071,
+            2.074069,
+            -0.059418
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0024",
+          "subject_class": "double_bed",
+          "predicate": "left",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0025",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 4,
+          "category": "double_bed",
+          "center": [
+            0.657789,
+            0.530046,
+            0.20869
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            -0.577234,
+            0.267479,
+            1.20348
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0025",
+          "subject_class": "double_bed",
+          "predicate": "left",
+          "object_class": "nightstand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0026",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "nightstand",
+          "center": [
+            -1.505895,
+            0.227259,
+            -1.180977
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "nightstand",
+          "center": [
+            -1.505895,
+            0.227259,
+            -1.180977
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0026",
+          "subject_class": "nightstand",
+          "predicate": "right",
+          "object_class": "nightstand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0027",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "ceiling_lamp",
+          "center": [
+            -0.171732,
+            2.045794,
+            -0.075235
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            -1.462821,
+            0.225966,
+            -1.305204
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0027",
+          "subject_class": "ceiling_lamp",
+          "predicate": "right",
+          "object_class": "nightstand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0028",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "double_bed",
+          "center": [
+            0.504576,
+            0.497669,
+            -0.457314
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "wardrobe",
+          "center": [
+            -1.322179,
+            1.395249,
+            -0.573289
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0028",
+          "subject_class": "double_bed",
+          "predicate": "right",
+          "object_class": "wardrobe"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0029",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 5,
+          "category": "wardrobe",
+          "center": [
+            -1.766723,
+            1.160632,
+            0.663572
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "single_bed",
+          "center": [
+            0.288321,
+            0.406488,
+            1.0806
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0029",
+          "subject_class": "wardrobe",
+          "predicate": "right",
+          "object_class": "single_bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-BED-0030",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "double_bed",
+          "center": [
+            0.402459,
+            0.512646,
+            -0.265994
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 6,
+          "category": "pendant_lamp",
+          "center": [
+            -0.878057,
+            2.373279,
+            -0.212547
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-BED-0030",
+          "subject_class": "double_bed",
+          "predicate": "right",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0001",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "wine_cabinet",
+          "center": [
+            0.029577,
+            1.230626,
+            2.765842
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 2,
+          "category": "wine_cabinet",
+          "center": [
+            0.029577,
+            1.230626,
+            2.765842
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0001",
+          "subject_class": "wine_cabinet",
+          "predicate": "behind",
+          "object_class": "wine_cabinet"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0002",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "dining_table",
+          "center": [
+            4.48574,
+            0.385089,
+            -0.961682
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "dining_chair",
+          "center": [
+            3.73574,
+            0.296838,
+            -1.011682
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0002",
+          "subject_class": "dining_table",
+          "predicate": "behind",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0003",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 14,
+          "category": "dining_table",
+          "center": [
+            0.331744,
+            0.380548,
+            -0.153878
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 0,
+          "category": "multi_seat_sofa",
+          "center": [
+            1.41404,
+            0.317197,
+            2.043246
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0003",
+          "subject_class": "dining_table",
+          "predicate": "behind",
+          "object_class": "multi_seat_sofa"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0004",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 6,
+          "category": "loveseat_sofa",
+          "center": [
+            -0.455612,
+            0.492077,
+            -1.355766
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 8,
+          "category": "pendant_lamp",
+          "center": [
+            0.10682,
+            1.884463,
+            -0.031635
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0004",
+          "subject_class": "loveseat_sofa",
+          "predicate": "behind",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0005",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 14,
+          "category": "loveseat_sofa",
+          "center": [
+            0.675969,
+            0.370004,
+            -1.901498
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 10,
+          "category": "console_table",
+          "center": [
+            -0.761271,
+            0.408034,
+            0.3914
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0005",
+          "subject_class": "loveseat_sofa",
+          "predicate": "behind",
+          "object_class": "console_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0006",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 8,
+          "category": "dining_table",
+          "center": [
+            -0.134576,
+            0.368535,
+            -0.571122
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "pendant_lamp",
+          "center": [
+            -0.101903,
+            2.081754,
+            -0.609353
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0006",
+          "subject_class": "dining_table",
+          "predicate": "below",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0007",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 5,
+          "category": "dining_table",
+          "center": [
+            0.287422,
+            0.378974,
+            0.053735
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "pendant_lamp",
+          "center": [
+            0.358406,
+            2.219806,
+            0.064417
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0007",
+          "subject_class": "dining_table",
+          "predicate": "below",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0008",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 5,
+          "category": "dining_table",
+          "center": [
+            0.287422,
+            0.378974,
+            0.053735
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "dining_chair",
+          "center": [
+            0.04689,
+            0.34614,
+            0.882321
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0008",
+          "subject_class": "dining_table",
+          "predicate": "close to",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0009",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 5,
+          "category": "dining_chair",
+          "center": [
+            -0.283769,
+            0.429459,
+            0.034578
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining_table",
+          "center": [
+            -0.511558,
+            0.361149,
+            0.730068
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0009",
+          "subject_class": "dining_chair",
+          "predicate": "close to",
+          "object_class": "dining_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0010",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "dining_table",
+          "center": [
+            -2.533192,
+            0.375663,
+            -0.798268
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 6,
+          "category": "dining_chair",
+          "center": [
+            -2.246783,
+            0.408278,
+            -0.650813
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0010",
+          "subject_class": "dining_table",
+          "predicate": "close to",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0011",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "pendant_lamp",
+          "center": [
+            2.064915,
+            1.927589,
+            0.589932
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "lounge_chair",
+          "center": [
+            2.403632,
+            0.517815,
+            -0.155713
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0011",
+          "subject_class": "pendant_lamp",
+          "predicate": "close to",
+          "object_class": "lounge_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0012",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 12,
+          "category": "dining_table",
+          "center": [
+            2.237332,
+            0.35564,
+            1.379019
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 5,
+          "category": "dining_chair",
+          "center": [
+            2.782832,
+            0.446827,
+            1.43904
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0012",
+          "subject_class": "dining_table",
+          "predicate": "close to",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0013",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 7,
+          "category": "dining_chair",
+          "center": [
+            0.867762,
+            0.503155,
+            0.448659
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 6,
+          "category": "dining_table",
+          "center": [
+            0.341235,
+            0.393992,
+            0.541373
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0013",
+          "subject_class": "dining_chair",
+          "predicate": "close to",
+          "object_class": "dining_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0014",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "pendant_lamp",
+          "center": [
+            0.86031,
+            2.029766,
+            1.849292
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 0,
+          "category": "dining_chair",
+          "center": [
+            0.758665,
+            0.338455,
+            2.338237
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0014",
+          "subject_class": "pendant_lamp",
+          "predicate": "close to",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0015",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "dining_chair",
+          "center": [
+            -0.320498,
+            0.453342,
+            -0.662897
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 0,
+          "category": "dining_chair",
+          "center": [
+            -0.320498,
+            0.453342,
+            -0.662897
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0015",
+          "subject_class": "dining_chair",
+          "predicate": "in front of",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0017",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "coffee_table",
+          "center": [
+            -0.009492,
+            0.226289,
+            2.307245
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 12,
+          "category": "armchair",
+          "center": [
+            0.187416,
+            0.463667,
+            3.544404
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0017",
+          "subject_class": "coffee_table",
+          "predicate": "in front of",
+          "object_class": "armchair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0018",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "dining_chair",
+          "center": [
+            0.256613,
+            0.408175,
+            1.145416
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining_chair",
+          "center": [
+            0.256613,
+            0.408175,
+            1.145416
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0018",
+          "subject_class": "dining_chair",
+          "predicate": "in front of",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0020",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 5,
+          "category": "coffee_table",
+          "center": [
+            -0.539227,
+            0.167533,
+            1.724213
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "lounge_chair",
+          "center": [
+            0.682965,
+            0.392881,
+            1.930249
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0020",
+          "subject_class": "coffee_table",
+          "predicate": "left",
+          "object_class": "lounge_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0021",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "armchair",
+          "center": [
+            -0.063429,
+            0.443004,
+            3.487455
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "multi_seat_sofa",
+          "center": [
+            -1.461183,
+            0.421612,
+            1.98294
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0021",
+          "subject_class": "armchair",
+          "predicate": "left",
+          "object_class": "multi_seat_sofa"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0022",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "dining_table",
+          "center": [
+            -1.979849,
+            0.357145,
+            0.944673
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 5,
+          "category": "stool",
+          "center": [
+            -0.06078,
+            0.233205,
+            0.467277
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0022",
+          "subject_class": "dining_table",
+          "predicate": "left",
+          "object_class": "stool"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0023",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 6,
+          "category": "coffee_table",
+          "center": [
+            -0.185044,
+            0.145437,
+            1.454102
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 12,
+          "category": "cabinet",
+          "center": [
+            1.31838,
+            0.496433,
+            0.210534
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0023",
+          "subject_class": "coffee_table",
+          "predicate": "left",
+          "object_class": "cabinet"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0024",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 6,
+          "category": "multi_seat_sofa",
+          "center": [
+            2.021626,
+            0.543793,
+            -1.810449
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 13,
+          "category": "pendant_lamp",
+          "center": [
+            1.777232,
+            2.436774,
+            1.487379
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0024",
+          "subject_class": "multi_seat_sofa",
+          "predicate": "left",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0025",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 5,
+          "category": "console_table",
+          "center": [
+            0.602793,
+            0.400737,
+            1.67465
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "dining_chair",
+          "center": [
+            -0.54882,
+            0.428767,
+            1.298628
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0025",
+          "subject_class": "console_table",
+          "predicate": "left",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0026",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 7,
+          "category": "multi_seat_sofa",
+          "center": [
+            -1.86778,
+            0.46632,
+            1.396592
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 9,
+          "category": "coffee_table",
+          "center": [
+            -0.309854,
+            0.316398,
+            1.320719
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0026",
+          "subject_class": "multi_seat_sofa",
+          "predicate": "right",
+          "object_class": "coffee_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0027",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 10,
+          "category": "multi_seat_sofa",
+          "center": [
+            2.66006,
+            0.446056,
+            2.067797
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 8,
+          "category": "lounge_chair",
+          "center": [
+            1.246462,
+            0.572618,
+            0.838322
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0027",
+          "subject_class": "multi_seat_sofa",
+          "predicate": "right",
+          "object_class": "lounge_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0028",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 13,
+          "category": "bookshelf",
+          "center": [
+            1.582974,
+            1.299456,
+            0.397299
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining_chair",
+          "center": [
+            -0.104759,
+            0.44561,
+            -0.795172
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0028",
+          "subject_class": "bookshelf",
+          "predicate": "right",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0029",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 7,
+          "category": "dining_table",
+          "center": [
+            -0.546063,
+            0.363992,
+            -2.018589
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 5,
+          "category": "dining_chair",
+          "center": [
+            -0.865861,
+            0.435968,
+            -1.502961
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0029",
+          "subject_class": "dining_table",
+          "predicate": "right",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-DIN-0030",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 4,
+          "category": "dining_table",
+          "center": [
+            2.432382,
+            0.469484,
+            1.999876
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "coffee_table",
+          "center": [
+            -0.159966,
+            0.200202,
+            1.757343
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-DIN-0030",
+          "subject_class": "dining_table",
+          "predicate": "right",
+          "object_class": "coffee_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0001",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 4,
+          "category": "pendant_lamp",
+          "center": [
+            1.089534,
+            2.255438,
+            0.50867
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 8,
+          "category": "dining_table",
+          "center": [
+            1.08991,
+            0.458272,
+            0.263132
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0001",
+          "subject_class": "pendant_lamp",
+          "predicate": "above",
+          "object_class": "dining_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0002",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 16,
+          "category": "pendant_lamp",
+          "center": [
+            2.093627,
+            2.222028,
+            -0.061656
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 15,
+          "category": "dining_table",
+          "center": [
+            -2.940858,
+            0.443699,
+            0.013961
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0002",
+          "subject_class": "pendant_lamp",
+          "predicate": "above",
+          "object_class": "dining_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0003",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "dining_table",
+          "center": [
+            -0.210389,
+            0.37538,
+            -1.491096
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 6,
+          "category": "tv_stand",
+          "center": [
+            0.756619,
+            0.206678,
+            1.240661
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0003",
+          "subject_class": "dining_table",
+          "predicate": "behind",
+          "object_class": "tv_stand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0004",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "loveseat_sofa",
+          "center": [
+            2.066988,
+            0.494028,
+            -2.7362
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "corner_side_table",
+          "center": [
+            0.596619,
+            0.257336,
+            -2.543209
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0004",
+          "subject_class": "loveseat_sofa",
+          "predicate": "behind",
+          "object_class": "corner_side_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0006",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 10,
+          "category": "multi_seat_sofa",
+          "center": [
+            0.928302,
+            0.402908,
+            -0.798448
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "pendant_lamp",
+          "center": [
+            0.828755,
+            2.261618,
+            0.672643
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0006",
+          "subject_class": "multi_seat_sofa",
+          "predicate": "behind",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0007",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 6,
+          "category": "dining_table",
+          "center": [
+            2.467443,
+            0.357269,
+            0.808218
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 5,
+          "category": "dining_chair",
+          "center": [
+            2.628506,
+            0.245972,
+            1.432619
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0007",
+          "subject_class": "dining_table",
+          "predicate": "behind",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0008",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 3,
+          "category": "dining_table",
+          "center": [
+            -0.246036,
+            0.644449,
+            2.005555
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 8,
+          "category": "pendant_lamp",
+          "center": [
+            0.399684,
+            2.140379,
+            2.019834
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0008",
+          "subject_class": "dining_table",
+          "predicate": "below",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0009",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 5,
+          "category": "coffee_table",
+          "center": [
+            -0.271722,
+            0.145101,
+            -1.89036
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 9,
+          "category": "pendant_lamp",
+          "center": [
+            -0.170221,
+            2.342683,
+            -1.815115
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0009",
+          "subject_class": "coffee_table",
+          "predicate": "below",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0010",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "dining_table",
+          "center": [
+            0.410061,
+            0.370864,
+            -1.487509
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "dining_chair",
+          "center": [
+            0.735825,
+            0.427007,
+            -1.266391
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0010",
+          "subject_class": "dining_table",
+          "predicate": "close to",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0012",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 8,
+          "category": "dining_table",
+          "center": [
+            -1.839274,
+            0.36348,
+            -1.626111
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 12,
+          "category": "dining_chair",
+          "center": [
+            -2.045906,
+            0.445898,
+            -0.95514
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0012",
+          "subject_class": "dining_table",
+          "predicate": "close to",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0013",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 14,
+          "category": "dining_table",
+          "center": [
+            -1.045238,
+            0.262649,
+            -2.363428
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 9,
+          "category": "dining_chair",
+          "center": [
+            -0.902115,
+            0.472971,
+            -3.032572
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0013",
+          "subject_class": "dining_table",
+          "predicate": "close to",
+          "object_class": "dining_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0014",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 2,
+          "category": "coffee_table",
+          "center": [
+            1.154308,
+            0.136317,
+            0.166435
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "tv_stand",
+          "center": [
+            1.236427,
+            0.087595,
+            -1.61446
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0014",
+          "subject_class": "coffee_table",
+          "predicate": "in front of",
+          "object_class": "tv_stand"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0015",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "loveseat_sofa",
+          "center": [
+            2.232644,
+            0.459541,
+            1.593918
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 8,
+          "category": "corner_side_table",
+          "center": [
+            0.045018,
+            0.201738,
+            1.657803
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0015",
+          "subject_class": "loveseat_sofa",
+          "predicate": "in front of",
+          "object_class": "corner_side_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0016",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "multi_seat_sofa",
+          "center": [
+            -2.082055,
+            0.465241,
+            0.287211
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "coffee_table",
+          "center": [
+            -2.144883,
+            0.2178,
+            -0.779002
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0016",
+          "subject_class": "multi_seat_sofa",
+          "predicate": "in front of",
+          "object_class": "coffee_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0017",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "pendant_lamp",
+          "center": [
+            -0.116225,
+            2.157466,
+            -1.461418
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "coffee_table",
+          "center": [
+            0.239082,
+            0.350367,
+            -0.399992
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0017",
+          "subject_class": "pendant_lamp",
+          "predicate": "in front of",
+          "object_class": "coffee_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0018",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 8,
+          "category": "loveseat_sofa",
+          "center": [
+            -2.475111,
+            0.408165,
+            1.885062
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 0,
+          "category": "pendant_lamp",
+          "center": [
+            1.259237,
+            2.627926,
+            1.224533
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0018",
+          "subject_class": "loveseat_sofa",
+          "predicate": "in front of",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0019",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 7,
+          "category": "dining_table",
+          "center": [
+            -0.823632,
+            0.384181,
+            1.790083
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "console_table",
+          "center": [
+            -1.89812,
+            0.527751,
+            0.468329
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0019",
+          "subject_class": "dining_table",
+          "predicate": "in front of",
+          "object_class": "console_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0020",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 1,
+          "category": "loveseat_sofa",
+          "center": [
+            -0.148818,
+            0.461676,
+            3.706329
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 13,
+          "category": "pendant_lamp",
+          "center": [
+            0.053988,
+            2.177536,
+            2.255582
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0020",
+          "subject_class": "loveseat_sofa",
+          "predicate": "left",
+          "object_class": "pendant_lamp"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0022",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 7,
+          "category": "dining_table",
+          "center": [
+            1.156697,
+            0.36741,
+            1.00926
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "coffee_table",
+          "center": [
+            -0.828945,
+            0.469307,
+            -0.000101
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0022",
+          "subject_class": "dining_table",
+          "predicate": "left",
+          "object_class": "coffee_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0023",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 7,
+          "category": "multi_seat_sofa",
+          "center": [
+            2.247227,
+            0.444388,
+            1.984644
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "coffee_table",
+          "center": [
+            3.170455,
+            0.174569,
+            1.333159
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0023",
+          "subject_class": "multi_seat_sofa",
+          "predicate": "left",
+          "object_class": "coffee_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0024",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 8,
+          "category": "tv_stand",
+          "center": [
+            1.757007,
+            0.269669,
+            2.162889
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 4,
+          "category": "armchair",
+          "center": [
+            -0.032082,
+            0.379057,
+            0.628837
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0024",
+          "subject_class": "tv_stand",
+          "predicate": "right",
+          "object_class": "armchair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0025",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 4,
+          "category": "coffee_table",
+          "center": [
+            -1.52625,
+            0.225376,
+            -0.008956
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 8,
+          "category": "armchair",
+          "center": [
+            -2.799108,
+            0.368676,
+            -0.286159
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0025",
+          "subject_class": "coffee_table",
+          "predicate": "right",
+          "object_class": "armchair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0026",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 4,
+          "category": "pendant_lamp",
+          "center": [
+            1.089534,
+            2.255438,
+            0.50867
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 6,
+          "category": "bookshelf",
+          "center": [
+            2.543902,
+            0.507619,
+            0.192075
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0026",
+          "subject_class": "pendant_lamp",
+          "predicate": "right",
+          "object_class": "bookshelf"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0027",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 8,
+          "category": "armchair",
+          "center": [
+            0.12987,
+            0.403099,
+            -0.954697
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 3,
+          "category": "coffee_table",
+          "center": [
+            -0.761849,
+            0.107057,
+            -1.59197
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0027",
+          "subject_class": "armchair",
+          "predicate": "right",
+          "object_class": "coffee_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0028",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 6,
+          "category": "dining_table",
+          "center": [
+            -1.496055,
+            0.436286,
+            0.929148
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 15,
+          "category": "console_table",
+          "center": [
+            -2.36367,
+            0.356338,
+            1.73905
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0028",
+          "subject_class": "dining_table",
+          "predicate": "right",
+          "object_class": "console_table"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0029",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 13,
+          "category": "dining_table",
+          "center": [
+            2.858948,
+            0.362185,
+            -1.429123
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 8,
+          "category": "chinese_chair",
+          "center": [
+            0.175778,
+            0.444245,
+            -0.587577
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0029",
+          "subject_class": "dining_table",
+          "predicate": "right",
+          "object_class": "chinese_chair"
+        }
+      ]
+    },
+    {
+      "scene_id": "EG02-LIV-0030",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 9,
+          "category": "dining_table",
+          "center": [
+            -1.645704,
+            0.367765,
+            0.476985
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 12,
+          "category": "dining_chair",
+          "center": [
+            -0.896089,
+            0.563808,
+            0.433984
+          ],
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "EG02-LIV-0030",
+          "subject_class": "dining_table",
+          "predicate": "right",
+          "object_class": "dining_chair"
+        }
+      ]
+    }
+  ]
+}

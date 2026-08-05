@@ -1,17 +1,18 @@
 {
   "manifest_version": "2026-08-05-eg05-v1",
   "task": "EG-05 implement and validate independent evaluator",
-  "status": "implementation_smoke_passed_human_subset_pending",
+  "status": "implementation_and_human_subset_alignment_passed_full_rerun_pending",
   "repository": "BJTUworldmodellab/research_worldmodel",
   "branch": "agent/eg01-eg02-eurographics2027",
   "depends_on": {
-    "eg02_protocol": "evaluation/independent_protocol.md",
+    "eg05_protocol": "evaluation/independent_protocol.md",
     "eg04_freeze": "configs/eurographics2027/paper_main.yaml"
   },
   "evaluator": {
     "path": "evaluation/independent_relation_evaluator.py",
-    "protocol": "eg2027-eg02-v1",
+    "protocol": "eg2027-eg05-v1",
     "imports_repair_or_optimizer_modules": false,
+    "coordinate_convention": "behind dz<0; in_front_of dz>0",
     "output_schema": [
       "per_relation.csv",
       "per_scene.csv",
@@ -22,7 +23,7 @@
   "tests": {
     "path": "tests/test_independent_relation_evaluator.py",
     "command": "python -m unittest discover -s tests -p \"test_independent_relation_evaluator.py\" -v",
-    "result": "Ran 3 tests; OK",
+    "result": "Ran 4 tests; OK",
     "covered_cases": [
       "boundary distance",
       "rotation object input",
@@ -30,6 +31,7 @@
       "repeated instances with baseline-frozen pair",
       "conflict relation handling",
       "unsupported predicate",
+      "EG-02 front/behind coordinate convention",
       "deterministic CLI outputs"
     ]
   },
@@ -43,17 +45,27 @@
       "results/independent_eval/eg2027/eg05_smoke_fixture/audit.json"
     ]
   },
+  "human_subset_alignment": {
+    "script": "scripts/run_eg05_human_subset_alignment.py",
+    "source_labels": "results/eurographics2027/eg02_human_review_v2_final/final_labels.csv",
+    "output_dir": "results/independent_eval/eg2027/eg05_human_subset_repair",
+    "source_human_rows": 90,
+    "converted_rows": 84,
+    "skipped_missing_pair_or_center": 6,
+    "binary_evaluable": 79,
+    "accuracy": 0.822785,
+    "precision_satisfied": 0.896552,
+    "recall_satisfied": 0.866667,
+    "specificity_not_satisfied": 0.684211
+  },
   "acceptance_status": {
     "independent_module": "pass",
     "unit_tests": "pass",
     "per_scene_csv_and_audit": "pass",
-    "human_subset_alignment": "pending",
-    "full_scene_outputs": "pending"
+    "human_subset_alignment": "pass_repair_coordinates",
+    "full_scene_outputs": "pending_eg07"
   },
   "next_required_steps": [
-    "Convert EG-02 adjudicated human subset scenes into evaluator input schema.",
-    "Run the independent evaluator on the human subset.",
-    "Compare evaluator per_relation output against final human labels.",
     "Run the evaluator on EG-07 full frozen outputs before final paper claims."
   ]
 }

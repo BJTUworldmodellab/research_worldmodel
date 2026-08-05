@@ -1,10 +1,25 @@
 # EG-02 Independent Relation Evaluation Protocol
 
-Version: `eg2027-eg02-v1`  
-Date: 2026-07-30  
-Track: Eurographics 2027  
-Status: protocol freeze draft, pending A/D review  
-Depends on: EG-01 result identity branch  
+Version: `eg2027-eg05-v1`
+Date: 2026-08-05
+Track: Eurographics 2027
+Status: EG-05 implementation protocol with coordinate-convention addendum
+Depends on: EG-01 result identity branch
+
+## EG-05 Coordinate Addendum
+
+During EG-05 implementation, the original EG-02 draft text was found to
+contradict the coordinate rule actually used in the adjudicated EG-02 human
+review table. The adjudicated table records:
+
+```text
+left dx<0; right dx>0; in_front_of dz>0; behind dz<0;
+above dy>0; below dy<0; close_to distance_xz<=0.75
+```
+
+EG-05 therefore freezes the evaluator to the human-review coordinate convention
+above. This is a protocol consistency fix, not threshold tuning: thresholds
+remain unchanged.
 
 ## 1. Purpose
 
@@ -130,8 +145,8 @@ Definitions:
 |---|---|
 | `left` / `left of` | `x_s < x_o - direction_margin` |
 | `right` / `right of` | `x_s > x_o + direction_margin` |
-| `in front of` / `front` | `z_s < z_o - direction_margin` |
-| `behind` | `z_s > z_o + direction_margin` |
+| `in front of` / `front` | `z_s > z_o + direction_margin` |
+| `behind` | `z_s < z_o - direction_margin` |
 | `close to` / `near` / `close by` | `d_xz <= close_distance` |
 | `far from` | `d_xz >= far_distance` |
 | `above` | `y_s > y_o + vertical_margin` |
@@ -226,4 +241,3 @@ EG-02 can be marked `DONE` only when:
 - [ ] Cohen's kappa calculation rule is frozen;
 - [ ] EG-05 implementation agrees to this protocol without importing repair
       decision logic.
-
