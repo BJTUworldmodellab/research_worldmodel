@@ -1,0 +1,72 @@
+{
+  "manifest_version": "2026-08-05-eg04-freeze-v1",
+  "task": "EG-04 freeze final method, configuration, and code version",
+  "status": "frozen",
+  "repository": "BJTUworldmodellab/research_worldmodel",
+  "branch": "agent/eg01-eg02-eurographics2027",
+  "method_code_commit": "feb37414db42faec3d600b66d17186ed3da8a22e",
+  "eg03_decision": {
+    "status": "skipped_no_go",
+    "consequence": "CW-GCP is not promoted; Collision-gated Floor-Prior remains the only main method."
+  },
+  "frozen_main_method": {
+    "id": "collision_gated_floor_prior",
+    "display_name": "Collision-gated Floor-Prior",
+    "config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+    "config_path": "configs/eurographics2027/paper_main.yaml",
+    "config_sha256": "052ACE5B295348483CE9B6110B5BD7933235424A55CC2108C966431E516829E2",
+    "generator": "InstructScene",
+    "edit_space": "bounded XZ floor-plane translation",
+    "preserve_height": true,
+    "collision_gate": true
+  },
+  "current_result_anchor": {
+    "status": "EG-01 anchor; final evidence requires EG-07 rerun and EG-08 statistics",
+    "rooms": {
+      "bedroom": {
+        "baseline_relation_accuracy": 0.7388,
+        "ungated_floor_prior_relation_accuracy": 0.8408,
+        "gated_relation_accuracy": 0.8163,
+        "gated_gain_pp": 7.76,
+        "baseline_mesh_pair_collision": 0.0702,
+        "gated_mesh_pair_collision": 0.068293,
+        "fallback_scenes": 6
+      },
+      "livingroom": {
+        "baseline_relation_accuracy": 0.551,
+        "ungated_floor_prior_relation_accuracy": 0.6939,
+        "gated_relation_accuracy": 0.6395,
+        "gated_gain_pp": 8.84,
+        "baseline_mesh_pair_collision": 0.0313,
+        "gated_mesh_pair_collision": 0.030959,
+        "fallback_scenes": 14
+      },
+      "diningroom": {
+        "baseline_relation_accuracy": 0.5948,
+        "ungated_floor_prior_relation_accuracy": 0.7286,
+        "gated_relation_accuracy": 0.6729,
+        "gated_gain_pp": 7.81,
+        "baseline_mesh_pair_collision": 0.0342,
+        "gated_mesh_pair_collision": 0.033615,
+        "fallback_scenes": 15
+      }
+    },
+    "weighted_summary": {
+      "scene_count": 531,
+      "gated_relation_accuracy": 0.704,
+      "gated_gain_pp": 8.2
+    }
+  },
+  "deliverables": [
+    "configs/eurographics2027/paper_main.yaml",
+    "docs/eurographics2027/eg04_method_variant_matrix_20260805.md",
+    "docs/eurographics2027/eg04_freeze_decision_record_20260805.md",
+    "manifests/eurographics2027/eg04_freeze_manifest.json"
+  ],
+  "downstream_tasks": {
+    "EG-05": "independent evaluator",
+    "EG-06": "movement-matched baselines",
+    "EG-07": "full frozen rerun",
+    "EG-08": "paired scene-level statistics"
+  }
+}
