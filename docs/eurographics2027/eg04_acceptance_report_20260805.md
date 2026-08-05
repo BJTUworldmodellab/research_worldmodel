@@ -21,6 +21,24 @@ The frozen default configuration is:
 EG-03 was explicitly skipped and is recorded as `skipped_no_go`, so CW-GCP is
 not allowed to replace the main method in this submission path.
 
+## Machine Check
+
+The EG-04 freeze checker was executed locally with the bundled Codex Python
+runtime on 2026-08-05:
+
+```text
+EG-04 freeze check passed.
+config_sha256=052ACE5B295348483CE9B6110B5BD7933235424A55CC2108C966431E516829E2
+main_method=collision_gated_floor_prior
+eg03_decision=skipped_no_go
+```
+
+Command:
+
+```powershell
+& "C:\Users\14754\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe" "C:\Users\14754\Desktop\research_worldmodel\.upload_tmp\eg01_branch_20260730_001\scripts\check_eg04_freeze.py"
+```
+
 ## Acceptance Checklist
 
 | Requirement from checklist | Evidence | Status |
@@ -31,7 +49,7 @@ not allowed to replace the main method in this submission path.
 | No further threshold chasing after freeze | Change-control section forbids changing relation thresholds after seeing results | PASS |
 | All later outputs must record commit/config/data/env | `downstream_requirements.every_experiment_output_must_record` in `paper_main.yaml` | PASS |
 | EG-03 no-go keeps Floor-Prior as main | `eg03_decision.status = skipped_no_go` in config and manifest | PASS |
-| Machine-checkable freeze | `scripts/check_eg04_freeze.py` added | PASS |
+| Machine-checkable freeze | `scripts/check_eg04_freeze.py` added and executed successfully | PASS |
 
 ## Frozen Evidence Files
 

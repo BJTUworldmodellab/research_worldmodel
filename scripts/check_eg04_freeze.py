@@ -50,10 +50,10 @@ REQUIRED_STRINGS = {
     ],
 }
 
-FORBIDDEN_MAIN_PROMOTION_STRINGS = [
-    "CW-GCP is the main method",
-    "Direct Repair is the main method",
-    "CommonScenes is the main method",
+FORBIDDEN_MAIN_PROMOTION_PATTERNS = [
+    ("CW-GCP is the main method", ["Do not say CW-GCP is the main method"]),
+    ("Direct Repair is the main method", []),
+    ("CommonScenes is the main method", []),
 ]
 
 
@@ -87,9 +87,11 @@ def main() -> None:
             if needle not in text:
                 errors.append(f"{path.relative_to(ROOT)} missing required string: {needle}")
 
-    for needle in FORBIDDEN_MAIN_PROMOTION_STRINGS:
+    for needle, allowed_contexts in FORBIDDEN_MAIN_PROMOTION_PATTERNS:
         combined = "\n".join([config_text, matrix_text, decision_text])
-        if needle in combined:
+        allowed_hits = sum(combined.count(context) for context in allowed_contexts)
+        total_hits = combined.count(needle)
+        if total_hits > allowed_hits:
             errors.append(f"forbidden main-method promotion wording found: {needle}")
 
     try:
