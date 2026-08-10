@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EG04-06 Status and EG07 Data Handoff</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #d8dee9;
+      --green: #0f766e;
+      --blue: #1d4ed8;
+      --amber: #b45309;
+      --red: #b42318;
+      --soft-green: #e7f6f2;
+      --soft-blue: #e8f0ff;
+      --soft-amber: #fff3df;
+      --soft-red: #fee7e5;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      line-height: 1.62;
+    }
+    header {
+      background: #111827;
+      color: #fff;
+      padding: 34px 42px 30px;
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+    header p { margin: 0; color: #cbd5e1; }
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 26px 54px;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 18px 0;
+    }
+    h2 { margin: 0 0 16px; font-size: 22px; }
+    h3 { margin: 22px 0 10px; font-size: 17px; }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 12px 0 4px;
+      font-size: 14px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 9px 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f1f4f8; }
+    code {
+      background: #eef2f7;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      background: #fff;
+    }
+    .card strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+    .muted { color: var(--muted); }
+    .tag {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+    .ok { background: var(--soft-green); color: var(--green); }
+    .info { background: var(--soft-blue); color: var(--blue); }
+    .warn { background: var(--soft-amber); color: var(--amber); }
+    .bad { background: var(--soft-red); color: var(--red); }
+    .callout {
+      border-left: 4px solid var(--blue);
+      background: var(--soft-blue);
+      padding: 12px 14px;
+      margin: 14px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .callout.warn { border-left-color: var(--amber); background: var(--soft-amber); color: var(--ink); }
+    .callout.bad { border-left-color: var(--red); background: var(--soft-red); color: var(--ink); }
+    ul { margin-top: 8px; }
+    footer { color: var(--muted); font-size: 13px; padding-top: 18px; }
+    @media (max-width: 860px) {
+      header { padding: 26px 22px; }
+      main { padding: 18px 14px 36px; }
+      .grid { grid-template-columns: 1fr; }
+      section { padding: 18px; }
+      table { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Eurographics 2027: EG04-06 状态与 EG07 数据交接</h1>
+    <p>生成日期：2026-08-10 · 分支：agent/eg01-eg02-eurographics2027 · 当前提交：212b328</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>一句话结论</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="tag ok">EG04 已冻结</span>
+          <strong>主方法唯一</strong>
+          <span class="muted">Collision-gated Floor-Prior 是当前 Eurographics 主线，CW-GCP 已跳过，不进入主方法。</span>
+        </div>
+        <div class="card">
+          <span class="tag info">EG05 可用</span>
+          <strong>独立评测器已通</strong>
+          <span class="muted">已通过单元测试和人审 repair 子集对齐，但还没跑 531 场景全量导出。</span>
+        </div>
+        <div class="card">
+          <span class="tag warn">EG06 不足以写论文结论</span>
+          <strong>只完成 fixture</strong>
+          <span class="muted">公平 baseline 工具已通，但还不能证明主方法优于随机/通用优化 baseline。</span>
+        </div>
+      </div>
+
+      <div class="callout bad">
+        <strong>重要提醒：</strong>
+        当前 EG06 不能写成论文主结论。只能写作内部状态：
+        “EG06 baseline infrastructure is implemented and passes fixture-level fairness checks.”
+      </div>
+    </section>
+
+    <section>
+      <h2>EG04 状态：方法冻结</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>项目</th>
+            <th>当前值</th>
+            <th>给队友的解释</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>状态</td>
+            <td><code>frozen</code></td>
+            <td>方法主线已经冻结，后续不再调阈值追结果。</td>
+          </tr>
+          <tr>
+            <td>主方法</td>
+            <td><code>collision_gated_floor_prior</code></td>
+            <td>论文主线只用 Collision-gated Floor-Prior。</td>
+          </tr>
+          <tr>
+            <td>配置</td>
+            <td><code>floor_prior_max1.8_mesh_p2_close0.75_far1.6</code></td>
+            <td>EG07 全量重跑必须按这个配置导出结果。</td>
+          </tr>
+          <tr>
+            <td>方法代码锚点</td>
+            <td><code>feb37414db42faec3d600b66d17186ed3da8a22e</code></td>
+            <td>这是 EG04 记录中的方法代码冻结点；当前分支在它之后继续追加协议、评测和报告。</td>
+          </tr>
+          <tr>
+            <td>EG03 / CW-GCP</td>
+            <td><code>skipped_no_go</code></td>
+            <td>CW-GCP 没有通过决策实验，不能替换主方法。</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>主要文件：<code>configs/eurographics2027/paper_main.yaml</code>、<code>manifests/eurographics2027/eg04_freeze_manifest.json</code>。</p>
+    </section>
+
+    <section>
+      <h2>EG05 状态：独立评测器</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>项目</th>
+            <th>状态/数值</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>状态</td>
+            <td><code>implementation_and_human_subset_alignment_passed_full_rerun_pending</code></td>
+            <td>实现和人审子集对齐已完成，等待 EG07 全量布局。</td>
+          </tr>
+          <tr>
+            <td>评测器</td>
+            <td><code>evaluation/independent_relation_evaluator.py</code></td>
+            <td>不导入修复器或优化器内部判定逻辑，只读最终 layout 和 target relations。</td>
+          </tr>
+          <tr>
+            <td>协议版本</td>
+            <td><code>eg2027-eg05-v1</code></td>
+            <td>采用 EG02 人审表实际坐标规则：<code>behind dz&lt;0</code>，<code>in_front_of dz&gt;0</code>。</td>
+          </tr>
+          <tr>
+            <td>单元测试</td>
+            <td>4 tests OK</td>
+            <td>覆盖边界距离、缺失物体、重复实例、冲突关系、unsupported predicate、前后坐标规则。</td>
+          </tr>
+          <tr>
+            <td>人审 repair 子集一致率</td>
+            <td>0.822785</td>
+            <td>79 条 binary-evaluable 关系；precision 0.896552，recall 0.866667，specificity 0.684211。</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>主要文件：<code>evaluation/independent_protocol.md</code>、<code>manifests/eurographics2027/eg05_independent_evaluator_manifest.json</code>、<code>results/independent_eval/eg2027/eg05_human_subset_repair/</code>。</p>
+    </section>
+
+    <section>
+      <h2>EG06 状态：公平 baseline 工具</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>项目</th>
+            <th>状态/结论</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>状态</td>
+            <td><code>fixture_fairness_checked_not_paper_persuasive_full_eg07_export_pending</code></td>
+            <td>工具通过 fixture 检查，但目前不能支撑论文 baseline claim。</td>
+          </tr>
+          <tr>
+            <td>随机 baseline</td>
+            <td><code>random_movement_matched_seed0/1/2</code></td>
+            <td>移动同一批物体，并严格匹配主方法每个物体的 XZ 位移长度。</td>
+          </tr>
+          <tr>
+            <td>通用优化 baseline</td>
+            <td><code>generic_relation_optimizer</code></td>
+            <td>使用同一移动预算上限做关系修正；可能比主方法移动更少，所以是 budget-matched，不是 exact-distance matched。</td>
+          </tr>
+          <tr>
+            <td>公平性检查</td>
+            <td>PASS</td>
+            <td><code>scripts/check_eg06_baseline_fairness.py</code> 已确认 fixture 随机基线精确匹配移动量。</td>
+          </tr>
+          <tr>
+            <td>说服力审计</td>
+            <td>当前不够</td>
+            <td>fixture 只有 3 个场景、3 条关系，没有 mesh collision，也没有置信区间。</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>主要文件：<code>scripts/run_eg06_movement_baselines.py</code>、<code>docs/eurographics2027/eg06_persuasiveness_audit_20260810.md</code>、<code>manifests/eurographics2027/eg06_movement_baselines_manifest.json</code>。</p>
+    </section>
+
+    <section>
+      <h2>EG07 必须提供的数据</h2>
+      <div class="callout">
+        EG07 的核心任务不是再换方法，而是导出一个能被 EG05/EG06/EG08 直接读取的全量标准数据包。
+        如果 EG07 数据不规范，后面的公平 baseline 和统计分析都会卡住。
+      </div>
+
+      <h3>1. 全量布局 JSON</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>字段/要求</th>
+            <th>必须提供</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>格式</td>
+            <td><code>{"layouts": [...]}</code></td>
+            <td>必须能直接作为 <code>evaluation/independent_relation_evaluator.py</code> 和 <code>scripts/run_eg06_movement_baselines.py</code> 的输入。</td>
+          </tr>
+          <tr>
+            <td>场景数量</td>
+            <td>531 scenes</td>
+            <td>bedroom 162、livingroom 192、diningroom 177。</td>
+          </tr>
+          <tr>
+            <td>每个场景至少两个 variant</td>
+            <td><code>baseline</code> + <code>collision_gated_floor_prior</code></td>
+            <td>EG06 要用二者计算主方法实际移动预算。</td>
+          </tr>
+          <tr>
+            <td>每个 layout 的基础字段</td>
+            <td><code>scene_id</code>, <code>room_type</code>, <code>layout_variant</code>, <code>source_config_id</code>, <code>objects</code>, <code>target_relations</code></td>
+            <td>字段名要和 EG05 fixture 保持一致。</td>
+          </tr>
+          <tr>
+            <td>objects 字段</td>
+            <td><code>index</code>, <code>category</code>, <code>center</code>, <code>size</code>, <code>yaw</code></td>
+            <td><code>center</code> 必须是 <code>[x, y, z]</code>，同一场景不同 variant 的 index 必须稳定。</td>
+          </tr>
+          <tr>
+            <td>target_relations 字段</td>
+            <td><code>relation_id</code>, <code>subject_class</code>, <code>predicate</code>, <code>object_class</code></td>
+            <td>最好只放 baseline layout 上，其他 variant 可为空；EG05 会用 baseline 冻结 instance pair。</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>2. 运行记录和可追溯信息</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>需要记录</th>
+            <th>原因</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><code>code_commit</code></td><td>说明这批数据从哪个代码版本生成。</td></tr>
+          <tr><td><code>config_path</code> 和 <code>config_sha256</code></td><td>证明没有偷偷改阈值。</td></tr>
+          <tr><td><code>command</code> 和 <code>log_path</code></td><td>让其他人能复现和排查失败。</td></tr>
+          <tr><td><code>output_path</code></td><td>明确 EG07 全量 layout JSON 放在哪里。</td></tr>
+          <tr><td><code>environment_summary</code></td><td>记录服务器、GPU、Python/PyTorch/CUDA 等环境。</td></tr>
+          <tr><td><code>scene_count_by_room</code></td><td>确认 bedroom/livingroom/diningroom 没有缺失或重复。</td></tr>
+          <tr><td><code>seed_or_seed_policy</code></td><td>记录随机策略；如果最终跑 seeds 0/1/2，也要分开记录。</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3. EG07 完成后马上要跑的命令</h3>
+      <p>假设 EG07 导出的全量文件叫 <code>results/independent_eval/eg2027/eg07_full_layout_export/layouts.json</code>：</p>
+      <pre><code>python evaluation/independent_relation_evaluator.py \
+  --input results/independent_eval/eg2027/eg07_full_layout_export/layouts.json \
+  --output-dir results/independent_eval/eg2027/eg07_full_independent_eval \
+  --run-id eg07_full_independent_eval
+
+python scripts/run_eg06_movement_baselines.py \
+  --input results/independent_eval/eg2027/eg07_full_layout_export/layouts.json \
+  --output-dir results/independent_eval/eg2027/eg06_full_movement_baselines</code></pre>
+    </section>
+
+    <section>
+      <h2>给队友的分工建议</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>成员</th>
+            <th>当前最该做的事</th>
+            <th>不要做的事</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A</td>
+            <td>确认 EG07 导出的 layout schema 与 EG05 evaluator 完全一致。</td>
+            <td>不要再调整 Floor-Prior 阈值。</td>
+          </tr>
+          <tr>
+            <td>B</td>
+            <td>负责 EG07 全量导出和 EG06 全量 baseline 运行。</td>
+            <td>不要把 EG06 fixture 结果写进论文主表。</td>
+          </tr>
+          <tr>
+            <td>C</td>
+            <td>论文里只引用 EG04/EG05/EG06 的状态，不写过强 claim。</td>
+            <td>不要写“已显著优于随机 baseline”。</td>
+          </tr>
+          <tr>
+            <td>D</td>
+            <td>检查 claim 是否都有 EG07/EG08 证据支持。</td>
+            <td>不要放过“工具已通 = 论文结论已成立”的混淆。</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer>
+      本报告用于团队内部交接。EG07 前，EG04 是方法冻结，EG05 是评测器可用，EG06 是 baseline 工具可用但论文证据不足。
+    </footer>
+  </main>
+</body>
+</html>
