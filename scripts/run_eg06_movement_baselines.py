@@ -86,8 +86,23 @@ def normalized_pair(evaluator, baseline: dict[str, Any], relation: dict[str, Any
     return evaluator.choose_pair_from_baseline(objects, rel)
 
 
-def move_toward_relation(evaluator, layout: dict[str, Any], relation: dict[str, Any], budgets: dict[int, float]) -> None:
-    subject_idx, object_idx, status = normalized_pair(evaluator, layout, relation)
+def frozen_pairs_for_scene(evaluator, baseline: dict[str, Any]) -> dict[str, tuple[int | None, int | None, str]]:
+    pairs = {}
+    for idx, relation in enumerate(baseline.get("target_relations", [])):
+        relation_id = str(relation.get("relation_id", relation.get("id", idx)))
+        pairs[relation_id] = normalized_pair(evaluator, baseline, relation)
+    return pairs
+
+
+def move_toward_relation(
+    evaluator,
+    layout: dict[str, Any],
+    relation: dict[str, Any],
+    budgets: dict[int, float],
+    frozen_pairs: dict[str, tuple[int | None, int | None, str]],
+) -> None:
+    relation_id = str(relation.get("relation_id", relation.get("id", 0)))
+    subject_idx, object_idx, status = frozen_pairs.get(relation_id, (None, None, "missing_pair"))
     predicate = evaluator.normalize_predicate(relation["predicate"])
     if status != "evaluated" or predicate is None or subject_idx is None or object_idx is None:
         return
@@ -143,8 +158,9 @@ def move_toward_relation(evaluator, layout: dict[str, Any], relation: dict[str, 
 
 def apply_generic_optimizer(evaluator, baseline: dict[str, Any], budgets: dict[int, float]) -> dict[str, Any]:
     out = clone_with_variant(baseline, "generic_relation_optimizer", "eg06_generic_budget_matched")
+    frozen_pairs = frozen_pairs_for_scene(evaluator, baseline)
     for relation in baseline.get("target_relations", []):
-        move_toward_relation(evaluator, out, relation, budgets)
+        move_toward_relation(evaluator, out, relation, budgets, frozen_pairs)
     return out
 
 

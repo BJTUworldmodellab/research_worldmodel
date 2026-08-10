@@ -14,6 +14,10 @@ It is **not final evidence complete** because the branch still lacks the EG-07
 normalized 531-scene layout export. The current result is a runnable fixture
 and protocol proof, not the full paper baseline table.
 
+Persuasiveness audit:
+
+`docs/eurographics2027/eg06_persuasiveness_audit_20260810.md`
+
 ## Implemented Runner
 
 Script:
@@ -88,6 +92,8 @@ per-object movement magnitude on the fixture:
 ## What This Does Not Prove Yet
 
 - It does not prove the main method beats random baselines on the full dataset.
+- It does not prove the main method beats a generic optimizer; the generic
+  optimizer matches the main method on this simple fixture.
 - It does not provide confidence intervals.
 - It does not include mesh collision, because the fixture is center/box-only.
 - It does not replace EG-07 full rerun or EG-08 statistics.
