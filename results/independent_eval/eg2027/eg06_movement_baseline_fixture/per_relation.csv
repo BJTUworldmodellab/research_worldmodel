@@ -1,0 +1,19 @@
+scene_id,room_type,layout_variant,source_config_id,relation_id,subject_class,object_class,predicate,subject_index,object_index,status,is_satisfied,failure_reason,dx,dy,dz,d_xz
+eg06_bedroom_001,bedroom,baseline,eg06_fixture,bed_r1,nightstand,bed,right,1,0,evaluated,0,predicate_failed,-0.2,0.0,0.0,0.2
+eg06_bedroom_001,bedroom,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,bed_r1,nightstand,bed,right,1,0,evaluated,1,,0.25,0.0,0.0,0.25
+eg06_bedroom_001,bedroom,generic_relation_optimizer,eg06_generic_budget_matched,bed_r1,nightstand,bed,right,1,0,evaluated,1,,0.07500000000000001,0.0,0.0,0.07500000000000001
+eg06_bedroom_001,bedroom,random_movement_matched_seed0,eg06_random_seed0,bed_r1,nightstand,bed,right,1,0,evaluated,0,predicate_failed,-0.4835395516905152,0.0,0.34943572030795833,0.5965868090028525
+eg06_bedroom_001,bedroom,random_movement_matched_seed1,eg06_random_seed1,bed_r1,nightstand,bed,right,1,0,evaluated,0,predicate_failed,-0.5853472237853556,0.0,-0.23239517447855723,0.6297927353615174
+eg06_bedroom_001,bedroom,random_movement_matched_seed2,eg06_random_seed2,bed_r1,nightstand,bed,right,1,0,evaluated,0,predicate_failed,0.0492989289136683,0.0,-0.3746332126794123,0.3778629757392654
+eg06_diningroom_001,diningroom,baseline,eg06_fixture,din_r1,dining chair,dining table,behind,1,0,evaluated,0,predicate_failed,0.0,0.0,0.2,0.2
+eg06_diningroom_001,diningroom,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,din_r1,dining chair,dining table,behind,1,0,evaluated,1,,0.0,0.0,-0.2,0.2
+eg06_diningroom_001,diningroom,generic_relation_optimizer,eg06_generic_budget_matched,din_r1,dining chair,dining table,behind,1,0,evaluated,1,,0.0,0.0,-0.07500000000000001,0.07500000000000001
+eg06_diningroom_001,diningroom,random_movement_matched_seed0,eg06_random_seed0,din_r1,dining chair,dining table,behind,1,0,evaluated,0,predicate_failed,-0.39478256087296437,0.0,0.2643951056415331,0.4751400238420389
+eg06_diningroom_001,diningroom,random_movement_matched_seed1,eg06_random_seed1,din_r1,dining chair,dining table,behind,1,0,evaluated,0,predicate_failed,0.31560657701695927,0.0,-0.04574883223250148,0.31890510674336875
+eg06_diningroom_001,diningroom,random_movement_matched_seed2,eg06_random_seed2,din_r1,dining chair,dining table,behind,1,0,evaluated,0,predicate_failed,-0.14126170855565665,0.0,0.5742260409110205,0.5913462744994749
+eg06_livingroom_001,livingroom,baseline,eg06_fixture,liv_r1,coffee table,sofa,close to,1,0,evaluated,0,predicate_failed,1.25,0.0,0.0,1.25
+eg06_livingroom_001,livingroom,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,liv_r1,coffee table,sofa,close to,1,0,evaluated,1,,0.7,0.0,0.0,0.7
+eg06_livingroom_001,livingroom,generic_relation_optimizer,eg06_generic_budget_matched,liv_r1,coffee table,sofa,close to,1,0,evaluated,1,,0.75,0.0,0.0,0.75
+eg06_livingroom_001,livingroom,random_movement_matched_seed0,eg06_random_seed0,liv_r1,coffee table,sofa,close to,1,0,evaluated,0,predicate_failed,1.5713263969688662,0.0,0.44637355052803784,1.6334980846092737
+eg06_livingroom_001,livingroom,random_movement_matched_seed1,eg06_random_seed1,liv_r1,coffee table,sofa,close to,1,0,evaluated,0,predicate_failed,1.225247859525899,0.0,0.5494427463730415,1.3428029076579882
+eg06_livingroom_001,livingroom,random_movement_matched_seed2,eg06_random_seed2,liv_r1,coffee table,sofa,close to,1,0,evaluated,0,predicate_failed,1.1789194732154151,0.0,0.5453875307632418,1.2989606164308978
