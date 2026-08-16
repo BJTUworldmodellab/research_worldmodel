@@ -1,0 +1,92 @@
+{
+  "manifest_version": "2026-08-16-eg08-v1",
+  "task": "EG-08 paired scene-level confidence intervals",
+  "status": "EG08_GO",
+  "repository": "BJTUworldmodellab/research_worldmodel",
+  "branch": "agent/eg01-eg02-eurographics2027",
+  "input_commit": "2adeb442bd3d2d78520ac2b6e2d6322dbd4caa27",
+  "protocol": {
+    "schema": "eg2027-eg08-paired-scene-bootstrap-v1",
+    "canonical_source": "scripts/check_eg06_full_completion.py",
+    "canonical_estimators": [
+      "scene_unweighted",
+      "relation_weighted"
+    ],
+    "resampling_unit": "paired scene",
+    "overall_stratification": "none for canonical; fixed room counts for sensitivity",
+    "interval": "two-sided 95% percentile bootstrap",
+    "canonical_rounds": 10000,
+    "sensitivity_rounds": 50000,
+    "seed": 20260816,
+    "primary_gate": "all random controls pass both canonical estimators; overall main_vs_random_mean relation_weighted ci95_low > 0"
+  },
+  "inputs": {
+    "eg05_per_scene": {
+      "path": "eg07_final_delivery_20260814/eg05/per_scene.csv",
+      "sha256": "a6a5f87d293ab89f546537bb2bd28010f655d28893c972dbd8f2fa760f6f8e7d"
+    },
+    "eg06_per_scene": {
+      "path": "eg07_final_delivery_20260814/eg06/per_scene.csv",
+      "sha256": "d67af62ce73fe344adb3ce83af9d2a2b7da3494a95675dea7585585b01882091"
+    },
+    "eg07_final_metrics": {
+      "path": "eg07_final_delivery_20260814/final/eg07_final_metrics_20260814.json",
+      "sha256": "79fc4c928f3c64b09589b0d4ea88819ec5e277c8b58e089868f276fadf768449"
+    }
+  },
+  "integrity": {
+    "scenes": 531,
+    "room_counts": {
+      "bedroom": 162,
+      "livingroom": 192,
+      "diningroom": 177
+    },
+    "target_relations": 808,
+    "eg05_rows": 1062,
+    "eg06_rows": 3186,
+    "missing_targets_retained": 93,
+    "unsupported_predicates": 0,
+    "eg05_eg06_main_baseline_match": true
+  },
+  "primary_result": {
+    "main_accuracy": 0.6398514851485149,
+    "random_seed_mean_accuracy": 0.6254125412541254,
+    "gain": 0.014438943894389489,
+    "gain_pp": 1.4438943894389489,
+    "ci95_low": 0.007453416149068323,
+    "ci95_high": 0.022005381872709433,
+    "all_random_controls_both_estimators_go": true,
+    "decision": "GO"
+  },
+  "claim_boundaries": {
+    "main_vs_baseline": "INCONCLUSIVE; 95% CI includes zero",
+    "main_vs_generic_optimizer": "INCONCLUSIVE; 95% CI includes zero",
+    "livingroom_main_vs_random_mean": "INCONCLUSIVE; 95% CI lower bound equals zero"
+  },
+  "safety": {
+    "chosen_main_collision_pairs": 1061,
+    "baseline_collision_pairs": 1075,
+    "collision_non_worsening": true,
+    "random_exact_movement_matched": true,
+    "generic_within_budget": true
+  },
+  "independent_validation": {
+    "implementation": "python standard library random.Random",
+    "rounds": 20000,
+    "seed": 9102,
+    "ci95_low": 0.007334739425203838,
+    "ci95_high": 0.022113022113022112,
+    "primary_decision_stable": true
+  },
+  "outputs": [
+    "scripts/compute_eg08_paired_statistics.py",
+    "tests/test_eg08_paired_statistics.py",
+    "results/independent_eval/eg2027/eg08_paired_statistics_20260816/paired_ci.csv",
+    "results/independent_eval/eg2027/eg08_paired_statistics_20260816/canonical_eg06_ci.json",
+    "results/independent_eval/eg2027/eg08_paired_statistics_20260816/paired_statistics.json",
+    "results/independent_eval/eg2027/eg08_paired_statistics_20260816/eg08_report.md",
+    "results/independent_eval/eg2027/eg08_paired_statistics_20260816/EG08_GO",
+    "docs/eurographics2027/eg08_paired_statistics_report_20260816.md"
+  ],
+  "provenance_gap": "The three original room-level generator JSON files are not in the lightweight EG07 delivery."
+}
