@@ -7,14 +7,15 @@ Depends on: EG-02 protocol and EG-04 method freeze
 
 ## Verdict
 
-EG-05 implementation is usable for the current Eurographics branch. The
+EG-05 is now full-run complete on the EG-07 formal evidence package. The
 independent evaluator is available as a runnable module with unit tests, a smoke
-fixture, per-scene CSV output, an audit JSON, and a repair-coordinate alignment
-against the adjudicated EG-02 human subset.
+fixture, per-scene CSV output, an audit JSON, a repair-coordinate alignment
+against the adjudicated EG-02 human subset, and a full 531-scene EG-07
+evaluation.
 
-It is **not yet final evidence-gate complete** because the evaluator has not
-been run against a normalized full EG-07 layout export. The human subset check
-has been completed for repair coordinates.
+It is evidence-gate complete for point estimates. It is **not yet a final paper
+claim of statistical significance** because paired confidence intervals are
+deferred to EG-08.
 
 ## Implemented Evaluator
 
@@ -127,6 +128,59 @@ Human-subset result:
 | Recall satisfied | 0.866667 |
 | Specificity not satisfied | 0.684211 |
 
+## EG-07 Full Independent Evaluation
+
+Source package:
+
+`eg07_final_delivery_20260814/`
+
+Input layout export:
+
+`eg07_final_delivery_20260814/layouts/layouts.json`
+
+Input SHA-256:
+
+`663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d`
+
+Full-run outputs:
+
+- `eg07_final_delivery_20260814/eg05/per_relation.csv`
+- `eg07_final_delivery_20260814/eg05/per_scene.csv`
+- `eg07_final_delivery_20260814/eg05/summary.csv`
+- `eg07_final_delivery_20260814/eg05/audit.json`
+
+Audit status:
+
+| Check | Value |
+|---|---:|
+| Layout rows | 1062 |
+| Per-scene rows | 1062 |
+| Per-relation rows | 1616 |
+| Missing baseline scenes | 0 |
+| Unsupported predicates | 0 |
+| Missing-object relation cases | 93 |
+
+Full-run relation accuracy:
+
+| Room | Baseline | Collision-gated Floor-Prior | Gain |
+|---|---:|---:|---:|
+| Bedroom | 0.7265 | 0.7306 | +0.0041 |
+| Dining room | 0.5836 | 0.5874 | +0.0037 |
+| Living room | 0.6054 | 0.6122 | +0.0068 |
+| Overall | 0.6349 | 0.6399 | +0.0050 |
+
+Count interpretation:
+
+| Variant | Satisfied relations | Total target relations |
+|---|---:|---:|
+| Baseline | 513 | 808 |
+| Collision-gated Floor-Prior | 517 | 808 |
+
+This means the main method improves the point estimate by 4 satisfied target
+relations out of 808. The direction is positive in all three room types, but the
+effect size is small. The paper should report this as a modest point-estimate
+gain until EG-08 computes paired confidence intervals.
+
 ## Current Status
 
 | Item | Status |
@@ -136,12 +190,16 @@ Human-subset result:
 | Smoke fixture writes required outputs | DONE |
 | Human repair-coordinate subset converted and evaluated | DONE |
 | Agreement against adjudicated labels reported | DONE |
-| Full normalized EG-07 layout export evaluated | TODO |
+| Full normalized EG-07 layout export evaluated | DONE |
+| Paired confidence interval for final paper claim | TODO: EG-08 |
 
 ## Next Work
 
-1. Export the full EG-07 frozen rerun layouts into the evaluator JSON schema.
-2. Run `evaluation/independent_relation_evaluator.py` on the full 531-scene
-   InstructScene output package.
-3. Use EG-08 to compute paired confidence intervals from the full evaluator
-   per-scene CSV.
+1. Use EG-08 to compute paired confidence intervals from
+   `eg07_final_delivery_20260814/eg05/per_scene.csv` and
+   `eg07_final_delivery_20260814/eg05/per_relation.csv`.
+2. Keep the paper wording conservative until the confidence interval is known:
+   "modest positive point-estimate gain" is supported; "statistically
+   significant improvement" is not yet supported.
+3. Preserve the missing-object convention in any table caption: missing target
+   objects remain in the denominator.

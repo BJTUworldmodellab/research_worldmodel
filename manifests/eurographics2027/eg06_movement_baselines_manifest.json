@@ -1,7 +1,7 @@
 {
-  "manifest_version": "2026-08-10-eg06-v1",
+  "manifest_version": "2026-08-16-eg06-v2",
   "task": "EG-06 movement-matched random and generic optimizer baselines",
-  "status": "fixture_fairness_checked_not_paper_persuasive_full_eg07_export_pending",
+  "status": "full_eg07_movement_baselines_complete_ci_pending",
   "repository": "BJTUworldmodellab/research_worldmodel",
   "branch": "agent/eg01-eg02-eurographics2027",
   "depends_on": {
@@ -47,18 +47,59 @@
       }
     }
   },
+  "full_eg07_run": {
+    "source_package": "eg07_final_delivery_20260814",
+    "input": "eg07_final_delivery_20260814/layouts/layouts.json",
+    "input_sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+    "run_id": "eg06_full_movement_baselines",
+    "run_scope": "full",
+    "outputs": [
+      "eg07_final_delivery_20260814/eg06/eg06_augmented_layouts.json",
+      "eg07_final_delivery_20260814/eg06/movement_audit.csv",
+      "eg07_final_delivery_20260814/eg06/per_relation.csv",
+      "eg07_final_delivery_20260814/eg06/per_scene.csv",
+      "eg07_final_delivery_20260814/eg06/summary.csv",
+      "eg07_final_delivery_20260814/eg06/audit.json"
+    ],
+    "n_scenes": 531,
+    "n_target_relations": 808,
+    "movement_audit_rows": 2655,
+    "fairness": {
+      "random_exact_movement_matched": true,
+      "generic_within_budget": true
+    },
+    "overall_relation_accuracy": {
+      "baseline": 0.6349009900990099,
+      "collision_gated_floor_prior": 0.6398514851485149,
+      "random_movement_matched_seed0": 0.6225247524752475,
+      "random_movement_matched_seed1": 0.625,
+      "random_movement_matched_seed2": 0.6287128712871287,
+      "random_mean": 0.6254125412541254,
+      "generic_relation_optimizer": 0.6410891089108911
+    },
+    "satisfied_relations": {
+      "baseline": 513,
+      "collision_gated_floor_prior": 517,
+      "random_movement_matched_seed0": 503,
+      "random_movement_matched_seed1": 505,
+      "random_movement_matched_seed2": 508,
+      "generic_relation_optimizer": 518,
+      "total_relations": 808
+    },
+    "paper_claim_status": "main_above_random_point_estimates_generic_optimizer_not_beaten_ci_pending"
+  },
   "acceptance_status": {
     "runner_implemented": "pass",
-    "random_baseline_3_seeds": "pass_fixture",
-    "generic_optimizer_baseline": "pass_fixture",
-    "independent_evaluator_integration": "pass_fixture",
+    "random_baseline_3_seeds": "pass_full_eg07",
+    "generic_optimizer_baseline": "pass_full_eg07",
+    "independent_evaluator_integration": "pass_full_eg07",
     "fixture_fairness_check": "pass",
-    "paper_persuasiveness": "fail_fixture_only",
-    "full_531_scene_run": "pending_eg07_layout_export",
+    "full_531_scene_run": "pass",
+    "paper_persuasiveness": "limited_point_estimate_only",
     "paired_ci_vs_random": "pending_eg08"
   },
   "next_required_steps": [
-    "Run this script on the EG-07 full normalized layout export.",
-    "Use EG-08 to compute paired confidence intervals against random and generic baselines."
+    "Use EG-08 to compute paired confidence intervals against random and generic baselines.",
+    "Do not claim the main method beats generic_relation_optimizer; generic is 518/808 and main is 517/808."
   ]
 }

@@ -1,7 +1,7 @@
 {
-  "manifest_version": "2026-08-05-eg05-v1",
+  "manifest_version": "2026-08-16-eg05-v2",
   "task": "EG-05 implement and validate independent evaluator",
-  "status": "implementation_and_human_subset_alignment_passed_full_rerun_pending",
+  "status": "full_eg07_independent_eval_complete_ci_pending",
   "repository": "BJTUworldmodellab/research_worldmodel",
   "branch": "agent/eg01-eg02-eurographics2027",
   "depends_on": {
@@ -58,14 +58,43 @@
     "recall_satisfied": 0.866667,
     "specificity_not_satisfied": 0.684211
   },
+  "full_eg07_run": {
+    "source_package": "eg07_final_delivery_20260814",
+    "input": "eg07_final_delivery_20260814/layouts/layouts.json",
+    "input_sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+    "run_id": "eg07_full_independent_eval",
+    "outputs": [
+      "eg07_final_delivery_20260814/eg05/per_relation.csv",
+      "eg07_final_delivery_20260814/eg05/per_scene.csv",
+      "eg07_final_delivery_20260814/eg05/summary.csv",
+      "eg07_final_delivery_20260814/eg05/audit.json"
+    ],
+    "n_layouts": 1062,
+    "n_scenes": 531,
+    "n_target_relations": 808,
+    "missing_baseline_scenes": 0,
+    "unsupported_predicates": 0,
+    "missing_object_relation_cases": 93,
+    "relation_accuracy": {
+      "baseline_overall": 0.6349009900990099,
+      "main_overall": 0.6398514851485149,
+      "gain_overall": 0.004950495049504955,
+      "baseline_satisfied": 513,
+      "main_satisfied": 517,
+      "total_relations": 808
+    },
+    "paper_claim_status": "point_estimate_complete_statistical_significance_pending_eg08"
+  },
   "acceptance_status": {
     "independent_module": "pass",
     "unit_tests": "pass",
     "per_scene_csv_and_audit": "pass",
     "human_subset_alignment": "pass_repair_coordinates",
-    "full_scene_outputs": "pending_eg07"
+    "full_scene_outputs": "pass_eg07",
+    "paired_ci": "pending_eg08"
   },
   "next_required_steps": [
-    "Run the evaluator on EG-07 full frozen outputs before final paper claims."
+    "Use EG-08 to compute paired confidence intervals from EG-07 per_scene.csv and per_relation.csv.",
+    "Do not claim statistical significance before EG-08."
   ]
 }
