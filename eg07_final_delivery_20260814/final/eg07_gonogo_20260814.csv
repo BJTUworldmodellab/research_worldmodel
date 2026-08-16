@@ -1,0 +1,52 @@
+item,actual,threshold,go_no_go,evidence
+layouts.json size bytes,5952882,recorded (5952882),GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+layouts.json SHA-256,663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d,recorded; identical across EG-05/EG-06,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+export validation.json status,PASS,PASS,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation.json
+validation_recheck.json status,PASS,PASS,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation_recheck.json
+errors == [],[],[],GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation_recheck.json
+warnings == [],[],[],GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation_recheck.json
+scenes,531,531,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+layouts,1062,1062,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+bedroom scenes,162,162,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+livingroom scenes,192,192,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+diningroom scenes,177,177,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+target_relations (baseline),808,808,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+gate repair,492,recorded (492 expected from Phase 3),GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+gate fallback_baseline,39,recorded (39 expected from Phase 3),GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+gate reconciled (repair+fallback == scenes),531,531,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+EG-05 n_layouts,1062,1062,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/audit.json
+EG-05 missing_baseline_scenes,[],[],GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/audit.json
+EG-05 input SHA == layouts.json SHA,663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d,== layouts.json SHA,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/audit.json
+EG-06 run_scope,full,full,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json
+EG-06 input_artifact_status,formal_candidate,formal_candidate,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json
+EG-06 input_scene_count,531,531,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json
+EG-06 seeds,"[0, 1, 2]","[0, 1, 2]",GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json
+EG-06 input SHA == EG-05 input SHA,663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d,== EG-05 input SHA,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json
+EG-05 independence (no optimizer imports),False,False,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/audit.json
+EG-06 independence (no optimizer imports),False,False,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json
+EG-06 no scene skipped (movement rows),2655,531 x 5 = 2655,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/movement_audit.csv
+EG-06 random baseline exact movement match,True,True,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/movement_audit.csv
+EG-06 generic optimizer within budget,True,True,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/movement_audit.csv
+provenance artifact_status,formal_candidate,formal_candidate,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+provenance code_commit,3a167d813d74ab18df8762d57ff3b4a47789e3af,recorded (3a167d8 generation),GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+provenance config SHA frozen,052ACE5B295348483CE9B6110B5BD7933235424A55CC2108C966431E516829E2,052ACE5B...6829E2,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+bedroom relation accuracy (baseline),0.7265,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+bedroom relation accuracy (main),0.7306,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+bedroom gain (main - baseline),+0.0041,reported; significance -> EG-08,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+livingroom relation accuracy (baseline),0.6054,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+livingroom relation accuracy (main),0.6122,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+livingroom gain (main - baseline),+0.0068,reported; significance -> EG-08,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+diningroom relation accuracy (baseline),0.5836,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+diningroom relation accuracy (main),0.5874,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+diningroom gain (main - baseline),+0.0037,reported; significance -> EG-08,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+overall relation accuracy (baseline),0.6349,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+overall relation accuracy (main),0.6399,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+overall gain (main - baseline),+0.0050,reported; significance -> EG-08,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv
+random movement-matched mean accuracy,0.6254,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/summary.csv
+main vs random-mean gain,+0.0144,reported; significance -> EG-08,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/summary.csv
+generic_relation_optimizer accuracy,0.6411,reported,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/summary.csv
+main vs generic-optimizer gain,-0.0012,reported; significance -> EG-08,REPORTED,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/summary.csv
+unsupported relations explicitly counted,0,counted (0 present; not silently dropped),GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/per_relation.csv
+missing objects explicitly counted,93,counted; remain in denominator,GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/per_relation.csv
+mesh: chosen main collision pairs <= baseline,1061 <= 1075,chosen_main <= baseline (safety non-worsening),GO,/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+significance (95% CI lower bound > 0),not computed,deferred to EG-08,DEFERRED,docs/eurographics2027/eg06_persuasiveness_audit_20260810.md

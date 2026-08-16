@@ -1,0 +1,33 @@
+[bedroom] target=162 json=/root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/bedroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01999/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+  schema has args: OK
+  schema has metrics: OK
+  schema has scores: OK
+  schema has per_scene: OK
+  per_scene_count == 162: OK
+  all scene_uid present: OK
+  scene_uids unique == 162: OK
+  layout_mesh available==True (all scenes): OK
+  repair_mesh available==True (all scenes): OK
+  layout_mesh evidence non-empty (all scenes): OK
+  repair_mesh evidence non-empty (all scenes): OK
+  layout_mesh objects>=1 (all scenes): OK
+  repair_mesh objects>=1 (all scenes): OK
+  object identity stable (all scenes): OK
+  layout_boxes non-empty (all scenes): OK
+  repair_boxes non-empty (all scenes): OK
+  mesh_collision_scenes_evaluated == 162: OK
+  args.seed == 0: OK
+  args.n_scenes == 0: OK
+  args.relation_source == parsed: OK
+  args.repair_strategy == floor_prior: OK
+  args.mesh_collision == True: OK
+  args.output_suffix frozen: OK
+  args.repair_passes == 2: OK
+  args.close_distance == 0.75: OK
+  args.far_distance == 1.6: OK
+  args.max_repair_move == 1.8: OK
+  args.repair_overlap_weight == 1.0: OK
+  args.checkpoint_epoch == 1999: OK
+  args.sg2sc_epoch == 1999: OK
+  args.fvqvae_epoch == 1999: OK
+[PASS] bedroom (per_scene=162, mesh_eval=162)

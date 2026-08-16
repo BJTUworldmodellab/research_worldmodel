@@ -1,1 +1,5 @@
 *.sh text eol=lf
+
+# Preserve the EG07 forensic delivery byte-for-byte across platforms.
+eg07_final_delivery_20260814.tar.gz -text
+eg07_final_delivery_20260814/** -text

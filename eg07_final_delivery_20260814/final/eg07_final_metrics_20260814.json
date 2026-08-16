@@ -1,0 +1,162 @@
+{
+  "created_at_utc": "2026-08-14",
+  "eg05": {
+    "audit": {
+      "evaluator": "evaluation/independent_relation_evaluator.py",
+      "independence_rule": {
+        "forbidden_imports": [
+          "scripts/compute_gated_floorprior.py",
+          "scripts/summarize_floorprior_results.py",
+          "scripts/sync_parallel_floorprior_results.py",
+          "results/relation_aware_generate_sg.py",
+          "src/ablation/repairers.py"
+        ],
+        "imports_repair_or_optimizer_modules": false
+      },
+      "input_path": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "input_sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+      "missing_baseline_scenes": [],
+      "n_layouts": 1062,
+      "n_per_relation_rows": 1616,
+      "n_per_scene_rows": 1062,
+      "protocol": "eg2027-eg05-v1",
+      "run_id": "eg07_full_independent_eval",
+      "thresholds": {
+        "close_distance": 0.75,
+        "direction_margin": 0.05,
+        "far_distance": 1.6,
+        "vertical_margin": 0.05
+      }
+    },
+    "missing": {
+      "baseline": {
+        "bedroom": 17,
+        "diningroom": 36,
+        "livingroom": 40
+      },
+      "overall": 93
+    },
+    "relation_accuracy": {
+      "baseline": {
+        "bedroom": 0.726530612244898,
+        "diningroom": 0.5836431226765799,
+        "livingroom": 0.6054421768707483
+      },
+      "baseline_overall": 0.6349009900990099,
+      "gain_overall": 0.004950495049504955,
+      "main": {
+        "bedroom": 0.7306122448979592,
+        "diningroom": 0.587360594795539,
+        "livingroom": 0.6122448979591837
+      },
+      "main_overall": 0.6398514851485149
+    },
+    "unsupported": 0
+  },
+  "eg06": {
+    "audit": {
+      "augmented_layout_path": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/eg06_augmented_layouts.json",
+      "baselines": [
+        "random_movement_matched",
+        "generic_relation_optimizer"
+      ],
+      "evaluator": "evaluation/independent_relation_evaluator.py",
+      "independence_rule": {
+        "forbidden_imports": [
+          "scripts/compute_gated_floorprior.py",
+          "scripts/summarize_floorprior_results.py",
+          "scripts/sync_parallel_floorprior_results.py",
+          "results/relation_aware_generate_sg.py",
+          "src/ablation/repairers.py"
+        ],
+        "imports_repair_or_optimizer_modules": false
+      },
+      "input_artifact_status": "formal_candidate",
+      "input_path": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "input_scene_count": 531,
+      "input_sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+      "missing_baseline_scenes": [],
+      "note": "Full 531-scene EG-06 run on a formal candidate.",
+      "protocol": "eg2027-eg05-v1",
+      "run_id": "eg06_full_movement_baselines",
+      "run_scope": "full",
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "task": "EG-06 movement-matched baselines",
+      "thresholds": {
+        "close_distance": 0.75,
+        "direction_margin": 0.05,
+        "far_distance": 1.6,
+        "vertical_margin": 0.05
+      }
+    },
+    "baselines": {
+      "baseline": 0.6349009900990099,
+      "generic_relation_optimizer": 0.6410891089108911,
+      "main": 0.6398514851485149,
+      "random_mean": 0.6254125412541254,
+      "random_movement_matched_seed0": 0.6225247524752475,
+      "random_movement_matched_seed1": 0.625,
+      "random_movement_matched_seed2": 0.6287128712871287
+    },
+    "fairness": {
+      "generic_within_budget": true,
+      "random_exact_movement_matched": true
+    }
+  },
+  "input": {
+    "layouts_bytes": 5952882,
+    "layouts_path": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+    "layouts_sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d"
+  },
+  "provenance": {
+    "artifact_status": "formal_candidate",
+    "code_commit": "3a167d813d74ab18df8762d57ff3b4a47789e3af",
+    "method_code_anchor": "feb37414db42faec3d600b66d17186ed3da8a22e",
+    "seed_policy": "generator_seed=0; one layout per validation scene",
+    "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+    "source_config_sha256": "052ACE5B295348483CE9B6110B5BD7933235424A55CC2108C966431E516829E2"
+  },
+  "schema": "eg2027-eg07-final-eval-v1",
+  "structural": {
+    "baseline_collision_pairs_total": 1075,
+    "chosen_main_collision_pairs_total": 1061,
+    "gate_decision": {
+      "fallback_baseline": 39,
+      "repair": 492
+    },
+    "gate_decision_by_room": {
+      "bedroom": {
+        "fallback_baseline": 8,
+        "repair": 154
+      },
+      "diningroom": {
+        "fallback_baseline": 13,
+        "repair": 164
+      },
+      "livingroom": {
+        "fallback_baseline": 18,
+        "repair": 174
+      }
+    },
+    "layouts": 1062,
+    "mesh_available": {
+      "true": 531
+    },
+    "relation_export_status": {
+      "direct": 678,
+      "protocol_mapped_composite": 130
+    },
+    "repair_collision_pairs_total": 1114,
+    "scene_count_by_room": {
+      "bedroom": 162,
+      "diningroom": 177,
+      "livingroom": 192
+    },
+    "scenes": 531,
+    "target_relations": 808
+  }
+}
