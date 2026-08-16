@@ -1,7 +1,7 @@
 {
-  "manifest_version": "2026-08-16-eg06-v2",
+  "manifest_version": "2026-08-16-eg06-v3",
   "task": "EG-06 movement-matched random and generic optimizer baselines",
-  "status": "full_eg07_movement_baselines_complete_ci_pending",
+  "status": "complete_for_random_movement_baseline_generic_not_beaten",
   "repository": "BJTUworldmodellab/research_worldmodel",
   "branch": "agent/eg01-eg02-eurographics2027",
   "depends_on": {
@@ -86,7 +86,39 @@
       "generic_relation_optimizer": 518,
       "total_relations": 808
     },
-    "paper_claim_status": "main_above_random_point_estimates_generic_optimizer_not_beaten_ci_pending"
+    "paired_ci_summary": {
+      "bootstrap_seed": 20260816,
+      "bootstrap_resamples": 10000,
+      "scene_unweighted": {
+        "main_minus_random_mean": {
+          "mean": 0.01349654739485248,
+          "ci95_low": 0.0069052102950408045,
+          "ci95_high": 0.02071563088512241,
+          "passes_lower_bound_gt_0": true
+        },
+        "main_minus_generic_relation_optimizer": {
+          "mean": -0.0018832391713747645,
+          "ci95_low": -0.007532956685499058,
+          "ci95_high": 0.002824858757062147,
+          "passes_lower_bound_gt_0": false
+        }
+      },
+      "relation_weighted_scene_bootstrap": {
+        "main_minus_random_mean": {
+          "mean": 0.01443894389438944,
+          "ci95_low": 0.007453416149068323,
+          "ci95_high": 0.022005381872709433,
+          "passes_lower_bound_gt_0": true
+        },
+        "main_minus_generic_relation_optimizer": {
+          "mean": -0.0012376237623762376,
+          "ci95_low": -0.006329113924050633,
+          "ci95_high": 0.0037593984962406013,
+          "passes_lower_bound_gt_0": false
+        }
+      }
+    },
+    "paper_claim_status": "main_beats_random_movement_matched_baselines_with_paired_ci_generic_optimizer_not_beaten"
   },
   "acceptance_status": {
     "runner_implemented": "pass",
@@ -95,11 +127,12 @@
     "independent_evaluator_integration": "pass_full_eg07",
     "fixture_fairness_check": "pass",
     "full_531_scene_run": "pass",
-    "paper_persuasiveness": "limited_point_estimate_only",
-    "paired_ci_vs_random": "pending_eg08"
+    "paper_persuasiveness": "pass_for_random_movement_baseline_claim_only",
+    "paired_ci_vs_random": "pass",
+    "paired_ci_vs_generic_optimizer": "fail_not_beaten"
   },
   "next_required_steps": [
-    "Use EG-08 to compute paired confidence intervals against random and generic baselines.",
+    "Use EG-08 to integrate these paired confidence intervals into the final paper statistics package.",
     "Do not claim the main method beats generic_relation_optimizer; generic is 518/808 and main is 517/808."
   ]
 }
