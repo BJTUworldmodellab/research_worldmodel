@@ -1,0 +1,141 @@
+===================================================================
+PHASE3 FORMAL START 2026-08-14 09:55:24
+===================================================================
+
+=== STEP 0 preflight 2026-08-14 09:55:24 ===
+git HEAD=3a167d813d74ab18df8762d57ff3b4a47789e3af (expected 3a167d813d74ab18df8762d57ff3b4a47789e3af)
+config blob sha=052ace5b295348483ce9b6110b5bd7933235424a55cc2108c966431e516829e2 (expected 052ace5b295348483ce9b6110b5bd7933235424a55cc2108c966431e516829e2)
+no residual generation/download processes
+raw_model.obj count=4232 (expected 4232)
+ckpt bedroom_sgdiffusion_vq_objfeat -> /root/autodl-tmp/relation_grounding/code/InstructScene/out/bedroom_sgdiffusion_vq_objfeat/checkpoints/epoch_01999.pth
+ckpt bedroom_sg2scdiffusion_objfeat -> /root/autodl-tmp/relation_grounding/code/InstructScene/out/bedroom_sg2scdiffusion_objfeat/checkpoints/epoch_01999.pth
+ckpt livingroom_sgdiffusion_vq_objfeat -> /root/autodl-tmp/relation_grounding/eg07_formal_20260813/assets/hf_cache/datasets--chenguolin--InstructScene_dataset/blobs/f4d4554bd60106972774b676cb772b67457c71a9134990a36fb7ecef1e78e819
+ckpt livingroom_sg2scdiffusion_objfeat -> /root/autodl-tmp/relation_grounding/eg07_formal_20260813/assets/hf_cache/datasets--chenguolin--InstructScene_dataset/blobs/5746fe1029a4d71b107d5901b2374b2a1114d9a8d73af7a1fd28a5eec42312da
+ckpt diningroom_sgdiffusion_vq_objfeat -> /root/autodl-tmp/relation_grounding/eg07_formal_20260813/assets/hf_cache/datasets--chenguolin--InstructScene_dataset/blobs/faa7e87c0946b9eb039525ceda65b5230089458d1c548e607c74f6949453897d
+ckpt diningroom_sg2scdiffusion_objfeat -> /root/autodl-tmp/relation_grounding/eg07_formal_20260813/assets/hf_cache/datasets--chenguolin--InstructScene_dataset/blobs/b7f84a695a81dac0c274b9fdf5ea3c5f819c829bb84dec6de1691c92f9311529
+ckpt threedfront_objfeat_vqvae -> /root/autodl-tmp/relation_grounding/code/InstructScene/out/threedfront_objfeat_vqvae/checkpoints/epoch_01999.pth
+/dev/md0         50G   31G   20G  62% /root/autodl-tmp
+NVIDIA GeForce RTX 4090, 48510 MiB
+PREFLIGHT_OK 2026-08-14 09:55:24
+
+--- FORMAL RUN bedroom epoch=1999 target=162 2026-08-14 09:55:24 ---
+[bedroom] target=162 json=/root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/bedroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01999/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+  schema has args: OK
+  schema has metrics: OK
+  schema has scores: OK
+  schema has per_scene: OK
+  per_scene_count == 162: OK
+  all scene_uid present: OK
+  scene_uids unique == 162: OK
+  layout_mesh available==True (all scenes): OK
+  repair_mesh available==True (all scenes): OK
+  layout_mesh evidence non-empty (all scenes): OK
+  repair_mesh evidence non-empty (all scenes): OK
+  layout_mesh objects>=1 (all scenes): OK
+  repair_mesh objects>=1 (all scenes): OK
+  object identity stable (all scenes): OK
+  layout_boxes non-empty (all scenes): OK
+  repair_boxes non-empty (all scenes): OK
+  mesh_collision_scenes_evaluated == 162: OK
+  args.seed == 0: OK
+  args.n_scenes == 0: OK
+  args.relation_source == parsed: OK
+  args.repair_strategy == floor_prior: OK
+  args.mesh_collision == True: OK
+  args.output_suffix frozen: OK
+  args.repair_passes == 2: OK
+  args.close_distance == 0.75: OK
+  args.far_distance == 1.6: OK
+  args.max_repair_move == 1.8: OK
+  args.repair_overlap_weight == 1.0: OK
+  args.checkpoint_epoch == 1999: OK
+  args.sg2sc_epoch == 1999: OK
+  args.fvqvae_epoch == 1999: OK
+[PASS] bedroom (per_scene=162, mesh_eval=162)
+FORMAL_ROOM_OK bedroom
+
+--- FORMAL RUN livingroom epoch=1459 target=192 2026-08-14 09:59:37 ---
+[livingroom] target=192 json=/root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/livingroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01459/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+  schema has args: OK
+  schema has metrics: OK
+  schema has scores: OK
+  schema has per_scene: OK
+  per_scene_count == 192: OK
+  all scene_uid present: OK
+  scene_uids unique == 192: OK
+  layout_mesh available==True (all scenes): OK
+  repair_mesh available==True (all scenes): OK
+  layout_mesh evidence non-empty (all scenes): OK
+  repair_mesh evidence non-empty (all scenes): OK
+  layout_mesh objects>=1 (all scenes): OK
+  repair_mesh objects>=1 (all scenes): OK
+  object identity stable (all scenes): OK
+  layout_boxes non-empty (all scenes): OK
+  repair_boxes non-empty (all scenes): OK
+  mesh_collision_scenes_evaluated == 192: OK
+  args.seed == 0: OK
+  args.n_scenes == 0: OK
+  args.relation_source == parsed: OK
+  args.repair_strategy == floor_prior: OK
+  args.mesh_collision == True: OK
+  args.output_suffix frozen: OK
+  args.repair_passes == 2: OK
+  args.close_distance == 0.75: OK
+  args.far_distance == 1.6: OK
+  args.max_repair_move == 1.8: OK
+  args.repair_overlap_weight == 1.0: OK
+  args.checkpoint_epoch == 1459: OK
+  args.sg2sc_epoch == 1999: OK
+  args.fvqvae_epoch == 1999: OK
+[PASS] livingroom (per_scene=192, mesh_eval=192)
+FORMAL_ROOM_OK livingroom
+
+--- FORMAL RUN diningroom epoch=1239 target=177 2026-08-14 10:11:16 ---
+[diningroom] target=177 json=/root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/diningroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01239/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+  schema has args: OK
+  schema has metrics: OK
+  schema has scores: OK
+  schema has per_scene: OK
+  per_scene_count == 177: OK
+  all scene_uid present: OK
+  scene_uids unique == 177: OK
+  layout_mesh available==True (all scenes): OK
+  repair_mesh available==True (all scenes): OK
+  layout_mesh evidence non-empty (all scenes): OK
+  repair_mesh evidence non-empty (all scenes): OK
+  layout_mesh objects>=1 (all scenes): OK
+  repair_mesh objects>=1 (all scenes): OK
+  object identity stable (all scenes): OK
+  layout_boxes non-empty (all scenes): OK
+  repair_boxes non-empty (all scenes): OK
+  mesh_collision_scenes_evaluated == 177: OK
+  args.seed == 0: OK
+  args.n_scenes == 0: OK
+  args.relation_source == parsed: OK
+  args.repair_strategy == floor_prior: OK
+  args.mesh_collision == True: OK
+  args.output_suffix frozen: OK
+  args.repair_passes == 2: OK
+  args.close_distance == 0.75: OK
+  args.far_distance == 1.6: OK
+  args.max_repair_move == 1.8: OK
+  args.repair_overlap_weight == 1.0: OK
+  args.checkpoint_epoch == 1239: OK
+  args.sg2sc_epoch == 1999: OK
+  args.fvqvae_epoch == 1999: OK
+[PASS] diningroom (per_scene=177, mesh_eval=177)
+FORMAL_ROOM_OK diningroom
+
+=== STEP 2 export 2026-08-14 10:20:41 ===
+Traceback (most recent call last):
+  File "/root/autodl-tmp/relation_grounding/code/eg07-full-export/scripts/export_eg07_layouts.py", line 414, in <module>
+    main()
+  File "/root/autodl-tmp/relation_grounding/code/eg07-full-export/scripts/export_eg07_layouts.py", line 388, in main
+    payload = export_results(
+  File "/root/autodl-tmp/relation_grounding/code/eg07-full-export/scripts/export_eg07_layouts.py", line 240, in export_results
+    room = detect_room(path)
+  File "/root/autodl-tmp/relation_grounding/code/eg07-full-export/scripts/export_eg07_layouts.py", line 107, in detect_room
+    raise ValueError(f"cannot infer room type from input filename: {path}")
+ValueError: cannot infer room type from input filename: /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/bedroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01999/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+
+FORMAL_BLOCKED: export_eg07_layouts.py failed (2026-08-14 10:20:41)

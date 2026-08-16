@@ -1,0 +1,432 @@
+=== formal start room=bedroom epoch=1999 n_scenes=0 2026-08-14 09:55:24 ===
+/root/miniconda3/envs/instructscene_full/lib/python3.10/site-packages/torch/_utils.py:831: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  return self.fget.__get__(instance, owner)()
+You have chosen to seed([0]) the experiment
+Run code on device [cuda:0]
+
+Load [2398] 3D-FUTURE models
+Applying threed_front_bedroom filtering
+Add [scene graphs] to the dataset
+Add [scene descriptions] to the dataset
+Scale ['translations', 'sizes', 'angles', 'openshape_vitg14_features']
+Use [cos, sin] for angle encoding
+Use [SG diffusion] model
+Load [162] validation scenes with [21] object types
+
+Load pretrained text encoder [openai/clip-vit-base-patch32]
+
+Load pretrained VQ-VAE
+
+Load checkpoint from /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/bedroom_sgdiffusion_vq_objfeat/checkpoints/epoch_01999.pth
+
+Copy EMA parameters to the model
+
+Load checkpoint from /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/bedroom_sg2scdiffusion_objfeat/checkpoints/epoch_01999.pth
+
+Copy EMA parameters to the sg2sc model
+
+Sample scene graphs with relation-aware post-hoc repair
+[ 0/ 1] Process each batch:   0%|                                                                      | 0/1 [00:00<?, ?it/s]
+Generating graphs:   0%|                                                                             | 0/100 [00:00<?, ?it/s][A
+Generating graphs:   2%|█▍                                                                   | 2/100 [00:00<00:05, 17.72it/s][A
+Generating graphs:   6%|████▏                                                                | 6/100 [00:00<00:03, 25.99it/s][A
+Generating graphs:  10%|██████▊                                                             | 10/100 [00:00<00:03, 28.44it/s][A
+Generating graphs:  14%|█████████▌                                                          | 14/100 [00:00<00:02, 29.61it/s][A
+Generating graphs:  18%|████████████▏                                                       | 18/100 [00:00<00:02, 30.25it/s][A
+Generating graphs:  22%|██████████████▉                                                     | 22/100 [00:00<00:02, 30.62it/s][A
+Generating graphs:  26%|█████████████████▋                                                  | 26/100 [00:00<00:02, 30.83it/s][A
+Generating graphs:  30%|████████████████████▍                                               | 30/100 [00:01<00:02, 30.99it/s][A
+Generating graphs:  34%|███████████████████████                                             | 34/100 [00:01<00:02, 31.08it/s][A
+Generating graphs:  38%|█████████████████████████▊                                          | 38/100 [00:01<00:01, 31.16it/s][A
+Generating graphs:  42%|████████████████████████████▌                                       | 42/100 [00:01<00:01, 31.20it/s][A
+Generating graphs:  46%|███████████████████████████████▎                                    | 46/100 [00:01<00:01, 31.22it/s][A
+Generating graphs:  50%|██████████████████████████████████                                  | 50/100 [00:01<00:01, 31.26it/s][A
+Generating graphs:  54%|████████████████████████████████████▋                               | 54/100 [00:01<00:01, 31.28it/s][A
+Generating graphs:  58%|███████████████████████████████████████▍                            | 58/100 [00:01<00:01, 31.29it/s][A
+Generating graphs:  62%|██████████████████████████████████████████▏                         | 62/100 [00:02<00:01, 31.26it/s][A
+Generating graphs:  66%|████████████████████████████████████████████▉                       | 66/100 [00:02<00:01, 31.28it/s][A
+Generating graphs:  70%|███████████████████████████████████████████████▌                    | 70/100 [00:02<00:00, 31.29it/s][A
+Generating graphs:  74%|██████████████████████████████████████████████████▎                 | 74/100 [00:02<00:00, 31.31it/s][A
+Generating graphs:  78%|█████████████████████████████████████████████████████               | 78/100 [00:02<00:00, 31.32it/s][A
+Generating graphs:  82%|███████████████████████████████████████████████████████▊            | 82/100 [00:02<00:00, 31.30it/s][A
+Generating graphs:  86%|██████████████████████████████████████████████████████████▍         | 86/100 [00:02<00:00, 31.30it/s][A
+Generating graphs:  90%|█████████████████████████████████████████████████████████████▏      | 90/100 [00:02<00:00, 31.32it/s][A
+Generating graphs:  94%|███████████████████████████████████████████████████████████████▉    | 94/100 [00:03<00:00, 31.33it/s][A
+Generating graphs:  98%|██████████████████████████████████████████████████████████████████▋ | 98/100 [00:03<00:00, 31.33it/s][AGenerating graphs: 100%|███████████████████████████████████████████████████████████████████| 100/100 [00:03<00:00, 30.83it/s]
+
+Generating scenes:   0%|                                                                             | 0/100 [00:00<?, ?it/s][A
+Generating scenes:   7%|████▊                                                                | 7/100 [00:00<00:01, 68.11it/s][A
+Generating scenes:  14%|█████████▌                                                          | 14/100 [00:00<00:01, 64.55it/s][A
+Generating scenes:  21%|██████████████▎                                                     | 21/100 [00:00<00:01, 63.46it/s][A
+Generating scenes:  28%|███████████████████                                                 | 28/100 [00:00<00:01, 62.93it/s][A
+Generating scenes:  35%|███████████████████████▊                                            | 35/100 [00:00<00:01, 62.66it/s][A
+Generating scenes:  42%|████████████████████████████▌                                       | 42/100 [00:00<00:00, 62.41it/s][A
+Generating scenes:  49%|█████████████████████████████████▎                                  | 49/100 [00:00<00:00, 62.31it/s][A
+Generating scenes:  56%|██████████████████████████████████████                              | 56/100 [00:00<00:00, 62.25it/s][A
+Generating scenes:  63%|██████████████████████████████████████████▊                         | 63/100 [00:01<00:00, 62.24it/s][A
+Generating scenes:  70%|███████████████████████████████████████████████▌                    | 70/100 [00:01<00:00, 62.22it/s][A
+Generating scenes:  77%|████████████████████████████████████████████████████▎               | 77/100 [00:01<00:00, 62.22it/s][A
+Generating scenes:  84%|█████████████████████████████████████████████████████████           | 84/100 [00:01<00:00, 62.17it/s][A
+Generating scenes:  91%|█████████████████████████████████████████████████████████████▉      | 91/100 [00:01<00:00, 62.15it/s][A
+Generating scenes:  98%|██████████████████████████████████████████████████████████████████▋ | 98/100 [00:01<00:00, 62.15it/s][AGenerating scenes: 100%|███████████████████████████████████████████████████████████████████| 100/100 [00:01<00:00, 62.53it/s]
+Postprocess [translations] by bounds [-2.7625005  0.045     -2.75275  ]~[2.77844175 3.6248396  2.81854277]
+Postprocess [sizes] by bounds [0.03998288 0.02000002 0.012772  ]~[2.8682   1.770065 1.698315]
+Postprocess [angles] by [arctan2]
+
+Evaluate scenes:   0%|                                                                               | 0/162 [00:00<?, ?it/s][A
+Evaluate scenes:   1%|▍                                                                      | 1/162 [00:01<03:27,  1.29s/it][A
+Evaluate scenes:   1%|▎                                          | 1/162 [00:01<03:27,  1.29s/it, base=1.0000, repair=1.0000][A
+Evaluate scenes:   1%|▌                                          | 2/162 [00:04<05:54,  2.21s/it, base=1.0000, repair=1.0000][A
+Evaluate scenes:   1%|▌                                          | 2/162 [00:04<05:54,  2.21s/it, base=0.6667, repair=1.0000][A
+Evaluate scenes:   2%|▊                                          | 3/162 [00:05<05:23,  2.03s/it, base=0.6667, repair=1.0000][A
+Evaluate scenes:   2%|▊                                          | 3/162 [00:05<05:23,  2.03s/it, base=0.7500, repair=1.0000][A
+Evaluate scenes:   2%|█                                          | 4/162 [00:07<04:37,  1.75s/it, base=0.7500, repair=1.0000][A
+Evaluate scenes:   2%|█                                          | 4/162 [00:07<04:37,  1.75s/it, base=0.8000, repair=1.0000][A
+Evaluate scenes:   3%|█▎                                         | 5/162 [00:09<04:52,  1.86s/it, base=0.8000, repair=1.0000][A
+Evaluate scenes:   3%|█▎                                         | 5/162 [00:09<04:52,  1.86s/it, base=0.6667, repair=0.8333][A
+Evaluate scenes:   4%|█▌                                         | 6/162 [00:10<04:04,  1.57s/it, base=0.6667, repair=0.8333][A
+Evaluate scenes:   4%|█▌                                         | 6/162 [00:10<04:04,  1.57s/it, base=0.7500, repair=0.8750][A
+Evaluate scenes:   4%|█▊                                         | 7/162 [00:11<03:18,  1.28s/it, base=0.7500, repair=0.8750][A
+Evaluate scenes:   4%|█▊                                         | 7/162 [00:11<03:18,  1.28s/it, base=0.7778, repair=0.8889][A
+Evaluate scenes:   5%|██                                         | 8/162 [00:12<03:36,  1.41s/it, base=0.7778, repair=0.8889][A
+Evaluate scenes:   5%|██                                         | 8/162 [00:12<03:36,  1.41s/it, base=0.8182, repair=0.9091][A
+Evaluate scenes:   6%|██▍                                        | 9/162 [00:14<03:40,  1.44s/it, base=0.8182, repair=0.9091][A
+Evaluate scenes:   6%|██▍                                        | 9/162 [00:14<03:40,  1.44s/it, base=0.7692, repair=0.8462][A
+Evaluate scenes:   6%|██▌                                       | 10/162 [00:14<03:04,  1.21s/it, base=0.7692, repair=0.8462][A
+Evaluate scenes:   6%|██▌                                       | 10/162 [00:14<03:04,  1.21s/it, base=0.7857, repair=0.8571][A
+Evaluate scenes:   7%|██▊                                       | 11/162 [00:16<03:10,  1.26s/it, base=0.7857, repair=0.8571][A
+Evaluate scenes:   7%|██▊                                       | 11/162 [00:16<03:10,  1.26s/it, base=0.7500, repair=0.8750][A
+Evaluate scenes:   7%|███                                       | 12/162 [00:17<03:01,  1.21s/it, base=0.7500, repair=0.8750][A
+Evaluate scenes:   7%|███                                       | 12/162 [00:17<03:01,  1.21s/it, base=0.7222, repair=0.8889][A
+Evaluate scenes:   8%|███▎                                      | 13/162 [00:18<02:58,  1.20s/it, base=0.7222, repair=0.8889][A
+Evaluate scenes:   8%|███▎                                      | 13/162 [00:18<02:58,  1.20s/it, base=0.6500, repair=0.8500][A
+Evaluate scenes:   9%|███▋                                      | 14/162 [00:20<03:46,  1.53s/it, base=0.6500, repair=0.8500][A
+Evaluate scenes:   9%|███▋                                      | 14/162 [00:20<03:46,  1.53s/it, base=0.6190, repair=0.8571][A
+Evaluate scenes:   9%|███▉                                      | 15/162 [00:22<03:49,  1.56s/it, base=0.6190, repair=0.8571][A
+Evaluate scenes:   9%|███▉                                      | 15/162 [00:22<03:49,  1.56s/it, base=0.6522, repair=0.8696][A
+Evaluate scenes:  10%|████▏                                     | 16/162 [00:23<03:38,  1.50s/it, base=0.6522, repair=0.8696][A
+Evaluate scenes:  10%|████▏                                     | 16/162 [00:23<03:38,  1.50s/it, base=0.6667, repair=0.8750][A
+Evaluate scenes:  10%|████▍                                     | 17/162 [00:26<04:23,  1.82s/it, base=0.6667, repair=0.8750][A
+Evaluate scenes:  10%|████▍                                     | 17/162 [00:26<04:23,  1.82s/it, base=0.6923, repair=0.8846][A
+Evaluate scenes:  11%|████▋                                     | 18/162 [00:27<03:44,  1.56s/it, base=0.6923, repair=0.8846][A
+Evaluate scenes:  11%|████▋                                     | 18/162 [00:27<03:44,  1.56s/it, base=0.7143, repair=0.8929][A
+Evaluate scenes:  12%|████▉                                     | 19/162 [00:28<03:22,  1.42s/it, base=0.7143, repair=0.8929][A
+Evaluate scenes:  12%|████▉                                     | 19/162 [00:28<03:22,  1.42s/it, base=0.7241, repair=0.8966][A
+Evaluate scenes:  12%|█████▏                                    | 20/162 [00:30<03:37,  1.53s/it, base=0.7241, repair=0.8966][A
+Evaluate scenes:  12%|█████▏                                    | 20/162 [00:30<03:37,  1.53s/it, base=0.7419, repair=0.9032][A
+Evaluate scenes:  13%|█████▍                                    | 21/162 [00:31<03:26,  1.47s/it, base=0.7419, repair=0.9032][A
+Evaluate scenes:  13%|█████▍                                    | 21/162 [00:31<03:26,  1.47s/it, base=0.7273, repair=0.8788][A
+Evaluate scenes:  14%|█████▋                                    | 22/162 [00:32<03:18,  1.42s/it, base=0.7273, repair=0.8788][A
+Evaluate scenes:  14%|█████▋                                    | 22/162 [00:32<03:18,  1.42s/it, base=0.7429, repair=0.8857][A
+Evaluate scenes:  14%|█████▉                                    | 23/162 [00:35<03:53,  1.68s/it, base=0.7429, repair=0.8857][A
+Evaluate scenes:  14%|█████▉                                    | 23/162 [00:35<03:53,  1.68s/it, base=0.7297, repair=0.8649][A
+Evaluate scenes:  15%|██████▏                                   | 24/162 [00:37<04:12,  1.83s/it, base=0.7297, repair=0.8649][A
+Evaluate scenes:  15%|██████▏                                   | 24/162 [00:37<04:12,  1.83s/it, base=0.7179, repair=0.8718][A
+Evaluate scenes:  15%|██████▍                                   | 25/162 [00:39<04:20,  1.90s/it, base=0.7179, repair=0.8718][A
+Evaluate scenes:  15%|██████▍                                   | 25/162 [00:39<04:20,  1.90s/it, base=0.7250, repair=0.8750][A
+Evaluate scenes:  16%|██████▋                                   | 26/162 [00:41<04:19,  1.91s/it, base=0.7250, repair=0.8750][A
+Evaluate scenes:  16%|██████▋                                   | 26/162 [00:41<04:19,  1.91s/it, base=0.7317, repair=0.8780][A
+Evaluate scenes:  17%|███████                                   | 27/162 [00:43<04:11,  1.86s/it, base=0.7317, repair=0.8780][A
+Evaluate scenes:  17%|███████                                   | 27/162 [00:43<04:11,  1.86s/it, base=0.7442, repair=0.8837][A
+Evaluate scenes:  17%|███████▎                                  | 28/162 [00:44<04:00,  1.79s/it, base=0.7442, repair=0.8837][A
+Evaluate scenes:  17%|███████▎                                  | 28/162 [00:44<04:00,  1.79s/it, base=0.7556, repair=0.8889][A
+Evaluate scenes:  18%|███████▌                                  | 29/162 [00:45<03:25,  1.55s/it, base=0.7556, repair=0.8889][A
+Evaluate scenes:  18%|███████▌                                  | 29/162 [00:45<03:25,  1.55s/it, base=0.7447, repair=0.8723][A
+Evaluate scenes:  19%|███████▊                                  | 30/162 [00:48<04:01,  1.83s/it, base=0.7447, repair=0.8723][A
+Evaluate scenes:  19%|███████▊                                  | 30/162 [00:48<04:01,  1.83s/it, base=0.7551, repair=0.8776][A
+Evaluate scenes:  19%|████████                                  | 31/162 [00:48<03:16,  1.50s/it, base=0.7551, repair=0.8776][A
+Evaluate scenes:  19%|████████                                  | 31/162 [00:48<03:16,  1.50s/it, base=0.7647, repair=0.8824][A
+Evaluate scenes:  20%|████████▎                                 | 32/162 [00:50<03:16,  1.51s/it, base=0.7647, repair=0.8824][A
+Evaluate scenes:  20%|████████▎                                 | 32/162 [00:50<03:16,  1.51s/it, base=0.7692, repair=0.8846][A
+Evaluate scenes:  20%|████████▌                                 | 33/162 [00:52<03:22,  1.57s/it, base=0.7692, repair=0.8846][A
+Evaluate scenes:  20%|████████▌                                 | 33/162 [00:52<03:22,  1.57s/it, base=0.7778, repair=0.8889][A
+Evaluate scenes:  21%|████████▊                                 | 34/162 [00:53<03:29,  1.64s/it, base=0.7778, repair=0.8889][A
+Evaluate scenes:  21%|████████▊                                 | 34/162 [00:53<03:29,  1.64s/it, base=0.7636, repair=0.8727][A
+Evaluate scenes:  22%|█████████                                 | 35/162 [00:55<03:38,  1.72s/it, base=0.7636, repair=0.8727][A
+Evaluate scenes:  22%|█████████                                 | 35/162 [00:55<03:38,  1.72s/it, base=0.7719, repair=0.8772][A
+Evaluate scenes:  22%|█████████▎                                | 36/162 [00:57<03:21,  1.60s/it, base=0.7719, repair=0.8772][A
+Evaluate scenes:  22%|█████████▎                                | 36/162 [00:57<03:21,  1.60s/it, base=0.7797, repair=0.8814][A
+Evaluate scenes:  23%|█████████▌                                | 37/162 [00:59<03:36,  1.73s/it, base=0.7797, repair=0.8814][A
+Evaluate scenes:  23%|█████████▌                                | 37/162 [00:59<03:36,  1.73s/it, base=0.7705, repair=0.8852][A
+Evaluate scenes:  23%|█████████▊                                | 38/162 [01:00<03:32,  1.72s/it, base=0.7705, repair=0.8852][A
+Evaluate scenes:  23%|█████████▊                                | 38/162 [01:00<03:32,  1.72s/it, base=0.7619, repair=0.8730][A
+Evaluate scenes:  24%|██████████                                | 39/162 [01:01<03:05,  1.51s/it, base=0.7619, repair=0.8730][A
+Evaluate scenes:  24%|██████████                                | 39/162 [01:01<03:05,  1.51s/it, base=0.7692, repair=0.8769][A
+Evaluate scenes:  25%|██████████▎                               | 40/162 [01:02<02:35,  1.28s/it, base=0.7692, repair=0.8769][A
+Evaluate scenes:  25%|██████████▎                               | 40/162 [01:02<02:35,  1.28s/it, base=0.7612, repair=0.8657][A
+Evaluate scenes:  25%|██████████▋                               | 41/162 [01:04<02:42,  1.34s/it, base=0.7612, repair=0.8657][A
+Evaluate scenes:  25%|██████████▋                               | 41/162 [01:04<02:42,  1.34s/it, base=0.7500, repair=0.8529][A
+Evaluate scenes:  26%|██████████▉                               | 42/162 [01:05<02:31,  1.26s/it, base=0.7500, repair=0.8529][A
+Evaluate scenes:  26%|██████████▉                               | 42/162 [01:05<02:31,  1.26s/it, base=0.7536, repair=0.8551][A
+Evaluate scenes:  27%|███████████▏                              | 43/162 [01:06<02:38,  1.33s/it, base=0.7536, repair=0.8551][A
+Evaluate scenes:  27%|███████████▏                              | 43/162 [01:06<02:38,  1.33s/it, base=0.7571, repair=0.8571][A
+Evaluate scenes:  27%|███████████▍                              | 44/162 [01:08<02:46,  1.41s/it, base=0.7571, repair=0.8571][A
+Evaluate scenes:  27%|███████████▍                              | 44/162 [01:08<02:46,  1.41s/it, base=0.7606, repair=0.8592][A
+Evaluate scenes:  28%|███████████▋                              | 45/162 [01:08<02:14,  1.15s/it, base=0.7606, repair=0.8592][A
+Evaluate scenes:  28%|███████████▋                              | 45/162 [01:08<02:14,  1.15s/it, base=0.7639, repair=0.8611][A
+Evaluate scenes:  28%|███████████▉                              | 46/162 [01:10<02:29,  1.29s/it, base=0.7639, repair=0.8611][A
+Evaluate scenes:  28%|███████████▉                              | 46/162 [01:10<02:29,  1.29s/it, base=0.7703, repair=0.8649][A
+Evaluate scenes:  29%|████████████▏                             | 47/162 [01:12<02:49,  1.47s/it, base=0.7703, repair=0.8649][A
+Evaluate scenes:  29%|████████████▏                             | 47/162 [01:12<02:49,  1.47s/it, base=0.7632, repair=0.8553][A
+Evaluate scenes:  30%|████████████▍                             | 48/162 [01:14<02:58,  1.57s/it, base=0.7632, repair=0.8553][A
+Evaluate scenes:  30%|████████████▍                             | 48/162 [01:14<02:58,  1.57s/it, base=0.7564, repair=0.8462][A
+Evaluate scenes:  30%|████████████▋                             | 49/162 [01:15<02:55,  1.55s/it, base=0.7564, repair=0.8462][A
+Evaluate scenes:  30%|████████████▋                             | 49/162 [01:15<02:55,  1.55s/it, base=0.7595, repair=0.8481][A
+Evaluate scenes:  31%|████████████▉                             | 50/162 [01:17<02:49,  1.51s/it, base=0.7595, repair=0.8481][A
+Evaluate scenes:  31%|████████████▉                             | 50/162 [01:17<02:49,  1.51s/it, base=0.7625, repair=0.8500][A
+Evaluate scenes:  31%|█████████████▏                            | 51/162 [01:18<02:40,  1.44s/it, base=0.7625, repair=0.8500][A
+Evaluate scenes:  31%|█████████████▏                            | 51/162 [01:18<02:40,  1.44s/it, base=0.7654, repair=0.8519][A
+Evaluate scenes:  32%|█████████████▍                            | 52/162 [01:20<02:49,  1.54s/it, base=0.7654, repair=0.8519][A
+Evaluate scenes:  32%|█████████████▍                            | 52/162 [01:20<02:49,  1.54s/it, base=0.7683, repair=0.8537][A
+Evaluate scenes:  33%|█████████████▋                            | 53/162 [01:21<02:27,  1.35s/it, base=0.7683, repair=0.8537][A
+Evaluate scenes:  33%|█████████████▋                            | 53/162 [01:21<02:27,  1.35s/it, base=0.7738, repair=0.8571][A
+Evaluate scenes:  33%|██████████████                            | 54/162 [01:23<02:49,  1.57s/it, base=0.7738, repair=0.8571][A
+Evaluate scenes:  33%|██████████████                            | 54/162 [01:23<02:49,  1.57s/it, base=0.7674, repair=0.8488][A
+Evaluate scenes:  34%|██████████████▎                           | 55/162 [01:24<02:36,  1.46s/it, base=0.7674, repair=0.8488][A
+Evaluate scenes:  34%|██████████████▎                           | 55/162 [01:24<02:36,  1.46s/it, base=0.7727, repair=0.8523][A
+Evaluate scenes:  35%|██████████████▌                           | 56/162 [01:26<02:43,  1.54s/it, base=0.7727, repair=0.8523][A
+Evaluate scenes:  35%|██████████████▌                           | 56/162 [01:26<02:43,  1.54s/it, base=0.7778, repair=0.8556][A
+Evaluate scenes:  35%|██████████████▊                           | 57/162 [01:28<02:56,  1.69s/it, base=0.7778, repair=0.8556][A
+Evaluate scenes:  35%|██████████████▊                           | 57/162 [01:28<02:56,  1.69s/it, base=0.7609, repair=0.8478][A
+Evaluate scenes:  36%|███████████████                           | 58/162 [01:29<02:48,  1.62s/it, base=0.7609, repair=0.8478][A
+Evaluate scenes:  36%|███████████████                           | 58/162 [01:29<02:48,  1.62s/it, base=0.7660, repair=0.8511][A
+Evaluate scenes:  36%|███████████████▎                          | 59/162 [01:30<02:18,  1.35s/it, base=0.7660, repair=0.8511][A
+Evaluate scenes:  36%|███████████████▎                          | 59/162 [01:30<02:18,  1.35s/it, base=0.7604, repair=0.8438][A
+Evaluate scenes:  37%|███████████████▌                          | 60/162 [01:31<02:25,  1.43s/it, base=0.7604, repair=0.8438][A
+Evaluate scenes:  37%|███████████████▌                          | 60/162 [01:31<02:25,  1.43s/it, base=0.7551, repair=0.8469][A
+Evaluate scenes:  38%|███████████████▊                          | 61/162 [01:34<02:46,  1.65s/it, base=0.7551, repair=0.8469][A
+Evaluate scenes:  38%|███████████████▊                          | 61/162 [01:34<02:46,  1.65s/it, base=0.7500, repair=0.8500][A
+Evaluate scenes:  38%|████████████████                          | 62/162 [01:34<02:16,  1.37s/it, base=0.7500, repair=0.8500][A
+Evaluate scenes:  38%|████████████████                          | 62/162 [01:34<02:16,  1.37s/it, base=0.7549, repair=0.8529][A
+Evaluate scenes:  39%|████████████████▎                         | 63/162 [01:35<02:06,  1.28s/it, base=0.7549, repair=0.8529][A
+Evaluate scenes:  39%|████████████████▎                         | 63/162 [01:35<02:06,  1.28s/it, base=0.7573, repair=0.8544][A
+Evaluate scenes:  40%|████████████████▌                         | 64/162 [01:37<02:05,  1.28s/it, base=0.7573, repair=0.8544][A
+Evaluate scenes:  40%|████████████████▌                         | 64/162 [01:37<02:05,  1.28s/it, base=0.7596, repair=0.8558][A
+Evaluate scenes:  40%|████████████████▊                         | 65/162 [01:37<01:48,  1.12s/it, base=0.7596, repair=0.8558][A
+Evaluate scenes:  40%|████████████████▊                         | 65/162 [01:37<01:48,  1.12s/it, base=0.7619, repair=0.8571][A
+Evaluate scenes:  41%|█████████████████                         | 66/162 [01:39<01:58,  1.23s/it, base=0.7619, repair=0.8571][A
+Evaluate scenes:  41%|█████████████████                         | 66/162 [01:39<01:58,  1.23s/it, base=0.7642, repair=0.8585][A
+Evaluate scenes:  41%|█████████████████▎                        | 67/162 [01:40<01:46,  1.12s/it, base=0.7642, repair=0.8585][A
+Evaluate scenes:  41%|█████████████████▎                        | 67/162 [01:40<01:46,  1.12s/it, base=0.7664, repair=0.8598][A
+Evaluate scenes:  42%|█████████████████▋                        | 68/162 [01:41<01:46,  1.13s/it, base=0.7664, repair=0.8598][A
+Evaluate scenes:  42%|█████████████████▋                        | 68/162 [01:41<01:46,  1.13s/it, base=0.7706, repair=0.8624][A
+Evaluate scenes:  43%|█████████████████▉                        | 69/162 [01:42<01:53,  1.22s/it, base=0.7706, repair=0.8624][A
+Evaluate scenes:  43%|█████████████████▉                        | 69/162 [01:42<01:53,  1.22s/it, base=0.7748, repair=0.8649][A
+Evaluate scenes:  43%|██████████████████▏                       | 70/162 [01:43<01:41,  1.10s/it, base=0.7748, repair=0.8649][A
+Evaluate scenes:  43%|██████████████████▏                       | 70/162 [01:43<01:41,  1.10s/it, base=0.7768, repair=0.8661][A
+Evaluate scenes:  44%|██████████████████▍                       | 71/162 [01:44<01:27,  1.04it/s, base=0.7768, repair=0.8661][A
+Evaluate scenes:  44%|██████████████████▍                       | 71/162 [01:44<01:27,  1.04it/s, base=0.7788, repair=0.8673][A
+Evaluate scenes:  44%|██████████████████▋                       | 72/162 [01:46<01:50,  1.23s/it, base=0.7788, repair=0.8673][A
+Evaluate scenes:  44%|██████████████████▋                       | 72/162 [01:46<01:50,  1.23s/it, base=0.7739, repair=0.8696][A
+Evaluate scenes:  45%|██████████████████▉                       | 73/162 [01:48<02:30,  1.69s/it, base=0.7739, repair=0.8696][A
+Evaluate scenes:  45%|██████████████████▉                       | 73/162 [01:48<02:30,  1.69s/it, base=0.7759, repair=0.8707][A
+Evaluate scenes:  46%|███████████████████▏                      | 74/162 [01:50<02:14,  1.53s/it, base=0.7759, repair=0.8707][A
+Evaluate scenes:  46%|███████████████████▏                      | 74/162 [01:50<02:14,  1.53s/it, base=0.7692, repair=0.8632][A
+Evaluate scenes:  46%|███████████████████▍                      | 75/162 [01:50<01:53,  1.30s/it, base=0.7692, repair=0.8632][A
+Evaluate scenes:  46%|███████████████████▍                      | 75/162 [01:50<01:53,  1.30s/it, base=0.7712, repair=0.8644][A
+Evaluate scenes:  47%|███████████████████▋                      | 76/162 [01:52<02:00,  1.41s/it, base=0.7712, repair=0.8644][A
+Evaluate scenes:  47%|███████████████████▋                      | 76/162 [01:52<02:00,  1.41s/it, base=0.7731, repair=0.8655][A
+Evaluate scenes:  48%|███████████████████▉                      | 77/162 [01:54<02:07,  1.50s/it, base=0.7731, repair=0.8655][A
+Evaluate scenes:  48%|███████████████████▉                      | 77/162 [01:54<02:07,  1.50s/it, base=0.7769, repair=0.8678][A
+Evaluate scenes:  48%|████████████████████▏                     | 78/162 [01:55<02:01,  1.45s/it, base=0.7769, repair=0.8678][A
+Evaluate scenes:  48%|████████████████████▏                     | 78/162 [01:55<02:01,  1.45s/it, base=0.7805, repair=0.8699][A
+Evaluate scenes:  49%|████████████████████▍                     | 79/162 [01:57<02:06,  1.52s/it, base=0.7805, repair=0.8699][A
+Evaluate scenes:  49%|████████████████████▍                     | 79/162 [01:57<02:06,  1.52s/it, base=0.7760, repair=0.8720][A
+Evaluate scenes:  49%|████████████████████▋                     | 80/162 [01:59<02:12,  1.62s/it, base=0.7760, repair=0.8720][A
+Evaluate scenes:  49%|████████████████████▋                     | 80/162 [01:59<02:12,  1.62s/it, base=0.7795, repair=0.8740][A
+Evaluate scenes:  50%|█████████████████████                     | 81/162 [02:01<02:23,  1.77s/it, base=0.7795, repair=0.8740][A
+Evaluate scenes:  50%|█████████████████████                     | 81/162 [02:01<02:23,  1.77s/it, base=0.7674, repair=0.8682][A
+Evaluate scenes:  51%|█████████████████████▎                    | 82/162 [02:02<02:03,  1.55s/it, base=0.7674, repair=0.8682][A
+Evaluate scenes:  51%|█████████████████████▎                    | 82/162 [02:02<02:03,  1.55s/it, base=0.7634, repair=0.8626][A
+Evaluate scenes:  51%|█████████████████████▌                    | 83/162 [02:03<01:57,  1.49s/it, base=0.7634, repair=0.8626][A
+Evaluate scenes:  51%|█████████████████████▌                    | 83/162 [02:03<01:57,  1.49s/it, base=0.7669, repair=0.8647][A
+Evaluate scenes:  52%|█████████████████████▊                    | 84/162 [02:04<01:37,  1.25s/it, base=0.7669, repair=0.8647][A
+Evaluate scenes:  52%|█████████████████████▊                    | 84/162 [02:04<01:37,  1.25s/it, base=0.7687, repair=0.8657][A
+Evaluate scenes:  52%|██████████████████████                    | 85/162 [02:05<01:28,  1.16s/it, base=0.7687, repair=0.8657][A
+Evaluate scenes:  52%|██████████████████████                    | 85/162 [02:05<01:28,  1.16s/it, base=0.7704, repair=0.8667][A
+Evaluate scenes:  53%|██████████████████████▎                   | 86/162 [02:06<01:35,  1.26s/it, base=0.7704, repair=0.8667][A
+Evaluate scenes:  53%|██████████████████████▎                   | 86/162 [02:06<01:35,  1.26s/it, base=0.7721, repair=0.8676][A
+Evaluate scenes:  54%|██████████████████████▌                   | 87/162 [02:08<01:52,  1.50s/it, base=0.7721, repair=0.8676][A
+Evaluate scenes:  54%|██████████████████████▌                   | 87/162 [02:08<01:52,  1.50s/it, base=0.7737, repair=0.8686][A
+Evaluate scenes:  54%|██████████████████████▊                   | 88/162 [02:10<01:48,  1.47s/it, base=0.7737, repair=0.8686][A
+Evaluate scenes:  54%|██████████████████████▊                   | 88/162 [02:10<01:48,  1.47s/it, base=0.7681, repair=0.8696][A
+Evaluate scenes:  55%|███████████████████████                   | 89/162 [02:11<01:38,  1.35s/it, base=0.7681, repair=0.8696][A
+Evaluate scenes:  55%|███████████████████████                   | 89/162 [02:11<01:38,  1.35s/it, base=0.7626, repair=0.8705][A
+Evaluate scenes:  56%|███████████████████████▎                  | 90/162 [02:11<01:23,  1.16s/it, base=0.7626, repair=0.8705][A
+Evaluate scenes:  56%|███████████████████████▎                  | 90/162 [02:11<01:23,  1.16s/it, base=0.7660, repair=0.8723][A
+Evaluate scenes:  56%|███████████████████████▌                  | 91/162 [02:13<01:21,  1.15s/it, base=0.7660, repair=0.8723][A
+Evaluate scenes:  56%|███████████████████████▌                  | 91/162 [02:13<01:21,  1.15s/it, base=0.7692, repair=0.8741][A
+Evaluate scenes:  57%|███████████████████████▊                  | 92/162 [02:14<01:30,  1.29s/it, base=0.7692, repair=0.8741][A
+Evaluate scenes:  57%|███████████████████████▊                  | 92/162 [02:14<01:30,  1.29s/it, base=0.7708, repair=0.8750][A
+Evaluate scenes:  57%|████████████████████████                  | 93/162 [02:16<01:38,  1.43s/it, base=0.7708, repair=0.8750][A
+Evaluate scenes:  57%|████████████████████████                  | 93/162 [02:16<01:38,  1.43s/it, base=0.7724, repair=0.8759][A
+Evaluate scenes:  58%|████████████████████████▎                 | 94/162 [02:17<01:26,  1.27s/it, base=0.7724, repair=0.8759][A
+Evaluate scenes:  58%|████████████████████████▎                 | 94/162 [02:17<01:26,  1.27s/it, base=0.7755, repair=0.8776][A
+Evaluate scenes:  59%|████████████████████████▋                 | 95/162 [02:19<01:38,  1.47s/it, base=0.7755, repair=0.8776][A
+Evaluate scenes:  59%|████████████████████████▋                 | 95/162 [02:19<01:38,  1.47s/it, base=0.7785, repair=0.8792][A
+Evaluate scenes:  59%|████████████████████████▉                 | 96/162 [02:20<01:39,  1.51s/it, base=0.7785, repair=0.8792][A
+Evaluate scenes:  59%|████████████████████████▉                 | 96/162 [02:20<01:39,  1.51s/it, base=0.7800, repair=0.8800][A
+Evaluate scenes:  60%|█████████████████████████▏                | 97/162 [02:21<01:26,  1.33s/it, base=0.7800, repair=0.8800][A
+Evaluate scenes:  60%|█████████████████████████▏                | 97/162 [02:21<01:26,  1.33s/it, base=0.7815, repair=0.8808][A
+Evaluate scenes:  60%|█████████████████████████▍                | 98/162 [02:23<01:37,  1.52s/it, base=0.7815, repair=0.8808][A
+Evaluate scenes:  60%|█████████████████████████▍                | 98/162 [02:23<01:37,  1.52s/it, base=0.7829, repair=0.8816][A
+Evaluate scenes:  61%|█████████████████████████▋                | 99/162 [02:24<01:27,  1.39s/it, base=0.7829, repair=0.8816][A
+Evaluate scenes:  61%|█████████████████████████▋                | 99/162 [02:24<01:27,  1.39s/it, base=0.7843, repair=0.8824][A
+Evaluate scenes:  62%|█████████████████████████▎               | 100/162 [02:27<01:41,  1.64s/it, base=0.7843, repair=0.8824][A
+Evaluate scenes:  62%|█████████████████████████▎               | 100/162 [02:27<01:41,  1.64s/it, base=0.7871, repair=0.8839][A
+Evaluate scenes:  62%|█████████████████████████▌               | 101/162 [02:27<01:24,  1.39s/it, base=0.7871, repair=0.8839][A
+Evaluate scenes:  62%|█████████████████████████▌               | 101/162 [02:27<01:24,  1.39s/it, base=0.7885, repair=0.8846][A
+Evaluate scenes:  63%|█████████████████████████▊               | 102/162 [02:30<01:52,  1.87s/it, base=0.7885, repair=0.8846][A
+Evaluate scenes:  63%|█████████████████████████▊               | 102/162 [02:30<01:52,  1.87s/it, base=0.7785, repair=0.8797][A
+Evaluate scenes:  64%|██████████████████████████               | 103/162 [02:32<01:52,  1.91s/it, base=0.7785, repair=0.8797][A
+Evaluate scenes:  64%|██████████████████████████               | 103/162 [02:32<01:52,  1.91s/it, base=0.7736, repair=0.8742][A
+Evaluate scenes:  64%|██████████████████████████▎              | 104/162 [02:35<01:58,  2.05s/it, base=0.7736, repair=0.8742][A
+Evaluate scenes:  64%|██████████████████████████▎              | 104/162 [02:35<01:58,  2.05s/it, base=0.7702, repair=0.8696][A
+Evaluate scenes:  65%|██████████████████████████▌              | 105/162 [02:37<02:06,  2.23s/it, base=0.7702, repair=0.8696][A
+Evaluate scenes:  65%|██████████████████████████▌              | 105/162 [02:37<02:06,  2.23s/it, base=0.7669, repair=0.8650][A
+Evaluate scenes:  65%|██████████████████████████▊              | 106/162 [02:38<01:39,  1.77s/it, base=0.7669, repair=0.8650][A
+Evaluate scenes:  65%|██████████████████████████▊              | 106/162 [02:38<01:39,  1.77s/it, base=0.7683, repair=0.8659][A
+Evaluate scenes:  66%|███████████████████████████              | 107/162 [02:39<01:29,  1.63s/it, base=0.7683, repair=0.8659][A
+Evaluate scenes:  66%|███████████████████████████              | 107/162 [02:39<01:29,  1.63s/it, base=0.7697, repair=0.8667][A
+Evaluate scenes:  67%|███████████████████████████▎             | 108/162 [02:41<01:22,  1.52s/it, base=0.7697, repair=0.8667][A
+Evaluate scenes:  67%|███████████████████████████▎             | 108/162 [02:41<01:22,  1.52s/it, base=0.7651, repair=0.8614][A
+Evaluate scenes:  67%|███████████████████████████▌             | 109/162 [02:41<01:09,  1.31s/it, base=0.7651, repair=0.8614][A
+Evaluate scenes:  67%|███████████████████████████▌             | 109/162 [02:41<01:09,  1.31s/it, base=0.7679, repair=0.8631][A
+Evaluate scenes:  68%|███████████████████████████▊             | 110/162 [02:43<01:06,  1.29s/it, base=0.7679, repair=0.8631][A
+Evaluate scenes:  68%|███████████████████████████▊             | 110/162 [02:43<01:06,  1.29s/it, base=0.7692, repair=0.8639][A
+Evaluate scenes:  69%|████████████████████████████             | 111/162 [02:44<01:01,  1.20s/it, base=0.7692, repair=0.8639][A
+Evaluate scenes:  69%|████████████████████████████             | 111/162 [02:44<01:01,  1.20s/it, base=0.7706, repair=0.8647][A
+Evaluate scenes:  69%|████████████████████████████▎            | 112/162 [02:45<01:00,  1.21s/it, base=0.7706, repair=0.8647][A
+Evaluate scenes:  69%|████████████████████████████▎            | 112/162 [02:45<01:00,  1.21s/it, base=0.7719, repair=0.8655][A
+Evaluate scenes:  70%|████████████████████████████▌            | 113/162 [02:46<00:51,  1.05s/it, base=0.7719, repair=0.8655][A
+Evaluate scenes:  70%|████████████████████████████▌            | 113/162 [02:46<00:51,  1.05s/it, base=0.7733, repair=0.8663][A
+Evaluate scenes:  70%|████████████████████████████▊            | 114/162 [02:48<01:08,  1.43s/it, base=0.7733, repair=0.8663][A
+Evaluate scenes:  70%|████████████████████████████▊            | 114/162 [02:48<01:08,  1.43s/it, base=0.7759, repair=0.8678][A
+Evaluate scenes:  71%|█████████████████████████████            | 115/162 [02:50<01:17,  1.65s/it, base=0.7759, repair=0.8678][A
+Evaluate scenes:  71%|█████████████████████████████            | 115/162 [02:50<01:17,  1.65s/it, base=0.7771, repair=0.8686][A
+Evaluate scenes:  72%|█████████████████████████████▎           | 116/162 [02:51<01:09,  1.51s/it, base=0.7771, repair=0.8686][A
+Evaluate scenes:  72%|█████████████████████████████▎           | 116/162 [02:51<01:09,  1.51s/it, base=0.7784, repair=0.8693][A
+Evaluate scenes:  72%|█████████████████████████████▌           | 117/162 [02:54<01:22,  1.84s/it, base=0.7784, repair=0.8693][A
+Evaluate scenes:  72%|█████████████████████████████▌           | 117/162 [02:54<01:22,  1.84s/it, base=0.7753, repair=0.8708][A
+Evaluate scenes:  73%|█████████████████████████████▊           | 118/162 [02:55<01:11,  1.62s/it, base=0.7753, repair=0.8708][A
+Evaluate scenes:  73%|█████████████████████████████▊           | 118/162 [02:55<01:11,  1.62s/it, base=0.7765, repair=0.8715][A
+Evaluate scenes:  73%|██████████████████████████████           | 119/162 [02:56<01:05,  1.53s/it, base=0.7765, repair=0.8715][A
+Evaluate scenes:  73%|██████████████████████████████           | 119/162 [02:56<01:05,  1.53s/it, base=0.7778, repair=0.8722][A
+Evaluate scenes:  74%|██████████████████████████████▎          | 120/162 [02:58<01:01,  1.47s/it, base=0.7778, repair=0.8722][A
+Evaluate scenes:  74%|██████████████████████████████▎          | 120/162 [02:58<01:01,  1.47s/it, base=0.7790, repair=0.8729][A
+Evaluate scenes:  75%|██████████████████████████████▌          | 121/162 [02:59<00:58,  1.44s/it, base=0.7790, repair=0.8729][A
+Evaluate scenes:  75%|██████████████████████████████▌          | 121/162 [02:59<00:58,  1.44s/it, base=0.7760, repair=0.8689][A
+Evaluate scenes:  75%|██████████████████████████████▉          | 122/162 [03:01<01:09,  1.74s/it, base=0.7760, repair=0.8689][A
+Evaluate scenes:  75%|██████████████████████████████▉          | 122/162 [03:01<01:09,  1.74s/it, base=0.7772, repair=0.8696][A
+Evaluate scenes:  76%|███████████████████████████████▏         | 123/162 [03:03<01:03,  1.62s/it, base=0.7772, repair=0.8696][A
+Evaluate scenes:  76%|███████████████████████████████▏         | 123/162 [03:03<01:03,  1.62s/it, base=0.7796, repair=0.8710][A
+Evaluate scenes:  77%|███████████████████████████████▍         | 124/162 [03:03<00:51,  1.36s/it, base=0.7796, repair=0.8710][A
+Evaluate scenes:  77%|███████████████████████████████▍         | 124/162 [03:03<00:51,  1.36s/it, base=0.7807, repair=0.8717][A
+Evaluate scenes:  77%|███████████████████████████████▋         | 125/162 [03:05<00:48,  1.32s/it, base=0.7807, repair=0.8717][A
+Evaluate scenes:  77%|███████████████████████████████▋         | 125/162 [03:05<00:48,  1.32s/it, base=0.7766, repair=0.8723][A
+Evaluate scenes:  78%|███████████████████████████████▉         | 126/162 [03:06<00:50,  1.41s/it, base=0.7766, repair=0.8723][A
+Evaluate scenes:  78%|███████████████████████████████▉         | 126/162 [03:06<00:50,  1.41s/it, base=0.7737, repair=0.8684][A
+Evaluate scenes:  78%|████████████████████████████████▏        | 127/162 [03:08<00:47,  1.35s/it, base=0.7737, repair=0.8684][A
+Evaluate scenes:  78%|████████████████████████████████▏        | 127/162 [03:08<00:47,  1.35s/it, base=0.7749, repair=0.8691][A
+Evaluate scenes:  79%|████████████████████████████████▍        | 128/162 [03:09<00:51,  1.52s/it, base=0.7749, repair=0.8691][A
+Evaluate scenes:  79%|████████████████████████████████▍        | 128/162 [03:09<00:51,  1.52s/it, base=0.7720, repair=0.8705][A
+Evaluate scenes:  80%|████████████████████████████████▋        | 129/162 [03:11<00:45,  1.39s/it, base=0.7720, repair=0.8705][A
+Evaluate scenes:  80%|████████████████████████████████▋        | 129/162 [03:11<00:45,  1.39s/it, base=0.7732, repair=0.8711][A
+Evaluate scenes:  80%|████████████████████████████████▉        | 130/162 [03:12<00:44,  1.39s/it, base=0.7732, repair=0.8711][A
+Evaluate scenes:  80%|████████████████████████████████▉        | 130/162 [03:12<00:44,  1.39s/it, base=0.7653, repair=0.8673][A
+Evaluate scenes:  81%|█████████████████████████████████▏       | 131/162 [03:13<00:42,  1.37s/it, base=0.7653, repair=0.8673][A
+Evaluate scenes:  81%|█████████████████████████████████▏       | 131/162 [03:13<00:42,  1.37s/it, base=0.7626, repair=0.8636][A
+Evaluate scenes:  81%|█████████████████████████████████▍       | 132/162 [03:14<00:38,  1.28s/it, base=0.7626, repair=0.8636][A
+Evaluate scenes:  81%|█████████████████████████████████▍       | 132/162 [03:14<00:38,  1.28s/it, base=0.7650, repair=0.8650][A
+Evaluate scenes:  82%|█████████████████████████████████▋       | 133/162 [03:16<00:40,  1.39s/it, base=0.7650, repair=0.8650][A
+Evaluate scenes:  82%|█████████████████████████████████▋       | 133/162 [03:16<00:40,  1.39s/it, base=0.7673, repair=0.8663][A
+Evaluate scenes:  83%|█████████████████████████████████▉       | 134/162 [03:18<00:42,  1.52s/it, base=0.7673, repair=0.8663][A
+Evaluate scenes:  83%|█████████████████████████████████▉       | 134/162 [03:18<00:42,  1.52s/it, base=0.7647, repair=0.8627][A
+Evaluate scenes:  83%|██████████████████████████████████▏      | 135/162 [03:19<00:42,  1.56s/it, base=0.7647, repair=0.8627][A
+Evaluate scenes:  83%|██████████████████████████████████▏      | 135/162 [03:19<00:42,  1.56s/it, base=0.7670, repair=0.8641][A
+Evaluate scenes:  84%|██████████████████████████████████▍      | 136/162 [03:22<00:45,  1.77s/it, base=0.7670, repair=0.8641][A
+Evaluate scenes:  84%|██████████████████████████████████▍      | 136/162 [03:22<00:45,  1.77s/it, base=0.7692, repair=0.8654][A
+Evaluate scenes:  85%|██████████████████████████████████▋      | 137/162 [03:23<00:43,  1.75s/it, base=0.7692, repair=0.8654][A
+Evaluate scenes:  85%|██████████████████████████████████▋      | 137/162 [03:23<00:43,  1.75s/it, base=0.7667, repair=0.8619][A
+Evaluate scenes:  85%|██████████████████████████████████▉      | 138/162 [03:24<00:37,  1.54s/it, base=0.7667, repair=0.8619][A
+Evaluate scenes:  85%|██████████████████████████████████▉      | 138/162 [03:24<00:37,  1.54s/it, base=0.7678, repair=0.8626][A
+Evaluate scenes:  86%|███████████████████████████████████▏     | 139/162 [03:27<00:39,  1.70s/it, base=0.7678, repair=0.8626][A
+Evaluate scenes:  86%|███████████████████████████████████▏     | 139/162 [03:27<00:39,  1.70s/it, base=0.7642, repair=0.8632][A
+Evaluate scenes:  86%|███████████████████████████████████▍     | 140/162 [03:28<00:35,  1.63s/it, base=0.7642, repair=0.8632][A
+Evaluate scenes:  86%|███████████████████████████████████▍     | 140/162 [03:28<00:35,  1.63s/it, base=0.7653, repair=0.8638][A
+Evaluate scenes:  87%|███████████████████████████████████▋     | 141/162 [03:29<00:30,  1.47s/it, base=0.7653, repair=0.8638][A
+Evaluate scenes:  87%|███████████████████████████████████▋     | 141/162 [03:29<00:30,  1.47s/it, base=0.7664, repair=0.8645][A
+Evaluate scenes:  88%|███████████████████████████████████▉     | 142/162 [03:31<00:29,  1.49s/it, base=0.7664, repair=0.8645][A
+Evaluate scenes:  88%|███████████████████████████████████▉     | 142/162 [03:31<00:29,  1.49s/it, base=0.7628, repair=0.8651][A
+Evaluate scenes:  88%|████████████████████████████████████▏    | 143/162 [03:32<00:29,  1.55s/it, base=0.7628, repair=0.8651][A
+Evaluate scenes:  88%|████████████████████████████████████▏    | 143/162 [03:32<00:29,  1.55s/it, base=0.7558, repair=0.8571][A
+Evaluate scenes:  89%|████████████████████████████████████▍    | 144/162 [03:33<00:22,  1.25s/it, base=0.7558, repair=0.8571][A
+Evaluate scenes:  89%|████████████████████████████████████▍    | 144/162 [03:33<00:22,  1.25s/it, base=0.7569, repair=0.8578][A
+Evaluate scenes:  90%|████████████████████████████████████▋    | 145/162 [03:35<00:26,  1.57s/it, base=0.7569, repair=0.8578][A
+Evaluate scenes:  90%|████████████████████████████████████▋    | 145/162 [03:35<00:26,  1.57s/it, base=0.7591, repair=0.8591][A
+Evaluate scenes:  90%|████████████████████████████████████▉    | 146/162 [03:36<00:22,  1.41s/it, base=0.7591, repair=0.8591][A
+Evaluate scenes:  90%|████████████████████████████████████▉    | 146/162 [03:36<00:22,  1.41s/it, base=0.7568, repair=0.8604][A
+Evaluate scenes:  91%|█████████████████████████████████████▏   | 147/162 [03:38<00:23,  1.58s/it, base=0.7568, repair=0.8604][A
+Evaluate scenes:  91%|█████████████████████████████████████▏   | 147/162 [03:38<00:23,  1.58s/it, base=0.7500, repair=0.8527][A
+Evaluate scenes:  91%|█████████████████████████████████████▍   | 148/162 [03:40<00:21,  1.57s/it, base=0.7500, repair=0.8527][A
+Evaluate scenes:  91%|█████████████████████████████████████▍   | 148/162 [03:40<00:21,  1.57s/it, base=0.7467, repair=0.8533][A
+Evaluate scenes:  92%|█████████████████████████████████████▋   | 149/162 [03:41<00:20,  1.58s/it, base=0.7467, repair=0.8533][A
+Evaluate scenes:  92%|█████████████████████████████████████▋   | 149/162 [03:41<00:20,  1.58s/it, base=0.7445, repair=0.8502][A
+Evaluate scenes:  93%|█████████████████████████████████████▉   | 150/162 [03:42<00:17,  1.44s/it, base=0.7445, repair=0.8502][A
+Evaluate scenes:  93%|█████████████████████████████████████▉   | 150/162 [03:42<00:17,  1.44s/it, base=0.7467, repair=0.8515][A
+Evaluate scenes:  93%|██████████████████████████████████████▏  | 151/162 [03:44<00:15,  1.43s/it, base=0.7467, repair=0.8515][A
+Evaluate scenes:  93%|██████████████████████████████████████▏  | 151/162 [03:44<00:15,  1.43s/it, base=0.7478, repair=0.8522][A
+Evaluate scenes:  94%|██████████████████████████████████████▍  | 152/162 [03:46<00:16,  1.61s/it, base=0.7478, repair=0.8522][A
+Evaluate scenes:  94%|██████████████████████████████████████▍  | 152/162 [03:46<00:16,  1.61s/it, base=0.7446, repair=0.8528][A
+Evaluate scenes:  94%|██████████████████████████████████████▋  | 153/162 [03:48<00:15,  1.76s/it, base=0.7446, repair=0.8528][A
+Evaluate scenes:  94%|██████████████████████████████████████▋  | 153/162 [03:48<00:15,  1.76s/it, base=0.7414, repair=0.8534][A
+Evaluate scenes:  95%|██████████████████████████████████████▉  | 154/162 [03:50<00:15,  1.88s/it, base=0.7414, repair=0.8534][A
+Evaluate scenes:  95%|██████████████████████████████████████▉  | 154/162 [03:50<00:15,  1.88s/it, base=0.7436, repair=0.8547][A
+Evaluate scenes:  96%|███████████████████████████████████████▏ | 155/162 [03:52<00:12,  1.77s/it, base=0.7436, repair=0.8547][A
+Evaluate scenes:  96%|███████████████████████████████████████▏ | 155/162 [03:52<00:12,  1.77s/it, base=0.7458, repair=0.8559][A
+Evaluate scenes:  96%|███████████████████████████████████████▍ | 156/162 [03:53<00:10,  1.71s/it, base=0.7458, repair=0.8559][A
+Evaluate scenes:  96%|███████████████████████████████████████▍ | 156/162 [03:53<00:10,  1.71s/it, base=0.7426, repair=0.8565][A
+Evaluate scenes:  97%|███████████████████████████████████████▋ | 157/162 [03:55<00:08,  1.65s/it, base=0.7426, repair=0.8565][A
+Evaluate scenes:  97%|███████████████████████████████████████▋ | 157/162 [03:55<00:08,  1.65s/it, base=0.7395, repair=0.8529][A
+Evaluate scenes:  98%|███████████████████████████████████████▉ | 158/162 [03:55<00:05,  1.37s/it, base=0.7395, repair=0.8529][A
+Evaluate scenes:  98%|███████████████████████████████████████▉ | 158/162 [03:55<00:05,  1.37s/it, base=0.7364, repair=0.8494][A
+Evaluate scenes:  98%|████████████████████████████████████████▏| 159/162 [03:57<00:03,  1.27s/it, base=0.7364, repair=0.8494][A
+Evaluate scenes:  98%|████████████████████████████████████████▏| 159/162 [03:57<00:03,  1.27s/it, base=0.7386, repair=0.8506][A
+Evaluate scenes:  99%|████████████████████████████████████████▍| 160/162 [03:58<00:02,  1.38s/it, base=0.7386, repair=0.8506][A
+Evaluate scenes:  99%|████████████████████████████████████████▍| 160/162 [03:58<00:02,  1.38s/it, base=0.7407, repair=0.8519][A
+Evaluate scenes:  99%|████████████████████████████████████████▋| 161/162 [03:59<00:01,  1.19s/it, base=0.7407, repair=0.8519][A
+Evaluate scenes:  99%|████████████████████████████████████████▋| 161/162 [03:59<00:01,  1.19s/it, base=0.7418, repair=0.8525][A
+Evaluate scenes: 100%|█████████████████████████████████████████| 162/162 [04:00<00:00,  1.18s/it, base=0.7418, repair=0.8525][A
+Evaluate scenes: 100%|█████████████████████████████████████████| 162/162 [04:00<00:00,  1.18s/it, base=0.7429, repair=0.8531][A[ 0/ 1] Process each batch: 100%|█████████████████████████████████████████████████████████████| 1/1 [04:05<00:00, 245.80s/it][ 0/ 1] Process each batch: 100%|█████████████████████████████████████████████████████████████| 1/1 [04:05<00:00, 245.80s/it]
+Evaluate scenes: 100%|█████████████████████████████████████████| 162/162 [04:00<00:00,  1.49s/it, base=0.7429, repair=0.8531]
+Repair strategy: floor_prior
+Max repair move: 1.8000
+Repair overlap weight: 1.0000
+Graph relation acc: [ 181/ 245] = 0.7388
+Graph relation acc (easy): [ 184/ 245] = 0.7510
+Baseline relation acc: [ 182/ 245] = 0.7429
+Baseline relation acc (easy): [ 185/ 245] = 0.7551
+Relation-aware repaired acc: [ 209/ 245] = 0.8531
+Relation-aware repaired acc (easy): [ 209/ 245] = 0.8531
+Repair edits: 30
+Repair skipped: 82
+Average repair movement: 0.8404
+Relation source: parsed
+Parsed relations: 243
+Parser exact recall: [ 129/ 245] = 0.5265
+Parser easy recall: [ 129/ 245] = 0.5265
+Parser precision: 0.5309
+Baseline footprint overlap ratio: 0.095200
+Repaired footprint overlap ratio: 0.094044
+Baseline overlap pairs/scene: 2.6235
+Repaired overlap pairs/scene: 2.6296
+Baseline out-of-bounds center rate: 0.000000
+Repaired out-of-bounds center rate: 0.000000
+Mesh collision scenes evaluated: 162
+Baseline mesh collision pair rate: 0.070831
+Repaired mesh collision pair rate: 0.075258
+Baseline mesh collision scene rate: 0.518519
+Repaired mesh collision scene rate: 0.530864
+Saved relation-aware results to /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/bedroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01999/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.txt
+Saved per-scene details to /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/bedroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01999/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+=== formal exit=0 room=bedroom 2026-08-14 09:59:37 ===
