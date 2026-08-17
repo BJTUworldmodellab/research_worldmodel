@@ -1,0 +1,20 @@
+{
+  "errors": [],
+  "formal_result": {
+    "baseline_accuracy": 0.6349009900990099,
+    "baseline_collision_pairs": 1075,
+    "chosen_collision_pairs": 1061,
+    "main_accuracy": 0.6398514851485149,
+    "main_vs_random_mean_ci95": [
+      0.007453416149068323,
+      0.022005381872709433
+    ],
+    "main_vs_random_mean_gain": 0.01443894389438944,
+    "random_mean_accuracy": 0.6254125412541254,
+    "relations": 808,
+    "scenes": 531
+  },
+  "historical_files_rewritten": false,
+  "schema": "eg2027-eg09-paper-claim-freeze-v1",
+  "status": "EG09_CLAIMS_FROZEN"
+}

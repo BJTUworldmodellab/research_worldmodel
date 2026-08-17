@@ -1,0 +1,134 @@
+{
+  "schema": "eg2027-eg09-paper-claim-freeze-v1",
+  "created_at": "2026-08-17",
+  "task": "EG-09 formal paper result and claim freeze",
+  "status": "EG09_CLAIMS_FROZEN",
+  "repository": "BJTUworldmodellab/research_worldmodel",
+  "branch": "agent/eg01-eg02-eurographics2027",
+  "input_commit": "cee93138027e7fec2a2162034164c2dcc2e90a16",
+  "method": {
+    "id": "collision_gated_floor_prior",
+    "display_name": "Collision-gated Floor-Prior",
+    "config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+    "config_sha256": "052ACE5B295348483CE9B6110B5BD7933235424A55CC2108C966431E516829E2",
+    "generation_commit": "3a167d813d74ab18df8762d57ff3b4a47789e3af",
+    "exporter_fix_commit": "e5fe83731bae789350574312847db5eaeacb8259"
+  },
+  "formal_scope": {
+    "scenes": 531,
+    "layouts": 1062,
+    "target_relations": 808,
+    "room_counts": {
+      "bedroom": 162,
+      "livingroom": 192,
+      "diningroom": 177
+    },
+    "generator_seed": 0,
+    "layouts_sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d"
+  },
+  "formal_relation_accuracy": {
+    "bedroom": {
+      "baseline": 0.726530612244898,
+      "main": 0.7306122448979592,
+      "gain_pp": 0.40816326530611624
+    },
+    "livingroom": {
+      "baseline": 0.6054421768707483,
+      "main": 0.6122448979591837,
+      "gain_pp": 0.6802721088435382
+    },
+    "diningroom": {
+      "baseline": 0.5836431226765799,
+      "main": 0.587360594795539,
+      "gain_pp": 0.371747211895912
+    },
+    "overall": {
+      "baseline": 0.6349009900990099,
+      "main": 0.6398514851485149,
+      "gain_pp": 0.4950495049504955,
+      "claim_status": "descriptive; paired CI includes zero"
+    }
+  },
+  "primary_claim": {
+    "comparison": "main_vs_three_seed_exact_movement_matched_random_mean",
+    "main_accuracy": 0.6398514851485149,
+    "control_accuracy": 0.6254125412541254,
+    "gain": 0.01443894389438944,
+    "gain_pp": 1.443894389438944,
+    "relation_weighted_ci95": [
+      0.007453416149068323,
+      0.022005381872709433
+    ],
+    "bootstrap_rounds": 10000,
+    "bootstrap_seed": 20260816,
+    "decision": "GO"
+  },
+  "claim_boundaries": {
+    "main_vs_original_baseline": "INCONCLUSIVE; relation-weighted paired 95% CI includes zero",
+    "main_vs_generic_optimizer": "INCONCLUSIVE; relation-weighted paired 95% CI includes zero",
+    "room_level": "living-room random-mean sensitivity lower bound equals zero",
+    "external_systems": "no same-protocol superiority claim for ReSpace, SDGScenes, or other external systems",
+    "collision": "aggregate non-worsening, not collision-free generation"
+  },
+  "safety": {
+    "repair_selected": 492,
+    "baseline_fallback": 39,
+    "mesh_available_scenes": 531,
+    "chosen_main_collision_pairs": 1061,
+    "baseline_collision_pairs": 1075,
+    "non_worsening": true
+  },
+  "active_surfaces": [
+    "paper/neurips_ra_instructscene/main.tex",
+    "docs/eurographics2027/claim_to_table_map_eg2027.md",
+    "manifests/eurographics2027/eg09_paper_claim_freeze_manifest.json"
+  ],
+  "compiled_artifact": {
+    "path": "paper/neurips_ra_instructscene/main.pdf",
+    "status": "STALE_PRE_EG09_NOT_FOR_DELIVERY",
+    "inspection": "Pages 6 and 8 retain development-anchor tables.",
+    "required_action": "Recompile main.tex in a TeX environment and visually inspect before PDF delivery."
+  },
+  "historical_policy": {
+    "rewrite_eg01_to_eg04_audit_files": false,
+    "reason": "Development anchors remain versioned audit evidence and are excluded from current paper-facing claims."
+  },
+  "provenance_gap": "The lightweight evidence contains complete EG05/EG06 machine-readable tables but not the three original room-level generator JSON files.",
+  "inputs": {
+    "eg05_summary": {
+      "path": "eg07_final_delivery_20260814/eg05/summary.csv",
+      "sha256": "2478c3ee37101a894181ea2f29be8e1c36371be07650f0ef2969b6ba138c4d8f"
+    },
+    "eg06_summary": {
+      "path": "eg07_final_delivery_20260814/eg06/summary.csv",
+      "sha256": "7c804d9598933fb2b3c749bbaed921b5b1e192d97fa87b125dab3b3b5c7622f3"
+    },
+    "eg07_final_metrics": {
+      "path": "eg07_final_delivery_20260814/final/eg07_final_metrics_20260814.json",
+      "sha256": "79fc4c928f3c64b09589b0d4ea88819ec5e277c8b58e089868f276fadf768449"
+    },
+    "eg08_canonical_ci": {
+      "path": "results/independent_eval/eg2027/eg08_paired_statistics_20260816/canonical_eg06_ci.json",
+      "sha256": "7b836dac409288bef22f24e7bd2db8065fb01b1a841fc2002f4cefceb030f576"
+    },
+    "eg08_manifest": {
+      "path": "manifests/eurographics2027/eg08_paired_statistics_manifest.json"
+    }
+  },
+  "verification": {
+    "script": "scripts/check_eg09_paper_claim_consistency.py",
+    "test": "tests/test_eg09_paper_claim_consistency.py",
+    "report": "results/independent_eval/eg2027/eg09_paper_claim_freeze_20260817/claim_consistency.json"
+  },
+  "deliverables": [
+    "paper/neurips_ra_instructscene/main.tex",
+    "paper/neurips_ra_instructscene/EG09_PDF_STATUS.md",
+    "docs/eurographics2027/claim_to_table_map_eg2027.md",
+    "docs/eurographics2027/eg09_paper_claim_freeze_report_20260817.md",
+    "manifests/eurographics2027/eg09_paper_claim_freeze_manifest.json",
+    "scripts/check_eg09_paper_claim_consistency.py",
+    "tests/test_eg09_paper_claim_consistency.py",
+    "results/independent_eval/eg2027/eg09_paper_claim_freeze_20260817/claim_consistency.json",
+    "results/independent_eval/eg2027/eg09_paper_claim_freeze_20260817/EG09_CLAIMS_FROZEN"
+  ]
+}
