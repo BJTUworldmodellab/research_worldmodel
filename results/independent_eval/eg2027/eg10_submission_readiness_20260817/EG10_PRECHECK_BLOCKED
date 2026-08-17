@@ -1,0 +1,5 @@
+EG10_PRECHECK_BLOCKED
+integrity_status=PASS
+hard_blockers=8
+scientific_review_risks=5
+resume_requires=official_EG2027_template_and_author_inputs

@@ -50,7 +50,7 @@ Our contribution is not a claim of first relation-aware 3D scene generation, nor
 \begin{itemize}[leftmargin=1.5em]
     \item We identify and quantify a graph-to-layout grounding gap in an existing instruction-guided 3D scene generator.
     \item We introduce a training-free relation-grounded post-generation control framework: relation parsing, object matching, geometric verification, bounded floor-plane repair, and collision-gated validation.
-    \item We show that safety-aware repair---height preservation, movement bounds, and mesh-collision gating---provides a safer paper-facing method than direct relation repair alone.
+    \item We operationalize bounded post-generation control through height preservation, movement limits, and a per-scene mesh-collision non-worsening gate.
 \end{itemize}
 
 \begin{figure}[t]
@@ -107,11 +107,11 @@ where object $i$ has category $c_i$, translation $t_i \in \mathbb{R}^{3}$, size 
 \[
   R(x) = \{(c_a, p, c_b)\},
 \]
-where predicate $p$ may be left-of, right-of, in-front-of, behind, near, or far. The goal is to produce a repaired layout $S'$ that improves the realized satisfaction of $R(x)$ while preserving scene plausibility.
+where predicate $p$ may be left-of, right-of, in-front-of, behind, near, or far. The goal is to produce a repaired layout $S'$ that improves the realized satisfaction of $R(x)$ while limiting movement and mesh-collision side effects.
 
 \subsection{Explicit Relation Extraction and Matching}
 
-We use a deliberately simple rule-based parser to extract explicit spatial phrases. This choice makes the method transparent and keeps the benchmark unchanged. The parser output is noisy, but it is sufficient to drive a verifier: the deployable parsed-relation repair captures most of the oracle-repair gain in earlier diagnostics. The parser is not intended to solve implicit commonsense reasoning; prompts that require latent affordance or support reasoning are outside the current claim.
+We use a deliberately simple rule-based parser to extract explicit spatial phrases. This choice makes the method transparent and keeps the benchmark unchanged. The parser output is noisy but sufficient to drive the formal parsed-relation verifier evaluated below. The parser is not intended to solve implicit commonsense reasoning; prompts that require latent affordance or support reasoning are outside the current claim.
 
 For each parsed triple, the verifier finds generated objects whose class labels match the subject and object categories. When multiple instances match, the verifier selects the nearest pair in the floor plane. All distance and direction checks use the $x/z$ plane; the $y$ axis is treated as vertical height.
 
@@ -242,34 +242,9 @@ We presented \method, a training-free verifier-repair layer for instruction-guid
 
 \section*{Reproducibility Notes}
 
-The formal 531-scene layouts, validation records, independent EG05 evaluation, EG06 movement-matched controls, EG07 final metrics, and EG08 paired statistics are archived under \texttt{eg07\_final\_delivery\_20260814/} and \texttt{results/independent\_eval/eg2027/}. The EG09 claim map and manifest bind the paper-facing numbers to those machine-readable files and their SHA256 checksums. Third-party datasets, checkpoints, environments, and the three original room-level generator JSON files are not included in the lightweight repository package.
+An anonymized evidence package contains the formal 531-scene layouts, validation records, independent relation evaluation, movement-matched controls, final metrics, paired statistics, and file checksums. Third-party datasets, checkpoints, environments, and the three original room-level generator JSON files are not included in the lightweight package.
 
 \bibliographystyle{plainnat}
 \bibliography{references}
-
-\appendix
-
-\section{Formal Result Accounting}
-
-\begin{table}[h]
-\centering
-\caption{Machine-readable formal evidence used in this draft.}
-\label{tab:archive}
-\begin{tabular}{lcc}
-\toprule
-Artifact & Rows & Role \\
-\midrule
-EG05 \texttt{per\_scene.csv} & 1,062 & baseline/main independent scores \\
-EG05 \texttt{per\_relation.csv} & 1,616 & target-level audit \\
-EG06 \texttt{per\_scene.csv} & 3,186 & six paired variants \\
-EG06 \texttt{movement\_audit.csv} & 531 & movement-budget audit \\
-EG08 \texttt{paired\_ci.csv} & 24 & overall and room-level intervals \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\section{Submission Checklist Placeholder}
-
-Venue formatting and the final submission checklist remain separate from the EG09 numerical freeze. Before submission, we will verify compute reporting, statistical methodology, dataset licenses, artifact release plans, and limitations against the selected venue template.
 
 \end{document}
