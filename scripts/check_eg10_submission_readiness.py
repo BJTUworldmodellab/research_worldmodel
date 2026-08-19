@@ -13,10 +13,10 @@ from typing import Any
 
 
 SCHEMA = "eg2027-eg10-submission-readiness-v1"
-PAPER = Path("paper/neurips_ra_instructscene/main.tex")
-BIB = Path("paper/neurips_ra_instructscene/references.bib")
+PAPER = Path("paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex")
+BIB = Path("paper/eurographics2027_submission/references.bib")
 PDF = Path("paper/neurips_ra_instructscene/main.pdf")
-OFFICIAL_TEMPLATE = Path("paper/eurographics2027_template/EGauthorGuidelines-conf-sub.tex")
+OFFICIAL_TEMPLATE = Path("paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex")
 EG09_CHECKER = Path("scripts/check_eg09_paper_claim_consistency.py")
 EG10_MANIFEST = Path("manifests/eurographics2027/eg10_submission_readiness_manifest.json")
 STALE_PDF_SHA256 = "3234c4a2fd39ec2db593e7fa48a3c40391c3d39d0b1d77133600b256e56e8e49"
@@ -116,7 +116,8 @@ def validate(repo_root: Path) -> dict[str, Any]:
         "uses_conference_submission_mode": "\\ConferenceSubmission" in tex,
         "uses_eg_bibliography_style": "\\bibliographystyle{eg-alpha-doi}" in tex,
         "has_ccs_categories": "\\ccsdesc" in tex and "\\printccsdesc" in tex,
-        "uses_submission_id": "SUBMISSION ID" in tex,
+        "submission_id_is_placeholder": "SUBMISSION ID" in tex,
+        "has_submission_id": bool(re.search(r"\\author\[[^]]*\d[^]]*\]\{[^}]*\d[^}]*\}", tex)),
         "has_ai_disclosure": bool(
             re.search(
                 r"\\(?:section\*?|paragraph)\{(?:Generative )?AI (?:Use )?Disclosure\}",
@@ -147,7 +148,7 @@ def validate(repo_root: Path) -> dict[str, Any]:
             blocker(
                 "OFFICIAL_TEMPLATE_LOGIN_REQUIRED",
                 "author",
-                "Download the EG2027 package from SRMv2 and place it under paper/eurographics2027_template/.",
+                "Download the EG2027 package from SRMv2 and place it under paper/eg2027_official_style/.",
             )
         )
     if not checks["uses_egpubl_class"] or not checks["uses_conference_submission_mode"]:
@@ -162,7 +163,7 @@ def validate(repo_root: Path) -> dict[str, Any]:
         hard_blockers.append(
             blocker("CCS_CATEGORIES_MISSING", "authors", "Choose and add verified ACM CCS 2012 categories.")
         )
-    if not checks["uses_submission_id"]:
+    if checks["submission_id_is_placeholder"] or not checks["has_submission_id"]:
         hard_blockers.append(
             blocker("SUBMISSION_ID_PENDING", "authors", "Insert the SRMv2 submission ID after abstract registration.")
         )

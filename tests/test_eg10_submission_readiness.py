@@ -20,8 +20,11 @@ class Eg10SubmissionReadinessTest(unittest.TestCase):
         self.assertEqual(payload["status"], "EG10_PRECHECK_BLOCKED")
         codes = {item["code"] for item in payload["hard_blockers"]}
         self.assertIn("PUBLIC_REPOSITORY_ANONYMITY_RISK", codes)
-        self.assertIn("OFFICIAL_TEMPLATE_LOGIN_REQUIRED", codes)
-        self.assertIn("SOURCE_NOT_MIGRATED", codes)
+        self.assertNotIn("OFFICIAL_TEMPLATE_LOGIN_REQUIRED", codes)
+        self.assertNotIn("SOURCE_NOT_MIGRATED", codes)
+        self.assertNotIn("BIBLIOGRAPHY_STYLE_MISMATCH", codes)
+        self.assertIn("CCS_CATEGORIES_MISSING", codes)
+        self.assertIn("SUBMISSION_ID_PENDING", codes)
         self.assertIn("PDF_STALE", codes)
         self.assertIn("AI_DISCLOSURE_AUTHOR_INPUT_NEEDED", codes)
 

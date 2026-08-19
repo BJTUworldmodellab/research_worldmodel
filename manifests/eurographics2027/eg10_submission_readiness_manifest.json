@@ -1,6 +1,7 @@
 {
   "schema": "eg2027-eg10-submission-readiness-v1",
   "created_at": "2026-08-17",
+  "updated_at": "2026-08-19",
   "task": "EG-10 Eurographics 2027 submission-readiness audit",
   "definition_source": "No prior EG10 specification existed; scoped from the three remaining EG09 submission tasks.",
   "status": "EG10_PRECHECK_BLOCKED",
@@ -36,6 +37,15 @@
     "sha256": "230c34fa8cd89016af231f1497d76479a5eb4463ad7b90fb65765010dae419c9",
     "usage_boundary": "Inspected in a temporary directory for structure only; not committed and not substituted for the EG2027 conference package."
   },
+  "official_eg2027_template": {
+    "source_archive": "egPublStyle-EG-full-short-star-tut-poster-edu-dc-2027.zip",
+    "source_archive_bytes": 2902816,
+    "source_archive_sha256": "68212ff42cee3681c8b7aa620e6c55529153cbb3001039cdb8f8256429c949b2",
+    "entry_file": "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
+    "entry_file_sha256": "9a27d2a86b5f1c369a11b935a1f639f739656febe84626fb350213f3fb658966",
+    "conference_style": "eg2027.sty",
+    "verified": true
+  },
   "completed_in_eg10": [
     "Removed unsupported oracle-diagnostic wording from the formal manuscript.",
     "Narrowed scene-plausibility wording to movement and mesh-collision side effects.",
@@ -43,13 +53,12 @@
     "Anonymized the manuscript reproducibility note.",
     "Removed internal artifact accounting and submission-checklist placeholder from the main manuscript appendix.",
     "Verified citation keys, cross-references, claim freeze, and absence of internal identity strings.",
-    "Created three reviewer reports and a machine-readable submission preflight."
+    "Created three reviewer reports and a machine-readable submission preflight.",
+    "Verified and archived the official EG2027 SRMv2 template package.",
+    "Migrated the manuscript to egpubl, eg2027, ConferenceSubmission, and eg-alpha-doi in a separate submission directory."
   ],
   "hard_blockers": [
     "PUBLIC_REPOSITORY_ANONYMITY_RISK",
-    "OFFICIAL_TEMPLATE_LOGIN_REQUIRED",
-    "SOURCE_NOT_MIGRATED",
-    "BIBLIOGRAPHY_STYLE_MISMATCH",
     "CCS_CATEGORIES_MISSING",
     "SUBMISSION_ID_PENDING",
     "PDF_STALE",
@@ -64,11 +73,11 @@
   ],
   "inputs": {
     "paper": {
-      "path": "paper/neurips_ra_instructscene/main.tex",
-      "sha256": "a4f7eb3bd542393e7ef98f7683a8fabd18dd21dc150c2cf542aa380bf2292b4e"
+      "path": "paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex",
+      "sha256": "cc19e44413dd51e197a2f15f392a31f5bfd6f19cb4f8bd1d5de76462812bc6ef"
     },
     "bibliography": {
-      "path": "paper/neurips_ra_instructscene/references.bib",
+      "path": "paper/eurographics2027_submission/references.bib",
       "sha256": "572d67f5e0e3c89c9001264e48eda9fcfffdbb3e5adc842a099c6ced990cc65a"
     },
     "stale_pdf": {
@@ -79,9 +88,9 @@
     "eg09_manifest": "manifests/eurographics2027/eg09_paper_claim_freeze_manifest.json"
   },
   "resume_condition": {
-    "required_user_file": "The official EG2027 LaTeX zip downloaded after SRMv2 login.",
-    "target_directory": "paper/eurographics2027_template/",
-    "required_entry": "paper/eurographics2027_template/EGauthorGuidelines-conf-sub.tex",
+    "required_user_file": null,
+    "target_directory": "paper/eg2027_official_style/",
+    "required_entry": "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
     "required_author_inputs": [
       "SRMv2 submission ID after abstract registration",
       "verified ACM CCS categories and at least one SRMv2 keyword",
@@ -95,7 +104,8 @@
     "review": "docs/eurographics2027/eg10_submission_readiness_review_20260817.md"
   },
   "deliverables": [
-    "paper/neurips_ra_instructscene/main.tex",
+    "paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex",
+    "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
     "docs/eurographics2027/eg10_submission_readiness_review_20260817.md",
     "manifests/eurographics2027/eg10_submission_readiness_manifest.json",
     "scripts/check_eg10_submission_readiness.py",

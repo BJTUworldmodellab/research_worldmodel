@@ -4,7 +4,7 @@
     "all_references_resolve": true,
     "appendix_removed_from_main": true,
     "checklist_placeholder_absent": true,
-    "current_documentclass": "article",
+    "current_documentclass": "egpubl",
     "duplicate_labels": [],
     "eg09_claim_freeze_pass": true,
     "eg10_manifest_input_hashes_match": true,
@@ -13,18 +13,19 @@
     "has_ai_disclosure": false,
     "has_ccs_categories": false,
     "has_result_figure": false,
+    "has_submission_id": false,
     "internal_identity_strings_absent": true,
     "missing_bibliography_entries": [],
     "missing_labels": [],
-    "official_2027_template_present": false,
+    "official_2027_template_present": true,
+    "submission_id_is_placeholder": true,
     "table_environments": 3,
     "tracked_pdf_is_stale_pre_eg09": true,
     "uncited_bibliography_entries": [],
-    "uses_conference_submission_mode": false,
-    "uses_eg_bibliography_style": false,
-    "uses_egpubl_class": false,
-    "uses_submission_id": false,
-    "word_count_approx": 3197
+    "uses_conference_submission_mode": true,
+    "uses_eg_bibliography_style": true,
+    "uses_egpubl_class": true,
+    "word_count_approx": 3205
   },
   "errors": [],
   "hard_blockers": [
@@ -32,21 +33,6 @@
       "action": "Before submission, make the identified repository private or move submission artifacts to an identity-safe anonymous repository and audit public traces.",
       "code": "PUBLIC_REPOSITORY_ANONYMITY_RISK",
       "owner": "authors"
-    },
-    {
-      "action": "Download the EG2027 package from SRMv2 and place it under paper/eurographics2027_template/.",
-      "code": "OFFICIAL_TEMPLATE_LOGIN_REQUIRED",
-      "owner": "author"
-    },
-    {
-      "action": "Migrate the source to EGauthorGuidelines-conf-sub.tex.",
-      "code": "SOURCE_NOT_MIGRATED",
-      "owner": "paper"
-    },
-    {
-      "action": "Use the bibliography setup bundled with the EG2027 template.",
-      "code": "BIBLIOGRAPHY_STYLE_MISMATCH",
-      "owner": "paper"
     },
     {
       "action": "Choose and add verified ACM CCS 2012 categories.",
@@ -71,12 +57,12 @@
   ],
   "inputs": {
     "bibliography": {
-      "path": "paper/neurips_ra_instructscene/references.bib",
+      "path": "paper/eurographics2027_submission/references.bib",
       "sha256": "572d67f5e0e3c89c9001264e48eda9fcfffdbb3e5adc842a099c6ced990cc65a"
     },
     "paper": {
-      "path": "paper/neurips_ra_instructscene/main.tex",
-      "sha256": "a4f7eb3bd542393e7ef98f7683a8fabd18dd21dc150c2cf542aa380bf2292b4e"
+      "path": "paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex",
+      "sha256": "cc19e44413dd51e197a2f15f392a31f5bfd6f19cb4f8bd1d5de76462812bc6ef"
     },
     "pdf": {
       "path": "paper/neurips_ra_instructscene/main.pdf",
@@ -84,7 +70,7 @@
     }
   },
   "integrity_status": "PASS",
-  "official_template_path_expected": "paper/eurographics2027_template/EGauthorGuidelines-conf-sub.tex",
+  "official_template_path_expected": "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
   "schema": "eg2027-eg10-submission-readiness-v1",
   "scientific_review_risks": [
     {
