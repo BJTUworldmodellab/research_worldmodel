@@ -1,0 +1,4 @@
+scene_id,room_type,layout_variant,source_config_id,n_relations,n_evaluated,n_satisfied,n_missing,n_unsupported,relation_accuracy,conditional_accuracy,has_conflicting_targets
+eg05_bedroom_001,bedroom,baseline,eg05_smoke,2,1,1,1,0,0.5,1.0,0
+eg05_bedroom_001,bedroom,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,2,1,1,1,0,0.5,1.0,0
+eg05_livingroom_001,livingroom,baseline,eg05_smoke,3,2,0,0,1,0.0,0.0,1

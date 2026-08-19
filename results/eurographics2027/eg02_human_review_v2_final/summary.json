@@ -1,0 +1,48 @@
+{
+  "adjudicated_disagreements": 25,
+  "binary_n_relations": 79,
+  "binary_satisfied_rate": 0.759494,
+  "final_label_sources": {
+    "a_d_agree": 65,
+    "adjudicated": 25
+  },
+  "final_vs_coord_rule": {
+    "agree": 71,
+    "disagree": 19
+  },
+  "final_vs_coord_rule_agreement": 0.788889,
+  "label_counts": {
+    "not_judgable": 11,
+    "not_satisfied": 19,
+    "satisfied": 60
+  },
+  "n_relations": 90,
+  "room_stats": {
+    "bedroom": {
+      "coord_rule_agreement": 0.733333,
+      "not_judgable": 2,
+      "not_satisfied": 9,
+      "satisfied": 19,
+      "total": 30,
+      "uncertain": 0
+    },
+    "diningroom": {
+      "coord_rule_agreement": 0.733333,
+      "not_judgable": 5,
+      "not_satisfied": 5,
+      "satisfied": 20,
+      "total": 30,
+      "uncertain": 0
+    },
+    "livingroom": {
+      "coord_rule_agreement": 0.9,
+      "not_judgable": 4,
+      "not_satisfied": 5,
+      "satisfied": 21,
+      "total": 30,
+      "uncertain": 0
+    }
+  },
+  "status": "ADJUDICATED_FINAL_LABELS_READY",
+  "task": "EG-02 adjudicated human review v2"
+}

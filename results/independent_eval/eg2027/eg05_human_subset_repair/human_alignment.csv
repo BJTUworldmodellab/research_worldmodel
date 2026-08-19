@@ -1,0 +1,85 @@
+annotation_id,room_type,predicate,subject_class,object_class,human_final_label,evaluator_label,agreement,status,dx,dy,dz,d_xz,coord_rule_label_from_annotation,final_vs_coord
+EG02-BED-0001,bedroom,behind,wardrobe,nightstand,satisfied,satisfied,1,evaluated,0.719712,0.9163469999999999,-1.117893,1.3295375596022099,satisfied,agree
+EG02-BED-0002,bedroom,behind,nightstand,pendant_lamp,satisfied,satisfied,1,evaluated,-0.04999999999999993,-2.184049,-1.5999999999999999,1.6007810593582121,satisfied,agree
+EG02-BED-0003,bedroom,behind,double_bed,table,satisfied,satisfied,1,evaluated,-0.6983619999999999,0.153383,-1.248258,1.430334757183786,satisfied,agree
+EG02-BED-0004,bedroom,behind,nightstand,double_bed,satisfied,satisfied,1,evaluated,0.9406420000000002,-0.34307799999999994,-1.43844,1.7186963099291277,satisfied,agree
+EG02-BED-0005,bedroom,behind,double_bed,table,not_satisfied,not_satisfied,1,evaluated,-1.147413,0.408092,1.224876,1.678355685766578,not_satisfied,agree
+EG02-BED-0006,bedroom,behind,double_bed,wardrobe,satisfied,satisfied,1,evaluated,-0.22277299999999997,-0.22232300000000005,-1.5476960000000002,1.5636466090344712,satisfied,agree
+EG02-BED-0007,bedroom,behind,chair,pendant_lamp,satisfied,satisfied,1,evaluated,0.708908,-1.990979,-0.996784,1.2231634784933696,satisfied,agree
+EG02-BED-0008,bedroom,below,double_bed,pendant_lamp,satisfied,satisfied,1,evaluated,-0.253477,-0.6750940000000001,0.13764800000000002,0.2884398749011655,satisfied,agree
+EG02-BED-0009,bedroom,below,double_bed,pendant_lamp,satisfied,satisfied,1,evaluated,-0.071545,-1.8207660000000003,0.34204,0.3494424825704511,satisfied,agree
+EG02-BED-0010,bedroom,below,double_bed,pendant_lamp,satisfied,satisfied,1,evaluated,-0.395787,-2.61081,0.194805,0.44113074863808804,satisfied,agree
+EG02-BED-0011,bedroom,below,double_bed,pendant_lamp,satisfied,satisfied,1,evaluated,0.147536,-1.597663,0.13907400000000003,0.20275218561583994,satisfied,agree
+EG02-BED-0012,bedroom,close to,ceiling_lamp,chair,not_satisfied,not_satisfied,1,evaluated,0.5086930000000001,2.224478,0.782687,0.9334706788207117,not_satisfied,agree
+EG02-BED-0013,bedroom,close to,desk,chair,satisfied,not_satisfied,0,evaluated,-0.6214580000000001,-0.005269999999999997,-0.5958859999999999,0.8609820966547446,not_satisfied,disagree
+EG02-BED-0015,bedroom,in front of,wardrobe,nightstand,satisfied,satisfied,1,evaluated,0.859254,0.7994119999999999,2.806399,2.9349945117013423,satisfied,agree
+EG02-BED-0016,bedroom,in front of,pendant_lamp,wardrobe,satisfied,satisfied,1,evaluated,-0.212889,0.9240619999999999,1.536501,1.5511792447431727,satisfied,agree
+EG02-BED-0017,bedroom,in front of,wardrobe,cabinet,not_satisfied,not_satisfied,1,evaluated,-0.727434,1.0500479999999999,-0.04201799999999989,0.728646510099376,not_satisfied,agree
+EG02-BED-0018,bedroom,in front of,nightstand,double_bed,not_satisfied,satisfied,0,evaluated,0.2772729999999999,-0.133011,1.442424,1.4688319550939106,satisfied,disagree
+EG02-BED-0019,bedroom,in front of,double_bed,nightstand,satisfied,not_satisfied,0,evaluated,-0.973114,0.8651929999999999,-1.0963669999999999,1.465937057204367,not_satisfied,disagree
+EG02-BED-0020,bedroom,in front of,wardrobe,dressing_table,not_satisfied,satisfied,0,evaluated,1.132351,0.401022,3.145121,3.3427540878506155,satisfied,disagree
+EG02-BED-0021,bedroom,left,double_bed,nightstand,satisfied,satisfied,1,evaluated,-0.970322,0.35425399999999996,-0.589072,1.1351346197116887,satisfied,agree
+EG02-BED-0022,bedroom,left,bookshelf,double_bed,not_satisfied,satisfied,0,evaluated,-0.6977070000000001,0.24696299999999993,2.884979,2.9681473831819742,satisfied,disagree
+EG02-BED-0023,bedroom,left,table,pendant_lamp,satisfied,not_satisfied,0,evaluated,1.2849570000000001,-2.2466890000000004,-1.418224,1.913759077320079,not_satisfied,disagree
+EG02-BED-0024,bedroom,left,double_bed,pendant_lamp,satisfied,satisfied,1,evaluated,-1.3211700000000002,-1.5507300000000002,0.042561,1.3218553656209897,satisfied,agree
+EG02-BED-0025,bedroom,left,double_bed,nightstand,not_satisfied,not_satisfied,1,evaluated,1.235023,0.262567,-0.9947900000000001,1.5858401415744905,not_satisfied,agree
+EG02-BED-0026,bedroom,right,nightstand,nightstand,not_judgable,not_satisfied,,evaluated,0.0,0.0,0.0,0.0,not_satisfied,disagree
+EG02-BED-0027,bedroom,right,ceiling_lamp,nightstand,satisfied,satisfied,1,evaluated,1.291089,1.8198279999999998,1.229969,1.7831810191009774,satisfied,agree
+EG02-BED-0028,bedroom,right,double_bed,wardrobe,satisfied,satisfied,1,evaluated,1.826755,-0.89758,0.11597500000000005,1.8304327440935926,satisfied,agree
+EG02-BED-0029,bedroom,right,wardrobe,single_bed,not_satisfied,not_satisfied,1,evaluated,-2.055044,0.7541440000000001,-0.41702799999999995,2.096930660446358,not_satisfied,agree
+EG02-BED-0030,bedroom,right,double_bed,pendant_lamp,not_satisfied,satisfied,0,evaluated,1.280516,-1.860633,-0.053446999999999995,1.281630917255432,satisfied,disagree
+EG02-DIN-0001,diningroom,behind,wine_cabinet,wine_cabinet,not_judgable,not_satisfied,,evaluated,0.0,0.0,0.0,0.0,not_satisfied,disagree
+EG02-DIN-0002,diningroom,behind,dining_table,dining_chair,satisfied,not_satisfied,0,evaluated,0.75,0.08825100000000002,0.04999999999999993,0.7516648189186453,not_satisfied,disagree
+EG02-DIN-0003,diningroom,behind,dining_table,multi_seat_sofa,satisfied,satisfied,1,evaluated,-1.082296,0.06335099999999999,-2.197124,2.4492281443328223,satisfied,agree
+EG02-DIN-0004,diningroom,behind,loveseat_sofa,pendant_lamp,satisfied,satisfied,1,evaluated,-0.562432,-1.3923860000000001,-1.324131,1.4386287428607145,satisfied,agree
+EG02-DIN-0005,diningroom,behind,loveseat_sofa,console_table,not_satisfied,satisfied,0,evaluated,1.43724,-0.03803000000000001,-2.292898,2.70611161188965,satisfied,disagree
+EG02-DIN-0006,diningroom,below,dining_table,pendant_lamp,satisfied,satisfied,1,evaluated,-0.03267300000000001,-1.713219,0.038231000000000015,0.050290499003290884,satisfied,agree
+EG02-DIN-0007,diningroom,below,dining_table,pendant_lamp,satisfied,satisfied,1,evaluated,-0.07098399999999999,-1.8408320000000002,-0.010682000000000004,0.0717832388514199,satisfied,agree
+EG02-DIN-0008,diningroom,close to,dining_table,dining_chair,satisfied,not_satisfied,0,evaluated,0.24053200000000002,0.032833999999999974,-0.828586,0.8627922127719977,not_satisfied,disagree
+EG02-DIN-0009,diningroom,close to,dining_chair,dining_table,satisfied,satisfied,1,evaluated,0.22778899999999996,0.06830999999999998,-0.69549,0.7318429945152171,satisfied,agree
+EG02-DIN-0010,diningroom,close to,dining_table,dining_chair,satisfied,satisfied,1,evaluated,-0.2864089999999999,-0.03261499999999995,-0.147455,0.32213831238460283,satisfied,agree
+EG02-DIN-0011,diningroom,close to,pendant_lamp,lounge_chair,satisfied,not_satisfied,0,evaluated,-0.33871699999999993,1.409774,0.745645,0.8189723268304002,not_satisfied,disagree
+EG02-DIN-0012,diningroom,close to,dining_table,dining_chair,satisfied,satisfied,1,evaluated,-0.5455000000000001,-0.09118699999999996,-0.0600210000000001,0.5487921012924658,satisfied,agree
+EG02-DIN-0013,diningroom,close to,dining_chair,dining_table,satisfied,satisfied,1,evaluated,0.526527,0.10916300000000001,-0.09271400000000002,0.5346275035246503,satisfied,agree
+EG02-DIN-0014,diningroom,close to,pendant_lamp,dining_chair,satisfied,satisfied,1,evaluated,0.10164499999999999,1.691311,-0.48894499999999996,0.4993985573166987,satisfied,agree
+EG02-DIN-0015,diningroom,in front of,dining_chair,dining_chair,not_judgable,not_satisfied,,evaluated,0.0,0.0,0.0,0.0,not_satisfied,disagree
+EG02-DIN-0017,diningroom,in front of,coffee_table,armchair,satisfied,not_satisfied,0,evaluated,-0.196908,-0.237378,-1.2371590000000001,1.252731077184964,not_satisfied,disagree
+EG02-DIN-0018,diningroom,in front of,dining_chair,dining_chair,not_judgable,not_satisfied,,evaluated,0.0,0.0,0.0,0.0,not_satisfied,disagree
+EG02-DIN-0020,diningroom,left,coffee_table,lounge_chair,satisfied,satisfied,1,evaluated,-1.2221920000000002,-0.225348,-0.2060360000000001,1.239437016616819,satisfied,agree
+EG02-DIN-0021,diningroom,left,armchair,multi_seat_sofa,not_satisfied,not_satisfied,1,evaluated,1.397754,0.021392000000000022,1.5045150000000003,2.0536021108630074,not_satisfied,agree
+EG02-DIN-0022,diningroom,left,dining_table,stool,satisfied,satisfied,1,evaluated,-1.919069,0.12394,0.477396,1.9775572728942643,satisfied,agree
+EG02-DIN-0023,diningroom,left,coffee_table,cabinet,satisfied,satisfied,1,evaluated,-1.503424,-0.350996,1.243568,1.9510881821178663,satisfied,agree
+EG02-DIN-0024,diningroom,left,multi_seat_sofa,pendant_lamp,not_satisfied,not_satisfied,1,evaluated,0.244394,-1.8929810000000002,-3.297828,3.3068713226885618,not_satisfied,agree
+EG02-DIN-0025,diningroom,left,console_table,dining_chair,not_satisfied,not_satisfied,1,evaluated,1.151613,-0.02803,0.3760220000000001,1.211447500411388,not_satisfied,agree
+EG02-DIN-0026,diningroom,right,multi_seat_sofa,coffee_table,not_satisfied,not_satisfied,1,evaluated,-1.557926,0.149922,0.07587300000000008,1.5597724621254858,not_satisfied,agree
+EG02-DIN-0027,diningroom,right,multi_seat_sofa,lounge_chair,satisfied,satisfied,1,evaluated,1.4135980000000001,-0.12656199999999995,1.229475,1.873464192673295,satisfied,agree
+EG02-DIN-0028,diningroom,right,bookshelf,dining_chair,satisfied,satisfied,1,evaluated,1.6877330000000001,0.8538459999999999,1.192471,2.066501818322452,satisfied,agree
+EG02-DIN-0029,diningroom,right,dining_table,dining_chair,satisfied,satisfied,1,evaluated,0.319798,-0.07197600000000004,-0.515628,0.606747884370436,satisfied,agree
+EG02-DIN-0030,diningroom,right,dining_table,coffee_table,satisfied,satisfied,1,evaluated,2.592348,0.269282,0.2425329999999999,2.60366864427734,satisfied,agree
+EG02-LIV-0001,livingroom,above,pendant_lamp,dining_table,satisfied,satisfied,1,evaluated,-0.00037599999999993194,1.7971659999999998,0.24553799999999998,0.24553828789009666,satisfied,agree
+EG02-LIV-0002,livingroom,above,pendant_lamp,dining_table,satisfied,satisfied,1,evaluated,5.034485,1.7783289999999998,-0.075617,5.035052844401338,satisfied,agree
+EG02-LIV-0003,livingroom,behind,dining_table,tv_stand,satisfied,satisfied,1,evaluated,-0.9670080000000001,0.168702,-2.731757,2.897861414752783,satisfied,agree
+EG02-LIV-0004,livingroom,behind,loveseat_sofa,corner_side_table,satisfied,satisfied,1,evaluated,1.4703689999999998,0.236692,-0.19299100000000013,1.482980283834549,satisfied,agree
+EG02-LIV-0006,livingroom,behind,multi_seat_sofa,pendant_lamp,satisfied,satisfied,1,evaluated,0.09954699999999994,-1.8587099999999999,-1.471091,1.4744552673750397,satisfied,agree
+EG02-LIV-0007,livingroom,behind,dining_table,dining_chair,not_satisfied,satisfied,0,evaluated,-0.16106299999999996,0.11129700000000001,-0.6244010000000001,0.644839436425844,satisfied,disagree
+EG02-LIV-0008,livingroom,below,dining_table,pendant_lamp,satisfied,satisfied,1,evaluated,-0.64572,-1.4959299999999998,-0.014278999999999709,0.645877858608731,satisfied,agree
+EG02-LIV-0009,livingroom,below,coffee_table,pendant_lamp,satisfied,satisfied,1,evaluated,-0.10150100000000001,-2.197582,-0.075245,0.1263497646456059,satisfied,agree
+EG02-LIV-0010,livingroom,close to,dining_table,dining_chair,satisfied,satisfied,1,evaluated,-0.32576399999999994,-0.056143,-0.22111799999999993,0.3937198923346393,satisfied,agree
+EG02-LIV-0012,livingroom,close to,dining_table,dining_chair,satisfied,satisfied,1,evaluated,0.20663199999999993,-0.08241799999999999,-0.6709710000000001,0.7020675653133394,satisfied,agree
+EG02-LIV-0013,livingroom,close to,dining_table,dining_chair,satisfied,satisfied,1,evaluated,-0.1431229999999999,-0.21032199999999995,0.6691440000000002,0.6842790993921999,satisfied,agree
+EG02-LIV-0014,livingroom,in front of,coffee_table,tv_stand,satisfied,satisfied,1,evaluated,-0.08211900000000005,0.04872199999999999,1.7808950000000001,1.782787292748633,satisfied,agree
+EG02-LIV-0015,livingroom,in front of,loveseat_sofa,corner_side_table,not_satisfied,not_satisfied,1,evaluated,2.187626,0.257803,-0.06388499999999997,2.188558614499735,not_satisfied,agree
+EG02-LIV-0016,livingroom,in front of,multi_seat_sofa,coffee_table,satisfied,satisfied,1,evaluated,0.0628280000000001,0.24744100000000002,1.0662129999999999,1.0680625070439462,satisfied,agree
+EG02-LIV-0017,livingroom,in front of,pendant_lamp,coffee_table,not_satisfied,not_satisfied,1,evaluated,-0.355307,1.807099,-1.061426,1.1193159597383573,not_satisfied,agree
+EG02-LIV-0018,livingroom,in front of,loveseat_sofa,pendant_lamp,not_judgable,satisfied,,evaluated,-3.734348,-2.219761,0.6605289999999999,3.792315064040038,satisfied,disagree
+EG02-LIV-0019,livingroom,in front of,dining_table,console_table,satisfied,satisfied,1,evaluated,1.074488,-0.14356999999999998,1.321754,1.7033960486804003,satisfied,agree
+EG02-LIV-0020,livingroom,left,loveseat_sofa,pendant_lamp,satisfied,satisfied,1,evaluated,-0.20280600000000001,-1.71586,1.4507470000000002,1.4648539625658936,satisfied,agree
+EG02-LIV-0022,livingroom,left,dining_table,coffee_table,not_satisfied,not_satisfied,1,evaluated,1.9856420000000001,-0.10189699999999996,1.009361,2.227461285967727,not_satisfied,agree
+EG02-LIV-0023,livingroom,left,multi_seat_sofa,coffee_table,satisfied,satisfied,1,evaluated,-0.9232279999999999,0.26981900000000003,0.6514850000000001,1.129948071908174,satisfied,agree
+EG02-LIV-0024,livingroom,right,tv_stand,armchair,satisfied,satisfied,1,evaluated,1.789089,-0.10938799999999999,1.534052,2.356725480115365,satisfied,agree
+EG02-LIV-0025,livingroom,right,coffee_table,armchair,satisfied,satisfied,1,evaluated,1.2728579999999998,-0.1433,0.277203,1.3026929766345559,satisfied,agree
+EG02-LIV-0026,livingroom,right,pendant_lamp,bookshelf,not_satisfied,not_satisfied,1,evaluated,-1.454368,1.7478189999999998,0.31659499999999996,1.488428256063758,not_satisfied,agree
+EG02-LIV-0027,livingroom,right,armchair,coffee_table,satisfied,satisfied,1,evaluated,0.891719,0.29604199999999997,0.6372730000000001,1.0960290377038375,satisfied,agree
+EG02-LIV-0028,livingroom,right,dining_table,console_table,satisfied,satisfied,1,evaluated,0.867615,0.07994800000000002,-0.809902,1.1868854358483805,satisfied,agree
+EG02-LIV-0029,livingroom,right,dining_table,chinese_chair,satisfied,satisfied,1,evaluated,2.6831699999999996,-0.08206000000000002,-0.8415459999999999,2.812045682242022,satisfied,agree
+EG02-LIV-0030,livingroom,right,dining_table,dining_chair,satisfied,not_satisfied,0,evaluated,-0.749615,-0.19604299999999997,0.04300100000000001,0.7508473441559209,not_satisfied,disagree

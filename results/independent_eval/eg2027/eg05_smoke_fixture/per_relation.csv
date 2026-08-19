@@ -1,0 +1,8 @@
+scene_id,room_type,layout_variant,source_config_id,relation_id,subject_class,object_class,predicate,subject_index,object_index,status,is_satisfied,failure_reason,dx,dy,dz,d_xz
+eg05_bedroom_001,bedroom,baseline,eg05_smoke,r1,nightstand,bed,right,1,0,evaluated,1,,0.35,0.0,0.0,0.35
+eg05_bedroom_001,bedroom,baseline,eg05_smoke,r2,lamp,bed,near,,,missing_subject,0,missing_subject,,,,
+eg05_bedroom_001,bedroom,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,r1,nightstand,bed,right,1,0,evaluated,1,,0.45,0.0,0.0,0.45
+eg05_bedroom_001,bedroom,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,r2,lamp,bed,near,,,missing_subject,0,missing_subject,,,,
+eg05_livingroom_001,livingroom,baseline,eg05_smoke,r3,sofa,coffee table,left,0,1,evaluated,0,predicate_failed,-0.04,0.0,0.0,0.04
+eg05_livingroom_001,livingroom,baseline,eg05_smoke,r4,sofa,coffee table,right,0,1,evaluated,0,predicate_failed,-0.04,0.0,0.0,0.04
+eg05_livingroom_001,livingroom,baseline,eg05_smoke,r5,sofa,coffee table,touching,0,1,unsupported_predicate,0,unsupported_predicate,,,,

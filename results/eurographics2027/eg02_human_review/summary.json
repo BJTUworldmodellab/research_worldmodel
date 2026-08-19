@@ -1,0 +1,50 @@
+{
+  "all_label_expected_agreement": 0.384198,
+  "all_label_kappa": 0.404571,
+  "all_label_observed_agreement": 0.633333,
+  "binary_expected_agreement": 0.59668,
+  "binary_kappa": 0.341404,
+  "binary_n_relations": 64,
+  "binary_observed_agreement": 0.734375,
+  "disagreement_count": 33,
+  "label_counts_a": {
+    "not_judgable": 12,
+    "not_satisfied": 20,
+    "satisfied": 57,
+    "uncertain": 1
+  },
+  "label_counts_d": {
+    "not_judgable": 11,
+    "not_satisfied": 23,
+    "satisfied": 44,
+    "uncertain": 12
+  },
+  "n_relations": 90,
+  "repair_auto_vs_human_binary": {
+    "agreement": 0.791667,
+    "n_annotation_decisions": 144
+  },
+  "room_stats": {
+    "bedroom": {
+      "agreement": 0.566667,
+      "binary_agreement": 0.666667,
+      "binary_total": 24,
+      "total": 30
+    },
+    "diningroom": {
+      "agreement": 0.833333,
+      "binary_agreement": 0.863636,
+      "binary_total": 22,
+      "total": 30
+    },
+    "livingroom": {
+      "agreement": 0.5,
+      "binary_agreement": 0.666667,
+      "binary_total": 18,
+      "total": 30
+    }
+  },
+  "status": "FAIL_KAPPA_GATE",
+  "task": "EG-02 human review",
+  "threshold": 0.7
+}

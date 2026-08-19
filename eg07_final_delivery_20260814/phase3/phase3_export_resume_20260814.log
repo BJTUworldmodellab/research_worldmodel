@@ -1,0 +1,112 @@
+===================================================================
+PHASE3 EXPORT RESUME START 2026-08-14 10:29:51
+generation commit: 3a167d813d74ab18df8762d57ff3b4a47789e3af
+exporter fix commit: e5fe83731bae789350574312847db5eaeacb8259
+frozen config SHA: 052ace5b295348483ce9b6110b5bd7933235424a55cc2108c966431e516829e2
+===================================================================
+repo HEAD=e5fe83731bae789350574312847db5eaeacb8259 (expected exporter fix e5fe83731bae789350574312847db5eaeacb8259)
+config blob SHA=052ace5b295348483ce9b6110b5bd7933235424a55cc2108c966431e516829e2 (frozen 052ace5b295348483ce9b6110b5bd7933235424a55cc2108c966431e516829e2)
+
+--- input JSON identities (SHA-256 + per_scene; read-only) ---
+b1a59c825c7cdc0cd992c2516107b38a750131c45fa51b345b5216e48f6da3d5  /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/bedroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01999/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+  per_scene= 162
+464df22e65b219192e8704175a86a540ec4000629d958e0be1977be762cdd995  /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/livingroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01459/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+  per_scene= 192
+7db924be530bb823e621d28fedc00fcb5524c3cb773be1215f50262ef78ddd3f  /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out/diningroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01239/relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json
+  per_scene= 177
+
+=== export_eg07_layouts.py (formal_candidate) 2026-08-14 10:29:52 ===
+wrote /root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json
+wrote /root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation.json
+{
+  "gate_decisions": {
+    "fallback_baseline": 39,
+    "repair": 492
+  },
+  "layouts": 1062,
+  "relation_export_status": {
+    "direct": 678,
+    "protocol_mapped_composite": 130
+  },
+  "scene_count_by_room": {
+    "bedroom": 162,
+    "diningroom": 177,
+    "livingroom": 192
+  },
+  "scenes": 531,
+  "target_relations": 808
+}
+
+=== validate_eg07_layouts.py --profile full 2026-08-14 10:29:52 ===
+{
+  "counts": {
+    "gate_decisions": {
+      "fallback_baseline": 39,
+      "repair": 492
+    },
+    "layouts": 1062,
+    "relation_export_status": {
+      "direct": 678,
+      "protocol_mapped_composite": 130
+    },
+    "scene_count_by_room": {
+      "bedroom": 162,
+      "diningroom": 177,
+      "livingroom": 192
+    },
+    "scenes": 531,
+    "target_relations": 808
+  },
+  "errors": [],
+  "profile": "full",
+  "status": "PASS",
+  "warnings": []
+}
+
+=== GO/NO-GO summary 2026-08-14 10:29:52 ===
+
+## Phase 3 formal summary (2026-08-14)
+
+### Room-level metrics (frozen fair-comparison order)
+
+| room | target | per_scene | mesh_eval | base_rel_acc | repair_rel_acc | avg_move | base_mesh_pair | repair_mesh_pair | mesh_avail | ident_stable | no_fallback |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| bedroom | 162 | 162 | 162 | 0.7429 | 0.8531 | 0.8404 | 0.0708 | 0.0753 | True | True | True |
+| livingroom | 192 | 192 | 192 | 0.5680 | 0.6973 | 1.0078 | 0.0306 | 0.0321 | True | True | True |
+| diningroom | 177 | 177 | 177 | 0.6097 | 0.7435 | 0.8522 | 0.0323 | 0.0328 | True | True | True |
+
+### Total
+- scenes: 531 / 531
+- layouts: 1062 / 1062
+- target_relations: 808
+- relation_export_status: {'direct': 678, 'protocol_mapped_composite': 130}
+- gate_decision_by_room: {'bedroom': {'fallback_baseline': 8, 'repair': 154}, 'diningroom': {'fallback_baseline': 13, 'repair': 164}, 'livingroom': {'fallback_baseline': 18, 'repair': 174}}
+
+### GO / NO-GO (frozen structural contract)
+
+| check | result | GO/NO-GO |
+|---|---|---|
+| bedroom: per_scene == 162 | PASS | GO |
+| bedroom: mesh evidence available (all scenes) | PASS | GO |
+| bedroom: object identity stable (all scenes) | PASS | GO |
+| bedroom: no silent fallback (mesh_eval == 162) | PASS | GO |
+| livingroom: per_scene == 192 | PASS | GO |
+| livingroom: mesh evidence available (all scenes) | PASS | GO |
+| livingroom: object identity stable (all scenes) | PASS | GO |
+| livingroom: no silent fallback (mesh_eval == 192) | PASS | GO |
+| diningroom: per_scene == 177 | PASS | GO |
+| diningroom: mesh evidence available (all scenes) | PASS | GO |
+| diningroom: object identity stable (all scenes) | PASS | GO |
+| diningroom: no silent fallback (mesh_eval == 177) | PASS | GO |
+| total scenes == 531 | PASS | GO |
+| total layouts == 1062 | PASS | GO |
+| independent validator status == PASS | PASS | GO |
+| provenance complete (formal_candidate, commit, config SHA, git-clean) | PASS | GO |
+| bedroom: gate decisions sum == 162 (repair+fallback) | PASS | GO |
+| livingroom: gate decisions sum == 192 (repair+fallback) | PASS | GO |
+| diningroom: gate decisions sum == 177 (repair+fallback) | PASS | GO |
+| gate counts reconciled (no scene skipped in gate) | PASS | GO |
+
+### VERDICT: GO
+
+FORMAL_PASS (2026-08-14 10:29:52)

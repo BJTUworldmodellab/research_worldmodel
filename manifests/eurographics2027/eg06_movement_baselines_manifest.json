@@ -1,0 +1,138 @@
+{
+  "manifest_version": "2026-08-16-eg06-v3",
+  "task": "EG-06 movement-matched random and generic optimizer baselines",
+  "status": "complete_for_random_movement_baseline_generic_not_beaten",
+  "repository": "BJTUworldmodellab/research_worldmodel",
+  "branch": "agent/eg01-eg02-eurographics2027",
+  "depends_on": {
+    "eg04_freeze": "configs/eurographics2027/paper_main.yaml",
+    "eg05_evaluator": "evaluation/independent_relation_evaluator.py"
+  },
+  "runner": {
+    "path": "scripts/run_eg06_movement_baselines.py",
+    "input_schema": "EG-05 evaluator layout JSON with paired baseline and collision_gated_floor_prior layouts",
+    "output_dir": "results/independent_eval/eg2027/eg06_movement_baseline_fixture",
+    "uses_repair_optimizer_modules": false,
+    "fairness_check": "scripts/check_eg06_baseline_fairness.py"
+  },
+  "baselines": {
+    "random_movement_matched": {
+      "seeds": [0, 1, 2],
+      "fairness": "exact per-object XZ movement magnitude match to collision_gated_floor_prior"
+    },
+    "generic_relation_optimizer": {
+      "seeds": [],
+      "fairness": "same per-object XZ movement budget upper bound; may use less movement when relation is satisfied"
+    }
+  },
+  "fixture_run": {
+    "input": "evaluation/fixtures/eg06_movement_baseline_fixture.json",
+    "output_dir": "results/independent_eval/eg2027/eg06_movement_baseline_fixture",
+    "generated_files": [
+      "results/independent_eval/eg2027/eg06_movement_baseline_fixture/eg06_augmented_layouts.json",
+      "results/independent_eval/eg2027/eg06_movement_baseline_fixture/movement_audit.csv",
+      "results/independent_eval/eg2027/eg06_movement_baseline_fixture/per_relation.csv",
+      "results/independent_eval/eg2027/eg06_movement_baseline_fixture/per_scene.csv",
+      "results/independent_eval/eg2027/eg06_movement_baseline_fixture/summary.csv",
+      "results/independent_eval/eg2027/eg06_movement_baseline_fixture/audit.json"
+    ],
+    "summary": {
+      "baseline_accuracy": 0.0,
+      "collision_gated_floor_prior_accuracy": 1.0,
+      "generic_relation_optimizer_accuracy": 1.0,
+      "random_seed_accuracies": {
+        "0": 0.0,
+        "1": 0.0,
+        "2": 0.0
+      }
+    }
+  },
+  "full_eg07_run": {
+    "source_package": "eg07_final_delivery_20260814",
+    "input": "eg07_final_delivery_20260814/layouts/layouts.json",
+    "input_sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+    "run_id": "eg06_full_movement_baselines",
+    "run_scope": "full",
+    "outputs": [
+      "eg07_final_delivery_20260814/eg06/eg06_augmented_layouts.json",
+      "eg07_final_delivery_20260814/eg06/movement_audit.csv",
+      "eg07_final_delivery_20260814/eg06/per_relation.csv",
+      "eg07_final_delivery_20260814/eg06/per_scene.csv",
+      "eg07_final_delivery_20260814/eg06/summary.csv",
+      "eg07_final_delivery_20260814/eg06/audit.json"
+    ],
+    "n_scenes": 531,
+    "n_target_relations": 808,
+    "movement_audit_rows": 2655,
+    "fairness": {
+      "random_exact_movement_matched": true,
+      "generic_within_budget": true
+    },
+    "overall_relation_accuracy": {
+      "baseline": 0.6349009900990099,
+      "collision_gated_floor_prior": 0.6398514851485149,
+      "random_movement_matched_seed0": 0.6225247524752475,
+      "random_movement_matched_seed1": 0.625,
+      "random_movement_matched_seed2": 0.6287128712871287,
+      "random_mean": 0.6254125412541254,
+      "generic_relation_optimizer": 0.6410891089108911
+    },
+    "satisfied_relations": {
+      "baseline": 513,
+      "collision_gated_floor_prior": 517,
+      "random_movement_matched_seed0": 503,
+      "random_movement_matched_seed1": 505,
+      "random_movement_matched_seed2": 508,
+      "generic_relation_optimizer": 518,
+      "total_relations": 808
+    },
+    "paired_ci_summary": {
+      "bootstrap_seed": 20260816,
+      "bootstrap_resamples": 10000,
+      "scene_unweighted": {
+        "main_minus_random_mean": {
+          "mean": 0.01349654739485248,
+          "ci95_low": 0.0069052102950408045,
+          "ci95_high": 0.02071563088512241,
+          "passes_lower_bound_gt_0": true
+        },
+        "main_minus_generic_relation_optimizer": {
+          "mean": -0.0018832391713747645,
+          "ci95_low": -0.007532956685499058,
+          "ci95_high": 0.002824858757062147,
+          "passes_lower_bound_gt_0": false
+        }
+      },
+      "relation_weighted_scene_bootstrap": {
+        "main_minus_random_mean": {
+          "mean": 0.01443894389438944,
+          "ci95_low": 0.007453416149068323,
+          "ci95_high": 0.022005381872709433,
+          "passes_lower_bound_gt_0": true
+        },
+        "main_minus_generic_relation_optimizer": {
+          "mean": -0.0012376237623762376,
+          "ci95_low": -0.006329113924050633,
+          "ci95_high": 0.0037593984962406013,
+          "passes_lower_bound_gt_0": false
+        }
+      }
+    },
+    "paper_claim_status": "main_beats_random_movement_matched_baselines_with_paired_ci_generic_optimizer_not_beaten"
+  },
+  "acceptance_status": {
+    "runner_implemented": "pass",
+    "random_baseline_3_seeds": "pass_full_eg07",
+    "generic_optimizer_baseline": "pass_full_eg07",
+    "independent_evaluator_integration": "pass_full_eg07",
+    "fixture_fairness_check": "pass",
+    "full_531_scene_run": "pass",
+    "paper_persuasiveness": "pass_for_random_movement_baseline_claim_only",
+    "paired_ci_vs_random": "pass",
+    "paired_ci_vs_generic_optimizer": "fail_not_beaten"
+  },
+  "next_required_steps": [
+    "Use EG-08 to integrate these paired confidence intervals into the final paper statistics package.",
+    "Do not claim the main method beats generic_relation_optimizer; generic is 518/808 and main is 517/808."
+  ]
+}

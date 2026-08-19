@@ -1,0 +1,29 @@
+EG-07 Phase 3 formal generation — exact command record (2026-08-14)
+=====================================================================
+cwd for generation = /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime
+python = /root/miniconda3/envs/instructscene_full/bin/python
+
+Per room R in {bedroom, livingroom, diningroom} with VQ epoch E in {1999, 1459, 1239}:
+
+python relation_aware_generate_sg.py configs/${R}_sg_diffusion_vq_objfeat.yaml \
+  --tag ${R}_sgdiffusion_vq_objfeat \
+  --fvqvae_tag threedfront_objfeat_vqvae --fvqvae_epoch 1999 \
+  --sg2sc_tag ${R}_sg2scdiffusion_objfeat --sg2sc_epoch 1999 \
+  --checkpoint_epoch ${E} \
+  --n_scenes 0 --n_workers 0 --device 0 --seed 0 \
+  --relation_source parsed \
+  --repair_strategy floor_prior --repair_passes 2 \
+  --max_repair_move 1.8 --repair_overlap_weight 1.0 \
+  --close_distance 0.75 --far_distance 1.6 \
+  --mesh_collision \
+  --output_suffix floor_prior_max1.8_mesh_p2_close0.75_far1.6 \
+  --output_dir /root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime/out
+
+Run order (frozen fair-comparison sequence, sequential, no parallel GPU):
+  1. bedroom   epoch 1999  target 162
+  2. livingroom epoch 1459  target 192
+  3. diningroom epoch 1239  target 177
+  total 531 scenes
+
+Renderer/visualization disabled (--render_examples not passed -> 0). No images,
+no mesh copying. Outputs are JSON + txt only, written under runtime/out/<tag>/generated_scenes/.

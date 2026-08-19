@@ -1,11 +1,21 @@
-\documentclass{article}
+\documentclass{egpubl}
+\usepackage{eg2027}
 
-\usepackage[nonatbib, final]{neurips}
-\usepackage[numbers,sort&compress]{natbib}
+\ConferenceSubmission
 
-\makeatletter
-\renewcommand{\@noticestring}{\centering}
-\makeatother
+\usepackage[T1]{fontenc}
+\usepackage{dfadobe}
+\usepackage{cite}
+\BibtexOrBiblatex
+\electronicVersion
+\PrintedOrElectronic
+\ifpdf
+  \usepackage[pdftex]{graphicx}
+  \pdfcompresslevel=9
+\else
+  \usepackage[dvips]{graphicx}
+\fi
+\usepackage{egweblnk}
 
 \input{extra_pkgs}
 
@@ -22,11 +32,7 @@
 
 \title{Repairing Graph-to-Layout Relation Grounding in Instruction-Guided 3D Indoor Scene Generation}
 
-\author{
-  Anonymous Authors \\
-  Anonymous Institution \\
-  \texttt{anonymous@example.com}
-}
+\author[SUBMISSION ID]{SUBMISSION ID}
 
 \begin{document}
 
@@ -38,15 +44,15 @@ Instruction-guided 3D indoor scene generation requires final layouts to realize 
 
 \section{Introduction}
 
-Text-conditioned 3D indoor scene generation is useful for embodied AI, simulation, game production, and interactive design. In these settings, spatial language is not decorative. If a prompt asks for a nightstand behind a bed or a coffee table to the right of a side table, the generated layout must realize that relation in geometry. Recent indoor scene generators synthesize plausible object arrangements from scene categories, floor plans, scene graphs, or text~\citep{paschalidou2021atiss,wang2021sceneformer,tang2024diffuscene,lin2024instructscene}. However, a symbolic relation that appears in an intermediate graph does not guarantee that the final continuous layout satisfies the requested relation.
+Text-conditioned 3D indoor scene generation is useful for embodied AI, simulation, game production, and interactive design. In these settings, spatial language is not decorative. If a prompt asks for a nightstand behind a bed or a coffee table to the right of a side table, the generated layout must realize that relation in geometry. Recent indoor scene generators synthesize plausible object arrangements from scene categories, floor plans, scene graphs, or text~\cite{paschalidou2021atiss,wang2021sceneformer,tang2024diffuscene,lin2024instructscene}. However, a symbolic relation that appears in an intermediate graph does not guarantee that the final continuous layout satisfies the requested relation.
 
-This paper studies this failure mode in InstructScene~\citep{lin2024instructscene}, an instruction-driven 3D indoor scene synthesis pipeline with a semantic graph prior. We identify a \emph{graph-to-layout grounding gap}: an instruction may contain explicit spatial relations, and the generator may produce plausible scenes, yet the decoded object centers can violate the requested relations. Rather than train a new generator or introduce a new benchmark, we ask whether a lightweight verifier-repair layer can improve relation realization using the existing InstructScene checkpoints, validation prompts, and evaluation protocol.
+This paper studies this failure mode in InstructScene~\cite{lin2024instructscene}, an instruction-driven 3D indoor scene synthesis pipeline with a semantic graph prior. We identify a \emph{graph-to-layout grounding gap}: an instruction may contain explicit spatial relations, and the generator may produce plausible scenes, yet the decoded object centers can violate the requested relations. Rather than train a new generator or introduce a new benchmark, we ask whether a lightweight verifier-repair layer can improve relation realization using the existing InstructScene checkpoints, validation prompts, and evaluation protocol.
 
 We propose \method, a plug-in final-layout relation grounding module. Given a generated layout and its source instruction, the module extracts explicit spatial relation triples, matches the triples to generated object categories, verifies whether the floor-plane geometry satisfies them, and repairs object translations when a relation is violated. The final design repairs only the horizontal floor plane, preserving the vertical coordinate of every object. This detail matters in practice: early 3D repair variants can improve relation metrics while producing visually implausible scenes with floating furniture. Our \fp{} variant selects among bounded candidate repairs using relation satisfaction and overlap-aware scoring, and a collision-gated verifier can fall back to the baseline layout whenever mesh collision increases.
 
 Our experiments use the original InstructScene bedroom, living-room, and dining-room validation splits. A frozen run generated one layout for each of 531 validation scenes and evaluated 808 explicit target relations with an independent evaluator. Collision-gated \fp{} attains 0.6399 relation accuracy, compared with 0.6349 for the original layouts, 0.6254 for the mean of three exact movement-matched random controls, and 0.6411 for a budget-matched generic relation optimizer. Paired scene-level bootstrap intervals support the comparison with matched random movement but include zero for the comparisons with the original baseline and the generic optimizer. The collision gate selects 492 repaired layouts and falls back to 39 original layouts; the selected set contains 1,061 mesh-collision pairs versus 1,075 for the original set.
 
-Our contribution is not a claim of first relation-aware 3D scene generation, nor a claim that a post-generation layer replaces stronger full generators. Strong related systems use scene graphs, semantic dependency graphs, language models, and optimization to reason about spatial constraints~\citep{feng2023layoutgpt,yang2024holodeck,zhai2023commonscenes,bucher2026respace,gao2026sdgscenes}. Instead, this paper makes a narrower and reproducible claim:
+Our contribution is not a claim of first relation-aware 3D scene generation, nor a claim that a post-generation layer replaces stronger full generators. Strong related systems use scene graphs, semantic dependency graphs, language models, and optimization to reason about spatial constraints~\cite{feng2023layoutgpt,yang2024holodeck,zhai2023commonscenes,bucher2026respace,gao2026sdgscenes}. Instead, this paper makes a narrower and reproducible claim:
 \begin{itemize}[leftmargin=1.5em]
     \item We identify and quantify a graph-to-layout grounding gap in an existing instruction-guided 3D scene generator.
     \item We introduce a training-free relation-grounded post-generation control framework: relation parsing, object matching, geometric verification, bounded floor-plane repair, and collision-gated validation.
@@ -87,13 +93,13 @@ Our contribution is not a claim of first relation-aware 3D scene generation, nor
 \section{Related Work}
 
 \paragraph{Indoor scene synthesis.}
-3D-FRONT~\citep{fu20213dfront} and 3D-FUTURE~\citep{fu20203dfuture} provide large-scale room layouts and textured furniture assets that underpin much recent indoor scene synthesis work. ATISS~\citep{paschalidou2021atiss} models indoor scenes as unordered sets generated autoregressively. SceneFormer~\citep{wang2021sceneformer} uses transformers to generate indoor scenes conditioned on room layouts. DiffuScene~\citep{tang2024diffuscene} uses denoising diffusion over unordered object attributes. These methods focus on plausible and diverse indoor layouts; our work focuses on whether explicit natural-language relations are realized in the final layout of an instruction-conditioned pipeline.
+3D-FRONT~\cite{fu20213dfront} and 3D-FUTURE~\cite{fu20203dfuture} provide large-scale room layouts and textured furniture assets that underpin much recent indoor scene synthesis work. ATISS~\cite{paschalidou2021atiss} models indoor scenes as unordered sets generated autoregressively. SceneFormer~\cite{wang2021sceneformer} uses transformers to generate indoor scenes conditioned on room layouts. DiffuScene~\cite{tang2024diffuscene} uses denoising diffusion over unordered object attributes. These methods focus on plausible and diverse indoor layouts; our work focuses on whether explicit natural-language relations are realized in the final layout of an instruction-conditioned pipeline.
 
 \paragraph{Text and graph conditioned scene generation.}
-InstructScene~\citep{lin2024instructscene} is our direct baseline because it synthesizes 3D indoor scenes from natural language instructions with a semantic graph prior. CommonScenes~\citep{zhai2023commonscenes} converts scene graphs into commonsense 3D scenes with scene graph diffusion. LayoutGPT~\citep{feng2023layoutgpt} uses large language models as visual planners for layouts, including spatial and numerical constraints. Holodeck~\citep{yang2024holodeck} uses language models and 3D assets to generate embodied AI environments, including spatial constraints for object placement. These works show that language and structured relations are useful interfaces for scene generation. Our contribution is complementary: we evaluate and repair the final realized relation after a pretrained instruction-to-scene pipeline has produced a layout.
+InstructScene~\cite{lin2024instructscene} is our direct baseline because it synthesizes 3D indoor scenes from natural language instructions with a semantic graph prior. CommonScenes~\cite{zhai2023commonscenes} converts scene graphs into commonsense 3D scenes with scene graph diffusion. LayoutGPT~\cite{feng2023layoutgpt} uses large language models as visual planners for layouts, including spatial and numerical constraints. Holodeck~\cite{yang2024holodeck} uses language models and 3D assets to generate embodied AI environments, including spatial constraints for object placement. These works show that language and structured relations are useful interfaces for scene generation. Our contribution is complementary: we evaluate and repair the final realized relation after a pretrained instruction-to-scene pipeline has produced a layout.
 
 \paragraph{Strong relation-aware systems.}
-ReSpace~\citep{bucher2026respace} is a close text-driven indoor scene synthesis and editing framework based on structured scene representations and a specialized language model. SDGScenes~\citep{gao2026sdgscenes} uses a semantic dependency graph, VLM-derived commonsense constraints, and nonlinear constrained optimization to align scenes with user intent. These systems overlap with the broad goal of relation- and intent-aware 3D generation. We therefore do not claim to outperform them or to be the first relation-aware method. Our current fair comparison is the original InstructScene output under the same validation prompts and checkpoints; ReSpace and SDGScenes require a shared protocol before direct numerical claims are appropriate. Put differently, we do not replace strong generators; we study a plug-in final-layout relation grounding layer for an existing instruction-guided generator.
+ReSpace~\cite{bucher2026respace} is a close text-driven indoor scene synthesis and editing framework based on structured scene representations and a specialized language model. SDGScenes~\cite{gao2026sdgscenes} uses a semantic dependency graph, VLM-derived commonsense constraints, and nonlinear constrained optimization to align scenes with user intent. These systems overlap with the broad goal of relation- and intent-aware 3D generation. We therefore do not claim to outperform them or to be the first relation-aware method. Our current fair comparison is the original InstructScene output under the same validation prompts and checkpoints; ReSpace and SDGScenes require a shared protocol before direct numerical claims are appropriate. Put differently, we do not replace strong generators; we study a plug-in final-layout relation grounding layer for an existing instruction-guided generator.
 
 \section{Method}
 
@@ -244,7 +250,7 @@ We presented \method, a training-free verifier-repair layer for instruction-guid
 
 An anonymized evidence package contains the formal 531-scene layouts, validation records, independent relation evaluation, movement-matched controls, final metrics, paired statistics, and file checksums. Third-party datasets, checkpoints, environments, and the three original room-level generator JSON files are not included in the lightweight package.
 
-\bibliographystyle{plainnat}
+\bibliographystyle{eg-alpha-doi}
 \bibliography{references}
 
 \end{document}

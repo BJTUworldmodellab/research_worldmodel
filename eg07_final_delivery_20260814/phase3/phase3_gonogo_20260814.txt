@@ -1,0 +1,44 @@
+
+## Phase 3 formal summary (2026-08-14)
+
+### Room-level metrics (frozen fair-comparison order)
+
+| room | target | per_scene | mesh_eval | base_rel_acc | repair_rel_acc | avg_move | base_mesh_pair | repair_mesh_pair | mesh_avail | ident_stable | no_fallback |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| bedroom | 162 | 162 | 162 | 0.7429 | 0.8531 | 0.8404 | 0.0708 | 0.0753 | True | True | True |
+| livingroom | 192 | 192 | 192 | 0.5680 | 0.6973 | 1.0078 | 0.0306 | 0.0321 | True | True | True |
+| diningroom | 177 | 177 | 177 | 0.6097 | 0.7435 | 0.8522 | 0.0323 | 0.0328 | True | True | True |
+
+### Total
+- scenes: 531 / 531
+- layouts: 1062 / 1062
+- target_relations: 808
+- relation_export_status: {'direct': 678, 'protocol_mapped_composite': 130}
+- gate_decision_by_room: {'bedroom': {'fallback_baseline': 8, 'repair': 154}, 'diningroom': {'fallback_baseline': 13, 'repair': 164}, 'livingroom': {'fallback_baseline': 18, 'repair': 174}}
+
+### GO / NO-GO (frozen structural contract)
+
+| check | result | GO/NO-GO |
+|---|---|---|
+| bedroom: per_scene == 162 | PASS | GO |
+| bedroom: mesh evidence available (all scenes) | PASS | GO |
+| bedroom: object identity stable (all scenes) | PASS | GO |
+| bedroom: no silent fallback (mesh_eval == 162) | PASS | GO |
+| livingroom: per_scene == 192 | PASS | GO |
+| livingroom: mesh evidence available (all scenes) | PASS | GO |
+| livingroom: object identity stable (all scenes) | PASS | GO |
+| livingroom: no silent fallback (mesh_eval == 192) | PASS | GO |
+| diningroom: per_scene == 177 | PASS | GO |
+| diningroom: mesh evidence available (all scenes) | PASS | GO |
+| diningroom: object identity stable (all scenes) | PASS | GO |
+| diningroom: no silent fallback (mesh_eval == 177) | PASS | GO |
+| total scenes == 531 | PASS | GO |
+| total layouts == 1062 | PASS | GO |
+| independent validator status == PASS | PASS | GO |
+| provenance complete (formal_candidate, commit, config SHA, git-clean) | PASS | GO |
+| bedroom: gate decisions sum == 162 (repair+fallback) | PASS | GO |
+| livingroom: gate decisions sum == 192 (repair+fallback) | PASS | GO |
+| diningroom: gate decisions sum == 177 (repair+fallback) | PASS | GO |
+| gate counts reconciled (no scene skipped in gate) | PASS | GO |
+
+### VERDICT: GO

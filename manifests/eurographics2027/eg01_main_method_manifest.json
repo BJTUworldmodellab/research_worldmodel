@@ -1,0 +1,93 @@
+{
+  "manifest_version": "2026-07-30-eg01-v1",
+  "task": "EG-01 result identity and number consistency closure",
+  "git_target": {
+    "repository": "BJTUworldmodellab/research_worldmodel",
+    "base_branch": "master",
+    "working_branch": "agent/eg01-result-identity"
+  },
+  "main_method": {
+    "id": "collision_gated_floor_prior",
+    "display_name": "Collision-gated Floor-Prior",
+    "config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+    "not_same_as": [
+      "collision_gated_direct_repair",
+      "direct_repair",
+      "commonscenes_generic_gate",
+      "sg_guarded_overlap_repair"
+    ]
+  },
+  "result_anchors": {
+    "bedroom": {
+      "baseline_relation_accuracy": 0.7388,
+      "ungated_floor_prior_relation_accuracy": 0.8408,
+      "gated_relation_accuracy": 0.8163,
+      "gated_gain_pp": 7.76,
+      "baseline_mesh_pair_collision": 0.0702,
+      "gated_mesh_pair_collision": 0.068293,
+      "fallback_scenes": 6
+    },
+    "livingroom": {
+      "baseline_relation_accuracy": 0.551,
+      "ungated_floor_prior_relation_accuracy": 0.6939,
+      "gated_relation_accuracy": 0.6395,
+      "gated_gain_pp": 8.84,
+      "baseline_mesh_pair_collision": 0.0313,
+      "gated_mesh_pair_collision": 0.030959,
+      "fallback_scenes": 14
+    },
+    "diningroom": {
+      "baseline_relation_accuracy": 0.5948,
+      "ungated_floor_prior_relation_accuracy": 0.7286,
+      "gated_relation_accuracy": 0.6729,
+      "gated_gain_pp": 7.81,
+      "baseline_mesh_pair_collision": 0.0342,
+      "gated_mesh_pair_collision": 0.033615,
+      "fallback_scenes": 15
+    },
+    "weighted_summary": {
+      "gated_relation_accuracy": 0.704,
+      "gated_gain_pp": 8.2
+    }
+  },
+  "known_wrong_if_used_as_main": {
+    "numbers": [
+      "0.8449",
+      "0.6871",
+      "0.7212",
+      "10.2",
+      "14.3",
+      "13.4"
+    ],
+    "explanation": "These are Direct Repair / ungated-style anchors or earlier abstract deltas, not the Eurographics 2027 Collision-gated Floor-Prior main-result identity."
+  },
+  "tracked_files": [
+    "configs/eurographics2027/paper_main_eg2027.yaml",
+    "docs/eurographics2027/claim_to_table_map_eg2027.md",
+    "docs/eurographics2027/eg01_result_identity_closure_20260730.md",
+    "paper/neurips_ra_instructscene/main.tex"
+  ],
+  "scan_policy": {
+    "strict_files": [
+      "paper/neurips_ra_instructscene/main.tex",
+      "docs/eurographics2027/claim_to_table_map_eg2027.md",
+      "docs/eurographics2027/eg01_result_identity_closure_20260730.md"
+    ],
+    "paper_files": [
+      "paper/neurips_ra_instructscene/main.tex"
+    ],
+    "required_main_strings": [
+      "0.8163",
+      "0.6395",
+      "0.6729",
+      "+0.0776",
+      "+0.0884",
+      "+0.0781",
+      "floor_prior_max1.8_mesh_p2_close0.75_far1.6"
+    ],
+    "abstract_forbidden_strings": [
+      "10.2, 14.3, and 13.4",
+      "0.8449 / 0.6871 / 0.7212"
+    ]
+  }
+}

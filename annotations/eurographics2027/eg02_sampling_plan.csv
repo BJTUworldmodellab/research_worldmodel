@@ -1,0 +1,22 @@
+sample_id,room_type,target_min_relations,predicate,planned_count,selection_rule,status,notes
+EG02-BED-left,bedroom,30,left,4,stratified before final rerun,TODO,
+EG02-BED-right,bedroom,30,right,4,stratified before final rerun,TODO,
+EG02-BED-front,bedroom,30,in front of,5,stratified before final rerun,TODO,
+EG02-BED-behind,bedroom,30,behind,5,stratified before final rerun,TODO,
+EG02-BED-close,bedroom,30,close to,3,stratified before final rerun,TODO,data-supported quota; no far-from targets in current main JSON
+EG02-BED-abovebelow,bedroom,30,above/below,4,stratified before final rerun,TODO,
+EG02-BED-failure,bedroom,30,failure cases,5,known/suspected failures if available,TODO,
+EG02-LIV-left,livingroom,30,left,4,stratified before final rerun,TODO,
+EG02-LIV-right,livingroom,30,right,4,stratified before final rerun,TODO,
+EG02-LIV-front,livingroom,30,in front of,5,stratified before final rerun,TODO,
+EG02-LIV-behind,livingroom,30,behind,5,stratified before final rerun,TODO,
+EG02-LIV-close,livingroom,30,close to,4,stratified before final rerun,TODO,
+EG02-LIV-abovebelow,livingroom,30,above/below,4,stratified before final rerun,TODO,
+EG02-LIV-failure,livingroom,30,failure cases,4,known/suspected failures if available,TODO,
+EG02-DIN-left,diningroom,30,left,4,stratified before final rerun,TODO,
+EG02-DIN-right,diningroom,30,right,4,stratified before final rerun,TODO,
+EG02-DIN-front,diningroom,30,in front of,5,stratified before final rerun,TODO,
+EG02-DIN-behind,diningroom,30,behind,5,stratified before final rerun,TODO,
+EG02-DIN-close,diningroom,30,close to,7,stratified before final rerun,TODO,
+EG02-DIN-abovebelow,diningroom,30,above/below,2,stratified before final rerun,TODO,above targets scarce in current main JSON
+EG02-DIN-failure,diningroom,30,failure cases,3,known/suspected failures if available,TODO,

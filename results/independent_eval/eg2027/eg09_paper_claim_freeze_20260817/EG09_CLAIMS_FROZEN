@@ -1,0 +1,8 @@
+EG09_CLAIMS_FROZEN
+scenes=531
+relations=808
+primary_gain_pp=1.443894389439
+primary_ci95_low_pp=0.745341614907
+primary_ci95_high_pp=2.200538187271
+chosen_collision_pairs=1061
+baseline_collision_pairs=1075

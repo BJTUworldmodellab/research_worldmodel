@@ -1,0 +1,79 @@
+version: "2026-07-30-eg01-v1"
+track: "Eurographics 2027"
+status: "EG-01 result identity freeze draft"
+
+main_method:
+  id: "collision_gated_floor_prior"
+  display_name: "Collision-gated Floor-Prior"
+  config_id: "floor_prior_max1.8_mesh_p2_close0.75_far1.6"
+  role: "default Eurographics 2027 main method"
+  generator: "InstructScene"
+  training: "no retraining; post-generation layout optimization"
+  edit_space: "bounded XZ floor-plane translation"
+  gate: "mesh-collision non-worsening fallback"
+
+result_identity:
+  warning: >
+    Do not mix this main method with Collision-gated Direct Repair. The older
+    values 0.8449 / 0.6871 / 0.7212 belong to the aggressive direct-repair
+    gated ablation, not the Eurographics 2027 Floor-Prior main result.
+  current_anchor:
+    source_plan: "eurographics2027_task_checklist_20260728"
+    rooms:
+      bedroom:
+        baseline_relation_accuracy: 0.7388
+        ungated_floor_prior_relation_accuracy: 0.8408
+        gated_relation_accuracy: 0.8163
+        gated_gain_pp: 7.76
+        baseline_mesh_pair_collision: 0.0702
+        gated_mesh_pair_collision: 0.068293
+        fallback_scenes: 6
+      livingroom:
+        baseline_relation_accuracy: 0.5510
+        ungated_floor_prior_relation_accuracy: 0.6939
+        gated_relation_accuracy: 0.6395
+        gated_gain_pp: 8.84
+        baseline_mesh_pair_collision: 0.0313
+        gated_mesh_pair_collision: 0.030959
+        fallback_scenes: 14
+      diningroom:
+        baseline_relation_accuracy: 0.5948
+        ungated_floor_prior_relation_accuracy: 0.7286
+        gated_relation_accuracy: 0.6729
+        gated_gain_pp: 7.81
+        baseline_mesh_pair_collision: 0.0342
+        gated_mesh_pair_collision: 0.033615
+        fallback_scenes: 15
+    weighted_summary:
+      gated_relation_accuracy: 0.704
+      gated_gain_pp: 8.2
+
+paper_policy:
+  abstract_allowed_numbers:
+    - "7.8"
+    - "8.8"
+    - "7.8"
+    - "8.2"
+  abstract_forbidden_as_main_numbers:
+    - "10.2"
+    - "14.3"
+    - "13.4"
+    - "0.8449"
+    - "0.6871"
+    - "0.7212"
+  wording:
+    allowed: >
+      The collision-gated Floor-Prior improves realized relation accuracy by
+      7.8, 8.8, and 7.8 absolute points on bedroom, living-room, and
+      dining-room validation splits, with a weighted gain of 8.2 points.
+    forbidden:
+      - "Use Direct Repair gated numbers as Floor-Prior main results."
+      - "Claim superiority over ReSpace or SDGScenes without same-protocol evidence."
+      - "Claim improved human visual quality before a human study."
+
+eg01_deliverables:
+  - "scripts/check_eg01_result_identity.py"
+  - "docs/eurographics2027/claim_to_table_map_eg2027.md"
+  - "docs/eurographics2027/eg01_result_identity_closure_20260730.md"
+  - "manifests/eurographics2027/eg01_main_method_manifest.json"
+

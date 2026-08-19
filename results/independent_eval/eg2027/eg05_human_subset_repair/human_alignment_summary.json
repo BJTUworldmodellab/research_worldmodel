@@ -1,0 +1,61 @@
+{
+  "accuracy": 0.8227848101265823,
+  "binary_evaluable": 79,
+  "by_predicate": {
+    "above": {
+      "accuracy": 1.0,
+      "n": 2
+    },
+    "behind": {
+      "accuracy": 0.8,
+      "n": 15
+    },
+    "below": {
+      "accuracy": 1.0,
+      "n": 8
+    },
+    "close to": {
+      "accuracy": 0.75,
+      "n": 12
+    },
+    "in front of": {
+      "accuracy": 0.6666666666666666,
+      "n": 12
+    },
+    "left": {
+      "accuracy": 0.8571428571428571,
+      "n": 14
+    },
+    "right": {
+      "accuracy": 0.875,
+      "n": 16
+    }
+  },
+  "by_room": {
+    "bedroom": {
+      "accuracy": 0.75,
+      "n": 28
+    },
+    "diningroom": {
+      "accuracy": 0.8,
+      "n": 25
+    },
+    "livingroom": {
+      "accuracy": 0.9230769230769231,
+      "n": 26
+    }
+  },
+  "coordinate_convention": "eg2027-eg05-v1: behind dz<0; in_front_of dz>0",
+  "fn": 8,
+  "fp": 6,
+  "n_converted_rows": 84,
+  "n_relations": 84,
+  "n_skipped_missing_pair_or_center": 6,
+  "n_source_human_rows": 90,
+  "not_judgable": 5,
+  "precision_satisfied": 0.896551724137931,
+  "recall_satisfied": 0.8666666666666667,
+  "specificity_not_satisfied": 0.6842105263157895,
+  "tn": 13,
+  "tp": 52
+}

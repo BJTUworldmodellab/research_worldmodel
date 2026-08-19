@@ -1,0 +1,13 @@
+metric,value
+task,EG-02 human review
+status,FAIL_KAPPA_GATE
+threshold,0.7
+n_relations,90
+all_label_kappa,0.404571
+all_label_observed_agreement,0.633333
+all_label_expected_agreement,0.384198
+binary_kappa,0.341404
+binary_observed_agreement,0.734375
+binary_expected_agreement,0.59668
+binary_n_relations,64
+disagreement_count,33

@@ -1,0 +1,4 @@
+group,n,accuracy,tp,tn,fp,fn,precision_satisfied,recall_satisfied,specificity_not_satisfied
+bedroom,28,0.785714,19,3,6,0,0.76,1.0,0.333333
+diningroom,25,0.88,18,4,1,2,0.947368,0.9,0.8
+livingroom,26,0.884615,20,3,2,1,0.909091,0.952381,0.6

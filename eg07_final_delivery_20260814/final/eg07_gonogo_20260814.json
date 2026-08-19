@@ -1,0 +1,364 @@
+{
+  "scientific": [
+    {
+      "actual": "0.7265",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "bedroom relation accuracy (baseline)",
+      "threshold": "reported"
+    },
+    {
+      "actual": "0.7306",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "bedroom relation accuracy (main)",
+      "threshold": "reported"
+    },
+    {
+      "actual": "+0.0041",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "bedroom gain (main - baseline)",
+      "threshold": "reported; significance -> EG-08"
+    },
+    {
+      "actual": "0.6054",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "livingroom relation accuracy (baseline)",
+      "threshold": "reported"
+    },
+    {
+      "actual": "0.6122",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "livingroom relation accuracy (main)",
+      "threshold": "reported"
+    },
+    {
+      "actual": "+0.0068",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "livingroom gain (main - baseline)",
+      "threshold": "reported; significance -> EG-08"
+    },
+    {
+      "actual": "0.5836",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "diningroom relation accuracy (baseline)",
+      "threshold": "reported"
+    },
+    {
+      "actual": "0.5874",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "diningroom relation accuracy (main)",
+      "threshold": "reported"
+    },
+    {
+      "actual": "+0.0037",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "diningroom gain (main - baseline)",
+      "threshold": "reported; significance -> EG-08"
+    },
+    {
+      "actual": "0.6349",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "overall relation accuracy (baseline)",
+      "threshold": "reported"
+    },
+    {
+      "actual": "0.6399",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "overall relation accuracy (main)",
+      "threshold": "reported"
+    },
+    {
+      "actual": "+0.0050",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "overall gain (main - baseline)",
+      "threshold": "reported; significance -> EG-08"
+    },
+    {
+      "actual": "0.6254",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "random movement-matched mean accuracy",
+      "threshold": "reported"
+    },
+    {
+      "actual": "+0.0144",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "main vs random-mean gain",
+      "threshold": "reported; significance -> EG-08"
+    },
+    {
+      "actual": "0.6411",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "generic_relation_optimizer accuracy",
+      "threshold": "reported"
+    },
+    {
+      "actual": "-0.0012",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/summary.csv",
+      "go_no_go": "REPORTED",
+      "item": "main vs generic-optimizer gain",
+      "threshold": "reported; significance -> EG-08"
+    },
+    {
+      "actual": "0",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/per_relation.csv",
+      "go_no_go": "GO",
+      "item": "unsupported relations explicitly counted",
+      "threshold": "counted (0 present; not silently dropped)"
+    },
+    {
+      "actual": "93",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/per_relation.csv",
+      "go_no_go": "GO",
+      "item": "missing objects explicitly counted",
+      "threshold": "counted; remain in denominator"
+    },
+    {
+      "actual": "1061 <= 1075",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "mesh: chosen main collision pairs <= baseline",
+      "threshold": "chosen_main <= baseline (safety non-worsening)"
+    },
+    {
+      "actual": "not computed",
+      "evidence": "docs/eurographics2027/eg06_persuasiveness_audit_20260810.md",
+      "go_no_go": "DEFERRED",
+      "item": "significance (95% CI lower bound > 0)",
+      "threshold": "deferred to EG-08"
+    }
+  ],
+  "structural": [
+    {
+      "actual": "5952882",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "layouts.json size bytes",
+      "threshold": "recorded (5952882)"
+    },
+    {
+      "actual": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "layouts.json SHA-256",
+      "threshold": "recorded; identical across EG-05/EG-06"
+    },
+    {
+      "actual": "PASS",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation.json",
+      "go_no_go": "GO",
+      "item": "export validation.json status",
+      "threshold": "PASS"
+    },
+    {
+      "actual": "PASS",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation_recheck.json",
+      "go_no_go": "GO",
+      "item": "validation_recheck.json status",
+      "threshold": "PASS"
+    },
+    {
+      "actual": "[]",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation_recheck.json",
+      "go_no_go": "GO",
+      "item": "errors == []",
+      "threshold": "[]"
+    },
+    {
+      "actual": "[]",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/validation_recheck.json",
+      "go_no_go": "GO",
+      "item": "warnings == []",
+      "threshold": "[]"
+    },
+    {
+      "actual": "531",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "scenes",
+      "threshold": "531"
+    },
+    {
+      "actual": "1062",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "layouts",
+      "threshold": "1062"
+    },
+    {
+      "actual": "162",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "bedroom scenes",
+      "threshold": "162"
+    },
+    {
+      "actual": "192",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "livingroom scenes",
+      "threshold": "192"
+    },
+    {
+      "actual": "177",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "diningroom scenes",
+      "threshold": "177"
+    },
+    {
+      "actual": "808",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/summary.csv",
+      "go_no_go": "GO",
+      "item": "target_relations (baseline)",
+      "threshold": "808"
+    },
+    {
+      "actual": "492",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "gate repair",
+      "threshold": "recorded (492 expected from Phase 3)"
+    },
+    {
+      "actual": "39",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "gate fallback_baseline",
+      "threshold": "recorded (39 expected from Phase 3)"
+    },
+    {
+      "actual": "531",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "gate reconciled (repair+fallback == scenes)",
+      "threshold": "531"
+    },
+    {
+      "actual": "1062",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-05 n_layouts",
+      "threshold": "1062"
+    },
+    {
+      "actual": "[]",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-05 missing_baseline_scenes",
+      "threshold": "[]"
+    },
+    {
+      "actual": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-05 input SHA == layouts.json SHA",
+      "threshold": "== layouts.json SHA"
+    },
+    {
+      "actual": "full",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-06 run_scope",
+      "threshold": "full"
+    },
+    {
+      "actual": "formal_candidate",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-06 input_artifact_status",
+      "threshold": "formal_candidate"
+    },
+    {
+      "actual": "531",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-06 input_scene_count",
+      "threshold": "531"
+    },
+    {
+      "actual": "[0, 1, 2]",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-06 seeds",
+      "threshold": "[0, 1, 2]"
+    },
+    {
+      "actual": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-06 input SHA == EG-05 input SHA",
+      "threshold": "== EG-05 input SHA"
+    },
+    {
+      "actual": "False",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg07_full_independent_eval/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-05 independence (no optimizer imports)",
+      "threshold": "False"
+    },
+    {
+      "actual": "False",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/audit.json",
+      "go_no_go": "GO",
+      "item": "EG-06 independence (no optimizer imports)",
+      "threshold": "False"
+    },
+    {
+      "actual": "2655",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/movement_audit.csv",
+      "go_no_go": "GO",
+      "item": "EG-06 no scene skipped (movement rows)",
+      "threshold": "531 x 5 = 2655"
+    },
+    {
+      "actual": "True",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/movement_audit.csv",
+      "go_no_go": "GO",
+      "item": "EG-06 random baseline exact movement match",
+      "threshold": "True"
+    },
+    {
+      "actual": "True",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/independent_eval/eg2027/eg06_full_movement_baselines/movement_audit.csv",
+      "go_no_go": "GO",
+      "item": "EG-06 generic optimizer within budget",
+      "threshold": "True"
+    },
+    {
+      "actual": "formal_candidate",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "provenance artifact_status",
+      "threshold": "formal_candidate"
+    },
+    {
+      "actual": "3a167d813d74ab18df8762d57ff3b4a47789e3af",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "provenance code_commit",
+      "threshold": "recorded (3a167d8 generation)"
+    },
+    {
+      "actual": "052ACE5B295348483CE9B6110B5BD7933235424A55CC2108C966431E516829E2",
+      "evidence": "/root/autodl-tmp/relation_grounding/eg07_formal_20260813/results/eg07/formal_candidate/layouts.json",
+      "go_no_go": "GO",
+      "item": "provenance config SHA frozen",
+      "threshold": "052ACE5B...6829E2"
+    }
+  ],
+  "verdict": "GO"
+}

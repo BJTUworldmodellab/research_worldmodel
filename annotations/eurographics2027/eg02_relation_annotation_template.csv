@@ -1,0 +1,5 @@
+annotation_id,scene_id,room_type,layout_variant,relation_id,subject_class,predicate,object_class,subject_index,object_index,image_or_view_path,human_label,missing_object,visibility_quality,annotator_id,notes
+EG02-BED-0001,,,,,,,,,,,satisfied|not_satisfied|uncertain|not_judgable,none|subject|object|both|uncertain,good|partial|poor,,
+EG02-LIV-0001,,,,,,,,,,,satisfied|not_satisfied|uncertain|not_judgable,none|subject|object|both|uncertain,good|partial|poor,,
+EG02-DIN-0001,,,,,,,,,,,satisfied|not_satisfied|uncertain|not_judgable,none|subject|object|both|uncertain,good|partial|poor,,
+

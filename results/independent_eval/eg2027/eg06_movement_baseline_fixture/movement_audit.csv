@@ -1,0 +1,16 @@
+scene_id,layout_variant,source_config_id,n_objects,changed_objects,total_xz_movement,max_xz_movement,budget_total,budget_max
+eg06_bedroom_001,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,2,1,0.45,0.45,0.45,0.45
+eg06_bedroom_001,random_movement_matched_seed0,eg06_random_seed0,2,1,0.45,0.45,0.45,0.45
+eg06_bedroom_001,random_movement_matched_seed1,eg06_random_seed1,2,1,0.45,0.45,0.45,0.45
+eg06_bedroom_001,random_movement_matched_seed2,eg06_random_seed2,2,1,0.45,0.45,0.45,0.45
+eg06_bedroom_001,generic_relation_optimizer,eg06_generic_budget_matched,2,1,0.275,0.275,0.45,0.45
+eg06_diningroom_001,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,2,1,0.4,0.4,0.4,0.4
+eg06_diningroom_001,random_movement_matched_seed0,eg06_random_seed0,2,1,0.4,0.4,0.4,0.4
+eg06_diningroom_001,random_movement_matched_seed1,eg06_random_seed1,2,1,0.4,0.4,0.4,0.4
+eg06_diningroom_001,random_movement_matched_seed2,eg06_random_seed2,2,1,0.4000000000000001,0.4000000000000001,0.4,0.4
+eg06_diningroom_001,generic_relation_optimizer,eg06_generic_budget_matched,2,1,0.275,0.275,0.4,0.4
+eg06_livingroom_001,collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,2,1,0.55,0.55,0.55,0.55
+eg06_livingroom_001,random_movement_matched_seed0,eg06_random_seed0,2,1,0.5500000000000002,0.5500000000000002,0.55,0.55
+eg06_livingroom_001,random_movement_matched_seed1,eg06_random_seed1,2,1,0.55,0.55,0.55,0.55
+eg06_livingroom_001,random_movement_matched_seed2,eg06_random_seed2,2,1,0.55,0.55,0.55,0.55
+eg06_livingroom_001,generic_relation_optimizer,eg06_generic_budget_matched,2,1,0.5,0.5,0.55,0.55

@@ -1,0 +1,811 @@
+{
+  "layouts": [
+    {
+      "scene_id": "eg06_bedroom_001",
+      "room_type": "bedroom",
+      "layout_variant": "baseline",
+      "source_config_id": "eg06_fixture",
+      "objects": [
+        {
+          "index": 0,
+          "category": "bed",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            2.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            -0.2,
+            0.0,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "bed_r1",
+          "subject_class": "nightstand",
+          "predicate": "right",
+          "object_class": "bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_bedroom_001",
+      "room_type": "bedroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "bed",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            2.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            0.25,
+            0.0,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": []
+    },
+    {
+      "scene_id": "eg06_bedroom_001",
+      "room_type": "bedroom",
+      "layout_variant": "random_movement_matched_seed0",
+      "source_config_id": "eg06_random_seed0",
+      "objects": [
+        {
+          "index": 0,
+          "category": "bed",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            2.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            -0.4835395516905152,
+            0.0,
+            0.34943572030795833
+          ],
+          "size": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "bed_r1",
+          "subject_class": "nightstand",
+          "predicate": "right",
+          "object_class": "bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_bedroom_001",
+      "room_type": "bedroom",
+      "layout_variant": "random_movement_matched_seed1",
+      "source_config_id": "eg06_random_seed1",
+      "objects": [
+        {
+          "index": 0,
+          "category": "bed",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            2.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            -0.5853472237853556,
+            0.0,
+            -0.23239517447855723
+          ],
+          "size": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "bed_r1",
+          "subject_class": "nightstand",
+          "predicate": "right",
+          "object_class": "bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_bedroom_001",
+      "room_type": "bedroom",
+      "layout_variant": "random_movement_matched_seed2",
+      "source_config_id": "eg06_random_seed2",
+      "objects": [
+        {
+          "index": 0,
+          "category": "bed",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            2.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            0.0492989289136683,
+            0.0,
+            -0.3746332126794123
+          ],
+          "size": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "bed_r1",
+          "subject_class": "nightstand",
+          "predicate": "right",
+          "object_class": "bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_bedroom_001",
+      "room_type": "bedroom",
+      "layout_variant": "generic_relation_optimizer",
+      "source_config_id": "eg06_generic_budget_matched",
+      "objects": [
+        {
+          "index": 0,
+          "category": "bed",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            2.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "nightstand",
+          "center": [
+            0.07500000000000001,
+            0.0,
+            0.0
+          ],
+          "size": [
+            0.5,
+            0.5,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "bed_r1",
+          "subject_class": "nightstand",
+          "predicate": "right",
+          "object_class": "bed"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_diningroom_001",
+      "room_type": "diningroom",
+      "layout_variant": "baseline",
+      "source_config_id": "eg06_fixture",
+      "objects": [
+        {
+          "index": 0,
+          "category": "dining table",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining chair",
+          "center": [
+            0.0,
+            0.0,
+            0.2
+          ],
+          "size": [
+            0.5,
+            1.0,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "din_r1",
+          "subject_class": "dining chair",
+          "predicate": "behind",
+          "object_class": "dinner table"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_diningroom_001",
+      "room_type": "diningroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "dining table",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining chair",
+          "center": [
+            0.0,
+            0.0,
+            -0.2
+          ],
+          "size": [
+            0.5,
+            1.0,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": []
+    },
+    {
+      "scene_id": "eg06_diningroom_001",
+      "room_type": "diningroom",
+      "layout_variant": "random_movement_matched_seed0",
+      "source_config_id": "eg06_random_seed0",
+      "objects": [
+        {
+          "index": 0,
+          "category": "dining table",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining chair",
+          "center": [
+            -0.39478256087296437,
+            0.0,
+            0.2643951056415331
+          ],
+          "size": [
+            0.5,
+            1.0,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "din_r1",
+          "subject_class": "dining chair",
+          "predicate": "behind",
+          "object_class": "dinner table"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_diningroom_001",
+      "room_type": "diningroom",
+      "layout_variant": "random_movement_matched_seed1",
+      "source_config_id": "eg06_random_seed1",
+      "objects": [
+        {
+          "index": 0,
+          "category": "dining table",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining chair",
+          "center": [
+            0.31560657701695927,
+            0.0,
+            -0.04574883223250148
+          ],
+          "size": [
+            0.5,
+            1.0,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "din_r1",
+          "subject_class": "dining chair",
+          "predicate": "behind",
+          "object_class": "dinner table"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_diningroom_001",
+      "room_type": "diningroom",
+      "layout_variant": "random_movement_matched_seed2",
+      "source_config_id": "eg06_random_seed2",
+      "objects": [
+        {
+          "index": 0,
+          "category": "dining table",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining chair",
+          "center": [
+            -0.14126170855565665,
+            0.0,
+            0.5742260409110205
+          ],
+          "size": [
+            0.5,
+            1.0,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "din_r1",
+          "subject_class": "dining chair",
+          "predicate": "behind",
+          "object_class": "dinner table"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_diningroom_001",
+      "room_type": "diningroom",
+      "layout_variant": "generic_relation_optimizer",
+      "source_config_id": "eg06_generic_budget_matched",
+      "objects": [
+        {
+          "index": 0,
+          "category": "dining table",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "dining chair",
+          "center": [
+            0.0,
+            0.0,
+            -0.07500000000000001
+          ],
+          "size": [
+            0.5,
+            1.0,
+            0.5
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "din_r1",
+          "subject_class": "dining chair",
+          "predicate": "behind",
+          "object_class": "dinner table"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_livingroom_001",
+      "room_type": "livingroom",
+      "layout_variant": "baseline",
+      "source_config_id": "eg06_fixture",
+      "objects": [
+        {
+          "index": 0,
+          "category": "sofa",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            0.8
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "coffee table",
+          "center": [
+            1.25,
+            0.0,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.4,
+            0.6
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "liv_r1",
+          "subject_class": "coffee table",
+          "predicate": "close to",
+          "object_class": "sofa"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_livingroom_001",
+      "room_type": "livingroom",
+      "layout_variant": "collision_gated_floor_prior",
+      "source_config_id": "floor_prior_max1.8_mesh_p2_close0.75_far1.6",
+      "objects": [
+        {
+          "index": 0,
+          "category": "sofa",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            0.8
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "coffee table",
+          "center": [
+            0.7,
+            0.0,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.4,
+            0.6
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": []
+    },
+    {
+      "scene_id": "eg06_livingroom_001",
+      "room_type": "livingroom",
+      "layout_variant": "random_movement_matched_seed0",
+      "source_config_id": "eg06_random_seed0",
+      "objects": [
+        {
+          "index": 0,
+          "category": "sofa",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            0.8
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "coffee table",
+          "center": [
+            1.5713263969688662,
+            0.0,
+            0.44637355052803784
+          ],
+          "size": [
+            1.0,
+            0.4,
+            0.6
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "liv_r1",
+          "subject_class": "coffee table",
+          "predicate": "close to",
+          "object_class": "sofa"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_livingroom_001",
+      "room_type": "livingroom",
+      "layout_variant": "random_movement_matched_seed1",
+      "source_config_id": "eg06_random_seed1",
+      "objects": [
+        {
+          "index": 0,
+          "category": "sofa",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            0.8
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "coffee table",
+          "center": [
+            1.225247859525899,
+            0.0,
+            0.5494427463730415
+          ],
+          "size": [
+            1.0,
+            0.4,
+            0.6
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "liv_r1",
+          "subject_class": "coffee table",
+          "predicate": "close to",
+          "object_class": "sofa"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_livingroom_001",
+      "room_type": "livingroom",
+      "layout_variant": "random_movement_matched_seed2",
+      "source_config_id": "eg06_random_seed2",
+      "objects": [
+        {
+          "index": 0,
+          "category": "sofa",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            0.8
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "coffee table",
+          "center": [
+            1.1789194732154151,
+            0.0,
+            0.5453875307632418
+          ],
+          "size": [
+            1.0,
+            0.4,
+            0.6
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "liv_r1",
+          "subject_class": "coffee table",
+          "predicate": "close to",
+          "object_class": "sofa"
+        }
+      ]
+    },
+    {
+      "scene_id": "eg06_livingroom_001",
+      "room_type": "livingroom",
+      "layout_variant": "generic_relation_optimizer",
+      "source_config_id": "eg06_generic_budget_matched",
+      "objects": [
+        {
+          "index": 0,
+          "category": "sofa",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "size": [
+            2.0,
+            1.0,
+            0.8
+          ],
+          "yaw": 0.0
+        },
+        {
+          "index": 1,
+          "category": "coffee table",
+          "center": [
+            0.75,
+            0.0,
+            0.0
+          ],
+          "size": [
+            1.0,
+            0.4,
+            0.6
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "target_relations": [
+        {
+          "relation_id": "liv_r1",
+          "subject_class": "coffee table",
+          "predicate": "close to",
+          "object_class": "sofa"
+        }
+      ]
+    }
+  ]
+}

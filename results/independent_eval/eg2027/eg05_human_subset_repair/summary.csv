@@ -1,0 +1,4 @@
+layout_variant,source_config_id,room_type,n_scenes,n_relations,relation_accuracy,conditional_accuracy,missing_rate,unsupported_rate
+collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,bedroom,29,29,0.6896551724137931,0.6896551724137931,0.0,0.0
+collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,diningroom,28,28,0.6071428571428571,0.6071428571428571,0.0,0.0
+collision_gated_floor_prior,floor_prior_max1.8_mesh_p2_close0.75_far1.6,livingroom,27,27,0.8148148148148148,0.8148148148148148,0.0,0.0

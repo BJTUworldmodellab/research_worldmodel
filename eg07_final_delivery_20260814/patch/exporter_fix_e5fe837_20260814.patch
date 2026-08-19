@@ -1,0 +1,83 @@
+From e5fe83731bae789350574312847db5eaeacb8259 Mon Sep 17 00:00:00 2001
+From: enniusesquire <3552908435@qq.com>
+Date: Fri, 14 Aug 2026 10:25:33 +0800
+Subject: [PATCH] fix EG07 exporter detect_room to scan parent dirs
+
+detect_room() only inspected path.name, so the formal generation result
+filenames (relation_aware_parsed_*.json) could not be mapped to a room when
+the room appeared only in the <room>_sgdiffusion_vq_objfeat/ parent directory.
+Scan path components from the filename outward and return the nearest matching
+bedroom/livingroom/diningroom prefix; raise ValueError when none match.
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+---
+ scripts/export_eg07_layouts.py   | 15 ++++++++++-----
+ tests/test_eg07_layout_export.py | 27 +++++++++++++++++++++++++++
+ 2 files changed, 37 insertions(+), 5 deletions(-)
+
+diff --git a/scripts/export_eg07_layouts.py b/scripts/export_eg07_layouts.py
+index a77313c..9651c05 100644
+--- a/scripts/export_eg07_layouts.py
++++ b/scripts/export_eg07_layouts.py
+@@ -100,11 +100,16 @@ def git_path_is_clean(root: Path, path: Path) -> bool | None:
+ 
+ 
+ def detect_room(path: Path) -> str:
+-    name = path.name.lower()
+-    for prefix, room in ROOM_PREFIXES.items():
+-        if name.startswith(prefix):
+-            return room
+-    raise ValueError(f"cannot infer room type from input filename: {path}")
++    # The room type may live in a parent directory (the generation result
++    # filename is relation_aware_parsed_*.json while the room appears in the
++    # <room>_sgdiffusion_vq_objfeat/ parent). Scan path components from the
++    # filename outward and return the room of the nearest matching component.
++    for part in reversed(path.parts):
++        lower = part.lower()
++        for prefix, room in ROOM_PREFIXES.items():
++            if lower.startswith(prefix):
++                return room
++    raise ValueError(f"cannot infer room type from input path: {path}")
+ 
+ 
+ def load_result(path: Path) -> dict[str, Any]:
+diff --git a/tests/test_eg07_layout_export.py b/tests/test_eg07_layout_export.py
+index 8a7b5ff..71ec8f4 100644
+--- a/tests/test_eg07_layout_export.py
++++ b/tests/test_eg07_layout_export.py
+@@ -129,5 +129,32 @@ class Eg07LayoutExportTest(unittest.TestCase):
+                 )
+ 
+ 
++    def test_detect_room_from_parent_directory(self):
++        # Regression: the room type appears only in a parent directory while the
++        # filename is a generic relation_aware_parsed_*.json (EG-07 formal run).
++        filename = "relation_aware_parsed_floor_prior_max1.8_mesh_p2_close0.75_far1.6_eval_cfg1.0_1.0.json"
++        cases = {
++            "bedroom": Path("/x/bedroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01999") / filename,
++            "livingroom": Path("/x/livingroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01459") / filename,
++            "diningroom": Path("/x/diningroom_sgdiffusion_vq_objfeat/generated_scenes/epoch_01239") / filename,
++        }
++        for room, path in cases.items():
++            self.assertEqual(exporter.detect_room(path), room, path)
++
++    def test_detect_room_filename_prefix_behavior_not_regressed(self):
++        # The original filename-prefix behavior must keep working.
++        for room in exporter.ROOM_PREFIXES:
++            self.assertEqual(exporter.detect_room(Path(f"/x/{room}_result.json")), room)
++
++    def test_detect_room_nearest_match_wins(self):
++        # A bedroom dir nested inside a livingroom dir: the nearest (bedroom) wins.
++        path = Path("/x/livingroom_root/bedroom_sgdiffusion_vq_objfeat/relation_aware_parsed_foo.json")
++        self.assertEqual(exporter.detect_room(path), "bedroom")
++
++    def test_detect_room_unknown_path_raises(self):
++        with self.assertRaises(ValueError):
++            exporter.detect_room(Path("/x/no_room_here/relation_aware_parsed_foo.json"))
++
++
+ if __name__ == "__main__":
+     unittest.main()
+-- 
+2.34.1
+

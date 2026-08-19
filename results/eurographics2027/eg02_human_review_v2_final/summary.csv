@@ -1,0 +1,8 @@
+metric,value
+task,EG-02 adjudicated human review v2
+status,ADJUDICATED_FINAL_LABELS_READY
+n_relations,90
+adjudicated_disagreements,25
+final_vs_coord_rule_agreement,0.788889
+binary_n_relations,79
+binary_satisfied_rate,0.759494

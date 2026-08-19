@@ -1,0 +1,116 @@
+{
+  "schema": "eg2027-eg10-submission-readiness-v1",
+  "created_at": "2026-08-17",
+  "updated_at": "2026-08-19",
+  "task": "EG-10 Eurographics 2027 submission-readiness audit",
+  "definition_source": "No prior EG10 specification existed; scoped from the three remaining EG09 submission tasks.",
+  "status": "EG10_PRECHECK_BLOCKED",
+  "integrity_status": "PASS",
+  "repository": "BJTUworldmodellab/research_worldmodel",
+  "branch": "agent/eg01-eg02-eurographics2027",
+  "input_commit": "d491c1971dcb86ff8d724b7b30e300323a388791",
+  "official_rules": {
+    "instructions_url": "https://srmv2.eg.org/COMFy/Conference/EG_2027/Instruction",
+    "conference_url": "https://srmv2.eg.org/COMFy/Conference/EG_2027",
+    "call_for_papers_url": "https://eg2027.isti.cnr.it/call-for-papers/",
+    "template_entry_file": "EGauthorGuidelines-conf-sub.tex",
+    "template_access": "SRMv2 login required",
+    "double_blind": true,
+    "research_paper_recommended_pages_excluding_references": 10,
+    "abstract_deadline_utc": "2026-09-25T23:59:00Z",
+    "paper_deadline_utc": "2026-10-01T23:59:00Z",
+    "submission_size_limit_bytes": 524288000,
+    "keyword_required_in_srm": true,
+    "transparent_pixels_forbidden": true,
+    "generative_ai_disclosure_required": true
+  },
+  "repository_visibility_observed": {
+    "checked_at": "2026-08-17",
+    "repository": "BJTUworldmodellab/research_worldmodel",
+    "visibility": "PUBLIC",
+    "anonymity_risk": true,
+    "policy_boundary": "EG2027 prohibits public code or data repositories corresponding to the submission when author identity is inferable from the username or repository."
+  },
+  "public_reference_template": {
+    "url": "https://www.eg.org/wp/wp-content/uploads/2024/12/egPublStyle-cgf.zip",
+    "bytes": 1059066,
+    "sha256": "230c34fa8cd89016af231f1497d76479a5eb4463ad7b90fb65765010dae419c9",
+    "usage_boundary": "Inspected in a temporary directory for structure only; not committed and not substituted for the EG2027 conference package."
+  },
+  "official_eg2027_template": {
+    "source_archive": "egPublStyle-EG-full-short-star-tut-poster-edu-dc-2027.zip",
+    "source_archive_bytes": 2902816,
+    "source_archive_sha256": "68212ff42cee3681c8b7aa620e6c55529153cbb3001039cdb8f8256429c949b2",
+    "entry_file": "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
+    "entry_file_sha256": "9a27d2a86b5f1c369a11b935a1f639f739656febe84626fb350213f3fb658966",
+    "conference_style": "eg2027.sty",
+    "verified": true
+  },
+  "completed_in_eg10": [
+    "Removed unsupported oracle-diagnostic wording from the formal manuscript.",
+    "Narrowed scene-plausibility wording to movement and mesh-collision side effects.",
+    "Rephrased the third contribution as an operational design statement rather than comparative superiority.",
+    "Anonymized the manuscript reproducibility note.",
+    "Removed internal artifact accounting and submission-checklist placeholder from the main manuscript appendix.",
+    "Verified citation keys, cross-references, claim freeze, and absence of internal identity strings.",
+    "Created three reviewer reports and a machine-readable submission preflight.",
+    "Verified and archived the official EG2027 SRMv2 template package.",
+    "Migrated the manuscript to egpubl, eg2027, ConferenceSubmission, and eg-alpha-doi in a separate submission directory."
+  ],
+  "hard_blockers": [
+    "PUBLIC_REPOSITORY_ANONYMITY_RISK",
+    "CCS_CATEGORIES_MISSING",
+    "SUBMISSION_ID_PENDING",
+    "PDF_STALE",
+    "AI_DISCLOSURE_AUTHOR_INPUT_NEEDED"
+  ],
+  "scientific_review_risks": [
+    "QUALITATIVE_FORMAL_EVIDENCE_MISSING",
+    "GENERIC_COMPARATOR_INCONCLUSIVE",
+    "ORIGINAL_BASELINE_INCONCLUSIVE",
+    "SINGLE_GENERATOR_SEED_AND_PIPELINE",
+    "NO_HUMAN_VISUAL_STUDY"
+  ],
+  "inputs": {
+    "paper": {
+      "path": "paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex",
+      "sha256": "cc19e44413dd51e197a2f15f392a31f5bfd6f19cb4f8bd1d5de76462812bc6ef"
+    },
+    "bibliography": {
+      "path": "paper/eurographics2027_submission/references.bib",
+      "sha256": "572d67f5e0e3c89c9001264e48eda9fcfffdbb3e5adc842a099c6ced990cc65a"
+    },
+    "stale_pdf": {
+      "path": "paper/neurips_ra_instructscene/main.pdf",
+      "sha256": "3234c4a2fd39ec2db593e7fa48a3c40391c3d39d0b1d77133600b256e56e8e49",
+      "delivery_allowed": false
+    },
+    "eg09_manifest": "manifests/eurographics2027/eg09_paper_claim_freeze_manifest.json"
+  },
+  "resume_condition": {
+    "required_user_file": null,
+    "target_directory": "paper/eg2027_official_style/",
+    "required_entry": "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
+    "required_author_inputs": [
+      "SRMv2 submission ID after abstract registration",
+      "verified ACM CCS categories and at least one SRMv2 keyword",
+      "exact generative-AI tools/models/versions/purposes and human-review statement"
+    ]
+  },
+  "verification": {
+    "script": "scripts/check_eg10_submission_readiness.py",
+    "test": "tests/test_eg10_submission_readiness.py",
+    "preflight": "results/independent_eval/eg2027/eg10_submission_readiness_20260817/preflight.json",
+    "review": "docs/eurographics2027/eg10_submission_readiness_review_20260817.md"
+  },
+  "deliverables": [
+    "paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex",
+    "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
+    "docs/eurographics2027/eg10_submission_readiness_review_20260817.md",
+    "manifests/eurographics2027/eg10_submission_readiness_manifest.json",
+    "scripts/check_eg10_submission_readiness.py",
+    "tests/test_eg10_submission_readiness.py",
+    "results/independent_eval/eg2027/eg10_submission_readiness_20260817/preflight.json",
+    "results/independent_eval/eg2027/eg10_submission_readiness_20260817/EG10_PRECHECK_BLOCKED"
+  ]
+}

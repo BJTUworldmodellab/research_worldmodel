@@ -1,0 +1,35 @@
+{
+  "augmented_layout_path": "C:\\Users\\14754\\Desktop\\research_worldmodel\\.upload_tmp\\eg01_branch_20260730_001\\results\\independent_eval\\eg2027\\eg06_movement_baseline_fixture\\eg06_augmented_layouts.json",
+  "baselines": [
+    "random_movement_matched",
+    "generic_relation_optimizer"
+  ],
+  "evaluator": "evaluation/independent_relation_evaluator.py",
+  "independence_rule": {
+    "forbidden_imports": [
+      "scripts/compute_gated_floorprior.py",
+      "scripts/summarize_floorprior_results.py",
+      "scripts/sync_parallel_floorprior_results.py",
+      "results/relation_aware_generate_sg.py",
+      "src/ablation/repairers.py"
+    ],
+    "imports_repair_or_optimizer_modules": false
+  },
+  "input_path": "C:\\Users\\14754\\Desktop\\research_worldmodel\\.upload_tmp\\eg01_branch_20260730_001\\evaluation\\fixtures\\eg06_movement_baseline_fixture.json",
+  "missing_baseline_scenes": [],
+  "note": "Fixture run only; full 531-scene EG-06 requires EG-07 normalized layout export.",
+  "protocol": "eg2027-eg05-v1",
+  "run_id": "eg06_movement_baseline_fixture",
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "task": "EG-06 movement-matched baseline fixture",
+  "thresholds": {
+    "close_distance": 0.75,
+    "direction_margin": 0.05,
+    "far_distance": 1.6,
+    "vertical_margin": 0.05
+  }
+}

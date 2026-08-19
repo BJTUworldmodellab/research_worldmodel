@@ -1,0 +1,41 @@
+EG-07 Phase 3 formal run — environment record (2026-08-14)
+===========================================================
+
+Host / OS
+  platform: linux
+  kernel: 5.15.0-25-generic
+
+GPU
+  name: NVIDIA GeForce RTX 4090
+  driver: 595.71.05
+  memory_total_MiB: 49140
+  memory_free_at_start_MiB: 48510
+
+Python (conda env /root/miniconda3/envs/instructscene_full)
+  python: 3.10.8
+  torch: 2.1.2+cu118  (cuda_available=True, cuda=11.8)
+  numpy: 1.26.4
+  trimesh: 4.12.2
+  fcl: 0.7.0.11        (python-fcl; required for mesh_collision=true)
+  PIL: 10.3.0
+  diffusers: 0.26.1
+  transformers: 4.38.2
+  huggingface_hub: 0.20.3
+
+Runtime env vars
+  NLTK_DATA=/root/autodl-tmp/relation_grounding/cache/nltk_data
+  PYTHONPATH=/root/autodl-tmp/relation_grounding/eg07_formal_20260813/runtime
+  OMP_NUM_THREADS=1
+  MKL_NUM_THREADS=1
+
+Repository
+  EG07 repo: /root/autodl-tmp/relation_grounding/code/eg07-full-export
+  HEAD: 3a167d813d74ab18df8762d57ff3b4a47789e3af (branch codex/eg07-full-export, clean)
+  frozen config: configs/eurographics2027/paper_main.yaml
+  config Git-blob SHA-256: 052ace5b295348483ce9b6110b5bd7933235424a55cc2108c966431e516829e2
+  InstructScene repo: /root/autodl-tmp/relation_grounding/code/InstructScene (read-only, NOT modified)
+
+Assets (verified, NOT re-downloaded / NOT re-extracted this phase)
+  3D-FRONT meshes: /root/autodl-tmp/relation_grounding/eg07_assets/3D-FRONT (raw_model.obj count=4232)
+  runtime dataset symlink: runtime/dataset/3D-FRONT -> /root/autodl-tmp/relation_grounding/eg07_assets/3D-FRONT
+  runtime dataset symlink: runtime/dataset/InstructScene -> code/InstructScene/dataset/InstructScene
