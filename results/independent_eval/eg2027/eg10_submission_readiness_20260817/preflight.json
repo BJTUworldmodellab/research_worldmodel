@@ -10,9 +10,10 @@
     "eg10_manifest_input_hashes_match": true,
     "eg10_manifest_schema_matches": true,
     "figure_environments": 1,
+    "fresh_pdf_is_not_older_than_sources": true,
     "has_ai_disclosure": false,
-    "has_ccs_categories": false,
-    "has_result_figure": false,
+    "has_ccs_categories": true,
+    "has_result_figure": true,
     "has_submission_id": false,
     "internal_identity_strings_absent": true,
     "missing_bibliography_entries": [],
@@ -20,12 +21,11 @@
     "official_2027_template_present": true,
     "submission_id_is_placeholder": true,
     "table_environments": 3,
-    "tracked_pdf_is_stale_pre_eg09": true,
     "uncited_bibliography_entries": [],
     "uses_conference_submission_mode": true,
     "uses_eg_bibliography_style": true,
     "uses_egpubl_class": true,
-    "word_count_approx": 3205
+    "word_count_approx": 4305
   },
   "errors": [],
   "hard_blockers": [
@@ -35,19 +35,9 @@
       "owner": "authors"
     },
     {
-      "action": "Choose and add verified ACM CCS 2012 categories.",
-      "code": "CCS_CATEGORIES_MISSING",
-      "owner": "authors"
-    },
-    {
       "action": "Insert the SRMv2 submission ID after abstract registration.",
       "code": "SUBMISSION_ID_PENDING",
       "owner": "authors"
-    },
-    {
-      "action": "Compile and visually inspect a new PDF from the migrated EG2027 source.",
-      "code": "PDF_STALE",
-      "owner": "build"
     },
     {
       "action": "Confirm exact tools and uses, then add the disclosure required by Eurographics policy.",
@@ -58,25 +48,21 @@
   "inputs": {
     "bibliography": {
       "path": "paper/eurographics2027_submission/references.bib",
-      "sha256": "572d67f5e0e3c89c9001264e48eda9fcfffdbb3e5adc842a099c6ced990cc65a"
+      "sha256": "055be9a570443fc4e8cd5326ec59c9c70045796a0eb8f3e7d0ecd86ba438542d"
     },
     "paper": {
       "path": "paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex",
-      "sha256": "cc19e44413dd51e197a2f15f392a31f5bfd6f19cb4f8bd1d5de76462812bc6ef"
+      "sha256": "14a6d19ae5f148c8763bae742c6b9723fea9a8e4028353078139a6e448c9d0ac"
     },
     "pdf": {
-      "path": "paper/neurips_ra_instructscene/main.pdf",
-      "sha256": "3234c4a2fd39ec2db593e7fa48a3c40391c3d39d0b1d77133600b256e56e8e49"
+      "path": "paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.pdf",
+      "sha256": "f418b82977664d40f786b8788e541b895effcfd8bcb58de89456fc91fb01157d"
     }
   },
   "integrity_status": "PASS",
   "official_template_path_expected": "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
   "schema": "eg2027-eg10-submission-readiness-v1",
   "scientific_review_risks": [
-    {
-      "code": "QUALITATIVE_FORMAL_EVIDENCE_MISSING",
-      "evidence": "The manuscript has one pipeline schematic and no rendered formal before/after result figure."
-    },
     {
       "code": "GENERIC_COMPARATOR_INCONCLUSIVE",
       "evidence": "Main accuracy 0.6399 is below the generic optimizer point estimate 0.6411; paired CI includes zero."

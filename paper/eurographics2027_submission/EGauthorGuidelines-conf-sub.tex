@@ -22,6 +22,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{multirow}
+\usepackage{tabularx}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,fit,shapes.geometric}
 
@@ -40,6 +41,13 @@
 
 \begin{abstract}
 Instruction-guided 3D indoor scene generation requires final layouts to realize the spatial relations requested by a user, not merely to generate plausible object sets or symbolic scene graphs. We show that a pretrained InstructScene pipeline exhibits a graph-to-layout grounding gap: explicit relations in the instruction can be lost when a generated scene graph is decoded into continuous object placements. We introduce \method, a training-free, safety-aware verifier-repair framework that parses explicit spatial relations, matches them to generated objects, verifies whether final layouts satisfy them, and applies bounded floor-plane repairs while preserving object height. On a frozen 531-scene evaluation spanning the existing InstructScene bedroom, living-room, and dining-room validation splits, collision-gated \fp{} obtains 0.6399 realized relation accuracy, compared with 0.6254 for the mean of three exact movement-matched random controls (gain 1.44 percentage points; paired scene-level bootstrap 95\% confidence interval, 0.75 to 2.20 points). The selected layouts contain 1,061 FCL mesh-collision pairs, compared with 1,075 for the original layouts. The gain over the original InstructScene baseline is smaller and its confidence interval includes zero; our evidence therefore supports a bounded claim of relation-aware control beyond matched random movement, not superiority to every comparator.
+\ccsdesc[500]{Computing methodologies~Computer graphics}
+\ccsdesc[300]{Computing methodologies~Spatial and physical reasoning}
+\ccsdesc[300]{Computing methodologies~Scene understanding}
+\printccsdesc
+\begin{keywords}
+3D indoor scene generation, spatial relations, layout repair, geometric verification
+\end{keywords}
 \end{abstract}
 
 \section{Introduction}
@@ -92,14 +100,17 @@ Our contribution is not a claim of first relation-aware 3D scene generation, nor
 
 \section{Related Work}
 
-\paragraph{Indoor scene synthesis.}
+\paragraph*{Indoor scene synthesis.}
 3D-FRONT~\cite{fu20213dfront} and 3D-FUTURE~\cite{fu20203dfuture} provide large-scale room layouts and textured furniture assets that underpin much recent indoor scene synthesis work. ATISS~\cite{paschalidou2021atiss} models indoor scenes as unordered sets generated autoregressively. SceneFormer~\cite{wang2021sceneformer} uses transformers to generate indoor scenes conditioned on room layouts. DiffuScene~\cite{tang2024diffuscene} uses denoising diffusion over unordered object attributes. These methods focus on plausible and diverse indoor layouts; our work focuses on whether explicit natural-language relations are realized in the final layout of an instruction-conditioned pipeline.
 
-\paragraph{Text and graph conditioned scene generation.}
+\paragraph*{Text and graph conditioned scene generation.}
 InstructScene~\cite{lin2024instructscene} is our direct baseline because it synthesizes 3D indoor scenes from natural language instructions with a semantic graph prior. CommonScenes~\cite{zhai2023commonscenes} converts scene graphs into commonsense 3D scenes with scene graph diffusion. LayoutGPT~\cite{feng2023layoutgpt} uses large language models as visual planners for layouts, including spatial and numerical constraints. Holodeck~\cite{yang2024holodeck} uses language models and 3D assets to generate embodied AI environments, including spatial constraints for object placement. These works show that language and structured relations are useful interfaces for scene generation. Our contribution is complementary: we evaluate and repair the final realized relation after a pretrained instruction-to-scene pipeline has produced a layout.
 
-\paragraph{Strong relation-aware systems.}
+\paragraph*{Strong relation-aware systems.}
 ReSpace~\cite{bucher2026respace} is a close text-driven indoor scene synthesis and editing framework based on structured scene representations and a specialized language model. SDGScenes~\cite{gao2026sdgscenes} uses a semantic dependency graph, VLM-derived commonsense constraints, and nonlinear constrained optimization to align scenes with user intent. These systems overlap with the broad goal of relation- and intent-aware 3D generation. We therefore do not claim to outperform them or to be the first relation-aware method. Our current fair comparison is the original InstructScene output under the same validation prompts and checkpoints; ReSpace and SDGScenes require a shared protocol before direct numerical claims are appropriate. Put differently, we do not replace strong generators; we study a plug-in final-layout relation grounding layer for an existing instruction-guided generator.
+
+\paragraph*{Relation-grounded evaluation.}
+RelScene~\cite{ye2024relscene} introduces a benchmark and baseline for evaluating spatial relations in text-driven 3D scene generation. It reinforces the need to measure whether text-specified relations are present in generated scenes, but its dataset, relation definitions, training setting, and metrics differ from the frozen InstructScene protocol used here. We therefore use RelScene as evaluation context rather than placing its reported numbers in our direct-comparison table.
 
 \section{Method}
 
@@ -113,17 +124,28 @@ where object $i$ has category $c_i$, translation $t_i \in \mathbb{R}^{3}$, size 
 \[
   R(x) = \{(c_a, p, c_b)\},
 \]
-where predicate $p$ may be left-of, right-of, in-front-of, behind, near, or far. The goal is to produce a repaired layout $S'$ that improves the realized satisfaction of $R(x)$ while limiting movement and mesh-collision side effects.
+where predicate $p$ may be left-of, right-of, in-front-of, behind, near, far, above, or below. The repairable set contains the six horizontal direction and distance predicates. Above and below remain part of evaluation, but the repair never changes them because every vertical coordinate is preserved. The goal is to produce a repaired layout $S'$ that improves the realized satisfaction of $R(x)$ while limiting movement and mesh-collision side effects.
 
 \subsection{Explicit Relation Extraction and Matching}
 
 We use a deliberately simple rule-based parser to extract explicit spatial phrases. This choice makes the method transparent and keeps the benchmark unchanged. The parser output is noisy but sufficient to drive the formal parsed-relation verifier evaluated below. The parser is not intended to solve implicit commonsense reasoning; prompts that require latent affordance or support reasoning are outside the current claim.
 
-For each parsed triple, the verifier finds generated objects whose class labels match the subject and object categories. When multiple instances match, the verifier selects the nearest pair in the floor plane. All distance and direction checks use the $x/z$ plane; the $y$ axis is treated as vertical height.
+For each parsed triple, the verifier finds generated objects whose class labels match the subject and object categories after deterministic alias normalization. When multiple instances match, the nearest pair in the floor plane is selected, with object indices breaking distance ties. For experimental comparison, the independent evaluator performs this selection once on the original layout and freezes the same instance indices across all variants. This prevents a repaired method from receiving credit by switching to an easier pair. If either target category is absent, the relation is marked missing and remains in the denominator.
 
 \subsection{Relation Verification}
 
-For a candidate object pair $(i,j)$ and predicate $p$, the verifier evaluates whether the floor-plane displacement $\Delta_{ij}=(t_i^x-t_j^x, t_i^z-t_j^z)$ satisfies the predicate. Directional predicates check the dominant signed displacement along the relevant axis; distance predicates compare floor-plane distance against close or far thresholds. We report exact selected-relation accuracy, counting a relation correct only when the target relation appears in the realized relation set.
+For a candidate object pair $(i,j)$, define $\Delta x=t_i^x-t_j^x$, $\Delta y=t_i^y-t_j^y$, $\Delta z=t_i^z-t_j^z$, and $d_{xz}=\sqrt{\Delta x^2+\Delta z^2}$. With directional margin $\epsilon=0.05$\,m, close threshold $d_c=0.75$\,m, and far threshold $d_f=1.60$\,m, the independent evaluator uses
+\[
+\begin{aligned}
+\text{left}(i,j)&\Leftrightarrow \Delta x<-\epsilon,&
+\text{right}(i,j)&\Leftrightarrow \Delta x>\epsilon,\\
+\text{front}(i,j)&\Leftrightarrow \Delta z>\epsilon,&
+\text{behind}(i,j)&\Leftrightarrow \Delta z<-\epsilon,\\
+\text{near}(i,j)&\Leftrightarrow d_{xz}\le d_c,&
+\text{far}(i,j)&\Leftrightarrow d_{xz}\ge d_f.
+\end{aligned}
+\]
+Above and below analogously test $\Delta y>\epsilon$ and $\Delta y<-\epsilon$. We report exact selected-relation accuracy, counting a target correct only when its frozen object pair satisfies the corresponding test.
 
 \subsection{Direct Height-Preserving Repair}
 
@@ -168,14 +190,55 @@ We evaluate one generated layout for every scene in the existing InstructScene v
 
 We compare collision-gated \fp{} with the original InstructScene layout, three random controls that exactly match each object's horizontal movement magnitude, and a generic relation optimizer constrained by the same movement budget. Statistical comparisons use paired scene-level percentile bootstrap intervals. The frozen primary gate is the relation-weighted difference between our method and the mean of the three movement-matched random controls, using 10,000 paired resamples and seed 20260816. A 50,000-round room-stratified analysis serves as a sensitivity check rather than a second acceptance criterion.
 
+\subsection{Evaluator Validation and Control Construction}
+
+The independent evaluator does not import the repair, candidate-scoring, or fallback modules. On an adjudicated human subset, 79 relations were binary-evaluable after coordinate and missing-pair checks; evaluator agreement with the human labels was 0.823, with precision 0.897 and recall 0.867 for the satisfied class. This check does not establish perceptual scene quality, but it tests that the coordinate rules used for the formal tables correspond reasonably well to human judgments of the displayed object pairs.
+
+For scene $s$ and object $i$, let $b_{si}=\lVert t^{\mathrm{main}}_{si}-t^{\mathrm{base}}_{si}\rVert_{xz}$ be the movement budget induced by the frozen main output. Each random control translates the object by exactly $b_{si}$ in a deterministic pseudo-random direction; three seeds test sensitivity to direction. The generic optimizer processes the frozen relations once and moves the relation subject toward the nearest satisfying boundary, clipping its displacement by $b_{si}$. It does not use \fp{} candidate scoring or the collision gate. Thus, the controls share the final layouts, target pairs, evaluator, and per-object movement budgets while varying whether movement direction is random, relation-directed, or \fp{}-selected.
+
+\subsection{Protocol Comparability}
+
+Table~\ref{tab:protocol} separates direct evidence from cross-protocol context. Entry into a direct numerical comparison requires the same validation scenes and prompts, object representation and taxonomy, target-pair policy, relation thresholds, missing-target policy, and evaluator. Only the original output, our repair, and the movement-budget controls meet these conditions. ReSpace and SDGScenes are broader generation systems under their own protocols; RelScene is a dedicated relation benchmark. They are therefore strong references, not ranked baselines in our main table.
+
+\begin{table*}[t]
+\centering
+\scriptsize
+\caption{Protocol comparability. ``Aligned'' requires the same InstructScene validation split, layout representation, target relations, thresholds, missing-target policy, and independent evaluator. Cross-protocol methods are included to state the reproducibility boundary, not to imply a numerical ranking.}
+\label{tab:protocol}
+\begin{tabularx}{\textwidth}{p{2.05cm}X p{2.25cm}p{2.9cm}p{1.1cm}p{2.15cm}X}
+\toprule
+Method & Native input/data & Output & Relation and physical constraints & Aligned? & Local status & Role in this paper \\
+\midrule
+Official InstructScene~\cite{lin2024instructscene} & Natural-language instruction; InstructScene validation split & Category, translation, size, yaw & Learned semantic graph prior and layout decoder & Yes & Runnable; frozen outputs & Direct baseline \\
+Collision-gated \fp{} & Original output plus parsed explicit relations & Same layout with bounded $x/z$ edits & Fixed verifier, floor prior, movement bound, FCL non-worsening gate & Yes & Runnable; frozen outputs & Main method \\
+Random/generic controls & Original output plus frozen target pairs & Same layout under per-object movement budgets & Random direction or one-pass relation projection; no \fp{} scoring & Yes & Runnable; three random seeds & Direct controls \\
+ReSpace~\cite{bucher2026respace} & Text-driven synthesis/editing; native structured-scene protocol & Autoregressive scene representation and assets & Learned addition/editing with geometry-aware evaluation & No & Native-protocol engineering only & Strong related system; no ranking \\
+SDGScenes~\cite{gao2026sdgscenes} & Implicit user intent and semantic dependency graph; native protocol & Category, size, position, yaw & SDG-guided VLM plus collision, boundary, reachability, and commonsense constraints & No & Official runnable release not verified & Strong related system; no ranking \\
+RelScene~\cite{ye2024relscene} & Text-driven relation benchmark built from its own annotations & Benchmark-specific scene representation & Explicit relation labels and relation-consistency metrics & No & Evaluation reference & Metric context; not a generator baseline \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+We also retain a separately archived, non-official SDGScenes-inspired constrained-optimization smoke run. It covers the same 531 room instances but uses an earlier 708-target relation export and a simpler satisfaction metric, rather than the frozen 808-target independent-evaluator protocol. Its numbers are therefore excluded from Tables~\ref{tab:main} and~\ref{tab:controls}; the frozen generic optimizer is the appropriate same-protocol optimization control.
+
 \subsection{Main Results}
 
 Table~\ref{tab:main} reports the independently evaluated formal run. Collision-gated \fp{} has a positive point difference from the original layout in each room and an overall gain of 0.50 percentage points. The paired overall confidence interval for this comparison includes zero, so these point differences are descriptive rather than evidence of statistical superiority to the original InstructScene baseline.
+
+Figure~\ref{fig:formal-qualitative} provides deterministic qualitative evidence from the same frozen formal artifacts. To avoid cherry-picking, examples are selected by a fixed rule: the lexicographically first evaluated baseline-fail/gated-pass relation with nonzero horizontal movement in each room type, followed by the first repaired relation that still fails. The first three examples show realized relation changes, while the final example makes the remaining failure mode explicit.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/eg11_formal_qualitative.pdf}
+\caption{\textbf{Deterministically selected formal before/after evidence.} Blue and orange denote the evaluated relation subject and object; gray rectangles denote other objects. The top row shows the original InstructScene layouts and the bottom row shows collision-gated \fp{}. The three room-specific examples change from relation failure to success; the rightmost example remains a failure after repair. These are floor-plane layout projections from the frozen EG07 artifact, not photorealistic renderings or evidence of universal visual improvement.}
+\label{fig:formal-qualitative}
+\end{figure*}
 
 \begin{table}[t]
 \centering
 \caption{Formal 531-scene relation results from the independent evaluator. Missing targets remain in the denominator. Gains are percentage-point differences from the original InstructScene layouts and are descriptive at room level.}
 \label{tab:main}
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrrr}
 \toprule
 Room & Scenes & Relations & Baseline & Gated \fp{} \\
@@ -196,6 +259,7 @@ Table~\ref{tab:controls} tests whether relation changes can be explained by move
 \centering
 \caption{Overall fair-comparison results. Gain and 95\% confidence interval (CI) are for collision-gated \fp{} minus the listed control, in percentage points, under the frozen paired scene-level relation-weighted bootstrap protocol.}
 \label{tab:controls}
+\setlength{\tabcolsep}{4pt}
 \begin{tabular}{lrrr}
 \toprule
 Control & Accuracy & Gain & 95\% CI \\
@@ -238,6 +302,8 @@ The results support a narrow conclusion: relation-aware post-generation control 
 
 The results also reveal an evaluation lesson. Reporting only symbolic scene graph correctness can miss failures in the final continuous layout. Conversely, reporting only visual examples can hide whether the requested relation is actually satisfied. A relation-aware scene generation benchmark should evaluate instruction parsing, graph-level relation accuracy, final layout relation accuracy, and geometric side effects separately.
 
+The protocol analysis also clarifies the intended plug-in scope. A generator can use the verifier-repair layer only if it exposes object categories and continuous layout attributes and if its language relations can be mapped to the evaluator predicates. This makes transfer to another generator technically plausible, but Table~\ref{tab:protocol} is not evidence that such transfer already succeeds.
+
 \section{Limitations}
 
 The current method targets explicit spatial relations. It does not handle all implicit commonsense requirements, such as affordance, reachability, support, or task-specific functional arrangements. The parser is rule-based and intentionally simple; stronger language parsing may further improve recall and precision. The collision-gated variant is a post-hoc verifier-selection layer, not an end-to-end collision-aware generator, and a lower aggregate collision-pair count does not imply collision-free scenes. The formal run uses one generated layout per validation scene at a single generator seed. Moreover, the comparisons with the original baseline and the generic optimizer are statistically inconclusive, and the living-room sensitivity interval against the random-seed mean touches zero. Finally, we do not claim superiority over ReSpace, SDGScenes, or other strong related methods without a shared evaluation protocol. The lightweight public evidence package contains the complete per-scene relation tables used for statistics but not the three original room-level generator JSON files; this is a remaining provenance gap for full generator-to-statistics reconstruction.
@@ -248,7 +314,7 @@ We presented \method, a training-free verifier-repair layer for instruction-guid
 
 \section*{Reproducibility Notes}
 
-An anonymized evidence package contains the formal 531-scene layouts, validation records, independent relation evaluation, movement-matched controls, final metrics, paired statistics, and file checksums. Third-party datasets, checkpoints, environments, and the three original room-level generator JSON files are not included in the lightweight package.
+An anonymized evidence package contains the formal 531-scene layouts, validation records, independent relation evaluation, movement-matched controls, final metrics, paired statistics, and file checksums. Third-party datasets, checkpoints, environments, and the three original room-level generator JSON files are not included in the lightweight package. The separate SDGScenes-inspired smoke archive is retained for feasibility auditing but is deliberately excluded from the formal 808-relation result tables.
 
 \bibliographystyle{eg-alpha-doi}
 \bibliography{references}

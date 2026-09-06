@@ -23,10 +23,14 @@ class Eg10SubmissionReadinessTest(unittest.TestCase):
         self.assertNotIn("OFFICIAL_TEMPLATE_LOGIN_REQUIRED", codes)
         self.assertNotIn("SOURCE_NOT_MIGRATED", codes)
         self.assertNotIn("BIBLIOGRAPHY_STYLE_MISMATCH", codes)
-        self.assertIn("CCS_CATEGORIES_MISSING", codes)
+        self.assertNotIn("CCS_CATEGORIES_MISSING", codes)
         self.assertIn("SUBMISSION_ID_PENDING", codes)
-        self.assertIn("PDF_STALE", codes)
+        self.assertNotIn("PDF_STALE", codes)
+        self.assertNotIn("PDF_NOT_FRESH", codes)
         self.assertIn("AI_DISCLOSURE_AUTHOR_INPUT_NEEDED", codes)
+        self.assertTrue(payload["checks"]["has_ccs_categories"])
+        self.assertTrue(payload["checks"]["has_result_figure"])
+        self.assertTrue(payload["checks"]["fresh_pdf_is_not_older_than_sources"])
 
     def test_citation_parser_handles_multiple_keys(self):
         tex = r"A \citep{alpha,beta} and B \cite{gamma}."

@@ -1,0 +1,27 @@
+{
+  "evaluator": "evaluation/independent_relation_evaluator.py",
+  "independence_rule": {
+    "forbidden_imports": [
+      "scripts/compute_gated_floorprior.py",
+      "scripts/summarize_floorprior_results.py",
+      "scripts/sync_parallel_floorprior_results.py",
+      "results/relation_aware_generate_sg.py",
+      "src/ablation/repairers.py"
+    ],
+    "imports_repair_or_optimizer_modules": false
+  },
+  "input_path": "<redacted-origin>",
+  "input_sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d",
+  "missing_baseline_scenes": [],
+  "n_layouts": 1062,
+  "n_per_relation_rows": 1616,
+  "n_per_scene_rows": 1062,
+  "protocol": "eg2027-eg05-v1",
+  "run_id": "eg07_full_independent_eval",
+  "thresholds": {
+    "close_distance": 0.75,
+    "direction_margin": 0.05,
+    "far_distance": 1.6,
+    "vertical_margin": 0.05
+  }
+}

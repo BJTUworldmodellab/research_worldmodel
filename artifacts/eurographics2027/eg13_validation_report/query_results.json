@@ -1,0 +1,197 @@
+{
+  "artifact_snapshot_match": true,
+  "datasets": {
+    "comparison": [
+      {
+        "accuracy": 0.6349009900990099,
+        "method": "Original baseline",
+        "order": 1,
+        "relations": 808,
+        "role": "control",
+        "satisfied": 513.0
+      },
+      {
+        "accuracy": 0.6254125412541254,
+        "method": "Random mean",
+        "order": 2,
+        "relations": 808,
+        "role": "control",
+        "satisfied": 505.3333333333333
+      },
+      {
+        "accuracy": 0.6410891089108911,
+        "method": "Generic optimizer",
+        "order": 3,
+        "relations": 808,
+        "role": "control",
+        "satisfied": 518.0
+      },
+      {
+        "accuracy": 0.6398514851485149,
+        "method": "Gated Floor-Prior",
+        "order": 4,
+        "relations": 808,
+        "role": "main",
+        "satisfied": 517.0
+      }
+    ],
+    "controls": [
+      {
+        "accuracy": 0.6349009900990099,
+        "ci_high_pp": 1.2225687952442583,
+        "ci_low_pp": -0.1251564455569462,
+        "control": "Original baseline",
+        "gain_pp": 0.4950495049504955,
+        "order": 1,
+        "supported": "No"
+      },
+      {
+        "accuracy": 0.6225247524752475,
+        "ci_high_pp": 2.8290282902829027,
+        "ci_low_pp": 0.7546932777093013,
+        "control": "Random seed 0",
+        "gain_pp": 1.7326732673267342,
+        "order": 2,
+        "supported": "Yes"
+      },
+      {
+        "accuracy": 0.625,
+        "ci_high_pp": 2.4968789013732833,
+        "ci_low_pp": 0.6127450980392157,
+        "control": "Random seed 1",
+        "gain_pp": 1.4851485148514865,
+        "order": 3,
+        "supported": "Yes"
+      },
+      {
+        "accuracy": 0.6287128712871287,
+        "ci_high_pp": 1.9632504785879012,
+        "ci_low_pp": 0.36900369003690037,
+        "control": "Random seed 2",
+        "gain_pp": 1.1138613861386149,
+        "order": 4,
+        "supported": "Yes"
+      },
+      {
+        "accuracy": 0.6254125412541254,
+        "ci_high_pp": 2.2005381872709435,
+        "ci_low_pp": 0.7453416149068323,
+        "control": "Random-seed mean",
+        "gain_pp": 1.4438943894389489,
+        "order": 5,
+        "supported": "Yes"
+      },
+      {
+        "accuracy": 0.6410891089108911,
+        "ci_high_pp": 0.37593984962406013,
+        "ci_low_pp": -0.6329113924050633,
+        "control": "Generic optimizer",
+        "gain_pp": -0.12376237623762387,
+        "order": 6,
+        "supported": "No"
+      }
+    ],
+    "headline": [
+      {
+        "collision_delta": -14,
+        "gain_pp": 1.4438943894389489,
+        "main_accuracy": 0.6398514851485149,
+        "relations": 808,
+        "scenes": 531,
+        "selected_collision_pairs": 1061
+      }
+    ],
+    "quality": [
+      {
+        "check": "EG05 scene/variant key uniqueness",
+        "comparisons": 1062,
+        "failures": 0,
+        "order": 1,
+        "result": "PASS"
+      },
+      {
+        "check": "EG06 scene/variant key uniqueness",
+        "comparisons": 3186,
+        "failures": 0,
+        "order": 2,
+        "result": "PASS"
+      },
+      {
+        "check": "Random per-object movement magnitude",
+        "comparisons": 16599,
+        "failures": 0,
+        "order": 3,
+        "result": "PASS"
+      },
+      {
+        "check": "Generic per-object movement budget",
+        "comparisons": 5533,
+        "failures": 0,
+        "order": 4,
+        "result": "PASS"
+      },
+      {
+        "check": "Evaluator smoke relations",
+        "comparisons": 4,
+        "failures": 0,
+        "order": 5,
+        "result": "PASS"
+      },
+      {
+        "check": "Anonymous content scan",
+        "comparisons": 28,
+        "failures": 0,
+        "order": 6,
+        "result": "PASS"
+      }
+    ],
+    "rooms": [
+      {
+        "baseline": 0.726530612244898,
+        "gain_pp": 0.40816326530611624,
+        "main": 0.7306122448979592,
+        "order": 1,
+        "relations": 245,
+        "room": "Bedroom",
+        "scenes": 162
+      },
+      {
+        "baseline": 0.6054421768707483,
+        "gain_pp": 0.6802721088435382,
+        "main": 0.6122448979591837,
+        "order": 2,
+        "relations": 294,
+        "room": "Living room",
+        "scenes": 192
+      },
+      {
+        "baseline": 0.5836431226765799,
+        "gain_pp": 0.371747211895912,
+        "main": 0.587360594795539,
+        "order": 3,
+        "relations": 269,
+        "room": "Dining room",
+        "scenes": 177
+      },
+      {
+        "baseline": 0.6349009900990099,
+        "gain_pp": 0.4950495049504955,
+        "main": 0.6398514851485149,
+        "order": 4,
+        "relations": 808,
+        "room": "Overall",
+        "scenes": 531
+      }
+    ]
+  },
+  "errors": [],
+  "queries": {
+    "comparison": "SELECT method, accuracy, satisfied, relations, role, display_order AS 'order' FROM comparison ORDER BY display_order",
+    "controls": "SELECT display_order AS 'order', control, accuracy, gain_pp, ci_low_pp, ci_high_pp, supported FROM controls ORDER BY display_order",
+    "headline": "SELECT main_accuracy, gain_pp, scenes, relations, selected_collision_pairs, collision_delta FROM headline",
+    "quality": "SELECT display_order AS 'order', check_name AS 'check', comparisons, failures, result FROM quality ORDER BY display_order",
+    "rooms": "SELECT display_order AS 'order', room, scenes, relations, baseline, main, gain_pp FROM rooms ORDER BY display_order"
+  },
+  "schema": "eg2027-eg13-report-query-results-v1",
+  "status": "PASS"
+}

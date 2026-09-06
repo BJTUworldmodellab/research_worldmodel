@@ -1,0 +1,22 @@
+{
+  "schema": "eg2027-eg14-uninvolved-human-review-v1",
+  "created_date": "2026-08-26",
+  "reviewer_code": "HR-01",
+  "attestation_source": "Project-owner confirmation in the Codex task on 2026-08-26",
+  "uninvolved_confirmed": true,
+  "experiment_implementation_uninvolved_confirmed": true,
+  "reviewed_pdf": {
+    "path": "paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.pdf",
+    "sha256": "a105a7431311eb365d39a6a4db37dfba5aae76ef06f7e825afeed17540474325"
+  },
+  "reviewed_supplement": {
+    "path": "artifacts/eurographics2027/eg13_anonymous_repro.zip",
+    "sha256": "9315e98e2dd4d7035097e91561aaf1469f71da1960eb07bc3f8ebb68c1d41002"
+  },
+  "paper_review_completed": true,
+  "supplement_reproduction_completed": true,
+  "environment_details_recorded": false,
+  "evidence_boundary": "The project owner confirmed that the independent human review was completed. Reviewer identity, OS, Python version, command runtimes, and private review notes were not supplied in the chat and are not invented here.",
+  "decision": "ACCEPT",
+  "findings": "No blocking issue was reported with the completion confirmation."
+}

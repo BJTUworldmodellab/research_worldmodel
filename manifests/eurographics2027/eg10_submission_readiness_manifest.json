@@ -1,7 +1,7 @@
 {
   "schema": "eg2027-eg10-submission-readiness-v1",
   "created_at": "2026-08-17",
-  "updated_at": "2026-08-19",
+  "updated_at": "2026-09-01",
   "task": "EG-10 Eurographics 2027 submission-readiness audit",
   "definition_source": "No prior EG10 specification existed; scoped from the three remaining EG09 submission tasks.",
   "status": "EG10_PRECHECK_BLOCKED",
@@ -55,17 +55,15 @@
     "Verified citation keys, cross-references, claim freeze, and absence of internal identity strings.",
     "Created three reviewer reports and a machine-readable submission preflight.",
     "Verified and archived the official EG2027 SRMv2 template package.",
-    "Migrated the manuscript to egpubl, eg2027, ConferenceSubmission, and eg-alpha-doi in a separate submission directory."
+    "Migrated the manuscript to egpubl, eg2027, ConferenceSubmission, and eg-alpha-doi in a separate submission directory.",
+    "Compiled and visually inspected a fresh Eurographics PDF with TeX Live 2026."
   ],
   "hard_blockers": [
     "PUBLIC_REPOSITORY_ANONYMITY_RISK",
-    "CCS_CATEGORIES_MISSING",
     "SUBMISSION_ID_PENDING",
-    "PDF_STALE",
     "AI_DISCLOSURE_AUTHOR_INPUT_NEEDED"
   ],
   "scientific_review_risks": [
-    "QUALITATIVE_FORMAL_EVIDENCE_MISSING",
     "GENERIC_COMPARATOR_INCONCLUSIVE",
     "ORIGINAL_BASELINE_INCONCLUSIVE",
     "SINGLE_GENERATOR_SEED_AND_PIPELINE",
@@ -74,18 +72,21 @@
   "inputs": {
     "paper": {
       "path": "paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex",
-      "sha256": "cc19e44413dd51e197a2f15f392a31f5bfd6f19cb4f8bd1d5de76462812bc6ef"
+      "sha256": "14a6d19ae5f148c8763bae742c6b9723fea9a8e4028353078139a6e448c9d0ac"
     },
     "bibliography": {
       "path": "paper/eurographics2027_submission/references.bib",
-      "sha256": "572d67f5e0e3c89c9001264e48eda9fcfffdbb3e5adc842a099c6ced990cc65a"
+      "sha256": "055be9a570443fc4e8cd5326ec59c9c70045796a0eb8f3e7d0ecd86ba438542d"
     },
-    "stale_pdf": {
-      "path": "paper/neurips_ra_instructscene/main.pdf",
-      "sha256": "3234c4a2fd39ec2db593e7fa48a3c40391c3d39d0b1d77133600b256e56e8e49",
-      "delivery_allowed": false
-    },
-    "eg09_manifest": "manifests/eurographics2027/eg09_paper_claim_freeze_manifest.json"
+    "eg09_manifest": "manifests/eurographics2027/eg09_paper_claim_freeze_manifest.json",
+    "fresh_pdf": {
+      "path": "paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.pdf",
+      "sha256": "f418b82977664d40f786b8788e541b895effcfd8bcb58de89456fc91fb01157d",
+      "bytes": 196198,
+      "pages": 6,
+      "visual_qa": "PASS",
+      "submission_allowed": false
+    }
   },
   "resume_condition": {
     "required_user_file": null,
@@ -93,7 +94,6 @@
     "required_entry": "paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex",
     "required_author_inputs": [
       "SRMv2 submission ID after abstract registration",
-      "verified ACM CCS categories and at least one SRMv2 keyword",
       "exact generative-AI tools/models/versions/purposes and human-review statement"
     ]
   },
@@ -111,6 +111,7 @@
     "scripts/check_eg10_submission_readiness.py",
     "tests/test_eg10_submission_readiness.py",
     "results/independent_eval/eg2027/eg10_submission_readiness_20260817/preflight.json",
-    "results/independent_eval/eg2027/eg10_submission_readiness_20260817/EG10_PRECHECK_BLOCKED"
+    "results/independent_eval/eg2027/eg10_submission_readiness_20260817/EG10_PRECHECK_BLOCKED",
+    "docs/eurographics2027/eg11_fresh_pdf_qa_20260825.md"
   ]
 }

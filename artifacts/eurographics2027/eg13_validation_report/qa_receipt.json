@@ -1,0 +1,24 @@
+{
+  "schema": "eg2027-eg13-html-qa-v1",
+  "status": "PASS_WITH_MINOR_SHARED_RUNTIME_CAVEAT",
+  "report_sha256": "085c532838762d3ef381c25f4529f03f94fc717ec1b2689602c28caf59c9b3cf",
+  "packaged_delivery": {
+    "validation": "passed",
+    "package": "passed",
+    "verification": "structural_only",
+    "reason": "The portable packager found no installed Chromium headless shell."
+  },
+  "in_app_browser_qa": {
+    "desktop_content": "PASS",
+    "narrow_content": "PASS",
+    "chart_full_percent_scale": "PASS",
+    "metric_cards": "PASS",
+    "three_tables": "PASS",
+    "contained_narrow_table_scrolling": "PASS",
+    "source_menu": "PASS",
+    "source_dialog": "PASS",
+    "embedded_sql_query": "PASS",
+    "console_or_page_error": "NONE_OBSERVED"
+  },
+  "minor_caveat": "The shared portable reader top bar extends about 8 px beyond the document client width at desktop and narrow viewports, producing a small page-level horizontal scrollbar. Report content is not clipped; wide tables remain inside their own labeled scroll regions."
+}

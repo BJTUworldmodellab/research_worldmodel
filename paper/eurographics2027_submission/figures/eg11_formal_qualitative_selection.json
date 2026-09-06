@@ -1,0 +1,83 @@
+{
+  "examples": [
+    {
+      "baseline_satisfied": false,
+      "gate_decision": "repair",
+      "kind": "success",
+      "main_satisfied": true,
+      "relation": {
+        "object_class": "double bed",
+        "predicate": "behind",
+        "subject_class": "pendant lamp"
+      },
+      "relation_id": "r001",
+      "room_type": "bedroom",
+      "scene_id": "bedroom:2b2d0238-534a-46bd-95f6-2e45a098de5e_MasterBedroom-935"
+    },
+    {
+      "baseline_satisfied": false,
+      "gate_decision": "repair",
+      "kind": "success",
+      "main_satisfied": true,
+      "relation": {
+        "object_class": "pendant lamp",
+        "predicate": "in front of",
+        "subject_class": "bookshelf"
+      },
+      "relation_id": "r001",
+      "room_type": "livingroom",
+      "scene_id": "livingroom:113df359-12ee-4a36-ac63-b342d827e117_LivingDiningRoom-15768"
+    },
+    {
+      "baseline_satisfied": false,
+      "gate_decision": "repair",
+      "kind": "success",
+      "main_satisfied": true,
+      "relation": {
+        "object_class": "dining chair",
+        "predicate": "behind",
+        "subject_class": "dining table"
+      },
+      "relation_id": "r001",
+      "room_type": "diningroom",
+      "scene_id": "diningroom:2513701f-f5ab-41b5-9d0b-af10956551bf_DiningRoom-12866"
+    },
+    {
+      "baseline_satisfied": false,
+      "gate_decision": "repair",
+      "kind": "remaining_failure",
+      "main_satisfied": false,
+      "relation": {
+        "object_class": "nightstand",
+        "predicate": "right",
+        "subject_class": "nightstand"
+      },
+      "relation_id": "r000",
+      "room_type": "bedroom",
+      "scene_id": "bedroom:12f93edf-43d1-4009-9639-92b3b604b352_SecondBedroom-1145"
+    }
+  ],
+  "inputs": {
+    "layouts": {
+      "path": "eg07_final_delivery_20260814/layouts/layouts.json",
+      "sha256": "663ce5ff76698358c47e9542563bd01a788bc90efb9f299e7c261da2399e281d"
+    },
+    "per_relation": {
+      "path": "eg07_final_delivery_20260814/eg05/per_relation.csv",
+      "sha256": "6bb88a6ed5bd205edee75f38b3a60116ebbb42c6487a8bc1c417bc339c7fe9f7"
+    }
+  },
+  "outputs": {
+    "pdf": {
+      "path": "paper/eurographics2027_submission/figures/eg11_formal_qualitative.pdf",
+      "sha256": "104d2a24798e6a5f4d76f81b001621ed5677414734ddacc36b1ec50653db5d53"
+    },
+    "png": {
+      "mode": "RGB",
+      "path": "paper/eurographics2027_submission/figures/eg11_formal_qualitative.png",
+      "sha256": "eef52ad6104c497f7cb5af20f264541c69bf29956d78ade939a2d98ddb153493"
+    }
+  },
+  "schema": "eg2027-eg11-formal-qualitative-v1",
+  "selection_rule": "Lexicographically first evaluated baseline-fail/main-pass relation with nonzero XZ movement for each room; plus the lexicographically first evaluated baseline-fail/main-fail relation whose collision gate selected a nonzero-movement repair."
+}

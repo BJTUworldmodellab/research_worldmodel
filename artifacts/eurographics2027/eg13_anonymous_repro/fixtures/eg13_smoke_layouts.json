@@ -1,0 +1,95 @@
+{
+  "layouts": [
+    {
+      "layout_variant": "baseline",
+      "objects": [
+        {
+          "category": "bed",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "index": 0,
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "category": "night stand",
+          "center": [
+            -0.2,
+            0.0,
+            0.0
+          ],
+          "index": 1,
+          "size": [
+            0.4,
+            0.4,
+            0.4
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "room_type": "bedroom",
+      "scene_id": "anonymous_smoke_scene",
+      "source_config_id": "smoke",
+      "target_relations": [
+        {
+          "object_class": "bed",
+          "predicate": "right",
+          "relation_id": "right_relation",
+          "subject_class": "nightstand"
+        },
+        {
+          "object_class": "bed",
+          "predicate": "near",
+          "relation_id": "missing_relation",
+          "subject_class": "lamp"
+        }
+      ]
+    },
+    {
+      "layout_variant": "collision_gated_floor_prior",
+      "objects": [
+        {
+          "category": "bed",
+          "center": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "index": 0,
+          "size": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "yaw": 0.0
+        },
+        {
+          "category": "night stand",
+          "center": [
+            0.2,
+            0.0,
+            0.0
+          ],
+          "index": 1,
+          "size": [
+            0.4,
+            0.4,
+            0.4
+          ],
+          "yaw": 0.0
+        }
+      ],
+      "room_type": "bedroom",
+      "scene_id": "anonymous_smoke_scene",
+      "source_config_id": "smoke",
+      "target_relations": []
+    }
+  ]
+}

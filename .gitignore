@@ -31,3 +31,14 @@ repaired_layouts/
 *.pem
 *.key
 id_rsa*
+
+# Local render previews, test dependencies, and TeX intermediate files.
+/tmp/
+/paper/eurographics2027_submission/build/*
+!/paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.pdf
+!/paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.log
+
+# The lightweight anonymous evidence package is an intentional deliverable.
+!/artifacts/eurographics2027/eg13_anonymous_repro.zip
+!/artifacts/eurographics2027/eg13_anonymous_repro/data/
+!/artifacts/eurographics2027/eg13_anonymous_repro/data/**

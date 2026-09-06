@@ -1,0 +1,60 @@
+{
+  "schema": "eg2027-submission-metadata-v1",
+  "state": "EG15_DEFERRED_BY_AUTHOR",
+  "updated_date": "2026-09-06",
+  "submission_allowed": false,
+  "deferral_record": "submission/eurographics2027/eg15_eg16_deferred_20260901.md",
+  "title": "Repairing Graph-to-Layout Relation Grounding in Instruction-Guided 3D Indoor Scene Generation",
+  "abstract": "Instruction-guided 3D indoor scene generation requires final layouts to realize the spatial relations requested by a user, not merely to generate plausible object sets or symbolic scene graphs. We show that a pretrained InstructScene pipeline exhibits a graph-to-layout grounding gap: explicit relations in the instruction can be lost when a generated scene graph is decoded into continuous object placements. We introduce Relation-Grounded Floor Repair, a training-free, safety-aware verifier-repair framework that parses explicit spatial relations, matches them to generated objects, verifies whether final layouts satisfy them, and applies bounded floor-plane repairs while preserving object height. On a frozen 531-scene evaluation spanning the existing InstructScene bedroom, living-room, and dining-room validation splits, collision-gated Floor-Prior obtains 0.6399 realized relation accuracy, compared with 0.6254 for the mean of three exact movement-matched random controls (gain 1.44 percentage points; paired scene-level bootstrap 95% confidence interval, 0.75 to 2.20 points). The selected layouts contain 1,061 FCL mesh-collision pairs, compared with 1,075 for the original layouts. The gain over the original InstructScene baseline is smaller and its confidence interval includes zero; our evidence therefore supports a bounded claim of relation-aware control beyond matched random movement, not superiority to every comparator.",
+  "keywords": [
+    "3D indoor scene generation",
+    "spatial relations",
+    "layout repair",
+    "geometric verification"
+  ],
+  "ccs": [
+    {
+      "significance": 500,
+      "description": "Computing methodologies~Computer graphics"
+    },
+    {
+      "significance": 300,
+      "description": "Computing methodologies~Spatial and physical reasoning"
+    },
+    {
+      "significance": 300,
+      "description": "Computing methodologies~Scene understanding"
+    }
+  ],
+  "suggested_topics": [
+    "Scene synthesis and modeling",
+    "Generative models for graphics",
+    "3D scene understanding and spatial reasoning"
+  ],
+  "authors": [],
+  "corresponding_author": null,
+  "affiliations": [],
+  "ai_use_disclosure": null,
+  "materials": {
+    "main_pdf": {
+      "path": "paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.pdf",
+      "status": "FRESH_PDF_PASS_ARTICLE_DEVELOPMENT_ONLY",
+      "pages": 6,
+      "bytes": 196198,
+      "sha256": "f418b82977664d40f786b8788e541b895effcfd8bcb58de89456fc91fb01157d"
+    },
+    "anonymous_supplement": {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro.zip",
+      "status": "PASS",
+      "bytes": 1699708,
+      "sha256": "9315e98e2dd4d7035097e91561aaf1469f71da1960eb07bc3f8ebb68c1d41002"
+    }
+  },
+  "blocking_fields": [
+    "authors and final author order",
+    "author affiliations",
+    "corresponding author and e-mail used only in SRMv2",
+    "author-confirmed generative-AI disclosure",
+    "double-blind public-repository decision"
+  ]
+}

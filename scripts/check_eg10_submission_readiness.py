@@ -15,11 +15,10 @@ from typing import Any
 SCHEMA = "eg2027-eg10-submission-readiness-v1"
 PAPER = Path("paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex")
 BIB = Path("paper/eurographics2027_submission/references.bib")
-PDF = Path("paper/neurips_ra_instructscene/main.pdf")
+PDF = Path("paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.pdf")
 OFFICIAL_TEMPLATE = Path("paper/eg2027_official_style/EGauthorGuidelines-conf-sub.tex")
 EG09_CHECKER = Path("scripts/check_eg09_paper_claim_consistency.py")
 EG10_MANIFEST = Path("manifests/eurographics2027/eg10_submission_readiness_manifest.json")
-STALE_PDF_SHA256 = "3234c4a2fd39ec2db593e7fa48a3c40391c3d39d0b1d77133600b256e56e8e49"
 
 
 def sha256(path: Path) -> str:
@@ -98,7 +97,7 @@ def validate(repo_root: Path) -> dict[str, Any]:
         "eg10_manifest_input_hashes_match": (
             manifest_inputs["paper"]["sha256"] == sha256(paper_path)
             and manifest_inputs["bibliography"]["sha256"] == sha256(bib_path)
-            and manifest_inputs["stale_pdf"]["sha256"] == sha256(pdf_path)
+            and manifest_inputs["fresh_pdf"]["sha256"] == sha256(pdf_path)
         ),
         "all_citations_resolve": citations <= bib_keys,
         "uncited_bibliography_entries": sorted(bib_keys - citations),
@@ -127,7 +126,7 @@ def validate(repo_root: Path) -> dict[str, Any]:
         ),
         "has_result_figure": "\\includegraphics" in tex,
         "official_2027_template_present": (repo_root / OFFICIAL_TEMPLATE).is_file(),
-        "tracked_pdf_is_stale_pre_eg09": sha256(pdf_path) == STALE_PDF_SHA256,
+        "fresh_pdf_is_not_older_than_sources": pdf_path.stat().st_mtime >= max(paper_path.stat().st_mtime, bib_path.stat().st_mtime),
         "word_count_approx": len(re.findall(r"\b[\w'-]+\b", tex)),
         "figure_environments": len(re.findall(r"\\begin\{figure\}", tex)),
         "table_environments": len(re.findall(r"\\begin\{table\}", tex)),
@@ -167,9 +166,9 @@ def validate(repo_root: Path) -> dict[str, Any]:
         hard_blockers.append(
             blocker("SUBMISSION_ID_PENDING", "authors", "Insert the SRMv2 submission ID after abstract registration.")
         )
-    if checks["tracked_pdf_is_stale_pre_eg09"]:
+    if not checks["fresh_pdf_is_not_older_than_sources"]:
         hard_blockers.append(
-            blocker("PDF_STALE", "build", "Compile and visually inspect a new PDF from the migrated EG2027 source.")
+            blocker("PDF_NOT_FRESH", "build", "Recompile and visually inspect the Eurographics PDF after the latest source change.")
         )
     if not checks["has_ai_disclosure"]:
         hard_blockers.append(
@@ -181,10 +180,6 @@ def validate(repo_root: Path) -> dict[str, Any]:
         )
 
     scientific_risks = [
-        {
-            "code": "QUALITATIVE_FORMAL_EVIDENCE_MISSING",
-            "evidence": "The manuscript has one pipeline schematic and no rendered formal before/after result figure.",
-        },
         {
             "code": "GENERIC_COMPARATOR_INCONCLUSIVE",
             "evidence": "Main accuracy 0.6399 is below the generic optimizer point estimate 0.6411; paired CI includes zero.",
@@ -202,6 +197,14 @@ def validate(repo_root: Path) -> dict[str, Any]:
             "evidence": "Aggregate collision counts do not establish perceived layout quality or functional plausibility.",
         },
     ]
+    if not checks["has_result_figure"]:
+        scientific_risks.insert(
+            0,
+            {
+                "code": "QUALITATIVE_FORMAL_EVIDENCE_MISSING",
+                "evidence": "The manuscript has no rendered formal before/after result figure.",
+            },
+        )
 
     integrity_errors = [
         name

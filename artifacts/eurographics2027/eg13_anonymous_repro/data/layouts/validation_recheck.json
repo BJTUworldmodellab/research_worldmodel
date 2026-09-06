@@ -1,0 +1,24 @@
+{
+  "counts": {
+    "gate_decisions": {
+      "fallback_baseline": 39,
+      "repair": 492
+    },
+    "layouts": 1062,
+    "relation_export_status": {
+      "direct": 678,
+      "protocol_mapped_composite": 130
+    },
+    "scene_count_by_room": {
+      "bedroom": 162,
+      "diningroom": 177,
+      "livingroom": 192
+    },
+    "scenes": 531,
+    "target_relations": 808
+  },
+  "errors": [],
+  "profile": "full",
+  "status": "PASS",
+  "warnings": []
+}

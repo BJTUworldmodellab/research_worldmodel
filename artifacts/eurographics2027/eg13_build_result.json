@@ -1,0 +1,17 @@
+{
+  "anonymity_findings": [],
+  "package": "artifacts/eurographics2027/eg13_anonymous_repro",
+  "reproduction": {
+    "errors": [],
+    "status": "PASS"
+  },
+  "smoke": {
+    "errors": [],
+    "relations_checked": 4,
+    "status": "PASS"
+  },
+  "status": "PASS",
+  "zip": "artifacts/eurographics2027/eg13_anonymous_repro.zip",
+  "zip_bytes": 1699708,
+  "zip_sha256": "9315e98e2dd4d7035097e91561aaf1469f71da1960eb07bc3f8ebb68c1d41002"
+}

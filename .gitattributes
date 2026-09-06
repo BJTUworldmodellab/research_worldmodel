@@ -3,3 +3,12 @@
 # Preserve the EG07 forensic delivery byte-for-byte across platforms.
 eg07_final_delivery_20260814.tar.gz -text
 eg07_final_delivery_20260814/** -text
+
+# Preserve exact bytes for paper and evidence checksums on every platform.
+paper/eurographics2027_submission/** -text whitespace=cr-at-eol
+artifacts/eurographics2027/** -text -whitespace
+paper/eurographics2027_submission/build/*.log -whitespace
+*.pdf binary
+*.png binary
+*.zip binary
+*.sqlite binary

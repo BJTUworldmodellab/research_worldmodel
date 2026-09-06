@@ -1,0 +1,78 @@
+{
+  "created_date": "2026-08-25",
+  "external_actions_required": [
+    "none during article development; resume submission actions only on explicit author request"
+  ],
+  "overall": "ARTICLE_DEVELOPMENT_ACTIVE_SUBMISSION_DEFERRED",
+  "schema": "eg2027-eg11-eg16-readiness-v1",
+  "tasks": {
+    "EG11": {
+      "pass": true,
+      "pdf": {
+        "exists": true,
+        "fresh": true,
+        "sha256": "f418b82977664d40f786b8788e541b895effcfd8bcb58de89456fc91fb01157d"
+      },
+      "source_anonymity_findings": [],
+      "source_requirements": {
+        "anonymous_author_placeholder": true,
+        "ccs": true,
+        "conference_submission": true,
+        "formal_figure": true,
+        "keywords": true,
+        "relscene_citation": true
+      },
+      "state": "EG11_FRESH_PDF_PASS"
+    },
+    "EG12": {
+      "pass": true,
+      "state": "EG12_CITATIONS_VERIFIED"
+    },
+    "EG13": {
+      "build_result": {
+        "anonymity_findings": [],
+        "package": "artifacts/eurographics2027/eg13_anonymous_repro",
+        "reproduction": {
+          "errors": [],
+          "status": "PASS"
+        },
+        "smoke": {
+          "errors": [],
+          "relations_checked": 4,
+          "status": "PASS"
+        },
+        "status": "PASS",
+        "zip": "artifacts/eurographics2027/eg13_anonymous_repro.zip",
+        "zip_bytes": 1699708,
+        "zip_sha256": "9315e98e2dd4d7035097e91561aaf1469f71da1960eb07bc3f8ebb68c1d41002"
+      },
+      "pass": true,
+      "state": "EG13_ANONYMOUS_REPRO_PASS"
+    },
+    "EG14": {
+      "accepted_human_receipt": true,
+      "accepted_human_receipts": [
+        "docs/eurographics2027/eg14_uninvolved_human_review_receipt_20260826.json"
+      ],
+      "current_pdf_human_receipts": [],
+      "pass": false,
+      "state": "EG14_DONE_FOR_REVIEWED_SNAPSHOT_CURRENT_DELTA_REVIEW_DEFERRED"
+    },
+    "EG15": {
+      "blocking_fields": [
+        "authors and final author order",
+        "author affiliations",
+        "corresponding author and e-mail used only in SRMv2",
+        "author-confirmed generative-AI disclosure",
+        "double-blind public-repository decision"
+      ],
+      "pass": false,
+      "state": "EG15_DEFERRED_BY_AUTHOR"
+    },
+    "EG16": {
+      "pass": false,
+      "state": "EG16_DEFERRED_BY_AUTHOR",
+      "submission_id": "PENDING"
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "baseline": {
+    "relation_weighted_ci95": [
+      -0.0012515644555694619,
+      0.012225687952442582
+    ],
+    "relation_weighted_diff": 0.0049504950495049506,
+    "scene_unweighted_ci95": [
+      -0.0009416195856873823,
+      0.011299435028248588
+    ],
+    "scene_unweighted_mean_diff": 0.004708097928436911
+  },
+  "generic_relation_optimizer": {
+    "relation_weighted_ci95": [
+      -0.006329113924050633,
+      0.0037593984962406013
+    ],
+    "relation_weighted_diff": -0.0012376237623762376,
+    "scene_unweighted_ci95": [
+      -0.007532956685499058,
+      0.002824858757062147
+    ],
+    "scene_unweighted_mean_diff": -0.0018832391713747645
+  },
+  "random_mean": {
+    "relation_weighted_ci95": [
+      0.007453416149068323,
+      0.022005381872709433
+    ],
+    "relation_weighted_diff": 0.01443894389438944,
+    "scene_unweighted_ci95": [
+      0.0069052102950408045,
+      0.02071563088512241
+    ],
+    "scene_unweighted_mean_diff": 0.01349654739485248
+  },
+  "random_movement_matched_seed0": {
+    "relation_weighted_ci95": [
+      0.0075469327770930125,
+      0.028290282902829027
+    ],
+    "relation_weighted_diff": 0.017326732673267328,
+    "scene_unweighted_ci95": [
+      0.006591337099811676,
+      0.02448210922787194
+    ],
+    "scene_unweighted_mean_diff": 0.015065913370998116
+  },
+  "random_movement_matched_seed1": {
+    "relation_weighted_ci95": [
+      0.006127450980392157,
+      0.024968789013732832
+    ],
+    "relation_weighted_diff": 0.01485148514851485,
+    "scene_unweighted_ci95": [
+      0.005649717514124294,
+      0.02448210922787194
+    ],
+    "scene_unweighted_mean_diff": 0.014124293785310734
+  },
+  "random_movement_matched_seed2": {
+    "relation_weighted_ci95": [
+      0.0036900369003690036,
+      0.019632504785879013
+    ],
+    "relation_weighted_diff": 0.011138613861386138,
+    "scene_unweighted_ci95": [
+      0.003766478342749529,
+      0.01977401129943503
+    ],
+    "scene_unweighted_mean_diff": 0.011299435028248588
+  }
+}

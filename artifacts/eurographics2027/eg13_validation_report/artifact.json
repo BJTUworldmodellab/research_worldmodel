@@ -1,0 +1,284 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "EG13 Frozen-Result Reproducibility Validation",
+    "description": "Technical validation of the anonymous Eurographics 2027 layout-to-statistics package.",
+    "generatedAt": "2026-08-25T00:00:00+08:00",
+    "sources": [
+      {
+        "id": "reproduction_source",
+        "label": "Executed SQLite report queries over EG13 reproduction output",
+        "path": "artifacts/eurographics2027/eg13_validation_report/report_queries.sql",
+        "query": {
+          "engine": "sqlite",
+          "language": "sql",
+          "sql": "SELECT main_accuracy, gain_pp, scenes, relations, selected_collision_pairs, collision_delta FROM headline;\nSELECT method, accuracy, satisfied, relations, role, display_order AS 'order' FROM comparison ORDER BY display_order;\nSELECT display_order AS 'order', control, accuracy, gain_pp, ci_low_pp, ci_high_pp, supported FROM controls ORDER BY display_order;\nSELECT display_order AS 'order', room, scenes, relations, baseline, main, gain_pp FROM rooms ORDER BY display_order;\nSELECT display_order AS 'order', check_name AS 'check', comparisons, failures, result FROM quality ORDER BY display_order;",
+          "description": "Executed SQLite queries over tables materialized from the saved EG13 reproduction output and anonymous-package manifest.",
+          "tables_used": ["headline", "comparison", "controls", "rooms", "quality"],
+          "filters": ["Frozen 531-scene existing-protocol validation population", "Missing target relations retained in the denominator"],
+          "metric_definitions": ["Relation accuracy = satisfied target relations / all target relations.", "Gain is main minus control in percentage points.", "Movement fairness failures use a 1e-6 m tolerance."]
+        }
+      },
+      {
+        "id": "package_source",
+        "label": "Anonymous package manifest",
+        "path": "artifacts/eurographics2027/eg13_anonymous_repro/MANIFEST.json"
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# EG13 Frozen-Result Reproducibility Validation"
+      },
+      {
+        "id": "technical-summary",
+        "type": "markdown",
+        "body": "## The frozen tables reproduce exactly\n\nThe anonymous package passes layout-to-statistics reconstruction, data-grain checks, per-object movement matching, generic-optimizer budget checks, a minimal independent-evaluator smoke test, and identity scanning. The verified result is narrow: collision-gated Floor-Prior exceeds the three-seed movement-matched random mean; intervals versus the original generator and generic optimizer include zero.",
+        "sourceId": "reproduction_source"
+      },
+      {
+        "id": "headline-metrics",
+        "type": "metric-strip",
+        "cardIds": ["main-accuracy", "evaluation-scope", "collision-accounting"]
+      },
+      {
+        "id": "comparison-heading",
+        "type": "markdown",
+        "body": "## The supported gain is against matched random movement\n\nAll bars use the full 0–100% accuracy scale so the small absolute differences are not visually exaggerated. Exact paired confidence intervals appear in the table that follows; only the random-control comparisons have positive lower bounds."
+      },
+      {
+        "id": "accuracy-chart-block",
+        "type": "chart",
+        "chartId": "accuracy-comparison"
+      },
+      {
+        "id": "controls-table-block",
+        "type": "table",
+        "tableId": "control-comparisons"
+      },
+      {
+        "id": "scope-heading",
+        "type": "markdown",
+        "body": "## Scope and metric definitions\n\nThe population is the frozen existing InstructScene validation protocol: 162 bedrooms, 192 living rooms, and 177 dining rooms. Relation accuracy uses 808 explicit targets as the denominator; all 93 missing targets remain in that denominator and no unsupported predicate is discarded.",
+        "sourceId": "reproduction_source"
+      },
+      {
+        "id": "rooms-table-block",
+        "type": "table",
+        "tableId": "room-results"
+      },
+      {
+        "id": "quality-heading",
+        "type": "markdown",
+        "body": "## Integrity and fairness checks found no mismatch\n\nEvery expected scene/variant key is present and unique. Recomputing displacement directly from object centers yields zero failures across 16,599 random movement comparisons and 5,533 generic-budget comparisons."
+      },
+      {
+        "id": "quality-table-block",
+        "type": "table",
+        "tableId": "quality-checks"
+      },
+      {
+        "id": "limitations",
+        "type": "markdown",
+        "body": "## The package is not an end-to-end generator rerun\n\nThird-party datasets, checkpoints, environments, and the three original room-level generator JSON files are not redistributed. The package supports frozen layout-to-statistics reconstruction and evaluator smoke testing. It does not establish superiority over ReSpace, SDGScenes, RelScene, the original InstructScene output, or the generic optimizer.",
+        "sourceId": "package_source"
+      },
+      {
+        "id": "next-steps",
+        "type": "markdown",
+        "body": "## Recommended next steps\n\n1. Recompare every paper table cell after the fresh EG2027 PDF compiles.\n2. Have an uninvolved human extract the ZIP and run both commands in a clean directory.\n3. Keep the identity-bearing public repository separate from anonymous submission material until the double-blind decision is resolved."
+      },
+      {
+        "id": "further-questions",
+        "type": "markdown",
+        "body": "## Further questions\n\nCan the original generator outputs be deposited anonymously under their licensing constraints, and can a reviewer reproduce the two commands on a second operating system without ambiguity?"
+      }
+    ],
+    "cards": [
+      {
+        "id": "main-accuracy",
+        "dataset": "headline",
+        "sourceId": "reproduction_source",
+        "description": "Collision-gated Floor-Prior relation accuracy with matched-random comparison context.",
+        "metrics": [
+          {"label": "Main accuracy", "field": "main_accuracy", "format": "percent"},
+          {"label": "vs random mean (pp)", "field": "gain_pp", "format": "number", "signed": true}
+        ]
+      },
+      {
+        "id": "evaluation-scope",
+        "dataset": "headline",
+        "sourceId": "reproduction_source",
+        "description": "Frozen scene population and explicit target-relation denominator.",
+        "metrics": [
+          {"label": "Scenes", "field": "scenes", "format": "number"},
+          {"label": "Target relations", "field": "relations", "format": "number"}
+        ]
+      },
+      {
+        "id": "collision-accounting",
+        "dataset": "headline",
+        "sourceId": "reproduction_source",
+        "description": "Aggregate FCL mesh-collision pair count in selected layouts.",
+        "metrics": [
+          {"label": "Selected collision pairs", "field": "selected_collision_pairs", "format": "number"},
+          {"label": "vs baseline", "field": "collision_delta", "format": "number", "signed": true}
+        ]
+      }
+    ],
+    "charts": [
+      {
+        "id": "accuracy-comparison",
+        "title": "Overall realized relation accuracy",
+        "subtitle": "Frozen 531-scene, 808-relation protocol; full percent scale",
+        "intent": "comparison",
+        "question": "How does the selected method compare with same-protocol controls?",
+        "rationale": "A simple vertical bar chart supports direct accuracy comparison while a zero baseline prevents exaggerating small absolute differences.",
+        "type": "bar",
+        "dataset": "comparison",
+        "sourceId": "reproduction_source",
+        "encodings": {
+          "x": {"field": "method", "type": "nominal", "label": "Method"},
+          "y": {"field": "accuracy", "type": "quantitative", "format": "percent", "label": "Relation accuracy"},
+          "tooltip": [
+            {"field": "accuracy", "type": "quantitative", "format": "percent", "label": "Accuracy"},
+            {"field": "satisfied", "type": "quantitative", "format": "number", "label": "Satisfied targets"},
+            {"field": "relations", "type": "quantitative", "format": "number", "label": "Target relations"}
+          ]
+        },
+        "valueFormat": "percent",
+        "layout": "full",
+        "maxRows": 10,
+        "comparisonContext": {
+          "baseline": "Original InstructScene output",
+          "denominator": "808 explicit target relations",
+          "grain": "one frozen layout per validation scene",
+          "unit": "fractional relation accuracy"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "control-comparisons",
+        "title": "Paired same-protocol comparisons",
+        "subtitle": "Main minus control, percentage points; canonical 10,000-round paired scene bootstrap",
+        "dataset": "controls",
+        "defaultSort": {"field": "gain_pp", "direction": "desc"},
+        "density": "spacious",
+        "sourceId": "reproduction_source",
+        "layout": "full",
+        "columns": [
+          {"field": "control", "label": "Control", "type": "text"},
+          {"field": "accuracy", "label": "Accuracy", "format": "percent"},
+          {"field": "gain_pp", "label": "Gain (pp)", "format": "number", "movement": true},
+          {"field": "ci_low_pp", "label": "CI low (pp)", "format": "number"},
+          {"field": "ci_high_pp", "label": "CI high (pp)", "format": "number"},
+          {"field": "supported", "label": "Positive lower bound", "type": "text"}
+        ]
+      },
+      {
+        "id": "room-results",
+        "title": "Room-level formal results",
+        "subtitle": "Missing target objects remain in each room's relation denominator",
+        "dataset": "rooms",
+        "defaultSort": {"field": "room", "direction": "asc"},
+        "density": "spacious",
+        "sourceId": "reproduction_source",
+        "layout": "full",
+        "columns": [
+          {"field": "room", "label": "Room", "type": "text"},
+          {"field": "scenes", "label": "Scenes", "format": "number"},
+          {"field": "relations", "label": "Relations", "format": "number"},
+          {"field": "baseline", "label": "Baseline", "format": "percent"},
+          {"field": "main", "label": "Gated Floor-Prior", "format": "percent"},
+          {"field": "gain_pp", "label": "Gain (pp)", "format": "number", "movement": true}
+        ]
+      },
+      {
+        "id": "quality-checks",
+        "title": "Reproducibility and data-quality checks",
+        "subtitle": "All checks executed against the packaged files; zero failures expected",
+        "dataset": "quality",
+        "defaultSort": {"field": "check", "direction": "asc"},
+        "density": "spacious",
+        "sourceId": "reproduction_source",
+        "layout": "full",
+        "columns": [
+          {"field": "check", "label": "Check", "type": "text"},
+          {"field": "comparisons", "label": "Rows/comparisons", "format": "number"},
+          {"field": "failures", "label": "Failures", "format": "number"},
+          {"field": "result", "label": "Result", "type": "text"}
+        ]
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-25T00:00:00+08:00",
+    "status": "ready",
+    "datasets": {
+      "headline": [
+        {
+          "main_accuracy": 0.6398514851485149,
+          "gain_pp": 1.443894389438944,
+          "scenes": 531,
+          "relations": 808,
+          "selected_collision_pairs": 1061,
+          "collision_delta": -14
+        }
+      ],
+      "comparison": [
+        {"method": "Original baseline", "accuracy": 0.6349009900990099, "satisfied": 513, "relations": 808, "role": "control", "order": 1},
+        {"method": "Random mean", "accuracy": 0.6254125412541254, "satisfied": 505.3333333333333, "relations": 808, "role": "control", "order": 2},
+        {"method": "Generic optimizer", "accuracy": 0.6410891089108911, "satisfied": 518, "relations": 808, "role": "control", "order": 3},
+        {"method": "Gated Floor-Prior", "accuracy": 0.6398514851485149, "satisfied": 517, "relations": 808, "role": "main", "order": 4}
+      ],
+      "controls": [
+        {"order": 1, "control": "Original baseline", "accuracy": 0.6349009900990099, "gain_pp": 0.49504950495049506, "ci_low_pp": -0.1251564455569462, "ci_high_pp": 1.2225687952442582, "supported": "No"},
+        {"order": 2, "control": "Random seed 0", "accuracy": 0.6225247524752475, "gain_pp": 1.7326732673267328, "ci_low_pp": 0.7546932777093012, "ci_high_pp": 2.8290282902829027, "supported": "Yes"},
+        {"order": 3, "control": "Random seed 1", "accuracy": 0.625, "gain_pp": 1.485148514851485, "ci_low_pp": 0.6127450980392157, "ci_high_pp": 2.496878901373283, "supported": "Yes"},
+        {"order": 4, "control": "Random seed 2", "accuracy": 0.6287128712871287, "gain_pp": 1.1138613861386138, "ci_low_pp": 0.36900369003690036, "ci_high_pp": 1.9632504785879013, "supported": "Yes"},
+        {"order": 5, "control": "Random-seed mean", "accuracy": 0.6254125412541254, "gain_pp": 1.443894389438944, "ci_low_pp": 0.7453416149068323, "ci_high_pp": 2.2005381872709435, "supported": "Yes"},
+        {"order": 6, "control": "Generic optimizer", "accuracy": 0.6410891089108911, "gain_pp": -0.12376237623762376, "ci_low_pp": -0.6329113924050633, "ci_high_pp": 0.37593984962406013, "supported": "No"}
+      ],
+      "rooms": [
+        {"order": 1, "room": "Bedroom", "scenes": 162, "relations": 245, "baseline": 0.726530612244898, "main": 0.7306122448979592, "gain_pp": 0.40816326530611624},
+        {"order": 2, "room": "Living room", "scenes": 192, "relations": 294, "baseline": 0.6054421768707483, "main": 0.6122448979591837, "gain_pp": 0.6802721088435382},
+        {"order": 3, "room": "Dining room", "scenes": 177, "relations": 269, "baseline": 0.5836431226765799, "main": 0.587360594795539, "gain_pp": 0.37174721189591198},
+        {"order": 4, "room": "Overall", "scenes": 531, "relations": 808, "baseline": 0.6349009900990099, "main": 0.6398514851485149, "gain_pp": 0.4950495049504955}
+      ],
+      "quality": [
+        {"order": 1, "check": "EG05 scene/variant key uniqueness", "comparisons": 1062, "failures": 0, "result": "PASS"},
+        {"order": 2, "check": "EG06 scene/variant key uniqueness", "comparisons": 3186, "failures": 0, "result": "PASS"},
+        {"order": 3, "check": "Random per-object movement magnitude", "comparisons": 16599, "failures": 0, "result": "PASS"},
+        {"order": 4, "check": "Generic per-object movement budget", "comparisons": 5533, "failures": 0, "result": "PASS"},
+        {"order": 5, "check": "Evaluator smoke relations", "comparisons": 4, "failures": 0, "result": "PASS"},
+        {"order": 6, "check": "Anonymous content scan", "comparisons": 28, "failures": 0, "result": "PASS"}
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "reproduction_source",
+      "label": "Executed SQLite report queries over EG13 reproduction output",
+      "path": "artifacts/eurographics2027/eg13_validation_report/report_queries.sql",
+      "query": {
+        "engine": "sqlite",
+        "language": "sql",
+        "sql": "SELECT main_accuracy, gain_pp, scenes, relations, selected_collision_pairs, collision_delta FROM headline;\nSELECT method, accuracy, satisfied, relations, role, display_order AS 'order' FROM comparison ORDER BY display_order;\nSELECT display_order AS 'order', control, accuracy, gain_pp, ci_low_pp, ci_high_pp, supported FROM controls ORDER BY display_order;\nSELECT display_order AS 'order', room, scenes, relations, baseline, main, gain_pp FROM rooms ORDER BY display_order;\nSELECT display_order AS 'order', check_name AS 'check', comparisons, failures, result FROM quality ORDER BY display_order;",
+        "description": "Executed SQLite queries over tables materialized from the saved EG13 reproduction output and anonymous-package manifest.",
+        "tables_used": ["headline", "comparison", "controls", "rooms", "quality"],
+        "filters": ["Frozen 531-scene existing-protocol validation population", "Missing target relations retained in the denominator"],
+        "metric_definitions": ["Relation accuracy = satisfied target relations / all target relations.", "Gain is main minus control in percentage points.", "Movement fairness failures use a 1e-6 m tolerance."]
+      }
+    },
+    {
+      "id": "package_source",
+      "label": "Anonymous package manifest",
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/MANIFEST.json"
+    }
+  ]
+}

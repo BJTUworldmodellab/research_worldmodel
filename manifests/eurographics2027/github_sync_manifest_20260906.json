@@ -1,0 +1,443 @@
+{
+  "schema": "eg2027-github-sync-v1",
+  "prepared_date": "2026-09-06",
+  "repository": "BJTUworldmodellab/research_worldmodel",
+  "branch": "agent/eg11-eg16-eurographics2027",
+  "base_commit": "1cfa5f920341c65ab1da0ef471c1e6ca269c85aa",
+  "scope": "All staged article and experiment deliverables; existing historical project files are inherited from base_commit.",
+  "exclusions": [
+    "tmp and local test dependencies",
+    "TeX runtime and intermediate caches",
+    "other workspace clones",
+    "third-party full datasets/checkpoints not already included in the evidence package"
+  ],
+  "manifest_boundary": "Lists staged Git blobs before adding this manifest itself. Each object is the exact committed content; line-ending preservation is declared in .gitattributes.",
+  "file_count": 85,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "git_blob_sha1": "ca68d750f5e2b00394a3a0a2bf81c72631a22f98",
+      "mode": "100644"
+    },
+    {
+      "path": ".gitignore",
+      "git_blob_sha1": "2d37d04f734061cd1650cb125f7cfaae0aae3ed7",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro.zip",
+      "git_blob_sha1": "7160998810c8e746af3245f6bae792f304abcdb7",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/MANIFEST.json",
+      "git_blob_sha1": "5ef9057f3bc6a100c93d256eeb24f06498f9887d",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/README.md",
+      "git_blob_sha1": "cbd4c91d53b49e9b0697b1dac09cb47aeb478204",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg05/audit.json",
+      "git_blob_sha1": "e80e9d0b943bf3620ef842a27c4fea5b87a1e81f",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg05/per_relation.csv",
+      "git_blob_sha1": "3cb0a039e2ec64dc23bdd2e3355b8919c3611487",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg05/per_scene.csv",
+      "git_blob_sha1": "2018d443834da893863d846dd992ea7013b861d5",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg05/summary.csv",
+      "git_blob_sha1": "6ab756ccebcf8dc4f21a93c24c38947518857df7",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg06/audit.json",
+      "git_blob_sha1": "60a2f65fb32fe17eddbf19e0da1ded012508d183",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg06/eg06_augmented_layouts.json",
+      "git_blob_sha1": "3ed3d7a4a16770125bb06892ba5483f86cdcf4fe",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg06/movement_audit.csv",
+      "git_blob_sha1": "f6579bfa28251ddea20fd340cd7b536bfb23af5d",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg06/per_relation.csv",
+      "git_blob_sha1": "d1727bbf975aa0607989d6c01e3c307153391462",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg06/per_scene.csv",
+      "git_blob_sha1": "3f838ca2724241114320c8a9cb794a91ac9565df",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/eg06/summary.csv",
+      "git_blob_sha1": "9b48ef4d81070b099008c0f99ce23c62d389cbf4",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/final/final_metrics.json",
+      "git_blob_sha1": "00ce9dbcc95fd35dc5a38962c7da718e4d78a31e",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/layouts/layouts.json",
+      "git_blob_sha1": "d6615961da6ece92fe41f3d9933aa0e8956f869d",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/layouts/validation.json",
+      "git_blob_sha1": "e9d846474aa4d5762cfc1ffd7ddefc65d53eef21",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/layouts/validation_recheck.json",
+      "git_blob_sha1": "e9d846474aa4d5762cfc1ffd7ddefc65d53eef21",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/stats/canonical_eg06_ci.json",
+      "git_blob_sha1": "9483ef63b077faab7b47e92a34e5a8d9ec963949",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/stats/paired_ci.csv",
+      "git_blob_sha1": "4ff76d36ede223206cc520ac56031578bd893a6b",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/data/stats/paired_statistics.json",
+      "git_blob_sha1": "793dd750b2621512a7d5a012ff2abe4c65e1a3cb",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/evaluation/independent_protocol.md",
+      "git_blob_sha1": "bd162245d3b2ad3180a7276d473cb8186efd0ab9",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/evaluation/independent_relation_evaluator.py",
+      "git_blob_sha1": "b2f832fee8bec057de6b077ad854ca9f416a2705",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/fixtures/eg13_smoke_layouts.json",
+      "git_blob_sha1": "32b2520840f150a85336538f1a9f1a584a96b29a",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/output/reproduction/controls_table.csv",
+      "git_blob_sha1": "34804e0048e7ddb99c6a0cc4f40675bc9d789e1c",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/output/reproduction/gate_table.csv",
+      "git_blob_sha1": "afa6a48fd1fffd2c89949aa464073997658c608c",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/output/reproduction/main_table.csv",
+      "git_blob_sha1": "5f5c64eaba1b1ae17ad17689f00a7170a5584d76",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/output/reproduction/reproduction.json",
+      "git_blob_sha1": "73428785f2e7b5ecc6925ff760420278ab75818c",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/output/reproduction/reproduction.md",
+      "git_blob_sha1": "26cd5b66060fca56c1d0fa277ad94dbb14fe2ed6",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/scripts/reproduce_main_table.py",
+      "git_blob_sha1": "4339320963a63295c411e6c469a0e3a9e85969d4",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_anonymous_repro/scripts/smoke_test.py",
+      "git_blob_sha1": "cdfda7486b7691cdb4e9090811c0d82c46e379fb",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_build_result.json",
+      "git_blob_sha1": "3cf0cff81ddbfb729671e9722ede444fb2f18489",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_validation_report/artifact.json",
+      "git_blob_sha1": "641792166ebcbc9906e36877525fb48863e05859",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_validation_report/qa_receipt.json",
+      "git_blob_sha1": "0472e8cfb68f22c8a110451e28d953335b529817",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_validation_report/query_results.json",
+      "git_blob_sha1": "72c35ee7b96263943ae01193eab06aaec4a46254",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_validation_report/report.html",
+      "git_blob_sha1": "5f9fa0059afa5892c9e66fd45b809792e4c4a8d3",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_validation_report/report_queries.sql",
+      "git_blob_sha1": "2250be2e47d55e0626c6892326aade7fa9455aed",
+      "mode": "100644"
+    },
+    {
+      "path": "artifacts/eurographics2027/eg13_validation_report/report_source.sqlite",
+      "git_blob_sha1": "da128d8f2346263490f5ab55b6872ad051f7b062",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/ai_use_disclosure_author_input_20260825.md",
+      "git_blob_sha1": "02c86580961c81723eb03e3970720cccfa37a65c",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg11_eg16_team_handoff_20260825.md",
+      "git_blob_sha1": "c6964e6c8c3e4f5af49ce5219eb454e56f3cc573",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg11_fresh_pdf_qa_20260825.md",
+      "git_blob_sha1": "ffaec192504e2c146f3d90bc3a227d4a383d1682",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg11_template_anonymity_report_20260825.md",
+      "git_blob_sha1": "c7eda4881b2d73ee316d5fc946a9572bbaba99f8",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg12_related_work_citation_audit_20260825.md",
+      "git_blob_sha1": "d7959be41fdee1ed22e34558b07aec8367bf1229",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg13_anonymous_repro_report_20260825.md",
+      "git_blob_sha1": "9a63b90bc790b362d9b3ca8464e405e13cdf27f1",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg14_internal_review_round1_20260825.md",
+      "git_blob_sha1": "9c01b834cd2b8d507bb98dc8acb77cac66b6e794",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg14_internal_review_round2_20260825.md",
+      "git_blob_sha1": "5b9b59e6c367134bf08928cd23f977ef97233fb2",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg14_uninvolved_human_review_form_20260825.md",
+      "git_blob_sha1": "ae7d2be9f8f872ee7e067f7f430470df65cf60fe",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/eg14_uninvolved_human_review_receipt_20260826.json",
+      "git_blob_sha1": "4d9037d4aff95c0613285470851ed3b569eee680",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/github_sync_index_20260906.md",
+      "git_blob_sha1": "66771d77ef4640b5f3adc8b678fbfe84612797c0",
+      "mode": "100644"
+    },
+    {
+      "path": "docs/eurographics2027/paper_content_extension_validation_20260901.md",
+      "git_blob_sha1": "2bea4fdc5ea5175cb5dc288618ce6faf7fc63a6f",
+      "mode": "100644"
+    },
+    {
+      "path": "fixtures/eg13_smoke_layouts.json",
+      "git_blob_sha1": "85569575683d9f85ba79180f5e831cdb8301cb88",
+      "mode": "100644"
+    },
+    {
+      "path": "manifests/eurographics2027/eg10_submission_readiness_manifest.json",
+      "git_blob_sha1": "f3aba878b8cc9437591271614b3741018ac4ba6d",
+      "mode": "100644"
+    },
+    {
+      "path": "output/reproduction/controls_table.csv",
+      "git_blob_sha1": "1001f8a79c46f17247a5ae2a5b66270b197d50ac",
+      "mode": "100644"
+    },
+    {
+      "path": "output/reproduction/gate_table.csv",
+      "git_blob_sha1": "301d27427be45672144dece4719fc0ef63cef1bc",
+      "mode": "100644"
+    },
+    {
+      "path": "output/reproduction/main_table.csv",
+      "git_blob_sha1": "52c2749277419e48c334dde304142e7e6d8e1ef1",
+      "mode": "100644"
+    },
+    {
+      "path": "output/reproduction/reproduction.json",
+      "git_blob_sha1": "024f13401da4c1931be3a6ccf7e785d46bd0d981",
+      "mode": "100644"
+    },
+    {
+      "path": "output/reproduction/reproduction.md",
+      "git_blob_sha1": "94b480406d9087d8dcf49b4b54f0071ebf386a44",
+      "mode": "100644"
+    },
+    {
+      "path": "paper/eurographics2027_submission/EGauthorGuidelines-conf-sub.tex",
+      "git_blob_sha1": "986ae42aa933367cb64abcb73e159a634e514fa0",
+      "mode": "100644"
+    },
+    {
+      "path": "paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.log",
+      "git_blob_sha1": "c0289bb76bb2d8c3bdfd52ce5a93e810c15bb10d",
+      "mode": "100644"
+    },
+    {
+      "path": "paper/eurographics2027_submission/build/EGauthorGuidelines-conf-sub.pdf",
+      "git_blob_sha1": "d4f9f3e361ab7f1f198e6864e911ab0947b26b09",
+      "mode": "100644"
+    },
+    {
+      "path": "paper/eurographics2027_submission/figures/eg11_formal_qualitative.pdf",
+      "git_blob_sha1": "2285f206f6eda895b73afbfb13c05b5a899c9ed2",
+      "mode": "100644"
+    },
+    {
+      "path": "paper/eurographics2027_submission/figures/eg11_formal_qualitative.png",
+      "git_blob_sha1": "905bb301c15dea53a1bd10529a1188f1feb468d8",
+      "mode": "100644"
+    },
+    {
+      "path": "paper/eurographics2027_submission/figures/eg11_formal_qualitative_selection.json",
+      "git_blob_sha1": "4eae8bdf8306ca87b04ac10338ac6f8f75ed1717",
+      "mode": "100644"
+    },
+    {
+      "path": "paper/eurographics2027_submission/references.bib",
+      "git_blob_sha1": "d495bd1db15a040e059cc920d3764d06a2955c97",
+      "mode": "100644"
+    },
+    {
+      "path": "results/independent_eval/eg2027/eg10_submission_readiness_20260817/preflight.json",
+      "git_blob_sha1": "10e0b33910dacef1efa17c46fc969247b9d6978c",
+      "mode": "100644"
+    },
+    {
+      "path": "results/independent_eval/eg2027/eg11_eg16_readiness_20260825/status.json",
+      "git_blob_sha1": "99b69f82d1564d92ebfa325c990352e7d1d9ac43",
+      "mode": "100644"
+    },
+    {
+      "path": "results/independent_eval/eg2027/eg11_eg16_readiness_20260825/status.md",
+      "git_blob_sha1": "091c24ebb11241548fa7212bd86a2ef25719cb34",
+      "mode": "100644"
+    },
+    {
+      "path": "results/independent_eval/eg2027/eg13_reproduction_20260825/controls_table.csv",
+      "git_blob_sha1": "1001f8a79c46f17247a5ae2a5b66270b197d50ac",
+      "mode": "100644"
+    },
+    {
+      "path": "results/independent_eval/eg2027/eg13_reproduction_20260825/gate_table.csv",
+      "git_blob_sha1": "301d27427be45672144dece4719fc0ef63cef1bc",
+      "mode": "100644"
+    },
+    {
+      "path": "results/independent_eval/eg2027/eg13_reproduction_20260825/main_table.csv",
+      "git_blob_sha1": "52c2749277419e48c334dde304142e7e6d8e1ef1",
+      "mode": "100644"
+    },
+    {
+      "path": "results/independent_eval/eg2027/eg13_reproduction_20260825/reproduction.json",
+      "git_blob_sha1": "024f13401da4c1931be3a6ccf7e785d46bd0d981",
+      "mode": "100644"
+    },
+    {
+      "path": "results/independent_eval/eg2027/eg13_reproduction_20260825/reproduction.md",
+      "git_blob_sha1": "94b480406d9087d8dcf49b4b54f0071ebf386a44",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/build_eg13_anonymous_repro.py",
+      "git_blob_sha1": "e9041ae24d8d80b52abbadb3ed088c8f51d1e4a4",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/build_eg13_validation_report_source.py",
+      "git_blob_sha1": "bb5c97831b1692a27460e366404a653d1a460f99",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/check_eg10_submission_readiness.py",
+      "git_blob_sha1": "4c847376af2a0b41d85c61432c342a346b889a1f",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/check_eg11_eg16_readiness.py",
+      "git_blob_sha1": "4605e076bf7dee906588209fb49d41d889757c3a",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/render_eg11_formal_qualitative.py",
+      "git_blob_sha1": "280ba9734a8e1ac4ecd7261922348b814b15bb26",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/reproduce_eg13_main_table.py",
+      "git_blob_sha1": "4339320963a63295c411e6c469a0e3a9e85969d4",
+      "mode": "100644"
+    },
+    {
+      "path": "scripts/run_eg13_smoke_test.py",
+      "git_blob_sha1": "cdfda7486b7691cdb4e9090811c0d82c46e379fb",
+      "mode": "100644"
+    },
+    {
+      "path": "submission/eurographics2027/eg15_eg16_deferred_20260901.md",
+      "git_blob_sha1": "a3502bd29dee70bb54131ff711e200224f10419b",
+      "mode": "100644"
+    },
+    {
+      "path": "submission/eurographics2027/eg15_metadata_author_confirmation_20260825.md",
+      "git_blob_sha1": "3de7617c5dcabc19d8a6fba471a3c7faf677919b",
+      "mode": "100644"
+    },
+    {
+      "path": "submission/eurographics2027/eg15_metadata_draft_20260825.json",
+      "git_blob_sha1": "27a72afff3b32c192732524d0a862f50d46be001",
+      "mode": "100644"
+    },
+    {
+      "path": "submission/eurographics2027/eg16_srmv2_abstract_registration_20260825.md",
+      "git_blob_sha1": "f108ec954fbd4ad9c50c6b4dbbfa682cfa11a694",
+      "mode": "100644"
+    },
+    {
+      "path": "tests/test_eg10_submission_readiness.py",
+      "git_blob_sha1": "f6f716bc51718ae2e1a8191ef9b5dd23aa5e66f6",
+      "mode": "100644"
+    }
+  ]
+}

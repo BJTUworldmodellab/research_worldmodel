@@ -1,0 +1,186 @@
+{
+  "collision_pairs": {
+    "baseline": 1075,
+    "non_worsening": true,
+    "selected_main": 1061
+  },
+  "controls_table": [
+    {
+      "accuracy": 0.6349009900990099,
+      "ci95_high": 0.012225687952442582,
+      "ci95_low": -0.0012515644555694619,
+      "claim_supported": false,
+      "control": "baseline",
+      "main_minus_control": 0.004950495049504955
+    },
+    {
+      "accuracy": 0.6225247524752475,
+      "ci95_high": 0.028290282902829027,
+      "ci95_low": 0.0075469327770930125,
+      "claim_supported": true,
+      "control": "random_movement_matched_seed0",
+      "main_minus_control": 0.017326732673267342
+    },
+    {
+      "accuracy": 0.625,
+      "ci95_high": 0.024968789013732832,
+      "ci95_low": 0.006127450980392157,
+      "claim_supported": true,
+      "control": "random_movement_matched_seed1",
+      "main_minus_control": 0.014851485148514865
+    },
+    {
+      "accuracy": 0.6287128712871287,
+      "ci95_high": 0.019632504785879013,
+      "ci95_low": 0.0036900369003690036,
+      "claim_supported": true,
+      "control": "random_movement_matched_seed2",
+      "main_minus_control": 0.011138613861386149
+    },
+    {
+      "accuracy": 0.6254125412541254,
+      "ci95_high": 0.022005381872709433,
+      "ci95_low": 0.007453416149068323,
+      "claim_supported": true,
+      "control": "random_mean",
+      "main_minus_control": 0.014438943894389489
+    },
+    {
+      "accuracy": 0.6410891089108911,
+      "ci95_high": 0.0037593984962406013,
+      "ci95_low": -0.006329113924050633,
+      "claim_supported": false,
+      "control": "generic_relation_optimizer",
+      "main_minus_control": -0.0012376237623762387
+    }
+  ],
+  "errors": [],
+  "gate_table": [
+    {
+      "baseline_fallback": 8,
+      "repair_selected": 154,
+      "room": "bedroom",
+      "total": 162
+    },
+    {
+      "baseline_fallback": 18,
+      "repair_selected": 174,
+      "room": "livingroom",
+      "total": 192
+    },
+    {
+      "baseline_fallback": 13,
+      "repair_selected": 164,
+      "room": "diningroom",
+      "total": 177
+    },
+    {
+      "baseline_fallback": 39,
+      "repair_selected": 492,
+      "room": "overall",
+      "total": 531
+    }
+  ],
+  "inputs": {
+    "augmented_layouts": {
+      "bytes": 18172296,
+      "path": "eg06/eg06_augmented_layouts.json",
+      "sha256": "67dad96bbaaa80f6d126fe412431ae1b2e480585b343013dc1f6ce0bf68772f6"
+    },
+    "eg05_per_scene": {
+      "bytes": 159491,
+      "path": "eg05/per_scene.csv",
+      "sha256": "a6a5f87d293ab89f546537bb2bd28010f655d28893c972dbd8f2fa760f6f8e7d"
+    },
+    "eg06_per_scene": {
+      "bytes": 473344,
+      "path": "eg06/per_scene.csv",
+      "sha256": "d67af62ce73fe344adb3ce83af9d2a2b7da3494a95675dea7585585b01882091"
+    },
+    "final_metrics": {
+      "bytes": 5329,
+      "path": "final/eg07_final_metrics_20260814.json",
+      "sha256": "79fc4c928f3c64b09589b0d4ea88819ec5e277c8b58e089868f276fadf768449"
+    },
+    "paired_statistics": {
+      "bytes": 25012,
+      "path": "paired_statistics.json",
+      "sha256": "e7b769a52f33cd2d5716e122048ccb0e544dde4f90001d6e44910c41066f887e"
+    }
+  },
+  "integrity": {
+    "eg05_duplicate_keys": 0,
+    "eg05_rows": 1062,
+    "eg05_variant_coverage_errors": 0,
+    "eg06_duplicate_keys": 0,
+    "eg06_rows": 3186,
+    "eg06_variant_coverage_errors": 0,
+    "missing_targets": 93,
+    "scene_count": 531,
+    "target_relations": 808,
+    "unsupported_targets": 0
+  },
+  "main_table": [
+    {
+      "baseline_accuracy": 0.726530612244898,
+      "baseline_satisfied": 178,
+      "gain": 0.004081632653061162,
+      "main_accuracy": 0.7306122448979592,
+      "main_satisfied": 179,
+      "missing": 17,
+      "n_relations": 245,
+      "n_scenes": 162,
+      "room": "bedroom",
+      "unsupported": 0
+    },
+    {
+      "baseline_accuracy": 0.6054421768707483,
+      "baseline_satisfied": 178,
+      "gain": 0.006802721088435382,
+      "main_accuracy": 0.6122448979591837,
+      "main_satisfied": 180,
+      "missing": 40,
+      "n_relations": 294,
+      "n_scenes": 192,
+      "room": "livingroom",
+      "unsupported": 0
+    },
+    {
+      "baseline_accuracy": 0.5836431226765799,
+      "baseline_satisfied": 157,
+      "gain": 0.0037174721189591198,
+      "main_accuracy": 0.587360594795539,
+      "main_satisfied": 158,
+      "missing": 36,
+      "n_relations": 269,
+      "n_scenes": 177,
+      "room": "diningroom",
+      "unsupported": 0
+    },
+    {
+      "baseline_accuracy": 0.6349009900990099,
+      "baseline_satisfied": 513,
+      "gain": 0.004950495049504955,
+      "main_accuracy": 0.6398514851485149,
+      "main_satisfied": 517,
+      "missing": 93,
+      "n_relations": 808,
+      "n_scenes": 531,
+      "room": "overall",
+      "unsupported": 0
+    }
+  ],
+  "movement_fairness": {
+    "coverage_errors": [],
+    "generic_budget_failures": 0,
+    "generic_max_excess_m": 0.0,
+    "generic_per_object_comparisons": 5533,
+    "layouts": 3186,
+    "random_magnitude_failures": 0,
+    "random_max_abs_difference_m": 4.440892098500626e-16,
+    "random_per_object_comparisons": 16599,
+    "scenes": 531
+  },
+  "schema": "eg2027-eg13-reproduction-v1",
+  "status": "PASS"
+}
